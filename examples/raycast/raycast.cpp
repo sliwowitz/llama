@@ -167,73 +167,8 @@ namespace
 
     struct Scene
     {
-        Scene(const std::filesystem::path& filepath)
-        {
-            std::ifstream f(filepath);
-            if (!f)
-                throw std::ios::failure("Failed to open file " + filepath.string() + " for reading");
-
-            int lineCounter = 0;
-            std::string line;
-            while (std::getline(f, line))
-            {
-                if (line.empty())
-                    continue;
-                lineCounter++;
-                std::stringstream ss(line);
-                std::string token;
-
-                auto expect = [&](const std::string& s) {
-                    ss >> token;
-                    if (token != s)
-                        throw std::runtime_error("Excepted token: " + s + " on line " + std::to_string(lineCounter));
-                };
-
-                ss >> token;
-                if (token == "sphere")
-                {
-                    Sphere sphere;
-                    expect("radius");
-                    ss >> sphere.radius;
-                    expect("center");
-                    ss >> sphere.center;
-
-                    _spheres.push_back(sphere);
-                }
-                else if (token == "camera")
-                {
-                    expect("fovy");
-                    ss >> _camera.fovy;
-                    expect("position");
-                    ss >> _camera.position;
-                    expect("lookAt");
-                    VectorF la;
-                    ss >> la;
-                    _camera.view = (la - _camera.position).normalized();
-                    expect("up");
-                    VectorF up;
-                    ss >> up;
-                    _camera.up = cross(_camera.view, cross(_camera.view, up)).normalized();
-                }
-                else
-                    throw std::runtime_error(
-                        "Unrecognized line command: " + token + " at start of line " + std::to_string(lineCounter));
-            }
-        }
-
-        auto camera() const -> const Camera&
-        {
-            return _camera;
-        }
-
-        auto spheres() const -> const std::vector<Sphere>&
-        {
-            return _spheres;
-        }
-
-    private:
-        Camera _camera;
-        std::vector<Sphere> _spheres;
+        Camera camera;
+        std::vector<Sphere> spheres;
     };
 
     class Image
@@ -387,10 +322,10 @@ namespace
         {
             for (auto x = 0u; x < width; x++)
             {
-                const auto ray = createRay(scene.camera(), width, height, x, y);
+                const auto ray = createRay(scene.camera, width, height, x, y);
 
                 std::vector<Intersection> hits;
-                for (const auto& sphere : scene.spheres())
+                for (const auto& sphere : scene.spheres)
                     if (const auto hit = intersect(ray, sphere))
                         hits.push_back(*hit);
 
@@ -402,35 +337,72 @@ namespace
 
         return img;
     }
+
+    auto lookAt(float fovy, VectorF pos, VectorF lookAt, VectorF up) -> Camera
+    {
+        const auto view = (lookAt - pos).normalized();
+        const auto up2 = cross(view, cross(view, up)).normalized();
+        return Camera{fovy, pos, view, up};
+    }
+
+    auto cubicBallsScene() -> Scene
+    {
+        const auto camera = lookAt(45, {5, 5.5, 6}, {0, 0, 0}, {0, 1, 0});
+        auto spheres = std::vector<Sphere>{};
+        for (auto z = -2; z <= 2; z++)
+            for (auto y = -2; y <= 2; y++)
+                for (auto x = -2; x <= 2; x++)
+                    spheres.push_back(Sphere{{(float) x, (float) y, (float) z}, 0.8f});
+        return Scene{camera, std::move(spheres)};
+    }
+
+    auto axisBallsScene() -> Scene
+    {
+        const auto camera = lookAt(45, {5, 5, 10}, {0, 0, 0}, {0, 1, 0});
+        auto spheres = std::vector<Sphere>{
+            {{0, 0, 0}, 3.0f},
+            {{0, 0, 5}, 2.0f},
+            {{0, 5, 0}, 2.0f},
+            {{5, 0, 0}, 2.0f},
+            {{0, 0, -5}, 1.0f},
+            {{0, -5, 0}, 1.0f},
+            {{-5, 0, 0}, 1.0f}};
+        return Scene{camera, std::move(spheres)};
+    }
+
+    auto randomSphereScene() -> Scene
+    {
+        constexpr auto count = 1024;
+
+        const auto camera = lookAt(45, {5, 5.5, 6}, {0, 0, 0}, {0, 1, 0});
+        auto spheres = std::vector<Sphere>{};
+
+        std::default_random_engine eng;
+        std::uniform_real_distribution d{-2.0f, 2.0f};
+        for (auto i = 0; i < count; i++)
+            spheres.push_back({{d(eng), d(eng), d(eng)}, 0.2f});
+        return Scene{camera, std::move(spheres)};
+    }
 } // namespace
 
 int main(int argc, const char* argv[])
 try
 {
-    if (argc != 4)
-    {
-        std::cerr << "Invalid number of arguments. Usage:\n\n";
-        std::cerr << argv[0] << " sceneFile width height\n";
-        return 1;
-    }
+    const auto width = 800;
+    const auto height = 600;
 
-    const std::filesystem::path sceneFile = argv[1];
-    const unsigned int width = std::stoi(argv[2]);
-    const unsigned int height = std::stoi(argv[3]);
-
-    if (!sceneFile.has_stem())
-        throw std::invalid_argument("Except scene file " + sceneFile.string() + " to have a stem");
-    auto imageFile = sceneFile;
-    imageFile.replace_extension("png");
-
-    Scene scene(sceneFile);
+    // const auto scene = loadScene(sceneFile);
+    // const auto scene = cubicBallsScene();
+    // const auto scene = axisBallsScene();
+    const auto scene = randomSphereScene();
 
     const auto start = std::chrono::high_resolution_clock::now();
     const auto image = raycast(scene, width, height);
     const auto end = std::chrono::high_resolution_clock::now();
     std::cout << "Raycast took " << std::chrono::duration<double>(end - start).count() << "s\n";
 
-    image.write(imageFile);
+    image.write("out.png");
+    std::system("out.png");
 }
 catch (const std::exception& e)
 {
