@@ -30,14 +30,14 @@ namespace
             return values[index];
         }
 
-        auto operator+=(const Vector& v) noexcept -> Vector&
+        auto operator+=(const Vector& v) -> Vector&
         {
             for (int i = 0; i < 3; i++)
                 values[i] += v.values[i];
             return *this;
         }
 
-        auto operator-=(const Vector& v) noexcept -> Vector&
+        auto operator-=(const Vector& v) -> Vector&
         {
             for (int i = 0; i < 3; i++)
                 values[i] -= v.values[i];
@@ -45,19 +45,22 @@ namespace
         }
 
         template <typename Scalar>
-        auto operator*=(Scalar scalar) noexcept -> Vector&
+        auto operator*=(Scalar scalar) -> Vector&
         {
             for (int i = 0; i < 3; i++)
                 values[i] *= scalar;
             return *this;
         }
 
-        auto lengthSqr() const noexcept
+        auto lengthSqr() const
         {
-            return (*this) * (*this);
+            F r = 0;
+            for (int i = 0; i < 3; i++)
+                r += values[i] * values[i];
+            return r;
         }
 
-        auto length() const noexcept
+        auto length() const
         {
             return std::sqrt(lengthSqr());
         }
@@ -76,42 +79,44 @@ namespace
             return r;
         }
 
+        friend auto operator+(const Vector& a, const Vector& b) -> Vector
+        {
+            auto r = a;
+            r += b;
+            return r;
+        }
+
+        friend auto operator-(const Vector& a, const Vector& b) -> Vector
+        {
+            auto r = a;
+            r -= b;
+            return r;
+        }
+
+        friend auto operator*(const Vector& v, F scalar) -> Vector
+        {
+            auto r = v;
+            r *= scalar;
+            return r;
+        }
+
+        friend auto operator*(F scalar, const Vector& v) -> Vector
+        {
+            return v * scalar;
+        }
+
+        friend auto operator>>(std::istream& is, Vector& v) -> std::istream&
+        {
+            for (int i = 0; i < 3; i++)
+                is >> v[i];
+            return is;
+        }
+
         std::array<F, 3> values = {{0, 0, 0}};
     };
 
     template <typename F>
-    auto operator+(const Vector<F>& a, const Vector<F>& b) noexcept -> Vector<F>
-    {
-        auto r = a;
-        r += b;
-        return r;
-    }
-
-    template <typename F>
-    auto operator-(const Vector<F>& a, const Vector<F>& b) noexcept -> Vector<F>
-    {
-        auto r = a;
-        r -= b;
-        return r;
-    }
-
-    template <typename F, typename Scalar>
-    auto operator*(const Vector<F>& v, Scalar scalar) noexcept -> Vector<F>
-    {
-        auto r = v;
-        r *= scalar;
-        return r;
-    }
-
-    template <typename Scalar, typename F>
-    auto operator*(Scalar scalar, const Vector<F>& v) noexcept -> Vector<F>
-    {
-        return v * scalar;
-    }
-
-    // dot product
-    template <typename F>
-    auto operator*(const Vector<F>& a, const Vector<F>& b) noexcept -> F
+    auto dot(const Vector<F>& a, const Vector<F>& b) -> F
     {
         F r = 0;
         for (int i = 0; i < 3; i++)
@@ -119,9 +124,8 @@ namespace
         return r;
     }
 
-    // cross product
     template <typename F>
-    auto operator%(const Vector<F>& a, const Vector<F>& b) -> Vector<F>
+    auto cross(const Vector<F>& a, const Vector<F>& b) -> Vector<F>
     {
         Vector<F> r;
         r[0] = a[1] * b[2] - a[2] * b[1];
@@ -130,16 +134,7 @@ namespace
         return r;
     }
 
-    template <typename F>
-    auto operator>>(std::istream& is, Vector<F>& v) -> std::istream&
-    {
-        for (int i = 0; i < 3; i++)
-            is >> v[i];
-        return is;
-    }
-
     using VectorF = Vector<float>;
-    using VectorD = Vector<double>;
 
     auto solveQuadraticEquation(double a, double b, double c) -> std::vector<double>
     {
@@ -217,7 +212,7 @@ namespace
                     expect("up");
                     VectorF up;
                     ss >> up;
-                    _camera.up = (_camera.view % (_camera.view % up)).normalized();
+                    _camera.up = cross(_camera.view, cross(_camera.view, up)).normalized();
                 }
                 else
                     throw std::runtime_error(
@@ -289,7 +284,7 @@ namespace
         // we imagine a plane with the image just 1 before the camera, and then we shoot at those pixels
 
         const auto center = camera.position + camera.view;
-        const auto xVec = camera.view % camera.up;
+        const auto xVec = cross(camera.view, camera.up);
         const auto yVec = camera.up;
 
         const auto delta = (std::tan(camera.fovy * pi / 180.0f) * 2) / (height - 1);
@@ -314,7 +309,7 @@ namespace
 
         // solve quadratic equation
         const auto a = 1;
-        const auto b = 2 * (ray.direction * (ray.origin - sphere.center));
+        const auto b = 2 * dot(ray.direction, (ray.origin - sphere.center));
         const auto c = (ray.origin - sphere.center).lengthSqr() - sphere.radius * sphere.radius;
 
         const auto solutions = solveQuadraticEquation(a, b, c);
