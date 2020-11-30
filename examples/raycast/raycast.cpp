@@ -8,6 +8,7 @@
 #include <iosfwd>
 #include <iostream>
 #include <optional>
+#include <random>
 #include <sstream>
 #include <stb_image_write.h>
 #include <stdexcept>
@@ -116,7 +117,7 @@ namespace
     };
 
     template <typename F>
-    auto dot(const Vector<F>& a, const Vector<F>& b) -> F
+    inline auto dot(const Vector<F>& a, const Vector<F>& b) -> F
     {
         F r = 0;
         for (int i = 0; i < 3; i++)
@@ -125,7 +126,7 @@ namespace
     }
 
     template <typename F>
-    auto cross(const Vector<F>& a, const Vector<F>& b) -> Vector<F>
+    inline auto cross(const Vector<F>& a, const Vector<F>& b) -> Vector<F>
     {
         Vector<F> r;
         r[0] = a[1] * b[2] - a[2] * b[1];
@@ -136,7 +137,7 @@ namespace
 
     using VectorF = Vector<float>;
 
-    auto solveQuadraticEquation(double a, double b, double c) -> std::vector<double>
+    inline auto solveQuadraticEquation(double a, double b, double c) -> std::vector<double>
     {
         const double discriminat = b * b - 4 * a * c;
         if (discriminat < 0)
