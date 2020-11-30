@@ -1,4 +1,5 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
+#define TINYOBJLOADER_IMPLEMENTATION
 #include <algorithm>
 #include <array>
 #include <cmath>
@@ -13,6 +14,7 @@
 #include <stb_image_write.h>
 #include <stdexcept>
 #include <string>
+#include <tiny_obj_loader.h>
 
 namespace
 {
@@ -111,6 +113,13 @@ namespace
             for (int i = 0; i < 3; i++)
                 is >> v[i];
             return is;
+        }
+
+        friend auto operator<<(std::ostream& os, const Vector& v) -> std::ostream&
+        {
+            for (int i = 0; i < 3; i++)
+                os << v[i] << " ";
+            return os;
         }
 
         std::array<F, 3> values = {{0, 0, 0}};
@@ -252,6 +261,10 @@ namespace
         Ray r;
         r.origin = center;
         r.direction = (pixel - camera.position).normalized();
+
+        assert(!std::isnan(r.direction[0]) && !std::isnan(r.direction[1]) && !std::isnan(r.direction[2]));
+        // std::cout << r.direction << std::endl;
+
         return r;
     }
 
@@ -366,7 +379,7 @@ namespace
         {
             for (auto x = 0u; x < width; x++)
             {
-                const auto ray = createRay(scene.camera, width, height, x, height - 1 - y); // flip 
+                const auto ray = createRay(scene.camera, width, height, x, height - 1 - y); // flip
 
                 std::vector<Intersection> hits;
                 for (const auto& sphere : scene.spheres)
@@ -456,20 +469,63 @@ namespace
 
         return scene;
     }
+
+    auto sponzaScene(const char* objFile) -> Scene
+    {
+        tinyobj::attrib_t attrib;
+        std::vector<tinyobj::shape_t> shapes;
+        std::vector<tinyobj::material_t> materials;
+        std::string warn;
+        std::string err;
+
+        const bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, objFile);
+        std::cout << warn << std::endl;
+        std::cerr << err << std::endl;
+        if (!ret)
+            throw std::runtime_error{"Failed to load sponza scene"};
+
+        Scene scene;
+        scene.camera = lookAt(45, {200, 100, 0}, {0, 100, 0}, {0, 1, 0});
+        scene.spheres.push_back({{-30.0f, 30.0f, -30.0f}, 30.0f});
+        scene.spheres.push_back({{30.0f, 30.0f, 30.0f}, 30.0f});
+        for (const auto& shape : shapes)
+        {
+            const auto& mesh = shape.mesh;
+
+            size_t indexOffset = 0;
+            for (const auto vertexCount : mesh.num_face_vertices)
+            {
+                if (vertexCount == 3)
+                {
+                    Triangle t;
+                    for (const auto v : {0, 1, 2})
+                    {
+                        const tinyobj::index_t idx = mesh.indices[indexOffset + v];
+                        for (const auto c : {0, 1, 2})
+                            t[v][c] = attrib.vertices[3 * idx.vertex_index + c];
+                    }
+                    scene.triangles.push_back(prepare(t));
+                }
+                indexOffset += vertexCount;
+            }
+        }
+        return scene;
+    }
 } // namespace
 
 int main(int argc, const char* argv[])
 try
 {
-    const auto width = 800;
-    const auto height = 600;
+    const auto width = 160;
+    const auto height = 120;
 
     // const auto scene = loadScene(sceneFile);
     // const auto scene = cubicBallsScene();
     // const auto scene = axisBallsScene();
     // const auto scene = randomSphereScene();
-    const auto scene = cornellBox();
-    std::cout << "Loaded scene. Raycasting ...\n";
+    // const auto scene = cornellBox();
+    // download a copy of the sponza scene e.g. from here: https://casual-effects.com/g3d/data10/index.html
+    const auto scene = sponzaScene("C:/dev/llama/examples/raycast/sponza/sponza.obj");
 
     const auto start = std::chrono::high_resolution_clock::now();
     const auto image = raycast(scene, width, height);
