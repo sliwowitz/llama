@@ -165,10 +165,27 @@ namespace
         float radius;
     };
 
+    struct Triangle : std::array<VectorF, 3>
+    {
+    };
+
+    struct PreparedTriangle
+    {
+        VectorF vertex0;
+        VectorF edge1;
+        VectorF edge2;
+    };
+
+    auto prepare(Triangle t) -> PreparedTriangle
+    {
+        return {t[0], t[1] - t[0], t[2] - t[0]};
+    }
+
     struct Scene
     {
         Camera camera;
         std::vector<Sphere> spheres;
+        std::vector<PreparedTriangle> triangles;
     };
 
     class Image
@@ -262,6 +279,33 @@ namespace
         return inter;
     }
 
+    // modified Möller and Trumbore's version
+    auto intersect(const Ray& ray, const PreparedTriangle& triangle) -> std::optional<Intersection>
+    {
+        constexpr auto epsilon = 0.000001f;
+
+        const auto pvec = cross(ray.direction, triangle.edge2);
+        const auto det = dot(triangle.edge1, pvec);
+        if (det > -epsilon && det < epsilon)
+            return {};
+
+        const auto inv_det = 1.0f / det;
+        const auto tvec = ray.origin - triangle.vertex0;
+        const auto u = dot(tvec, pvec) * inv_det;
+        if (u < 0.0f || u > 1.0f)
+            return {};
+
+        const auto qvec = cross(tvec, triangle.edge1);
+        const auto v = dot(ray.direction, qvec) * inv_det;
+        if (v < 0.0f || u + v >= 1.0f)
+            return {};
+        const auto t = dot(triangle.edge2, qvec) * inv_det;
+        if (t < 0)
+            return {};
+
+        return Intersection{t, ray.origin + ray.direction * t, cross(triangle.edge2, triangle.edge1).normalized()};
+    }
+
     auto colorByRay(const Ray& ray) -> Image::Pixel
     {
         Image::Pixel c;
@@ -322,11 +366,14 @@ namespace
         {
             for (auto x = 0u; x < width; x++)
             {
-                const auto ray = createRay(scene.camera, width, height, x, y);
+                const auto ray = createRay(scene.camera, width, height, x, height - 1 - y); // flip 
 
                 std::vector<Intersection> hits;
                 for (const auto& sphere : scene.spheres)
                     if (const auto hit = intersect(ray, sphere))
+                        hits.push_back(*hit);
+                for (const auto& triangle : scene.triangles)
+                    if (const auto hit = intersect(ray, triangle))
                         hits.push_back(*hit);
 
                 // img(x, y) = colorByRay(ray);
@@ -383,6 +430,32 @@ namespace
             spheres.push_back({{d(eng), d(eng), d(eng)}, 0.2f});
         return Scene{camera, std::move(spheres)};
     }
+
+    // not the original one, but a poor attempt
+    auto cornellBox() -> Scene
+    {
+        Scene scene;
+        scene.camera = lookAt(45, {0, 0, 7}, {0, 0, 0}, {0, 1, 0});
+        scene.spheres.push_back({{-2.5f, -2.5f, -2.5f}, 1.5f});
+        scene.spheres.push_back({{2.5f, -2.5f, 0.0f}, 1.5f});
+        // back plane
+        scene.triangles.push_back(prepare(Triangle{{{{-5, -5, -5}, {5, -5, -5}, {5, 5, -5}}}}));
+        scene.triangles.push_back(prepare(Triangle{{{{-5, -5, -5}, {5, 5, -5}, {-5, 5, -5}}}}));
+        // left plane
+        scene.triangles.push_back(prepare(Triangle{{{{-5, -5, 5}, {-5, -5, -5}, {-5, 5, -5}}}}));
+        scene.triangles.push_back(prepare(Triangle{{{{-5, -5, 5}, {-5, 5, -5}, {-5, 5, 5}}}}));
+        // right plane
+        scene.triangles.push_back(prepare(Triangle{{{{5, -5, 5}, {5, 5, -5}, {5, -5, -5}}}}));
+        scene.triangles.push_back(prepare(Triangle{{{{5, -5, 5}, {5, 5, 5}, {5, 5, -5}}}}));
+        // bottom plane
+        scene.triangles.push_back(prepare(Triangle{{{{-5, -5, 5}, {-5, -5, -5}, {5, -5, -5}}}}));
+        scene.triangles.push_back(prepare(Triangle{{{{-5, -5, 5}, {5, -5, -5}, {5, -5, 5}}}}));
+        // top plane
+        scene.triangles.push_back(prepare(Triangle{{{{-5, 5, 5}, {5, 5, -5}, {-5, 5, -5}}}}));
+        scene.triangles.push_back(prepare(Triangle{{{{-5, 5, 5}, {5, 5, 5}, {5, 5, -5}}}}));
+
+        return scene;
+    }
 } // namespace
 
 int main(int argc, const char* argv[])
@@ -394,7 +467,9 @@ try
     // const auto scene = loadScene(sceneFile);
     // const auto scene = cubicBallsScene();
     // const auto scene = axisBallsScene();
-    const auto scene = randomSphereScene();
+    // const auto scene = randomSphereScene();
+    const auto scene = cornellBox();
+    std::cout << "Loaded scene. Raycasting ...\n";
 
     const auto start = std::chrono::high_resolution_clock::now();
     const auto image = raycast(scene, width, height);
