@@ -52,9 +52,14 @@ namespace
             return *this;
         }
 
+        auto lengthSqr() const noexcept
+        {
+            return (*this) * (*this);
+        }
+
         auto length() const noexcept
         {
-            return std::sqrt((*this) * (*this));
+            return std::sqrt(lengthSqr());
         }
 
         void normalize()
@@ -138,7 +143,7 @@ namespace
 
     auto solveQuadraticEquation(double a, double b, double c) -> std::vector<double>
     {
-        const double discriminat = std::pow(b, 2) - 4 * a * c;
+        const double discriminat = b * b - 4 * a * c;
         if (discriminat < 0)
             return {};
 
@@ -310,7 +315,7 @@ namespace
         // solve quadratic equation
         const auto a = 1;
         const auto b = 2 * (ray.direction * (ray.origin - sphere.center));
-        const auto c = std::pow((ray.origin - sphere.center).length(), 2) - std::pow(sphere.radius, 2);
+        const auto c = (ray.origin - sphere.center).lengthSqr() - sphere.radius * sphere.radius;
 
         const auto solutions = solveQuadraticEquation(a, b, c);
         if (solutions.empty())
