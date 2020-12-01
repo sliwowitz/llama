@@ -33,6 +33,11 @@ namespace
             return values[index];
         }
 
+        auto operator-() const -> Vector
+        {
+            return {-values[0], -values[1], -values[2]};
+        }
+
         auto operator+=(const Vector& v) -> Vector&
         {
             for (int i = 0; i < 3; i++)
@@ -183,6 +188,11 @@ namespace
         VectorF vertex0;
         VectorF edge1;
         VectorF edge2;
+
+        auto normal() const -> VectorF
+        {
+            return cross(edge1, edge2).normalized();
+        }
     };
 
     auto prepare(Triangle t) -> PreparedTriangle
@@ -316,15 +326,7 @@ namespace
         if (t < 0)
             return {};
 
-        return Intersection{t, ray.origin + ray.direction * t, cross(triangle.edge2, triangle.edge1).normalized()};
-    }
-
-    auto colorByRay(const Ray& ray) -> Image::Pixel
-    {
-        Image::Pixel c;
-        for (int i = 0; i < 3; i++)
-            c[i] = static_cast<unsigned char>(std::abs(ray.direction[i]) * 255);
-        return c;
+        return Intersection{t, ray.origin + ray.direction * t, triangle.normal()};
     }
 
     auto colorByNearestIntersectionNormal(const std::vector<Intersection>& hits) -> Image::Pixel
@@ -389,9 +391,8 @@ namespace
                     if (const auto hit = intersect(ray, triangle))
                         hits.push_back(*hit);
 
-                // img(x, y) = colorByRay(ray);
-                // img(x, y) = colorByNearestIntersectionNormal(hits);
-                img(x, y) = colorByIntersectionNormal(hits);
+                img(x, y) = colorByNearestIntersectionNormal(hits);
+                // img(x, y) = colorByIntersectionNormal(hits);
             }
         }
 
