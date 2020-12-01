@@ -8,6 +8,8 @@
 #include <fstream>
 #include <iosfwd>
 #include <iostream>
+#include <llama/llama.hpp>
+#include <numeric>
 #include <optional>
 #include <random>
 #include <sstream>
@@ -19,6 +21,24 @@
 namespace
 {
     constexpr auto pi = 3.14159265359f;
+
+    // clang-format off
+    struct X {};
+    struct Y {};
+    struct Z {};
+    struct Vertex0 {};
+    struct Edge1 {};
+    struct Edge2 {};
+    // clang-format on
+
+    using Vec = llama::DS<llama::DE<X, float>, llama::DE<Y, float>, llama::DE<Z, float>>;
+    using PrepTriangle = llama::DS<llama::DE<Vertex0, Vec>, llama::DE<Edge1, Vec>, llama::DE<Edge2, Vec>>;
+
+    using ArrayDomain = llama::ArrayDomain<1>;
+    using Mapping = llama::mapping::AoS<ArrayDomain, PrepTriangle>;
+    // using Mapping = llama::mapping::SoA<ArrayDomain, PrepTriangle>;
+    // using Mapping = llama::mapping::AoSoA<ArrayDomain, PrepTriangle, 8>;
+    using TriangleView = decltype(llama::allocView(Mapping{llama::ArrayDomain{0}}));
 
     template <typename F>
     struct Vector
@@ -139,6 +159,16 @@ namespace
         return r;
     }
 
+    template <typename Vector1, typename Vector2>
+    inline auto dot(const Vector1& a, const Vector2& b)
+    {
+        float r = 0;
+        r += a(X{}) * b(X{});
+        r += a(Y{}) * b(Y{});
+        r += a(Z{}) * b(Z{});
+        return r;
+    }
+
     template <typename F>
     inline auto cross(const Vector<F>& a, const Vector<F>& b) -> Vector<F>
     {
@@ -146,6 +176,16 @@ namespace
         r[0] = a[1] * b[2] - a[2] * b[1];
         r[1] = a[2] * b[0] - a[0] * b[2];
         r[2] = a[0] * b[1] - a[1] * b[0];
+        return r;
+    }
+
+    template <typename Vector1, typename Vector2>
+    inline auto cross(const Vector1& a, const Vector2& b)
+    {
+        auto r = llama::allocVirtualDatumStack<Vec>();
+        r(X{}) = a(Y{}) * b(Z{}) - a(Z{}) * b(Y{});
+        r(Y{}) = a(Z{}) * b(X{}) - a(X{}) * b(Z{});
+        r(Z{}) = a(X{}) * b(Y{}) - a(Y{}) * b(X{});
         return r;
     }
 
@@ -204,7 +244,7 @@ namespace
     {
         Camera camera;
         std::vector<Sphere> spheres;
-        std::vector<PreparedTriangle> triangles;
+        TriangleView triangles;
     };
 
     class Image
@@ -302,31 +342,53 @@ namespace
         return inter;
     }
 
+    template <typename Vector>
+    auto normalized(const Vector& p)
+    {
+        return VectorF{p(X{}), p(Y{}), p(Z{})}.normalized();
+    }
+
+    template <typename PreparedTriangle>
+    auto normal(const PreparedTriangle& p)
+    {
+        return normalized(cross(p(Edge1{}), p(Edge2{})));
+    }
+
     // modified Möller and Trumbore's version
+    template <typename PreparedTriangle>
     auto intersect(const Ray& ray, const PreparedTriangle& triangle) -> std::optional<Intersection>
     {
         constexpr auto epsilon = 0.000001f;
 
-        const auto pvec = cross(ray.direction, triangle.edge2);
-        const auto det = dot(triangle.edge1, pvec);
+        auto rayDirection = llama::allocVirtualDatumStack<Vec>();
+        rayDirection(X{}) = ray.direction[0];
+        rayDirection(Y{}) = ray.direction[1];
+        rayDirection(Z{}) = ray.direction[2];
+        auto rayOrigin = llama::allocVirtualDatumStack<Vec>();
+        rayOrigin(X{}) = ray.origin[0];
+        rayOrigin(Y{}) = ray.origin[1];
+        rayOrigin(Z{}) = ray.origin[2];
+
+        const auto pvec = cross(rayDirection, triangle(Edge2{}));
+        const auto det = dot(triangle(Edge1{}), pvec);
         if (det > -epsilon && det < epsilon)
             return {};
 
         const auto inv_det = 1.0f / det;
-        const auto tvec = ray.origin - triangle.vertex0;
+        const auto tvec = rayOrigin - triangle(Vertex0{});
         const auto u = dot(tvec, pvec) * inv_det;
         if (u < 0.0f || u > 1.0f)
             return {};
 
-        const auto qvec = cross(tvec, triangle.edge1);
-        const auto v = dot(ray.direction, qvec) * inv_det;
+        const auto qvec = cross(tvec, triangle(Edge1{}));
+        const auto v = dot(rayDirection, qvec) * inv_det;
         if (v < 0.0f || u + v >= 1.0f)
             return {};
-        const auto t = dot(triangle.edge2, qvec) * inv_det;
+        const auto t = dot(triangle(Edge2{}), qvec) * inv_det;
         if (t < 0)
             return {};
 
-        return Intersection{t, ray.origin + ray.direction * t, triangle.normal()};
+        return Intersection{t, ray.origin + ray.direction * t, normal(triangle)};
     }
 
     auto colorByNearestIntersectionNormal(const std::vector<Intersection>& hits) -> Image::Pixel
@@ -387,9 +449,11 @@ namespace
                 for (const auto& sphere : scene.spheres)
                     if (const auto hit = intersect(ray, sphere))
                         hits.push_back(*hit);
-                for (const auto& triangle : scene.triangles)
-                    if (const auto hit = intersect(ray, triangle))
+                for (const auto i : llama::ArrayDomainIndexRange{scene.triangles.mapping.arrayDomainSize})
+                {
+                    if (const auto hit = intersect(ray, scene.triangles[i]))
                         hits.push_back(*hit);
+                }
 
                 img(x, y) = colorByNearestIntersectionNormal(hits);
                 // img(x, y) = colorByIntersectionNormal(hits);
@@ -406,70 +470,70 @@ namespace
         return Camera{fovy, pos, view, up};
     }
 
-    auto cubicBallsScene() -> Scene
-    {
-        const auto camera = lookAt(45, {5, 5.5, 6}, {0, 0, 0}, {0, 1, 0});
-        auto spheres = std::vector<Sphere>{};
-        for (auto z = -2; z <= 2; z++)
-            for (auto y = -2; y <= 2; y++)
-                for (auto x = -2; x <= 2; x++)
-                    spheres.push_back(Sphere{{(float) x, (float) y, (float) z}, 0.8f});
-        return Scene{camera, std::move(spheres)};
-    }
+    // auto cubicBallsScene() -> Scene
+    //{
+    //    const auto camera = lookAt(45, {5, 5.5, 6}, {0, 0, 0}, {0, 1, 0});
+    //    auto spheres = std::vector<Sphere>{};
+    //    for (auto z = -2; z <= 2; z++)
+    //        for (auto y = -2; y <= 2; y++)
+    //            for (auto x = -2; x <= 2; x++)
+    //                spheres.push_back(Sphere{{(float) x, (float) y, (float) z}, 0.8f});
+    //    return Scene{camera, std::move(spheres)};
+    //}
 
-    auto axisBallsScene() -> Scene
-    {
-        const auto camera = lookAt(45, {5, 5, 10}, {0, 0, 0}, {0, 1, 0});
-        auto spheres = std::vector<Sphere>{
-            {{0, 0, 0}, 3.0f},
-            {{0, 0, 5}, 2.0f},
-            {{0, 5, 0}, 2.0f},
-            {{5, 0, 0}, 2.0f},
-            {{0, 0, -5}, 1.0f},
-            {{0, -5, 0}, 1.0f},
-            {{-5, 0, 0}, 1.0f}};
-        return Scene{camera, std::move(spheres)};
-    }
+    // auto axisBallsScene() -> Scene
+    //{
+    //    const auto camera = lookAt(45, {5, 5, 10}, {0, 0, 0}, {0, 1, 0});
+    //    auto spheres = std::vector<Sphere>{
+    //        {{0, 0, 0}, 3.0f},
+    //        {{0, 0, 5}, 2.0f},
+    //        {{0, 5, 0}, 2.0f},
+    //        {{5, 0, 0}, 2.0f},
+    //        {{0, 0, -5}, 1.0f},
+    //        {{0, -5, 0}, 1.0f},
+    //        {{-5, 0, 0}, 1.0f}};
+    //    return Scene{camera, std::move(spheres)};
+    //}
 
-    auto randomSphereScene() -> Scene
-    {
-        constexpr auto count = 1024;
+    // auto randomSphereScene() -> Scene
+    //{
+    //    constexpr auto count = 1024;
 
-        const auto camera = lookAt(45, {5, 5.5, 6}, {0, 0, 0}, {0, 1, 0});
-        auto spheres = std::vector<Sphere>{};
+    //    const auto camera = lookAt(45, {5, 5.5, 6}, {0, 0, 0}, {0, 1, 0});
+    //    auto spheres = std::vector<Sphere>{};
 
-        std::default_random_engine eng;
-        std::uniform_real_distribution d{-2.0f, 2.0f};
-        for (auto i = 0; i < count; i++)
-            spheres.push_back({{d(eng), d(eng), d(eng)}, 0.2f});
-        return Scene{camera, std::move(spheres)};
-    }
+    //    std::default_random_engine eng;
+    //    std::uniform_real_distribution d{-2.0f, 2.0f};
+    //    for (auto i = 0; i < count; i++)
+    //        spheres.push_back({{d(eng), d(eng), d(eng)}, 0.2f});
+    //    return Scene{camera, std::move(spheres)};
+    //}
 
-    // not the original one, but a poor attempt
-    auto cornellBox() -> Scene
-    {
-        Scene scene;
-        scene.camera = lookAt(45, {0, 0, 7}, {0, 0, 0}, {0, 1, 0});
-        scene.spheres.push_back({{-2.5f, -2.5f, -2.5f}, 1.5f});
-        scene.spheres.push_back({{2.5f, -2.5f, 0.0f}, 1.5f});
-        // back plane
-        scene.triangles.push_back(prepare(Triangle{{{{-5, -5, -5}, {5, -5, -5}, {5, 5, -5}}}}));
-        scene.triangles.push_back(prepare(Triangle{{{{-5, -5, -5}, {5, 5, -5}, {-5, 5, -5}}}}));
-        // left plane
-        scene.triangles.push_back(prepare(Triangle{{{{-5, -5, 5}, {-5, -5, -5}, {-5, 5, -5}}}}));
-        scene.triangles.push_back(prepare(Triangle{{{{-5, -5, 5}, {-5, 5, -5}, {-5, 5, 5}}}}));
-        // right plane
-        scene.triangles.push_back(prepare(Triangle{{{{5, -5, 5}, {5, 5, -5}, {5, -5, -5}}}}));
-        scene.triangles.push_back(prepare(Triangle{{{{5, -5, 5}, {5, 5, 5}, {5, 5, -5}}}}));
-        // bottom plane
-        scene.triangles.push_back(prepare(Triangle{{{{-5, -5, 5}, {-5, -5, -5}, {5, -5, -5}}}}));
-        scene.triangles.push_back(prepare(Triangle{{{{-5, -5, 5}, {5, -5, -5}, {5, -5, 5}}}}));
-        // top plane
-        scene.triangles.push_back(prepare(Triangle{{{{-5, 5, 5}, {5, 5, -5}, {-5, 5, -5}}}}));
-        scene.triangles.push_back(prepare(Triangle{{{{-5, 5, 5}, {5, 5, 5}, {5, 5, -5}}}}));
+    //// not the original one, but a poor attempt
+    // auto cornellBox() -> Scene
+    //{
+    //    Scene scene;
+    //    scene.camera = lookAt(45, {0, 0, 7}, {0, 0, 0}, {0, 1, 0});
+    //    scene.spheres.push_back({{-2.5f, -2.5f, -2.5f}, 1.5f});
+    //    scene.spheres.push_back({{2.5f, -2.5f, 0.0f}, 1.5f});
+    //    // back plane
+    //    scene.triangles.push_back(prepare(Triangle{{{{-5, -5, -5}, {5, -5, -5}, {5, 5, -5}}}}));
+    //    scene.triangles.push_back(prepare(Triangle{{{{-5, -5, -5}, {5, 5, -5}, {-5, 5, -5}}}}));
+    //    // left plane
+    //    scene.triangles.push_back(prepare(Triangle{{{{-5, -5, 5}, {-5, -5, -5}, {-5, 5, -5}}}}));
+    //    scene.triangles.push_back(prepare(Triangle{{{{-5, -5, 5}, {-5, 5, -5}, {-5, 5, 5}}}}));
+    //    // right plane
+    //    scene.triangles.push_back(prepare(Triangle{{{{5, -5, 5}, {5, 5, -5}, {5, -5, -5}}}}));
+    //    scene.triangles.push_back(prepare(Triangle{{{{5, -5, 5}, {5, 5, 5}, {5, 5, -5}}}}));
+    //    // bottom plane
+    //    scene.triangles.push_back(prepare(Triangle{{{{-5, -5, 5}, {-5, -5, -5}, {5, -5, -5}}}}));
+    //    scene.triangles.push_back(prepare(Triangle{{{{-5, -5, 5}, {5, -5, -5}, {5, -5, 5}}}}));
+    //    // top plane
+    //    scene.triangles.push_back(prepare(Triangle{{{{-5, 5, 5}, {5, 5, -5}, {-5, 5, -5}}}}));
+    //    scene.triangles.push_back(prepare(Triangle{{{{-5, 5, 5}, {5, 5, 5}, {5, 5, -5}}}}));
 
-        return scene;
-    }
+    //    return scene;
+    //}
 
     auto sponzaScene(const char* objFile) -> Scene
     {
@@ -489,6 +553,16 @@ namespace
         scene.camera = lookAt(45, {200, 100, 0}, {0, 100, 0}, {0, 1, 0});
         scene.spheres.push_back({{-30.0f, 30.0f, -30.0f}, 30.0f});
         scene.spheres.push_back({{30.0f, 30.0f, 30.0f}, 30.0f});
+
+        const auto triangleCount
+            = std::accumulate(begin(shapes), end(shapes), size_t{0}, [](size_t acc, const auto& shape) {
+                  return acc
+                      + std::count(begin(shape.mesh.num_face_vertices), std::end(shape.mesh.num_face_vertices), 3);
+              });
+        auto mapping = Mapping{llama::ArrayDomain{triangleCount}};
+        scene.triangles = llama::allocView(mapping);
+
+        size_t write = 0;
         for (const auto& shape : shapes)
         {
             const auto& mesh = shape.mesh;
@@ -505,11 +579,22 @@ namespace
                         for (const auto c : {0, 1, 2})
                             t[v][c] = attrib.vertices[3 * idx.vertex_index + c];
                     }
-                    scene.triangles.push_back(prepare(t));
+                    const auto pt = prepare(t);
+                    scene.triangles[write](Vertex0{}, X{}) = pt.vertex0[0];
+                    scene.triangles[write](Vertex0{}, Y{}) = pt.vertex0[1];
+                    scene.triangles[write](Vertex0{}, Z{}) = pt.vertex0[2];
+                    scene.triangles[write](Edge1{}, X{}) = pt.edge1[0];
+                    scene.triangles[write](Edge1{}, Y{}) = pt.edge1[1];
+                    scene.triangles[write](Edge1{}, Z{}) = pt.edge1[2];
+                    scene.triangles[write](Edge2{}, X{}) = pt.edge2[0];
+                    scene.triangles[write](Edge2{}, Y{}) = pt.edge2[1];
+                    scene.triangles[write](Edge2{}, Z{}) = pt.edge2[2];
+                    write++;
                 }
                 indexOffset += vertexCount;
             }
         }
+
         return scene;
     }
 } // namespace
@@ -526,7 +611,8 @@ try
     // const auto scene = randomSphereScene();
     // const auto scene = cornellBox();
     // download a copy of the sponza scene e.g. from here: https://casual-effects.com/g3d/data10/index.html
-    const auto scene = sponzaScene("C:/dev/llama/examples/raycast/sponza/sponza.obj");
+    const auto scene = sponzaScene("/mnt/c/dev/llama/examples/raycast/sponza/sponza.obj");
+    // const auto scene = sponzaScene("C:/dev/llama/examples/raycast/sponza/sponza.obj");
 
     const auto start = std::chrono::high_resolution_clock::now();
     const auto image = raycast(scene, width, height);
