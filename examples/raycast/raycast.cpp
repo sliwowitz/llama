@@ -35,8 +35,8 @@ namespace
     using PrepTriangle = llama::DS<llama::DE<Vertex0, Vec>, llama::DE<Edge1, Vec>, llama::DE<Edge2, Vec>>;
 
     using ArrayDomain = llama::ArrayDomain<1>;
-    using Mapping = llama::mapping::AoS<ArrayDomain, PrepTriangle>;
-    // using Mapping = llama::mapping::SoA<ArrayDomain, PrepTriangle>;
+    // using Mapping = llama::mapping::AoS<ArrayDomain, PrepTriangle>;
+    using Mapping = llama::mapping::SoA<ArrayDomain, PrepTriangle, std::true_type>;
     // using Mapping = llama::mapping::AoSoA<ArrayDomain, PrepTriangle, 8>;
     using TriangleView = decltype(llama::allocView(Mapping{llama::ArrayDomain{0}}));
 
