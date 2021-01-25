@@ -354,27 +354,22 @@ namespace
         return Intersection{t, ray.origin + ray.direction * t, normal(triangle)};
     }
 
-    auto colorByNearestIntersectionNormal(const std::vector<Intersection>& hits) -> Image::Pixel
+    auto colorByIntersectionNormal(std::optional<Intersection> hit) -> Image::Pixel
     {
-        const auto it = std::min_element(std::begin(hits), std::end(hits), [](const auto& a, const auto& b) {
-            return a.distance < b.distance;
-        });
-
-        if (it == std::end(hits))
-        {
-            // no hit, black color
-            return {};
-        }
-        else
+        if (hit)
         {
             Image::Pixel r;
             for (int i = 0; i < 3; i++)
-                r[i] = static_cast<unsigned char>(std::abs(it->normal[i]) * 255);
+                r[i] = static_cast<unsigned char>(std::abs(hit->normal[i]) * 255);
             return r;
+        }
+        else
+        {
+            return {}; // black
         }
     }
 
-    auto colorByIntersectionNormal(std::vector<Intersection> hits) -> Image::Pixel
+    auto blendAndColorByIntersectionNormal(std::vector<Intersection> hits) -> Image::Pixel
     {
         constexpr auto translucency = 0.5f;
 
@@ -398,6 +393,8 @@ namespace
         return r;
     }
 
+    constexpr auto blendIntersections = false;
+
     auto raycast(const Scene& scene, unsigned int width, unsigned int height) -> Image
     {
         Image img(width, height);
@@ -408,18 +405,32 @@ namespace
             {
                 const auto ray = createRay(scene.camera, width, height, x, height - 1 - y); // flip
 
-                std::vector<Intersection> hits;
-                for (const auto& sphere : scene.spheres)
-                    if (const auto hit = intersect(ray, sphere))
-                        hits.push_back(*hit);
-                for (const auto i : llama::ArrayDomainIndexRange{scene.triangles.mapping.arrayDomainSize})
+                if constexpr (blendIntersections)
                 {
-                    if (const auto hit = intersect(ray, scene.triangles[i].loadAs<PreparedTriangle>()))
-                        hits.push_back(*hit);
+                    std::vector<Intersection> hits;
+                    for (const auto& sphere : scene.spheres)
+                        if (const auto hit = intersect(ray, sphere))
+                            hits.push_back(*hit);
+                    for (const auto i : llama::ArrayDomainIndexRange{scene.triangles.mapping.arrayDomainSize})
+                        if (const auto hit = intersect(ray, scene.triangles[i].loadAs<PreparedTriangle>()))
+                            hits.push_back(*hit);
+                    img(x, y) = blendAndColorByIntersectionNormal(hits);
                 }
-
-                img(x, y) = colorByNearestIntersectionNormal(hits);
-                // img(x, y) = colorByIntersectionNormal(hits);
+                else
+                {
+                    std::optional<Intersection> nearestHit;
+                    auto updateNearestHit = [&](auto hit) {
+                        if (!nearestHit || hit->distance < nearestHit->distance)
+                            nearestHit = hit;
+                    };
+                    for (const auto& sphere : scene.spheres)
+                        if (const auto hit = intersect(ray, sphere))
+                            updateNearestHit(hit);
+                    for (const auto i : llama::ArrayDomainIndexRange{scene.triangles.mapping.arrayDomainSize})
+                        if (const auto hit = intersect(ray, scene.triangles[i].loadAs<PreparedTriangle>()))
+                            updateNearestHit(hit);
+                    img(x, y) = colorByIntersectionNormal(nearestHit);
+                }
             }
         }
 
