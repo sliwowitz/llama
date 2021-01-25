@@ -159,16 +159,6 @@ namespace
         return r;
     }
 
-    template <typename Vector1, typename Vector2>
-    inline auto dot(const Vector1& a, const Vector2& b)
-    {
-        float r = 0;
-        r += a(X{}) * b(X{});
-        r += a(Y{}) * b(Y{});
-        r += a(Z{}) * b(Z{});
-        return r;
-    }
-
     template <typename F>
     inline auto cross(const Vector<F>& a, const Vector<F>& b) -> Vector<F>
     {
@@ -176,16 +166,6 @@ namespace
         r[0] = a[1] * b[2] - a[2] * b[1];
         r[1] = a[2] * b[0] - a[0] * b[2];
         r[2] = a[0] * b[1] - a[1] * b[0];
-        return r;
-    }
-
-    template <typename Vector1, typename Vector2>
-    inline auto cross(const Vector1& a, const Vector2& b)
-    {
-        auto r = llama::allocVirtualDatumStack<Vec>();
-        r(X{}) = a(Y{}) * b(Z{}) - a(Z{}) * b(Y{});
-        r(Y{}) = a(Z{}) * b(X{}) - a(X{}) * b(Z{});
-        r(Z{}) = a(X{}) * b(Y{}) - a(Y{}) * b(X{});
         return r;
     }
 
@@ -342,49 +322,32 @@ namespace
         return inter;
     }
 
-    template <typename Vector>
-    auto normalized(const Vector& p)
-    {
-        return VectorF{p(X{}), p(Y{}), p(Z{})}.normalized();
-    }
-
-    template <typename PreparedTriangle>
     auto normal(const PreparedTriangle& p)
     {
-        return normalized(cross(p(Edge1{}), p(Edge2{})));
+        return cross(p.edge1, p.edge2).normalized();
     }
 
     // modified Möller and Trumbore's version
-    template <typename PreparedTriangle>
     auto intersect(const Ray& ray, const PreparedTriangle& triangle) -> std::optional<Intersection>
     {
         constexpr auto epsilon = 0.000001f;
 
-        auto rayDirection = llama::allocVirtualDatumStack<Vec>();
-        rayDirection(X{}) = ray.direction[0];
-        rayDirection(Y{}) = ray.direction[1];
-        rayDirection(Z{}) = ray.direction[2];
-        auto rayOrigin = llama::allocVirtualDatumStack<Vec>();
-        rayOrigin(X{}) = ray.origin[0];
-        rayOrigin(Y{}) = ray.origin[1];
-        rayOrigin(Z{}) = ray.origin[2];
-
-        const auto pvec = cross(rayDirection, triangle(Edge2{}));
-        const auto det = dot(triangle(Edge1{}), pvec);
+        const auto pvec = cross(ray.direction, triangle.edge2);
+        const auto det = dot(triangle.edge1, pvec);
         if (det > -epsilon && det < epsilon)
             return {};
 
         const auto inv_det = 1.0f / det;
-        const auto tvec = rayOrigin - triangle(Vertex0{});
+        const auto tvec = ray.origin - triangle.vertex0;
         const auto u = dot(tvec, pvec) * inv_det;
         if (u < 0.0f || u > 1.0f)
             return {};
 
-        const auto qvec = cross(tvec, triangle(Edge1{}));
-        const auto v = dot(rayDirection, qvec) * inv_det;
+        const auto qvec = cross(tvec, triangle.edge1);
+        const auto v = dot(ray.direction, qvec) * inv_det;
         if (v < 0.0f || u + v >= 1.0f)
             return {};
-        const auto t = dot(triangle(Edge2{}), qvec) * inv_det;
+        const auto t = dot(triangle.edge2, qvec) * inv_det;
         if (t < 0)
             return {};
 
@@ -451,7 +414,7 @@ namespace
                         hits.push_back(*hit);
                 for (const auto i : llama::ArrayDomainIndexRange{scene.triangles.mapping.arrayDomainSize})
                 {
-                    if (const auto hit = intersect(ray, scene.triangles[i]))
+                    if (const auto hit = intersect(ray, scene.triangles[i].loadAs<PreparedTriangle>()))
                         hits.push_back(*hit);
                 }
 
