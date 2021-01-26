@@ -42,7 +42,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: vcpkg install dependencies
       run: |
-        vcpkg install catch2 fmt tbb
+        vcpkg install catch2 fmt tbb tinyobjloader
     - name: cache CUDA 11
       id: cache-cude
       uses: actions/cache@v2
@@ -86,7 +86,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: vcpkg install dependencies
       run: |
-        vcpkg install catch2 fmt
+        vcpkg install catch2 fmt tinyobjloader
     - name: install alpaka
       run: |
         git clone https://github.com/alpaka-group/alpaka.git
@@ -126,7 +126,7 @@ jobs:
         vcpkgGitCommitId: 76a7e9248fb3c57350b559966dcaa2d52a5e4458
     - name: vcpkg install dependencies
       run: |
-        & $env:VCPKG_ROOT/vcpkg install catch2 fmt
+        & $env:VCPKG_ROOT/vcpkg install catch2 fmt tinyobjloader
     - name: install alpaka
       run: |
         git clone https://github.com/alpaka-group/alpaka.git
