@@ -6,9 +6,9 @@
 #include <cstdint>
 #include <filesystem>
 #include <fstream>
-#include <iosfwd>
 #include <iostream>
 #include <llama/llama.hpp>
+#include <numbers>
 #include <numeric>
 #include <optional>
 #include <random>
@@ -20,8 +20,6 @@
 
 namespace
 {
-    constexpr auto pi = 3.14159265359f;
-
     // clang-format off
     struct X {};
     struct Y {};
@@ -279,7 +277,7 @@ namespace
         const auto xVec = cross(camera.view, camera.up);
         const auto yVec = camera.up;
 
-        const auto delta = (std::tan(camera.fovy * pi / 180.0f) * 2) / (height - 1);
+        const auto delta = (std::tan(camera.fovy * std::numbers::pi_v<float> / 180.0f) * 2) / (height - 1);
         const auto xDeltaVec = xVec * delta;
         const auto yDeltaVec = yVec * delta;
 
@@ -322,11 +320,6 @@ namespace
         return inter;
     }
 
-    auto normal(const PreparedTriangle& p)
-    {
-        return cross(p.edge1, p.edge2).normalized();
-    }
-
     // modified Möller and Trumbore's version
     auto intersect(const Ray& ray, const PreparedTriangle& triangle) -> std::optional<Intersection>
     {
@@ -351,7 +344,7 @@ namespace
         if (t < 0)
             return {};
 
-        return Intersection{t, ray.origin + ray.direction * t, normal(triangle)};
+        return Intersection{t, ray.origin + ray.direction * t, triangle.normal()};
     }
 
     auto colorByIntersectionNormal(std::optional<Intersection> hit) -> Image::Pixel
@@ -364,9 +357,7 @@ namespace
             return r;
         }
         else
-        {
             return {}; // black
-        }
     }
 
     auto blendAndColorByIntersectionNormal(std::vector<Intersection> hits) -> Image::Pixel
@@ -594,7 +585,7 @@ try
     std::cout << "Raycast took " << std::chrono::duration<double>(end - start).count() << "s\n";
 
     image.write("out.png");
-    std::system("out.png");
+    std::system("./out.png");
 }
 catch (const std::exception& e)
 {
