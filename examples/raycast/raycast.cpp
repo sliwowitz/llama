@@ -575,9 +575,12 @@ try
     // const auto scene = axisBallsScene();
     // const auto scene = randomSphereScene();
     // const auto scene = cornellBox();
-    // download a copy of the sponza scene e.g. from here: https://casual-effects.com/g3d/data10/index.html
-    const auto scene = sponzaScene("/mnt/c/dev/llama/examples/raycast/sponza/sponza.obj");
-    // const auto scene = sponzaScene("C:/dev/llama/examples/raycast/sponza/sponza.obj");
+    if (argc != 2)
+    {
+        std::cerr << "Please pass the location of sponza.obj as argument. The Sponza scene is available as git "
+                     "submodule inside <gitrepo>/examples/raycast/Sponza\n";
+    }
+    const auto scene = sponzaScene(argv[1]);
 
     const auto start = std::chrono::high_resolution_clock::now();
     const auto image = raycast(scene, width, height);
