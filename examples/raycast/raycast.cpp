@@ -320,7 +320,7 @@ namespace
         return inter;
     }
 
-    // modified Möller and Trumbore's version
+    // modified MÃ¶ller and Trumbore's version
     auto intersect(const Ray& ray, const PreparedTriangle& triangle) -> std::optional<Intersection>
     {
         constexpr auto epsilon = 0.000001f;
