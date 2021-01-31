@@ -2,6 +2,7 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 #include <algorithm>
 #include <array>
+#include <boost/container/static_vector.hpp>
 #include <cmath>
 #include <cstdint>
 #include <filesystem>
@@ -131,6 +132,11 @@ namespace
             return v * scalar;
         }
 
+        friend auto operator/(F scalar, const Vector& v) -> Vector
+        {
+            return {scalar / v[0], scalar / v[1], scalar / v[2]};
+        }
+
         friend auto operator>>(std::istream& is, Vector& v) -> std::istream&
         {
             for (int i = 0; i < 3; i++)
@@ -201,6 +207,23 @@ namespace
     {
     };
 
+    struct AABB
+    {
+        VectorF lower;
+        VectorF upper;
+
+        auto center() const -> VectorF
+        {
+            return (lower + upper) * 0.5f;
+        }
+
+        auto contains(VectorF v) const -> bool
+        {
+            return lower[0] <= v[0] && v[0] <= upper[0] && lower[1] <= v[1] && v[1] <= upper[1] && lower[2] <= v[2]
+                && v[2] <= upper[2];
+        }
+    };
+
     struct PreparedTriangle
     {
         VectorF vertex0;
@@ -217,13 +240,6 @@ namespace
     {
         return {t[0], t[1] - t[0], t[2] - t[0]};
     }
-
-    struct Scene
-    {
-        Camera camera;
-        std::vector<Sphere> spheres;
-        TriangleView triangles;
-    };
 
     class Image
     {
@@ -296,6 +312,43 @@ namespace
         return r;
     }
 
+    struct RayBoxIntersectionResult
+    {
+        float tmin;
+        float tmax;
+    };
+
+    // from:
+    // https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-box-intersection
+    auto intersectBox(const Ray& r, const AABB& box) -> std::optional<RayBoxIntersectionResult>
+    {
+        const auto invdir = 1.0f / r.direction;
+        const VectorF bounds[] = {box.lower, box.upper};
+        const int sign[] = {r.direction[0] < 0, r.direction[1] < 0, r.direction[2] < 0};
+
+        float tmin = (bounds[sign[0]][0] - r.origin[0]) * invdir[0];
+        float tmax = (bounds[1 - sign[0]][0] - r.origin[0]) * invdir[0];
+        const float tymin = (bounds[sign[1]][1] - r.origin[1]) * invdir[1];
+        const float tymax = (bounds[1 - sign[1]][1] - r.origin[1]) * invdir[1];
+        if ((tmin > tymax) || (tymin > tmax))
+            return {};
+        if (tymin > tmin)
+            tmin = tymin;
+        if (tymax < tmax)
+            tmax = tymax;
+
+        const float tzmin = (bounds[sign[2]][2] - r.origin[2]) * invdir[2];
+        const float tzmax = (bounds[1 - sign[2]][2] - r.origin[2]) * invdir[2];
+        if ((tmin > tzmax) || (tzmin > tmax))
+            return {};
+        if (tzmin > tmin)
+            tmin = tzmin;
+        if (tzmax < tmax)
+            tmax = tzmax;
+
+        return RayBoxIntersectionResult{tmin, tmax};
+    }
+
     auto intersect(const Ray& ray, const Sphere& sphere) -> std::optional<Intersection>
     {
         // from
@@ -347,6 +400,289 @@ namespace
         return Intersection{t, ray.origin + ray.direction * t, triangle.normal()};
     }
 
+    // from https://fileadmin.cs.lth.se/cs/Personal/Tomas_Akenine-Moller/code/tribox3.txt
+    auto intersect(const Triangle& t, const AABB& box) -> bool
+    {
+#define FINDMINMAX(x0, x1, x2, min, max)                                                                               \
+    min = max = x0;                                                                                                    \
+    if (x1 < min)                                                                                                      \
+        min = x1;                                                                                                      \
+    if (x1 > max)                                                                                                      \
+        max = x1;                                                                                                      \
+    if (x2 < min)                                                                                                      \
+        min = x2;                                                                                                      \
+    if (x2 > max)                                                                                                      \
+        max = x2;
+
+        auto planeBoxOverlap = [](VectorF normal, VectorF vert, VectorF maxbox) -> bool {
+            VectorF vmin, vmax;
+            for (int q : {0, 1, 2})
+            {
+                float v = vert[q];
+                if (normal[q] > 0.0f)
+                {
+                    vmin[q] = -maxbox[q] - v;
+                    vmax[q] = maxbox[q] - v;
+                }
+                else
+                {
+                    vmin[q] = maxbox[q] - v;
+                    vmax[q] = -maxbox[q] - v;
+                }
+            }
+
+            if (dot(normal, vmin) > 0.0f)
+                return false;
+            if (dot(normal, vmax) >= 0.0f)
+                return true;
+            return false;
+        };
+
+#define AXISTEST_X01(a, b, fa, fb)                                                                                     \
+    p0 = a * v0[1] - b * v0[2];                                                                                        \
+    p2 = a * v2[1] - b * v2[2];                                                                                        \
+    if (p0 < p2)                                                                                                       \
+    {                                                                                                                  \
+        min = p0;                                                                                                      \
+        max = p2;                                                                                                      \
+    }                                                                                                                  \
+    else                                                                                                               \
+    {                                                                                                                  \
+        min = p2;                                                                                                      \
+        max = p0;                                                                                                      \
+    }                                                                                                                  \
+    rad = fa * boxhalfsize[1] + fb * boxhalfsize[2];                                                                   \
+    if (min > rad || max < -rad)                                                                                       \
+        return false;
+
+#define AXISTEST_X2(a, b, fa, fb)                                                                                      \
+    p0 = a * v0[1] - b * v0[2];                                                                                        \
+    p1 = a * v1[1] - b * v1[2];                                                                                        \
+    if (p0 < p1)                                                                                                       \
+    {                                                                                                                  \
+        min = p0;                                                                                                      \
+        max = p1;                                                                                                      \
+    }                                                                                                                  \
+    else                                                                                                               \
+    {                                                                                                                  \
+        min = p1;                                                                                                      \
+        max = p0;                                                                                                      \
+    }                                                                                                                  \
+    rad = fa * boxhalfsize[1] + fb * boxhalfsize[2];                                                                   \
+    if (min > rad || max < -rad)                                                                                       \
+        return false;
+
+#define AXISTEST_Y02(a, b, fa, fb)                                                                                     \
+    p0 = -a * v0[0] + b * v0[2];                                                                                       \
+    p2 = -a * v2[0] + b * v2[2];                                                                                       \
+    if (p0 < p2)                                                                                                       \
+    {                                                                                                                  \
+        min = p0;                                                                                                      \
+        max = p2;                                                                                                      \
+    }                                                                                                                  \
+    else                                                                                                               \
+    {                                                                                                                  \
+        min = p2;                                                                                                      \
+        max = p0;                                                                                                      \
+    }                                                                                                                  \
+    rad = fa * boxhalfsize[0] + fb * boxhalfsize[2];                                                                   \
+    if (min > rad || max < -rad)                                                                                       \
+        return false;
+
+#define AXISTEST_Y1(a, b, fa, fb)                                                                                      \
+    p0 = -a * v0[0] + b * v0[2];                                                                                       \
+    p1 = -a * v1[0] + b * v1[2];                                                                                       \
+    if (p0 < p1)                                                                                                       \
+    {                                                                                                                  \
+        min = p0;                                                                                                      \
+        max = p1;                                                                                                      \
+    }                                                                                                                  \
+    else                                                                                                               \
+    {                                                                                                                  \
+        min = p1;                                                                                                      \
+        max = p0;                                                                                                      \
+    }                                                                                                                  \
+    rad = fa * boxhalfsize[0] + fb * boxhalfsize[2];                                                                   \
+    if (min > rad || max < -rad)                                                                                       \
+        return false;
+
+#define AXISTEST_Z12(a, b, fa, fb)                                                                                     \
+    p1 = a * v1[0] - b * v1[1];                                                                                        \
+    p2 = a * v2[0] - b * v2[1];                                                                                        \
+    if (p2 < p1)                                                                                                       \
+    {                                                                                                                  \
+        min = p2;                                                                                                      \
+        max = p1;                                                                                                      \
+    }                                                                                                                  \
+    else                                                                                                               \
+    {                                                                                                                  \
+        min = p1;                                                                                                      \
+        max = p2;                                                                                                      \
+    }                                                                                                                  \
+    rad = fa * boxhalfsize[0] + fb * boxhalfsize[1];                                                                   \
+    if (min > rad || max < -rad)                                                                                       \
+        return false;
+
+#define AXISTEST_Z0(a, b, fa, fb)                                                                                      \
+    p0 = a * v0[0] - b * v0[1];                                                                                        \
+    p1 = a * v1[0] - b * v1[1];                                                                                        \
+    if (p0 < p1)                                                                                                       \
+    {                                                                                                                  \
+        min = p0;                                                                                                      \
+        max = p1;                                                                                                      \
+    }                                                                                                                  \
+    else                                                                                                               \
+    {                                                                                                                  \
+        min = p1;                                                                                                      \
+        max = p0;                                                                                                      \
+    }                                                                                                                  \
+    rad = fa * boxhalfsize[0] + fb * boxhalfsize[1];                                                                   \
+    if (min > rad || max < -rad)                                                                                       \
+        return false;
+
+        const auto boxcenter = box.center();
+        const auto boxhalfsize = (box.upper - box.lower) * 0.5;
+        float min, max, p0, p1, p2, rad;
+
+        const auto v0 = t[0] - boxcenter;
+        const auto v1 = t[1] - boxcenter;
+        const auto v2 = t[2] - boxcenter;
+
+        const auto e0 = v1 - v0;
+        const auto e1 = v2 - v1;
+        const auto e2 = v0 - v2;
+
+        float fex = fabsf(e0[0]);
+        float fey = fabsf(e0[1]);
+        float fez = fabsf(e0[2]);
+        AXISTEST_X01(e0[2], e0[1], fez, fey);
+        AXISTEST_Y02(e0[2], e0[0], fez, fex);
+        AXISTEST_Z12(e0[1], e0[0], fey, fex);
+
+        fex = fabsf(e1[0]);
+        fey = fabsf(e1[1]);
+        fez = fabsf(e1[2]);
+        AXISTEST_X01(e1[2], e1[1], fez, fey);
+        AXISTEST_Y02(e1[2], e1[0], fez, fex);
+        AXISTEST_Z0(e1[1], e1[0], fey, fex);
+
+        fex = fabsf(e2[0]);
+        fey = fabsf(e2[1]);
+        fez = fabsf(e2[2]);
+        AXISTEST_X2(e2[2], e2[1], fez, fey);
+        AXISTEST_Y1(e2[2], e2[0], fez, fex);
+        AXISTEST_Z12(e2[1], e2[0], fey, fex);
+
+        FINDMINMAX(v0[0], v1[0], v2[0], min, max);
+        if (min > boxhalfsize[0] || max < -boxhalfsize[0])
+            return false;
+
+        FINDMINMAX(v0[1], v1[1], v2[1], min, max);
+        if (min > boxhalfsize[1] || max < -boxhalfsize[1])
+            return false;
+
+        FINDMINMAX(v0[2], v1[2], v2[2], min, max);
+        if (min > boxhalfsize[2] || max < -boxhalfsize[2])
+            return false;
+
+        const auto normal = cross(e0, e1);
+        if (!planeBoxOverlap(normal, v0, boxhalfsize))
+            return false;
+
+        return true;
+    }
+
+    struct OctreeNode
+    {
+        AABB box{};
+        std::array<std::unique_ptr<OctreeNode>, 8> children;
+        std::vector<Triangle> triangles;
+
+        auto hasChildren() const -> bool
+        {
+            return children[0] != nullptr;
+        }
+
+        void addTriangle(const Triangle& t)
+        {
+            if (hasChildren())
+            {
+                for (auto& c : children)
+                    if (intersect(t, c->box))
+                        c->addTriangle(t);
+            }
+            else
+            {
+                triangles.push_back(t);
+                if (shouldSplit())
+                    split();
+            }
+        }
+
+    private:
+        auto shouldSplit() const -> bool
+        {
+            return triangles.size() > 100;
+        }
+
+        void split()
+        {
+            const VectorF points[] = {box.lower, box.center(), box.upper};
+            for (auto x : {0, 1})
+                for (auto y : {0, 1})
+                    for (auto z : {0, 1})
+                    {
+                        const auto childBox = AABB{
+                            {
+                                points[x][0],
+                                points[y][1],
+                                points[z][2],
+                            },
+                            {
+                                points[x + 1][0],
+                                points[y + 1][1],
+                                points[z + 1][2],
+                            }};
+                        children[z * 4 + y * 2 + x] = std::make_unique<OctreeNode>(childBox);
+                    }
+
+            for (const auto& t : triangles)
+                addTriangle(t);
+            triangles.clear();
+        }
+    };
+
+    // from: https://github.com/rumpfc/CGG/blob/master/cgg07_Octrees/OctreeNode.cpp
+    void intersectNodeRecursive(const Ray& ray, const OctreeNode& node, Intersection& nearestHit)
+    {
+        if (node.hasChildren())
+        {
+            // iterate on children nearer than our current intersection in the order they are hit by the ray
+            boost::container::static_vector<std::pair<float, int>, 8> childDists;
+            for (int i = 0; i < 8; i++)
+                if (const auto hit = intersectBox(ray, node.children[i]->box); hit && hit->tmin < nearestHit.distance)
+                    childDists.emplace_back(i, hit->tmin);
+
+            for (const auto [childIndex, childDist] : childDists)
+                intersectNodeRecursive(ray, *node.children[childIndex], nearestHit);
+        }
+        else
+        {
+            // TODO: spheres
+            for (const auto t : node.triangles)
+                if (const auto hit = intersect(ray, prepare(t)); hit && hit->distance < nearestHit.distance)
+                    nearestHit = *hit;
+        }
+    }
+
+    auto intersect(const Ray& ray, const OctreeNode& tree) -> std::optional<Intersection>
+    {
+        Intersection nearestHit{std::numeric_limits<float>::max()};
+        if (const auto hit = intersectBox(ray, tree.box))
+            intersectNodeRecursive(ray, tree, nearestHit);
+        return nearestHit;
+    }
+
     auto colorByIntersectionNormal(std::optional<Intersection> hit) -> Image::Pixel
     {
         if (hit)
@@ -386,6 +722,15 @@ namespace
 
     constexpr auto blendIntersections = false;
 
+    struct Scene
+    {
+        Camera camera;
+        std::vector<Sphere> spheres;
+
+        // TriangleView triangles;
+        OctreeNode triangleTree;
+    };
+
     auto raycast(const Scene& scene, unsigned int width, unsigned int height) -> Image
     {
         Image img(width, height);
@@ -398,28 +743,30 @@ namespace
 
                 if constexpr (blendIntersections)
                 {
-                    std::vector<Intersection> hits;
-                    for (const auto& sphere : scene.spheres)
-                        if (const auto hit = intersect(ray, sphere))
-                            hits.push_back(*hit);
-                    for (const auto i : llama::ArrayDomainIndexRange{scene.triangles.mapping.arrayDomainSize})
-                        if (const auto hit = intersect(ray, scene.triangles[i].loadAs<PreparedTriangle>()))
-                            hits.push_back(*hit);
-                    img(x, y) = blendAndColorByIntersectionNormal(hits);
+                    // std::vector<Intersection> hits;
+                    // for (const auto& sphere : scene.spheres)
+                    //    if (const auto hit = intersect(ray, sphere))
+                    //        hits.push_back(*hit);
+                    // for (const auto i : llama::ArrayDomainIndexRange{scene.triangles.mapping.arrayDomainSize})
+                    //    if (const auto hit = intersect(ray, scene.triangles[i].loadAs<PreparedTriangle>()))
+                    //        hits.push_back(*hit);
+                    // img(x, y) = blendAndColorByIntersectionNormal(hits);
                 }
                 else
                 {
-                    std::optional<Intersection> nearestHit;
-                    auto updateNearestHit = [&](auto hit) {
-                        if (!nearestHit || hit->distance < nearestHit->distance)
-                            nearestHit = hit;
-                    };
-                    for (const auto& sphere : scene.spheres)
-                        if (const auto hit = intersect(ray, sphere))
-                            updateNearestHit(hit);
-                    for (const auto i : llama::ArrayDomainIndexRange{scene.triangles.mapping.arrayDomainSize})
-                        if (const auto hit = intersect(ray, scene.triangles[i].loadAs<PreparedTriangle>()))
-                            updateNearestHit(hit);
+                    // std::optional<Intersection> nearestHit;
+                    // auto updateNearestHit = [&](auto hit) {
+                    //    if (!nearestHit || hit->distance < nearestHit->distance)
+                    //        nearestHit = hit;
+                    //};
+                    // for (const auto& sphere : scene.spheres)
+                    //    if (const auto hit = intersect(ray, sphere))
+                    //        updateNearestHit(hit);
+                    // for (const auto i : llama::ArrayDomainIndexRange{scene.triangles.mapping.arrayDomainSize})
+                    //    if (const auto hit = intersect(ray, scene.triangles[i].loadAs<PreparedTriangle>()))
+                    //        updateNearestHit(hit);
+
+                    const auto nearestHit = intersect(ray, scene.triangleTree);
                     img(x, y) = colorByIntersectionNormal(nearestHit);
                 }
             }
@@ -519,15 +866,20 @@ namespace
         scene.spheres.push_back({{-30.0f, 30.0f, -30.0f}, 30.0f});
         scene.spheres.push_back({{30.0f, 30.0f, 30.0f}, 30.0f});
 
-        const auto triangleCount
-            = std::accumulate(begin(shapes), end(shapes), size_t{0}, [](size_t acc, const auto& shape) {
-                  return acc
-                      + std::count(begin(shape.mesh.num_face_vertices), std::end(shape.mesh.num_face_vertices), 3);
-              });
-        auto mapping = Mapping{llama::ArrayDomain{triangleCount}};
-        scene.triangles = llama::allocView(mapping);
+        // const auto triangleCount
+        //    = std::accumulate(begin(shapes), end(shapes), size_t{0}, [](size_t acc, const auto& shape) {
+        //          return acc
+        //              + std::count(begin(shape.mesh.num_face_vertices), std::end(shape.mesh.num_face_vertices), 3);
+        //      });
+        // auto mapping = Mapping{llama::ArrayDomain{triangleCount}};
+        // scene.triangles = llama::allocView(mapping);
 
-        size_t write = 0;
+        std::vector<Triangle> triangles;
+        constexpr auto l = std::numeric_limits<float>::max();
+        constexpr auto u = std::numeric_limits<float>::lowest();
+        AABB box{{l, l, l}, {u, u, u}};
+
+        // size_t write = 0;
         for (const auto& shape : shapes)
         {
             const auto& mesh = shape.mesh;
@@ -542,23 +894,32 @@ namespace
                     {
                         const tinyobj::index_t idx = mesh.indices[indexOffset + v];
                         for (const auto c : {0, 1, 2})
+                        {
                             t[v][c] = attrib.vertices[3 * idx.vertex_index + c];
+                            box.lower[c] = std::min(box.lower[c], t[v][c]);
+                            box.upper[c] = std::max(box.upper[c], t[v][c]);
+                        }
                     }
-                    const auto pt = prepare(t);
-                    scene.triangles[write](Vertex0{}, X{}) = pt.vertex0[0];
-                    scene.triangles[write](Vertex0{}, Y{}) = pt.vertex0[1];
-                    scene.triangles[write](Vertex0{}, Z{}) = pt.vertex0[2];
-                    scene.triangles[write](Edge1{}, X{}) = pt.edge1[0];
-                    scene.triangles[write](Edge1{}, Y{}) = pt.edge1[1];
-                    scene.triangles[write](Edge1{}, Z{}) = pt.edge1[2];
-                    scene.triangles[write](Edge2{}, X{}) = pt.edge2[0];
-                    scene.triangles[write](Edge2{}, Y{}) = pt.edge2[1];
-                    scene.triangles[write](Edge2{}, Z{}) = pt.edge2[2];
-                    write++;
+                    triangles.push_back(t);
+                    // const auto pt = prepare(t);
+                    // scene.triangles[write](Vertex0{}, X{}) = pt.vertex0[0];
+                    // scene.triangles[write](Vertex0{}, Y{}) = pt.vertex0[1];
+                    // scene.triangles[write](Vertex0{}, Z{}) = pt.vertex0[2];
+                    // scene.triangles[write](Edge1{}, X{}) = pt.edge1[0];
+                    // scene.triangles[write](Edge1{}, Y{}) = pt.edge1[1];
+                    // scene.triangles[write](Edge1{}, Z{}) = pt.edge1[2];
+                    // scene.triangles[write](Edge2{}, X{}) = pt.edge2[0];
+                    // scene.triangles[write](Edge2{}, Y{}) = pt.edge2[1];
+                    // scene.triangles[write](Edge2{}, Z{}) = pt.edge2[2];
+                    // write++;
                 }
                 indexOffset += vertexCount;
             }
         }
+
+        scene.triangleTree = OctreeNode{box};
+        for (const auto& t : triangles)
+            scene.triangleTree.addTriangle(t);
 
         return scene;
     }
@@ -567,8 +928,8 @@ namespace
 int main(int argc, const char* argv[])
 try
 {
-    const auto width = 160;
-    const auto height = 120;
+    const auto width = 1024;
+    const auto height = 768;
 
     // const auto scene = loadScene(sceneFile);
     // const auto scene = cubicBallsScene();
