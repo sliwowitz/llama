@@ -919,12 +919,15 @@ try
                      "submodule inside <gitrepo>/examples/raycast/Sponza\n";
         return 1;
     }
+    const auto startLoad = std::chrono::high_resolution_clock::now();
     const auto scene = sponzaScene(argv[1]);
+    const auto endLoad = std::chrono::high_resolution_clock::now();
+    std::cout << "Loading took " << std::chrono::duration<double>(endLoad - startLoad).count() << "s\n";
 
-    const auto start = std::chrono::high_resolution_clock::now();
+    const auto startRaycast = std::chrono::high_resolution_clock::now();
     const auto image = raycast(scene, width, height);
-    const auto end = std::chrono::high_resolution_clock::now();
-    std::cout << "Raycast took " << std::chrono::duration<double>(end - start).count() << "s\n";
+    const auto endRaycast = std::chrono::high_resolution_clock::now();
+    std::cout << "Raycast took " << std::chrono::duration<double>(endRaycast - startRaycast).count() << "s\n";
 
     image.write("out.png");
     std::system("./out.png");
