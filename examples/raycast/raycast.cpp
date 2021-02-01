@@ -418,7 +418,7 @@ namespace
     }
 
     // from https://fileadmin.cs.lth.se/cs/Personal/Tomas_Akenine-Moller/code/tribox3.txt
-    auto intersect(const Triangle& t, const AABB& box) -> bool
+    auto intersect(const PreparedTriangle& t, const AABB& box) -> bool
     {
 #define FINDMINMAX(x0, x1, x2, min, max)                                                                               \
     min = max = x0;                                                                                                    \
@@ -561,9 +561,12 @@ namespace
         const auto boxhalfsize = (box.upper - box.lower) * 0.5;
         float min, max, p0, p1, p2, rad;
 
-        const auto v0 = t[0] - boxcenter;
-        const auto v1 = t[1] - boxcenter;
-        const auto v2 = t[2] - boxcenter;
+        // const auto v0 = t[0] - boxcenter;
+        // const auto v1 = t[1] - boxcenter;
+        // const auto v2 = t[2] - boxcenter;
+        const auto v0 = t.vertex0 - boxcenter;
+        const auto v1 = t.vertex0 + t.edge1 - boxcenter;
+        const auto v2 = t.vertex0 + t.edge2 - boxcenter;
 
         const auto e0 = v1 - v0;
         const auto e1 = v2 - v1;
@@ -613,7 +616,7 @@ namespace
     {
         AABB box{};
         std::array<std::unique_ptr<OctreeNode>, 8> children;
-        std::vector<Triangle> triangles;
+        std::vector<PreparedTriangle> triangles;
         std::vector<Sphere> spheres;
 
         auto hasChildren() const -> bool
@@ -632,7 +635,7 @@ namespace
             }
             else
             {
-                if constexpr (std::is_same_v<T, Triangle>)
+                if constexpr (std::is_same_v<T, PreparedTriangle>)
                     triangles.push_back(object);
                 else
                     spheres.push_back(object);
@@ -699,7 +702,7 @@ namespace
                 if (const auto hit = intersect(ray, sphere); hit && hit->distance < nearestHit.distance)
                     nearestHit = *hit;
             for (const auto& triangle : node.triangles)
-                if (const auto hit = intersect(ray, prepare(triangle)); hit && hit->distance < nearestHit.distance)
+                if (const auto hit = intersect(ray, triangle); hit && hit->distance < nearestHit.distance)
                     nearestHit = *hit;
         }
     }
@@ -956,7 +959,7 @@ namespace
         scene.tree.addObject(sphere1);
         scene.tree.addObject(sphere2);
         for (const auto& t : triangles)
-            scene.tree.addObject(t);
+            scene.tree.addObject(prepare(t));
 
         return scene;
     }
