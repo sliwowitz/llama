@@ -940,6 +940,7 @@ try
     {
         std::cerr << "Please pass the location of sponza.obj as argument. The Sponza scene is available as git "
                      "submodule inside <gitrepo>/examples/raycast/Sponza\n";
+        return 1;
     }
     const auto scene = sponzaScene(argv[1]);
 
