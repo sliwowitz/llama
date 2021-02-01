@@ -744,8 +744,9 @@ namespace
     auto lookAt(float fovy, VectorF pos, VectorF lookAt, VectorF up) -> Camera
     {
         const auto view = (lookAt - pos).normalized();
-        const auto up2 = cross(view, cross(view, up)).normalized();
-        return Camera{fovy, pos, view, up};
+        const auto right = cross(view, up);
+        const auto up2 = cross(right, view).normalized();
+        return Camera{fovy, pos, view, up2};
     }
 
     // auto cubicBallsScene() -> Scene
