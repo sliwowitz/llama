@@ -400,6 +400,23 @@ namespace
         return Intersection{t, ray.origin + ray.direction * t, triangle.normal()};
     }
 
+    // from: https://stackoverflow.com/questions/4578967/cube-sphere-intersection-test
+    auto intersect(const Sphere& s, const AABB& box) -> bool
+    {
+        auto sqr = [](auto x) { return x * x; };
+
+        float r2 = s.radius * s.radius;
+        float dmin = 0.0f;
+        for (auto i : {0, 1, 2})
+        {
+            if (s.center[i] < box.lower[i])
+                dmin += sqr(s.center[i] - box.lower[i]);
+            else if (s.center[i] > box.upper[i])
+                dmin += sqr(s.center[i] - box.upper[i]);
+        }
+        return dmin <= r2;
+    }
+
     // from https://fileadmin.cs.lth.se/cs/Personal/Tomas_Akenine-Moller/code/tribox3.txt
     auto intersect(const Triangle& t, const AABB& box) -> bool
     {
@@ -597,32 +614,39 @@ namespace
         AABB box{};
         std::array<std::unique_ptr<OctreeNode>, 8> children;
         std::vector<Triangle> triangles;
+        std::vector<Sphere> spheres;
 
         auto hasChildren() const -> bool
         {
             return children[0] != nullptr;
         }
 
-        void addTriangle(const Triangle& t)
+        template <typename T>
+        void addObject(const T& object)
         {
             if (hasChildren())
             {
                 for (auto& c : children)
-                    if (intersect(t, c->box))
-                        c->addTriangle(t);
+                    if (intersect(object, c->box))
+                        c->addObject(object);
             }
             else
             {
-                triangles.push_back(t);
+                if constexpr (std::is_same_v<T, Triangle>)
+                    triangles.push_back(object);
+                else
+                    spheres.push_back(object);
                 if (shouldSplit())
                     split();
             }
         }
 
     private:
+        static constexpr auto maxObjectsPerNode = 100;
+
         auto shouldSplit() const -> bool
         {
-            return triangles.size() > 100;
+            return triangles.size() + spheres.size() > maxObjectsPerNode;
         }
 
         void split()
@@ -646,8 +670,11 @@ namespace
                         children[z * 4 + y * 2 + x] = std::make_unique<OctreeNode>(childBox);
                     }
 
+            for (const auto& s : spheres)
+                addObject(s);
+            spheres.clear();
             for (const auto& t : triangles)
-                addTriangle(t);
+                addObject(t);
             triangles.clear();
         }
     };
@@ -668,9 +695,11 @@ namespace
         }
         else
         {
-            // TODO: spheres
-            for (const auto t : node.triangles)
-                if (const auto hit = intersect(ray, prepare(t)); hit && hit->distance < nearestHit.distance)
+            for (const auto& sphere : node.spheres)
+                if (const auto hit = intersect(ray, sphere); hit && hit->distance < nearestHit.distance)
+                    nearestHit = *hit;
+            for (const auto& triangle : node.triangles)
+                if (const auto hit = intersect(ray, prepare(triangle)); hit && hit->distance < nearestHit.distance)
                     nearestHit = *hit;
         }
     }
@@ -725,10 +754,9 @@ namespace
     struct Scene
     {
         Camera camera;
-        std::vector<Sphere> spheres;
-
+        // std::vector<Sphere> spheres;
         // TriangleView triangles;
-        OctreeNode triangleTree;
+        OctreeNode tree;
     };
 
     auto raycast(const Scene& scene, unsigned int width, unsigned int height) -> Image
@@ -766,7 +794,7 @@ namespace
                     //    if (const auto hit = intersect(ray, scene.triangles[i].loadAs<PreparedTriangle>()))
                     //        updateNearestHit(hit);
 
-                    const auto nearestHit = intersect(ray, scene.triangleTree);
+                    const auto nearestHit = intersect(ray, scene.tree);
                     img(x, y) = colorByIntersectionNormal(nearestHit);
                 }
             }
@@ -863,8 +891,6 @@ namespace
 
         Scene scene;
         scene.camera = lookAt(45, {200, 100, 0}, {0, 100, 0}, {0, 1, 0});
-        scene.spheres.push_back({{-30.0f, 30.0f, -30.0f}, 30.0f});
-        scene.spheres.push_back({{30.0f, 30.0f, 30.0f}, 30.0f});
 
         // const auto triangleCount
         //    = std::accumulate(begin(shapes), end(shapes), size_t{0}, [](size_t acc, const auto& shape) {
@@ -917,9 +943,20 @@ namespace
             }
         }
 
-        scene.triangleTree = OctreeNode{box};
+        const auto sphere1 = Sphere{{-30.0f, 30.0f, -30.0f}, 30.0f};
+        const auto sphere2 = Sphere{{30.0f, 30.0f, 30.0f}, 30.0f};
+        for (const auto& s : {sphere1, sphere2})
+            for (const auto c : {0, 1, 2})
+            {
+                box.lower[c] = std::min(box.lower[c], s.center[c] - s.radius);
+                box.upper[c] = std::max(box.upper[c], s.center[c] + s.radius);
+            }
+
+        scene.tree = OctreeNode{box};
+        scene.tree.addObject(sphere1);
+        scene.tree.addObject(sphere2);
         for (const auto& t : triangles)
-            scene.triangleTree.addTriangle(t);
+            scene.tree.addObject(t);
 
         return scene;
     }
