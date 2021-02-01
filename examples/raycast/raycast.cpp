@@ -11,7 +11,6 @@
 #include <llama/llama.hpp>
 #include <numbers>
 #include <numeric>
-#include <optional>
 #include <random>
 #include <sstream>
 #include <stb_image_write.h>
@@ -272,10 +271,11 @@ namespace
         std::vector<Pixel> pixels;
     };
 
+    constexpr auto noHit = std::numeric_limits<float>::infinity();
+
     struct Intersection
     {
-        float distance;
-        VectorF point;
+        float distance = noHit;
         VectorF normal;
     };
 
@@ -312,15 +312,9 @@ namespace
         return r;
     }
 
-    struct RayBoxIntersectionResult
-    {
-        float tmin;
-        float tmax;
-    };
-
     // from:
     // https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-box-intersection
-    auto intersectBox(const Ray& r, const AABB& box) -> std::optional<RayBoxIntersectionResult>
+    auto intersectBox(const Ray& r, const AABB& box) -> float
     {
         const auto invdir = 1.0f / r.direction;
         const VectorF bounds[] = {box.lower, box.upper};
@@ -331,7 +325,7 @@ namespace
         const float tymin = (bounds[sign[1]][1] - r.origin[1]) * invdir[1];
         const float tymax = (bounds[1 - sign[1]][1] - r.origin[1]) * invdir[1];
         if ((tmin > tymax) || (tymin > tmax))
-            return {};
+            return noHit;
         if (tymin > tmin)
             tmin = tymin;
         if (tymax < tmax)
@@ -340,16 +334,16 @@ namespace
         const float tzmin = (bounds[sign[2]][2] - r.origin[2]) * invdir[2];
         const float tzmax = (bounds[1 - sign[2]][2] - r.origin[2]) * invdir[2];
         if ((tmin > tzmax) || (tzmin > tmax))
-            return {};
+            return noHit;
         if (tzmin > tmin)
             tmin = tzmin;
-        if (tzmax < tmax)
-            tmax = tzmax;
+        // if (tzmax < tmax)
+        //    tmax = tzmax;
 
-        return RayBoxIntersectionResult{tmin, tmax};
+        return tmin;
     }
 
-    auto intersect(const Ray& ray, const Sphere& sphere) -> std::optional<Intersection>
+    auto intersect(const Ray& ray, const Sphere& sphere) -> Intersection
     {
         // from
         // https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-sphere-intersection
@@ -365,16 +359,12 @@ namespace
 
         // report the closer intersection
         const auto t = static_cast<float>(*std::min_element(std::begin(solutions), std::end(solutions)));
-
-        Intersection inter;
-        inter.distance = t;
-        inter.point = ray.origin + t * ray.direction;
-        inter.normal = (inter.point - sphere.center).normalized();
-        return inter;
+        const auto point = ray.origin + t * ray.direction;
+        return {t, (point - sphere.center).normalized()};
     }
 
     // modified Möller and Trumbore's version
-    auto intersect(const Ray& ray, const PreparedTriangle& triangle) -> std::optional<Intersection>
+    auto intersect(const Ray& ray, const PreparedTriangle& triangle) -> Intersection
     {
         constexpr auto epsilon = 0.000001f;
 
@@ -397,11 +387,11 @@ namespace
         if (t < 0)
             return {};
 
-        return Intersection{t, ray.origin + ray.direction * t, triangle.normal()};
+        return {t, triangle.normal()};
     }
 
     // from: https://stackoverflow.com/questions/4578967/cube-sphere-intersection-test
-    auto intersect(const Sphere& s, const AABB& box) -> bool
+    auto overlaps(const Sphere& s, const AABB& box) -> bool
     {
         auto sqr = [](auto x) { return x * x; };
 
@@ -418,7 +408,7 @@ namespace
     }
 
     // from https://fileadmin.cs.lth.se/cs/Personal/Tomas_Akenine-Moller/code/tribox3.txt
-    auto intersect(const PreparedTriangle& t, const AABB& box) -> bool
+    auto overlaps(const PreparedTriangle& t, const AABB& box) -> bool
     {
 #define FINDMINMAX(x0, x1, x2, min, max)                                                                               \
     min = max = x0;                                                                                                    \
@@ -630,7 +620,7 @@ namespace
             if (hasChildren())
             {
                 for (auto& c : children)
-                    if (intersect(object, c->box))
+                    if (overlaps(object, c->box))
                         c->addObject(object);
             }
             else
@@ -690,8 +680,9 @@ namespace
             // iterate on children nearer than our current intersection in the order they are hit by the ray
             boost::container::static_vector<std::pair<float, int>, 8> childDists;
             for (int i = 0; i < 8; i++)
-                if (const auto hit = intersectBox(ray, node.children[i]->box); hit && hit->tmin < nearestHit.distance)
-                    childDists.emplace_back(i, hit->tmin);
+                if (const auto dist = intersectBox(ray, node.children[i]->box);
+                    dist != noHit && dist < nearestHit.distance)
+                    childDists.emplace_back(i, dist);
 
             for (const auto [childIndex, childDist] : childDists)
                 intersectNodeRecursive(ray, *node.children[childIndex], nearestHit);
@@ -699,33 +690,32 @@ namespace
         else
         {
             for (const auto& sphere : node.spheres)
-                if (const auto hit = intersect(ray, sphere); hit && hit->distance < nearestHit.distance)
-                    nearestHit = *hit;
+                if (const auto hit = intersect(ray, sphere);
+                    hit.distance != noHit && hit.distance < nearestHit.distance)
+                    nearestHit = hit;
             for (const auto& triangle : node.triangles)
-                if (const auto hit = intersect(ray, triangle); hit && hit->distance < nearestHit.distance)
-                    nearestHit = *hit;
+                if (const auto hit = intersect(ray, triangle);
+                    hit.distance != noHit && hit.distance < nearestHit.distance)
+                    nearestHit = hit;
         }
     }
 
-    auto intersect(const Ray& ray, const OctreeNode& tree) -> std::optional<Intersection>
+    auto intersect(const Ray& ray, const OctreeNode& tree) -> Intersection
     {
-        Intersection nearestHit{std::numeric_limits<float>::max()};
+        Intersection nearestHit{};
         if (const auto hit = intersectBox(ray, tree.box))
             intersectNodeRecursive(ray, tree, nearestHit);
         return nearestHit;
     }
 
-    auto colorByIntersectionNormal(std::optional<Intersection> hit) -> Image::Pixel
+    auto colorByIntersectionNormal(Intersection hit) -> Image::Pixel
     {
-        if (hit)
-        {
-            Image::Pixel r;
-            for (int i = 0; i < 3; i++)
-                r[i] = static_cast<unsigned char>(std::abs(hit->normal[i]) * 255);
-            return r;
-        }
-        else
+        if (hit.distance == noHit)
             return {}; // black
+        Image::Pixel r;
+        for (int i = 0; i < 3; i++)
+            r[i] = static_cast<unsigned char>(std::abs(hit.normal[i]) * 255);
+        return r;
     }
 
     auto blendAndColorByIntersectionNormal(std::vector<Intersection> hits) -> Image::Pixel
