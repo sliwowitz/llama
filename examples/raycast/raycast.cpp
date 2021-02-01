@@ -718,37 +718,9 @@ namespace
         return r;
     }
 
-    auto blendAndColorByIntersectionNormal(std::vector<Intersection> hits) -> Image::Pixel
-    {
-        constexpr auto translucency = 0.5f;
-
-        std::sort(std::begin(hits), std::end(hits), [](const auto& a, const auto& b) {
-            return a.distance < b.distance;
-        });
-
-        auto t = translucency;
-        Image::Pixel r;
-        for (const auto& hit : hits)
-        {
-            // each hit contributes to the color, lesser with each iteration
-            for (int i = 0; i < 3; i++)
-                r[i] += static_cast<unsigned char>(std::abs(t * hit.normal[i]) * 255);
-            t *= translucency;
-        }
-
-        for (int i = 0; i < 3; i++)
-            r[i] = std::clamp<unsigned char>(r[i], 0, 255);
-
-        return r;
-    }
-
-    constexpr auto blendIntersections = false;
-
     struct Scene
     {
         Camera camera;
-        // std::vector<Sphere> spheres;
-        // TriangleView triangles;
         OctreeNode tree;
     };
 
@@ -761,35 +733,8 @@ namespace
             for (auto x = 0u; x < width; x++)
             {
                 const auto ray = createRay(scene.camera, width, height, x, height - 1 - y); // flip
-
-                if constexpr (blendIntersections)
-                {
-                    // std::vector<Intersection> hits;
-                    // for (const auto& sphere : scene.spheres)
-                    //    if (const auto hit = intersect(ray, sphere))
-                    //        hits.push_back(*hit);
-                    // for (const auto i : llama::ArrayDomainIndexRange{scene.triangles.mapping.arrayDomainSize})
-                    //    if (const auto hit = intersect(ray, scene.triangles[i].loadAs<PreparedTriangle>()))
-                    //        hits.push_back(*hit);
-                    // img(x, y) = blendAndColorByIntersectionNormal(hits);
-                }
-                else
-                {
-                    // std::optional<Intersection> nearestHit;
-                    // auto updateNearestHit = [&](auto hit) {
-                    //    if (!nearestHit || hit->distance < nearestHit->distance)
-                    //        nearestHit = hit;
-                    //};
-                    // for (const auto& sphere : scene.spheres)
-                    //    if (const auto hit = intersect(ray, sphere))
-                    //        updateNearestHit(hit);
-                    // for (const auto i : llama::ArrayDomainIndexRange{scene.triangles.mapping.arrayDomainSize})
-                    //    if (const auto hit = intersect(ray, scene.triangles[i].loadAs<PreparedTriangle>()))
-                    //        updateNearestHit(hit);
-
-                    const auto nearestHit = intersect(ray, scene.tree);
-                    img(x, y) = colorByIntersectionNormal(nearestHit);
-                }
+                const auto nearestHit = intersect(ray, scene.tree);
+                img(x, y) = colorByIntersectionNormal(nearestHit);
             }
         }
 
