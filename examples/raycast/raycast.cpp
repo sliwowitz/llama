@@ -615,13 +615,13 @@ namespace
         }
 
         template <typename T>
-        void addObject(const T& object)
+        void addObject(const T& object, int depth = 0)
         {
             if (hasChildren())
             {
                 for (auto& c : children)
                     if (overlaps(object, c->box))
-                        c->addObject(object);
+                        c->addObject(object, depth + 1);
             }
             else
             {
@@ -629,20 +629,21 @@ namespace
                     triangles.push_back(object);
                 else
                     spheres.push_back(object);
-                if (shouldSplit())
-                    split();
+                if (shouldSplit(depth))
+                    split(depth);
             }
         }
 
     private:
-        static constexpr auto maxObjectsPerNode = 100;
+        static constexpr auto maxObjectsPerNode = 32;
+        static constexpr auto maxDepth = 16;
 
-        auto shouldSplit() const -> bool
+        auto shouldSplit(int depth) const -> bool
         {
-            return triangles.size() + spheres.size() > maxObjectsPerNode;
+            return depth < maxDepth && triangles.size() + spheres.size() > maxObjectsPerNode;
         }
 
-        void split()
+        void split(int depth)
         {
             const VectorF points[] = {box.lower, box.center(), box.upper};
             for (auto x : {0, 1})
@@ -664,10 +665,10 @@ namespace
                     }
 
             for (const auto& s : spheres)
-                addObject(s);
+                addObject(s, depth);
             spheres.clear();
             for (const auto& t : triangles)
-                addObject(t);
+                addObject(t, depth);
             triangles.clear();
         }
     };
