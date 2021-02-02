@@ -985,7 +985,6 @@ try
     std::cout << "Raycast took " << std::chrono::duration<double>(endRaycast - startRaycast).count() << "s\n";
 
     image.write("out.png");
-    std::system("./out.png");
 }
 catch (const std::exception& e)
 {
