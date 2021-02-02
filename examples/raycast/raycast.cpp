@@ -892,6 +892,9 @@ namespace
                 box.upper[c] = std::max(box.upper[c], s.center[c] + s.radius);
             }
 
+        std::cout << "Loaded " << triangles.size() << " triangles (" << (triangles.size() * sizeof(Triangle)) / 1024
+                  << "KiB)\n";
+
         scene.tree = OctreeNode{box};
         scene.tree.addObject(sphere1);
         scene.tree.addObject(sphere2);
@@ -899,6 +902,27 @@ namespace
             scene.tree.addObject(prepare(t));
 
         return scene;
+    }
+
+    template <typename F>
+    void visitNodes(const OctreeNode& node, const F& f)
+    {
+        f(node);
+        if (node.hasChildren())
+            for (const auto& child : node.children)
+                visitNodes(*child, f);
+    }
+
+    void printMemoryFootprint(const Scene& scene)
+    {
+        std::size_t triangleCount = 0;
+        std::size_t nodeCount = 0;
+        visitNodes(scene.tree, [&](const OctreeNode& node) {
+            nodeCount++;
+            triangleCount += node.triangles.size();
+        });
+        std::cout << "Tree stores " << triangleCount << " triangles (" << (triangleCount * sizeof(Triangle)) / 1024
+                  << "KiB) in " << nodeCount << " nodes (" << (nodeCount * sizeof(OctreeNode)) / 1024 << "KiB) \n";
     }
 } // namespace
 
@@ -923,6 +947,7 @@ try
     const auto scene = sponzaScene(argv[1]);
     const auto endLoad = std::chrono::high_resolution_clock::now();
     std::cout << "Loading took " << std::chrono::duration<double>(endLoad - startLoad).count() << "s\n";
+    printMemoryFootprint(scene);
 
     const auto startRaycast = std::chrono::high_resolution_clock::now();
     const auto image = raycast(scene, width, height);
