@@ -17,6 +17,7 @@
 #include <stdexcept>
 #include <string>
 #include <tiny_obj_loader.h>
+#include <variant>
 
 namespace
 {
@@ -605,13 +606,38 @@ namespace
     struct OctreeNode
     {
         AABB box{};
-        std::array<std::unique_ptr<OctreeNode>, 8> children;
-        std::vector<PreparedTriangle> triangles;
-        std::vector<Sphere> spheres;
+
+        struct Objects
+        {
+            std::vector<PreparedTriangle> triangles;
+            std::vector<Sphere> spheres;
+        };
+        using Children = std::array<std::unique_ptr<OctreeNode>, 8>;
+        std::variant<Objects, Children> content;
 
         auto hasChildren() const -> bool
         {
-            return children[0] != nullptr;
+            return std::holds_alternative<Children>(content);
+        }
+
+        auto& objects()
+        {
+            return std::get<Objects>(content);
+        }
+
+        const auto& objects() const
+        {
+            return std::get<Objects>(content);
+        }
+
+        auto& children()
+        {
+            return std::get<Children>(content);
+        }
+
+        const auto& children() const
+        {
+            return std::get<Children>(content);
         }
 
         template <typename T>
@@ -619,16 +645,16 @@ namespace
         {
             if (hasChildren())
             {
-                for (auto& c : children)
+                for (auto& c : children())
                     if (overlaps(object, c->box))
                         c->addObject(object, depth + 1);
             }
             else
             {
                 if constexpr (std::is_same_v<T, PreparedTriangle>)
-                    triangles.push_back(object);
+                    objects().triangles.push_back(object);
                 else
-                    spheres.push_back(object);
+                    objects().spheres.push_back(object);
                 if (shouldSplit(depth))
                     split(depth);
             }
@@ -640,11 +666,14 @@ namespace
 
         auto shouldSplit(int depth) const -> bool
         {
-            return depth < maxDepth && triangles.size() + spheres.size() > maxObjectsPerNode;
+            auto& objects = std::get<Objects>(content);
+            return depth < maxDepth && objects.triangles.size() + objects.spheres.size() > maxObjectsPerNode;
         }
 
         void split(int depth)
         {
+            auto objects = std::move(std::get<Objects>(content));
+            auto& children = content.emplace<Children>();
             const VectorF points[] = {box.lower, box.center(), box.upper};
             for (auto x : {0, 1})
                 for (auto y : {0, 1})
@@ -664,12 +693,10 @@ namespace
                         children[z * 4 + y * 2 + x] = std::make_unique<OctreeNode>(childBox);
                     }
 
-            for (const auto& s : spheres)
+            for (const auto& s : objects.spheres)
                 addObject(s, depth);
-            spheres.clear();
-            for (const auto& t : triangles)
+            for (const auto& t : objects.triangles)
                 addObject(t, depth);
-            triangles.clear();
         }
     };
 
@@ -678,23 +705,25 @@ namespace
     {
         if (node.hasChildren())
         {
+            const auto& children = node.children();
+
             // iterate on children nearer than our current intersection in the order they are hit by the ray
             boost::container::static_vector<std::pair<float, int>, 8> childDists;
             for (int i = 0; i < 8; i++)
-                if (const auto dist = intersectBox(ray, node.children[i]->box);
-                    dist != noHit && dist < nearestHit.distance)
+                if (const auto dist = intersectBox(ray, children[i]->box); dist != noHit && dist < nearestHit.distance)
                     childDists.emplace_back(i, dist);
 
             for (const auto [childIndex, childDist] : childDists)
-                intersectNodeRecursive(ray, *node.children[childIndex], nearestHit);
+                intersectNodeRecursive(ray, *children[childIndex], nearestHit);
         }
         else
         {
-            for (const auto& sphere : node.spheres)
+            const auto& objects = node.objects();
+            for (const auto& sphere : objects.spheres)
                 if (const auto hit = intersect(ray, sphere);
                     hit.distance != noHit && hit.distance < nearestHit.distance)
                     nearestHit = hit;
-            for (const auto& triangle : node.triangles)
+            for (const auto& triangle : objects.triangles)
                 if (const auto hit = intersect(ray, triangle);
                     hit.distance != noHit && hit.distance < nearestHit.distance)
                     nearestHit = hit;
@@ -909,7 +938,7 @@ namespace
     {
         f(node);
         if (node.hasChildren())
-            for (const auto& child : node.children)
+            for (const auto& child : node.children())
                 visitNodes(*child, f);
     }
 
@@ -919,7 +948,8 @@ namespace
         std::size_t nodeCount = 0;
         visitNodes(scene.tree, [&](const OctreeNode& node) {
             nodeCount++;
-            triangleCount += node.triangles.size();
+            if (!node.hasChildren())
+                triangleCount += node.objects().triangles.size();
         });
         std::cout << "Tree stores " << triangleCount << " triangles (" << (triangleCount * sizeof(Triangle)) / 1024
                   << "KiB) in " << nodeCount << " nodes (" << (nodeCount * sizeof(OctreeNode)) / 1024 << "KiB) \n";
