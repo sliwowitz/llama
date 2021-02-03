@@ -620,22 +620,22 @@ namespace
             return std::holds_alternative<Children>(content);
         }
 
-        auto& objects()
+        auto objects() -> Objects&
         {
             return std::get<Objects>(content);
         }
 
-        const auto& objects() const
+        auto objects() const -> const Objects&
         {
             return std::get<Objects>(content);
         }
 
-        auto& children()
+        auto children() -> Children&
         {
             return std::get<Children>(content);
         }
 
-        const auto& children() const
+        auto children() const -> const Children&
         {
             return std::get<Children>(content);
         }
