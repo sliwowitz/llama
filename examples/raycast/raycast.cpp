@@ -651,23 +651,29 @@ namespace
             }
             else
             {
-                if constexpr (std::is_same_v<T, PreparedTriangle>)
-                    objects().triangles.push_back(object);
-                else
-                    objects().spheres.push_back(object);
                 if (shouldSplit(depth))
+                {
                     split(depth);
+                    addObject(object, depth);
+                }
+                else
+                {
+                    if constexpr (std::is_same_v<T, PreparedTriangle>)
+                        objects().triangles.push_back(object);
+                    else
+                        objects().spheres.push_back(object);
+                }
             }
         }
 
     private:
-        static constexpr auto maxObjectsPerNode = 32;
+        static constexpr auto maxTrianglesPerNode = 32;
         static constexpr auto maxDepth = 16;
 
         auto shouldSplit(int depth) const -> bool
         {
             auto& objects = std::get<Objects>(content);
-            return depth < maxDepth && objects.triangles.size() + objects.spheres.size() > maxObjectsPerNode;
+            return depth < maxDepth && objects.triangles.size() >= maxTrianglesPerNode;
         }
 
         void split(int depth)
