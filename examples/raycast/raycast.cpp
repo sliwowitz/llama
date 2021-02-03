@@ -42,29 +42,29 @@ namespace
     template <typename F>
     struct Vector
     {
-        auto operator[](std::size_t index) -> F&
+        inline auto operator[](std::size_t index) -> F&
         {
             return values[index];
         }
 
-        auto operator[](std::size_t index) const -> F
+        inline auto operator[](std::size_t index) const -> F
         {
             return values[index];
         }
 
-        auto operator-() const -> Vector
+        inline auto operator-() const -> Vector
         {
             return {-values[0], -values[1], -values[2]};
         }
 
-        auto operator+=(const Vector& v) -> Vector&
+        inline auto operator+=(const Vector& v) -> Vector&
         {
             for (int i = 0; i < 3; i++)
                 values[i] += v.values[i];
             return *this;
         }
 
-        auto operator-=(const Vector& v) -> Vector&
+        inline auto operator-=(const Vector& v) -> Vector&
         {
             for (int i = 0; i < 3; i++)
                 values[i] -= v.values[i];
@@ -72,14 +72,14 @@ namespace
         }
 
         template <typename Scalar>
-        auto operator*=(Scalar scalar) -> Vector&
+        inline auto operator*=(Scalar scalar) -> Vector&
         {
             for (int i = 0; i < 3; i++)
                 values[i] *= scalar;
             return *this;
         }
 
-        auto lengthSqr() const
+        inline auto lengthSqr() const
         {
             F r = 0;
             for (int i = 0; i < 3; i++)
@@ -87,64 +87,64 @@ namespace
             return r;
         }
 
-        auto length() const
+        inline auto length() const
         {
             return std::sqrt(lengthSqr());
         }
 
-        void normalize()
+        inline void normalize()
         {
             const auto l = length();
             for (int i = 0; i < 3; i++)
                 values[i] /= l;
         }
 
-        auto normalized() const -> Vector
+        inline auto normalized() const -> Vector
         {
             auto r = *this;
             r.normalize();
             return r;
         }
 
-        friend auto operator+(const Vector& a, const Vector& b) -> Vector
+        friend inline auto operator+(const Vector& a, const Vector& b) -> Vector
         {
             auto r = a;
             r += b;
             return r;
         }
 
-        friend auto operator-(const Vector& a, const Vector& b) -> Vector
+        friend inline auto operator-(const Vector& a, const Vector& b) -> Vector
         {
             auto r = a;
             r -= b;
             return r;
         }
 
-        friend auto operator*(const Vector& v, F scalar) -> Vector
+        friend inline auto operator*(const Vector& v, F scalar) -> Vector
         {
             auto r = v;
             r *= scalar;
             return r;
         }
 
-        friend auto operator*(F scalar, const Vector& v) -> Vector
+        friend inline auto operator*(F scalar, const Vector& v) -> Vector
         {
             return v * scalar;
         }
 
-        friend auto operator/(F scalar, const Vector& v) -> Vector
+        friend inline auto operator/(F scalar, const Vector& v) -> Vector
         {
             return {scalar / v[0], scalar / v[1], scalar / v[2]};
         }
 
-        friend auto operator>>(std::istream& is, Vector& v) -> std::istream&
+        friend inline auto operator>>(std::istream& is, Vector& v) -> std::istream&
         {
             for (int i = 0; i < 3; i++)
                 is >> v[i];
             return is;
         }
 
-        friend auto operator<<(std::ostream& os, const Vector& v) -> std::ostream&
+        friend inline auto operator<<(std::ostream& os, const Vector& v) -> std::ostream&
         {
             for (int i = 0; i < 3; i++)
                 os << v[i] << " ";
@@ -212,12 +212,12 @@ namespace
         VectorF lower;
         VectorF upper;
 
-        auto center() const -> VectorF
+        inline auto center() const -> VectorF
         {
             return (lower + upper) * 0.5f;
         }
 
-        auto contains(VectorF v) const -> bool
+        inline auto contains(VectorF v) const -> bool
         {
             return lower[0] <= v[0] && v[0] <= upper[0] && lower[1] <= v[1] && v[1] <= upper[1] && lower[2] <= v[2]
                 && v[2] <= upper[2];
@@ -230,13 +230,13 @@ namespace
         VectorF edge1;
         VectorF edge2;
 
-        auto normal() const -> VectorF
+        inline auto normal() const -> VectorF
         {
             return cross(edge1, edge2).normalized();
         }
     };
 
-    auto prepare(Triangle t) -> PreparedTriangle
+    inline auto prepare(Triangle t) -> PreparedTriangle
     {
         return {t[0], t[1] - t[0], t[2] - t[0]};
     }
@@ -250,12 +250,12 @@ namespace
         {
         }
 
-        auto operator()(unsigned int x, unsigned int y) -> Pixel&
+        inline auto operator()(unsigned int x, unsigned int y) -> Pixel&
         {
             return pixels[y * width + x];
         }
 
-        auto operator()(unsigned int x, unsigned int y) const -> const Pixel&
+        inline auto operator()(unsigned int x, unsigned int y) const -> const Pixel&
         {
             return pixels[y * width + x];
         }
@@ -286,7 +286,8 @@ namespace
         VectorF direction;
     };
 
-    auto createRay(const Camera& camera, unsigned int width, unsigned int height, unsigned int x, unsigned int y) -> Ray
+    inline auto createRay(const Camera& camera, unsigned int width, unsigned int height, unsigned int x, unsigned int y)
+        -> Ray
     {
         // we imagine a plane with the image just 1 before the camera, and then we shoot at those pixels
 
@@ -315,7 +316,7 @@ namespace
 
     // from:
     // https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-box-intersection
-    auto intersectBox(const Ray& r, const AABB& box) -> float
+    inline auto intersectBox(const Ray& r, const AABB& box) -> float
     {
         const auto invdir = 1.0f / r.direction;
         const VectorF bounds[] = {box.lower, box.upper};
@@ -344,7 +345,7 @@ namespace
         return tmin;
     }
 
-    auto intersect(const Ray& ray, const Sphere& sphere) -> Intersection
+    inline auto intersect(const Ray& ray, const Sphere& sphere) -> Intersection
     {
         // from
         // https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-sphere-intersection
@@ -365,7 +366,7 @@ namespace
     }
 
     // modified Möller and Trumbore's version
-    auto intersect(const Ray& ray, const PreparedTriangle& triangle) -> Intersection
+    inline auto intersect(const Ray& ray, const PreparedTriangle& triangle) -> Intersection
     {
         constexpr auto epsilon = 0.000001f;
 
@@ -392,7 +393,7 @@ namespace
     }
 
     // from: https://stackoverflow.com/questions/4578967/cube-sphere-intersection-test
-    auto overlaps(const Sphere& s, const AABB& box) -> bool
+    inline auto overlaps(const Sphere& s, const AABB& box) -> bool
     {
         auto sqr = [](auto x) { return x * x; };
 
@@ -615,27 +616,27 @@ namespace
         using Children = std::array<std::unique_ptr<OctreeNode>, 8>;
         std::variant<Objects, Children> content;
 
-        auto hasChildren() const -> bool
+        inline auto hasChildren() const -> bool
         {
             return std::holds_alternative<Children>(content);
         }
 
-        auto objects() -> Objects&
+        inline auto objects() -> Objects&
         {
             return std::get<Objects>(content);
         }
 
-        auto objects() const -> const Objects&
+        inline auto objects() const -> const Objects&
         {
             return std::get<Objects>(content);
         }
 
-        auto children() -> Children&
+        inline auto children() -> Children&
         {
             return std::get<Children>(content);
         }
 
-        auto children() const -> const Children&
+        inline auto children() const -> const Children&
         {
             return std::get<Children>(content);
         }
@@ -670,13 +671,13 @@ namespace
         static constexpr auto maxTrianglesPerNode = 32;
         static constexpr auto maxDepth = 16;
 
-        auto shouldSplit(int depth) const -> bool
+        inline auto shouldSplit(int depth) const -> bool
         {
             auto& objects = std::get<Objects>(content);
             return depth < maxDepth && objects.triangles.size() >= maxTrianglesPerNode;
         }
 
-        void split(int depth)
+        inline void split(int depth)
         {
             auto objects = std::move(std::get<Objects>(content));
             auto& children = content.emplace<Children>();
@@ -736,7 +737,7 @@ namespace
         }
     }
 
-    auto intersect(const Ray& ray, const OctreeNode& tree) -> Intersection
+    inline auto intersect(const Ray& ray, const OctreeNode& tree) -> Intersection
     {
         Intersection nearestHit{};
         if (const auto hit = intersectBox(ray, tree.box))
@@ -744,7 +745,7 @@ namespace
         return nearestHit;
     }
 
-    auto colorByIntersectionNormal(Intersection hit) -> Image::Pixel
+    inline auto colorByIntersectionNormal(Intersection hit) -> Image::Pixel
     {
         if (hit.distance == noHit)
             return {}; // black
@@ -777,7 +778,7 @@ namespace
         return img;
     }
 
-    auto lookAt(float fovy, VectorF pos, VectorF lookAt, VectorF up) -> Camera
+    inline auto lookAt(float fovy, VectorF pos, VectorF lookAt, VectorF up) -> Camera
     {
         const auto view = (lookAt - pos).normalized();
         const auto right = cross(view, up);
