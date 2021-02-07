@@ -1,4 +1,5 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
+#define STB_IMAGE_IMPLEMENTATION
 #define TINYOBJLOADER_IMPLEMENTATION
 #include <algorithm>
 #include <array>
@@ -13,10 +14,12 @@
 #include <numeric>
 #include <random>
 #include <sstream>
+#include <stb_image.h>
 #include <stb_image_write.h>
 #include <stdexcept>
 #include <string>
 #include <tiny_obj_loader.h>
+#include <unordered_map>
 #include <variant>
 
 namespace
@@ -203,8 +206,16 @@ namespace
         float radius;
     };
 
-    struct Triangle : std::array<VectorF, 3>
+    struct Vertex
     {
+        VectorF pos;
+        float u;
+        float v;
+    };
+
+    struct Triangle : std::array<Vertex, 3>
+    {
+        int texIndex;
     };
 
     struct AABB
@@ -229,6 +240,9 @@ namespace
         VectorF vertex0;
         VectorF edge1;
         VectorF edge2;
+        std::array<float, 3> u;
+        std::array<float, 3> v;
+        int texIndex;
 
         inline auto normal() const -> VectorF
         {
@@ -238,7 +252,13 @@ namespace
 
     inline auto prepare(Triangle t) -> PreparedTriangle
     {
-        return {t[0], t[1] - t[0], t[2] - t[0]};
+        return {
+            t[0].pos,
+            t[1].pos - t[0].pos,
+            t[2].pos - t[0].pos,
+            {t[0].u, t[1].u, t[2].u},
+            {t[0].v, t[1].v, t[2].v},
+            t.texIndex};
     }
 
     class Image
@@ -246,29 +266,58 @@ namespace
     public:
         using Pixel = Vector<unsigned char>;
 
-        Image(unsigned int width, unsigned int height) : width(width), height(height), pixels(width * height)
+        Image(const std::filesystem::path& filename)
         {
+            int x = 0;
+            int y = 0;
+            int comp = 0;
+            unsigned char* data = stbi_load(filename.string().c_str(), &x, &y, &comp, 3);
+            stbi__vertical_flip(data, x, y, 3);
+            if (data == nullptr)
+                throw std::runtime_error("Failed to read image " + filename.string());
+            // if (comp != 3)
+            //    throw std::runtime_error(
+            //        "Image " + filename.string() + " does not have 3 channels but " + std::to_string(comp));
+            w = x;
+            h = y;
+            pixels.resize(w * h);
+            std::memcpy(pixels.data(), data, w * h * 3);
+            stbi_image_free(data);
+        }
+
+        Image(unsigned int width, unsigned int height) : w(width), h(height), pixels(width * height)
+        {
+        }
+
+        inline auto width() const
+        {
+            return w;
+        }
+
+        inline auto height() const
+        {
+            return h;
         }
 
         inline auto operator()(unsigned int x, unsigned int y) -> Pixel&
         {
-            return pixels[y * width + x];
+            return pixels[y * w + x];
         }
 
         inline auto operator()(unsigned int x, unsigned int y) const -> const Pixel&
         {
-            return pixels[y * width + x];
+            return pixels[y * w + x];
         }
 
         void write(const std::filesystem::path& filename) const
         {
-            if (!stbi_write_png(filename.string().c_str(), width, height, 3, pixels.data(), 0))
+            if (!stbi_write_png(filename.string().c_str(), w, h, 3, pixels.data(), 0))
                 throw std::runtime_error("Failed to write image " + filename.string());
         }
 
     private:
-        unsigned int width;
-        unsigned int height;
+        unsigned int w;
+        unsigned int h;
         std::vector<Pixel> pixels;
     };
 
@@ -278,6 +327,9 @@ namespace
     {
         float distance = noHit;
         VectorF normal;
+        float texU = 0;
+        float texV = 0;
+        int texIndex = -1;
     };
 
     struct Ray
@@ -389,7 +441,9 @@ namespace
         if (t < 0)
             return {};
 
-        return {t, triangle.normal()};
+        const auto texU = (1 - u - v) * triangle.u[0] + u * triangle.u[1] + v * triangle.u[2];
+        const auto texV = (1 - u - v) * triangle.v[0] + u * triangle.v[1] + v * triangle.v[2];
+        return {t, triangle.normal(), texU, texV, triangle.texIndex};
     }
 
     // from: https://stackoverflow.com/questions/4578967/cube-sphere-intersection-test
@@ -755,10 +809,60 @@ namespace
         return r;
     }
 
+    auto tex2D(const Image& tex, float u, float v) -> Image::Pixel
+    {
+        // texture coordinate behavior is repeat
+        auto texCoordToTexelCoord = [](float coord, unsigned int imgSize) {
+            const auto maxIndex = static_cast<float>(imgSize - 1);
+            auto normalizedCoord = coord - static_cast<int>(coord);
+            if (normalizedCoord < 0)
+                normalizedCoord++;
+            return std::clamp(normalizedCoord * maxIndex, 0.0f, maxIndex);
+        };
+
+        auto toVec = [](Image::Pixel p) { return VectorF{p[0] / 255.0f, p[1] / 255.0f, p[2] / 255.0f}; };
+        const float x = texCoordToTexelCoord(u, tex.width());
+        const float y = texCoordToTexelCoord(v, tex.height());
+
+        //// nearest texel
+        // return tex(static_cast<int>(std::round(x)), static_cast<int>(std::round(y)));
+
+        // bilinear
+        const float x0 = std::floor(x);
+        const float x1 = std::ceil(x);
+        const float xFrac = x - static_cast<int>(x);
+        const float y0 = std::floor(y);
+        const float y1 = std::ceil(y);
+        const float yFrac = y - static_cast<int>(y);
+        const auto color = (toVec(tex(x0, y0)) * (1 - xFrac) + toVec(tex(x1, y0)) * xFrac) * (1 - yFrac)
+            + (toVec(tex(x0, y1)) * (1 - xFrac) + toVec(tex(x1, y1)) * xFrac) * yFrac;
+        Image::Pixel rgb;
+        for (int i = 0; i < 3; i++)
+            rgb[i] = static_cast<unsigned char>(color[i] * 255);
+        return rgb;
+    }
+
+    inline auto colorByTexture(const std::vector<Image>& textures, Intersection hit) -> Image::Pixel
+    {
+        if (hit.distance == noHit)
+            return {}; // black
+        Image::Pixel r;
+        if (hit.texIndex != -1)
+        {
+            const auto& tex = textures[hit.texIndex];
+            return tex2D(tex, hit.texU, hit.texV);
+        }
+        else
+            for (int i = 0; i < 3; i++)
+                r[i] = static_cast<unsigned char>(std::abs(hit.normal[i]) * 255);
+        return r;
+    }
+
     struct Scene
     {
         Camera camera;
         OctreeNode tree;
+        std::vector<Image> textures;
     };
 
     auto raycast(const Scene& scene, unsigned int width, unsigned int height) -> Image
@@ -771,7 +875,7 @@ namespace
             {
                 const auto ray = createRay(scene.camera, width, height, x, height - 1 - y); // flip
                 const auto nearestHit = intersect(ray, scene.tree);
-                img(x, y) = colorByIntersectionNormal(nearestHit);
+                img(x, y) = colorByTexture(scene.textures, nearestHit);
             }
         }
 
@@ -851,7 +955,7 @@ namespace
     //    return scene;
     //}
 
-    auto sponzaScene(const char* objFile) -> Scene
+    auto sponzaScene(const std::filesystem::path objFile) -> Scene
     {
         tinyobj::attrib_t attrib;
         std::vector<tinyobj::shape_t> shapes;
@@ -859,9 +963,18 @@ namespace
         std::string warn;
         std::string err;
 
-        const bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, objFile);
-        std::cout << warn << std::endl;
-        std::cerr << err << std::endl;
+        const bool ret = tinyobj::LoadObj(
+            &attrib,
+            &shapes,
+            &materials,
+            &warn,
+            &err,
+            objFile.string().c_str(),
+            objFile.parent_path().string().c_str());
+        if (!warn.empty())
+            std::cout << warn << std::endl;
+        if (!err.empty())
+            std::cerr << err << std::endl;
         if (!ret)
             throw std::runtime_error{"Failed to load sponza scene"};
 
@@ -876,6 +989,8 @@ namespace
         // auto mapping = Mapping{llama::ArrayDomain{triangleCount}};
         // scene.triangles = llama::allocView(mapping);
 
+        std::unordered_map<std::string, int> textureToIndex;
+
         std::vector<Triangle> triangles;
         constexpr auto l = std::numeric_limits<float>::max();
         constexpr auto u = std::numeric_limits<float>::lowest();
@@ -887,8 +1002,24 @@ namespace
             const auto& mesh = shape.mesh;
 
             size_t indexOffset = 0;
-            for (const auto vertexCount : mesh.num_face_vertices)
+            for (auto f = 0; f < mesh.num_face_vertices.size(); f++)
             {
+                const auto texIndex = [&] {
+                    const auto matId = mesh.material_ids[f];
+                    if (matId == -1)
+                        return -1;
+                    const auto texName = materials.at(matId).diffuse_texname;
+                    if (texName == "")
+                        return -1;
+                    if (const auto it = textureToIndex.find(texName); it != end(textureToIndex))
+                        return it->second;
+                    const auto texIndex = static_cast<int>(scene.textures.size());
+                    textureToIndex[texName] = texIndex;
+                    scene.textures.push_back(Image{objFile.parent_path() / texName});
+                    return texIndex;
+                }();
+
+                const auto vertexCount = mesh.num_face_vertices[f];
                 if (vertexCount == 3)
                 {
                     Triangle t;
@@ -897,11 +1028,14 @@ namespace
                         const tinyobj::index_t idx = mesh.indices[indexOffset + v];
                         for (const auto c : {0, 1, 2})
                         {
-                            t[v][c] = attrib.vertices[3 * idx.vertex_index + c];
-                            box.lower[c] = std::min(box.lower[c], t[v][c]);
-                            box.upper[c] = std::max(box.upper[c], t[v][c]);
+                            t[v].pos[c] = attrib.vertices[3 * idx.vertex_index + c];
+                            box.lower[c] = std::min(box.lower[c], t[v].pos[c]);
+                            box.upper[c] = std::max(box.upper[c], t[v].pos[c]);
                         }
+                        t[v].u = attrib.texcoords[2 * idx.texcoord_index + 0];
+                        t[v].v = attrib.texcoords[2 * idx.texcoord_index + 1];
                     }
+                    t.texIndex = texIndex;
                     triangles.push_back(t);
                     // const auto pt = prepare(t);
                     // scene.triangles[write](Vertex0{}, X{}) = pt.vertex0[0];
