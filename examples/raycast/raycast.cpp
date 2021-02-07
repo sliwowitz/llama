@@ -662,133 +662,216 @@ namespace
 
     struct OctreeNode
     {
+        // actual data
         AABB box{};
+        std::vector<PreparedTriangle> triangles;
+        std::vector<Sphere> spheres;
 
-        struct Objects
-        {
-            std::vector<PreparedTriangle> triangles;
-            std::vector<Sphere> spheres;
-        };
-        using Children = std::array<OctreeNode*, 8>;
-        std::variant<Objects, Children> content;
+        // links which LLAMA should handle
+        std::unique_ptr<OctreeNode> nextSibling;
+        std::unique_ptr<OctreeNode> firstChild;
+    };
 
-        inline auto hasChildren() const -> bool
+    // This concept is from the book Elements of Programming
+    // template <typename T>
+    // concept BifurcateCoordinate = requires(T t)
+    //{
+    //    {
+    //        t.empty()
+    //    }
+    //    ->std::same_as<bool>;
+    //    {
+    //        t.has_left_successor()
+    //    }
+    //    ->std::same_as<bool>;
+    //    {
+    //        t.has_right_successor()
+    //    }
+    //    ->std::same_as<bool>;
+    //    {
+    //        t.left_successor()
+    //    }
+    //    ->BifurcateCoordinate;
+    //    {
+    //        t.right_successor()
+    //    }
+    //    ->BifurcateCoordinate;
+    //};
+
+    struct ConstTreeIterator
+    {
+        const OctreeNode* node = nullptr;
+
+        auto begin() const -> ConstTreeIterator
         {
-            return std::holds_alternative<Children>(content);
+            return {node->firstChild.get()};
         }
 
-        inline auto objects() -> Objects&
+        auto end() const -> ConstTreeIterator
         {
-            return std::get<Objects>(content);
+            return {};
         }
 
-        inline auto objects() const -> const Objects&
+        auto operator++()
         {
-            return std::get<Objects>(content);
+            node = node->nextSibling.get();
         }
 
-        inline auto children() -> Children&
+        auto operator->() const -> const OctreeNode*
         {
-            return std::get<Children>(content);
+            return node;
         }
 
-        inline auto children() const -> const Children&
+        auto operator*() const -> const OctreeNode&
         {
-            return std::get<Children>(content);
+            return *node;
         }
 
-        template <typename T>
-        void addObject(std::deque<OctreeNode>& pool, const T& object, int depth = 0)
+        auto operator==(const ConstTreeIterator&) const -> bool = default;
+    };
+
+    struct TreeIterator
+    {
+        OctreeNode* node = nullptr;
+
+        auto begin() const -> TreeIterator
         {
-            if (hasChildren())
-            {
-                for (auto& c : children())
-                    if (overlaps(object, c->box))
-                        c->addObject(pool, object, depth + 1);
-            }
-            else
-            {
-                if (shouldSplit(depth))
-                {
-                    split(pool, depth);
-                    addObject(pool, object, depth);
-                }
-                else
-                {
-                    if constexpr (std::is_same_v<T, PreparedTriangle>)
-                        objects().triangles.push_back(object);
-                    else
-                        objects().spheres.push_back(object);
-                }
-            }
+            return {node->firstChild.get()};
         }
 
-    private:
+        auto end() const -> TreeIterator
+        {
+            return {};
+        }
+
+        auto operator++()
+        {
+            node = node->nextSibling.get();
+        }
+
+        auto operator->() -> OctreeNode*
+        {
+            return node;
+        }
+
+        auto operator->() const -> const OctreeNode*
+        {
+            return node;
+        }
+
+        auto operator*() -> OctreeNode&
+        {
+            return *node;
+        }
+
+        auto operator*() const -> const OctreeNode&
+        {
+            return *node;
+        }
+
+        auto operator==(const TreeIterator&) const -> bool = default;
+    };
+
+    auto shouldSplit(TreeIterator it, int depth) -> bool
+    {
         static constexpr auto maxTrianglesPerNode = 32;
         static constexpr auto maxDepth = 16;
 
-        inline auto shouldSplit(int depth) const -> bool
-        {
-            auto& objects = std::get<Objects>(content);
-            return depth < maxDepth && objects.triangles.size() >= maxTrianglesPerNode;
-        }
+        return depth < maxDepth && it->triangles.size() >= maxTrianglesPerNode;
+    }
 
-        inline void split(std::deque<OctreeNode>& pool, int depth)
-        {
-            auto objects = std::move(std::get<Objects>(content));
-            auto& children = content.emplace<Children>();
-            const VectorF points[] = {box.lower, box.center(), box.upper};
-            for (auto x : {0, 1})
-                for (auto y : {0, 1})
-                    for (auto z : {0, 1})
-                    {
-                        const auto childBox = AABB{
-                            {
-                                points[x][0],
-                                points[y][1],
-                                points[z][2],
-                            },
-                            {
-                                points[x + 1][0],
-                                points[y + 1][1],
-                                points[z + 1][2],
-                            }};
-                        children[z * 4 + y * 2 + x] = &pool.emplace_back(OctreeNode{childBox});
-                    }
+    template <typename T>
+    void addObject(TreeIterator it, const T& object, int depth = 0);
 
-            for (const auto& s : objects.spheres)
-                addObject(pool, s, depth);
-            for (const auto& t : objects.triangles)
-                addObject(pool, t, depth);
-        }
-    };
-
-    // from: https://github.com/rumpfc/CGG/blob/master/cgg07_Octrees/OctreeNode.cpp
-    void intersectNodeRecursive(const Ray& ray, const OctreeNode& node, Intersection& nearestHit)
+    inline void split(TreeIterator it, int depth)
     {
-        if (node.hasChildren())
+        auto spheres = std::move(it->spheres);
+        auto triangles = std::move(it->triangles);
+        const VectorF points[] = {it->box.lower, it->box.center(), it->box.upper};
+        std::unique_ptr<OctreeNode>* prev = &((OctreeNode&) *it).firstChild; // FIXME
+        for (auto x : {0, 1})
+            for (auto y : {0, 1})
+                for (auto z : {0, 1})
+                {
+                    const auto childBox = AABB{
+                        {
+                            points[x][0],
+                            points[y][1],
+                            points[z][2],
+                        },
+                        {
+                            points[x + 1][0],
+                            points[y + 1][1],
+                            points[z + 1][2],
+                        }};
+                    prev = &(*prev = std::make_unique<OctreeNode>(childBox))->nextSibling;
+                }
+
+        for (const auto& s : spheres)
+            addObject(it, s, depth);
+        for (const auto& t : triangles)
+            addObject(it, t, depth);
+    }
+
+    template <typename T>
+    void addObject(TreeIterator it, const T& object, int depth)
+    {
+        auto child = it.begin();
+        const auto last = it.end();
+        if (child != last)
         {
-            const auto& children = node.children();
-
-            // iterate on children nearer than our current intersection in the order they are hit by the ray
-            boost::container::static_vector<std::pair<int, float>, 8> childDists;
-            for (int i = 0; i < 8; i++)
-                if (const auto [tmin, tmax] = intersectBox(ray, children[i]->box);
-                    tmin != noHit && tmax > 0 && tmin < nearestHit.distance)
-                    childDists.emplace_back(i, tmin);
-            std::sort(childDists.begin(), childDists.end(), [](auto a, auto b) { return a.second < b.second; });
-
-            for (const auto [childIndex, childDist] : childDists)
-                intersectNodeRecursive(ray, *children[childIndex], nearestHit);
+            while (child != last)
+            {
+                if (overlaps(object, child->box))
+                    addObject(child, object, depth + 1);
+                ++child;
+            }
         }
         else
         {
-            const auto& objects = node.objects();
-            for (const auto& sphere : objects.spheres)
+            if (shouldSplit(it, depth))
+            {
+                split(it, depth);
+                addObject(it, object, depth);
+            }
+            else
+            {
+                if constexpr (std::is_same_v<T, PreparedTriangle>)
+                    it->triangles.push_back(object);
+                else
+                    it->spheres.push_back(object);
+            }
+        }
+    }
+
+    // from: https://github.com/rumpfc/CGG/blob/master/cgg07_Octrees/OctreeNode.cpp
+    void intersectNodeRecursive(const Ray& ray, ConstTreeIterator it, Intersection& nearestHit)
+    {
+        auto child = it.begin();
+        const auto last = it.end();
+        if (child != last)
+        {
+            // iterate on children nearer than our current intersection in the order they are hit by the ray
+            boost::container::static_vector<std::pair<ConstTreeIterator, float>, 8> childDists;
+            while (child != last)
+            {
+                if (const auto [tmin, tmax] = intersectBox(ray, child->box);
+                    tmin != noHit && tmax > 0 && tmin < nearestHit.distance)
+                    childDists.emplace_back(child, tmin);
+                ++child;
+            }
+            std::sort(childDists.begin(), childDists.end(), [](auto a, auto b) { return a.second < b.second; });
+
+            for (const auto [child, dist] : childDists)
+                intersectNodeRecursive(ray, child, nearestHit);
+        }
+        else
+        {
+            for (const auto& sphere : it->spheres)
                 if (const auto hit = intersect(ray, sphere);
                     hit.distance != noHit && hit.distance < nearestHit.distance)
                     nearestHit = hit;
-            for (const auto& triangle : objects.triangles)
+            for (const auto& triangle : it->triangles)
                 if (const auto hit = intersect(ray, triangle);
                     hit.distance != noHit && hit.distance < nearestHit.distance)
                     nearestHit = hit;
@@ -799,7 +882,7 @@ namespace
     {
         Intersection nearestHit{};
         if (intersectBox(ray, tree.box).first != noHit)
-            intersectNodeRecursive(ray, tree, nearestHit);
+            intersectNodeRecursive(ray, ConstTreeIterator{&tree}, nearestHit);
         return nearestHit;
     }
 
@@ -1071,31 +1154,35 @@ namespace
                   << "KiB)\n";
 
         scene.tree = OctreeNode{box};
-        scene.tree.addObject(scene.nodePool, sphere1);
-        scene.tree.addObject(scene.nodePool, sphere2);
+        addObject({&scene.tree}, sphere1);
+        addObject({&scene.tree}, sphere2);
         for (const auto& t : triangles)
-            scene.tree.addObject(scene.nodePool, prepare(t));
+            addObject({&scene.tree}, prepare(t));
 
         return scene;
     }
 
-    template <typename F>
-    void visitNodes(const OctreeNode& node, const F& f)
+    template <typename BasicTreeIterator, typename F>
+    void visitNodes(BasicTreeIterator it, const F& f)
     {
-        f(node);
-        if (node.hasChildren())
-            for (const auto& child : node.children())
-                visitNodes(*child, f);
+        f(it);
+        auto child = it.begin();
+        const auto last = it.end();
+        while (child != last)
+        {
+            visitNodes(child, f);
+            ++child;
+        }
     }
 
     void printMemoryFootprint(const Scene& scene)
     {
         std::size_t triangleCount = 0;
         std::size_t nodeCount = 0;
-        visitNodes(scene.tree, [&](const OctreeNode& node) {
+        visitNodes(ConstTreeIterator{&scene.tree}, [&](ConstTreeIterator it) {
             nodeCount++;
-            if (!node.hasChildren())
-                triangleCount += node.objects().triangles.size();
+            if (it.begin() == it.end())
+                triangleCount += it->triangles.size();
         });
         std::cout << "Tree stores " << triangleCount << " triangles (" << (triangleCount * sizeof(Triangle)) / 1024
                   << "KiB) in " << nodeCount << " nodes (" << (nodeCount * sizeof(OctreeNode)) / 1024 << "KiB) \n";
