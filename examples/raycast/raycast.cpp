@@ -1123,7 +1123,7 @@ try
     watch.printAndReset("Visit  ");
 
     double avg = 0;
-    constexpr auto repetitions = 10;
+    constexpr auto repetitions = 5;
     for (auto i = 0; i < repetitions; i++)
     {
         const auto image = raycast(scene, width, height);
