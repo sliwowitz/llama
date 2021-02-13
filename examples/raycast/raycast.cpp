@@ -660,16 +660,149 @@ namespace
         return true;
     }
 
+    template <typename T>
+    struct Tree
+    {
+    private:
+        struct LinkedNode
+        {
+            T data;
+            std::unique_ptr<LinkedNode> nextSibling;
+            std::unique_ptr<LinkedNode> firstChild;
+        };
+
+        std::unique_ptr<LinkedNode> rootNode;
+
+    public:
+        struct ConstIterator
+        {
+            ConstIterator() = default;
+
+            auto begin() const -> ConstIterator
+            {
+                return {node->firstChild.get()};
+            }
+
+            auto end() const -> ConstIterator
+            {
+                return {};
+            }
+
+            auto operator++()
+            {
+                node = node->nextSibling.get();
+            }
+
+            auto operator->() const -> const T*
+            {
+                return &node->data;
+            }
+
+            auto operator*() const -> const T&
+            {
+                return node->data;
+            }
+
+            auto operator==(const ConstIterator&) const -> bool = default;
+
+        private:
+            friend class Tree;
+
+            ConstIterator(const LinkedNode* node) : node(node)
+            {
+            }
+
+            const LinkedNode* node = nullptr;
+        };
+
+        struct Iterator
+        {
+            Iterator() = default;
+
+            auto begin() const -> Iterator
+            {
+                return {node->firstChild.get()};
+            }
+
+            auto end() const -> Iterator
+            {
+                return {};
+            }
+
+            auto operator++()
+            {
+                node = node->nextSibling.get();
+            }
+
+            auto operator->() -> T*
+            {
+                return &node->data;
+            }
+
+            auto operator->() const -> const T*
+            {
+                return &node->data;
+            }
+
+            auto operator*() -> T&
+            {
+                return node->data;
+            }
+
+            auto operator*() const -> const T&
+            {
+                return node->data;
+            }
+
+            auto operator==(const Iterator&) const -> bool = default;
+
+        private:
+            friend class Tree;
+
+            Iterator(LinkedNode* node) : node(node)
+            {
+            }
+
+            LinkedNode* node = nullptr;
+        };
+
+        auto addChild(Iterator pos, T data) -> Iterator
+        {
+            if (pos == Iterator{})
+            {
+                rootNode = std::make_unique<LinkedNode>(std::move(data));
+                return Iterator{rootNode.get()};
+            }
+
+            assert(pos.node->firstChild == nullptr); // FIXME: this is a weird requirement
+            pos.node->firstChild = std::make_unique<LinkedNode>(std::move(data));
+            return {pos.node->firstChild.get()};
+        }
+
+        auto addSibling(Iterator pos, T data) -> Iterator
+        {
+            assert(pos.node != rootNode.get());
+            assert(pos.node->nextSibling == nullptr); // FIXME: this is a weird requirement
+            pos.node->nextSibling = std::make_unique<LinkedNode>(std::move(data));
+            return {pos.node->nextSibling.get()};
+        }
+
+        auto root() -> Iterator
+        {
+            return {rootNode.get()};
+        }
+
+        auto root() const -> ConstIterator
+        {
+            return {rootNode.get()};
+        }
+    };
+
     struct OctreeNode
     {
-        // actual data
         AABB box{};
         std::vector<PreparedTriangle> triangles;
         std::vector<Sphere> spheres;
-
-        // links which LLAMA should handle
-        std::unique_ptr<OctreeNode> nextSibling;
-        std::unique_ptr<OctreeNode> firstChild;
     };
 
     // This concept is from the book Elements of Programming
@@ -698,81 +831,7 @@ namespace
     //    ->BifurcateCoordinate;
     //};
 
-    struct ConstTreeIterator
-    {
-        const OctreeNode* node = nullptr;
-
-        auto begin() const -> ConstTreeIterator
-        {
-            return {node->firstChild.get()};
-        }
-
-        auto end() const -> ConstTreeIterator
-        {
-            return {};
-        }
-
-        auto operator++()
-        {
-            node = node->nextSibling.get();
-        }
-
-        auto operator->() const -> const OctreeNode*
-        {
-            return node;
-        }
-
-        auto operator*() const -> const OctreeNode&
-        {
-            return *node;
-        }
-
-        auto operator==(const ConstTreeIterator&) const -> bool = default;
-    };
-
-    struct TreeIterator
-    {
-        OctreeNode* node = nullptr;
-
-        auto begin() const -> TreeIterator
-        {
-            return {node->firstChild.get()};
-        }
-
-        auto end() const -> TreeIterator
-        {
-            return {};
-        }
-
-        auto operator++()
-        {
-            node = node->nextSibling.get();
-        }
-
-        auto operator->() -> OctreeNode*
-        {
-            return node;
-        }
-
-        auto operator->() const -> const OctreeNode*
-        {
-            return node;
-        }
-
-        auto operator*() -> OctreeNode&
-        {
-            return *node;
-        }
-
-        auto operator*() const -> const OctreeNode&
-        {
-            return *node;
-        }
-
-        auto operator==(const TreeIterator&) const -> bool = default;
-    };
-
-    auto shouldSplit(TreeIterator it, int depth) -> bool
+    auto shouldSplit(Tree<OctreeNode>::Iterator it, int depth) -> bool
     {
         static constexpr auto maxTrianglesPerNode = 32;
         static constexpr auto maxDepth = 16;
@@ -781,14 +840,15 @@ namespace
     }
 
     template <typename T>
-    void addObject(TreeIterator it, const T& object, int depth = 0);
+    void addObject(Tree<OctreeNode>& tree, Tree<OctreeNode>::Iterator it, const T& object, int depth);
 
-    inline void split(TreeIterator it, int depth)
+    inline void split(Tree<OctreeNode>& tree, Tree<OctreeNode>::Iterator it, int depth)
     {
         auto spheres = std::move(it->spheres);
         auto triangles = std::move(it->triangles);
         const VectorF points[] = {it->box.lower, it->box.center(), it->box.upper};
-        std::unique_ptr<OctreeNode>* prev = &((OctreeNode&) *it).firstChild; // FIXME
+
+        Tree<OctreeNode>::Iterator prev = {};
         for (auto x : {0, 1})
             for (auto y : {0, 1})
                 for (auto z : {0, 1})
@@ -804,17 +864,20 @@ namespace
                             points[y + 1][1],
                             points[z + 1][2],
                         }};
-                    prev = &(*prev = std::make_unique<OctreeNode>(childBox))->nextSibling;
+                    if (prev == Tree<OctreeNode>::Iterator{})
+                        prev = tree.addChild(it, OctreeNode{childBox});
+                    else
+                        prev = tree.addSibling(prev, OctreeNode{childBox});
                 }
 
         for (const auto& s : spheres)
-            addObject(it, s, depth);
+            addObject(tree, it, s, depth);
         for (const auto& t : triangles)
-            addObject(it, t, depth);
+            addObject(tree, it, t, depth);
     }
 
     template <typename T>
-    void addObject(TreeIterator it, const T& object, int depth)
+    void addObject(Tree<OctreeNode>& tree, Tree<OctreeNode>::Iterator it, const T& object, int depth)
     {
         auto child = it.begin();
         const auto last = it.end();
@@ -823,7 +886,7 @@ namespace
             while (child != last)
             {
                 if (overlaps(object, child->box))
-                    addObject(child, object, depth + 1);
+                    addObject(tree, child, object, depth + 1);
                 ++child;
             }
         }
@@ -831,8 +894,8 @@ namespace
         {
             if (shouldSplit(it, depth))
             {
-                split(it, depth);
-                addObject(it, object, depth);
+                split(tree, it, depth);
+                addObject(tree, it, object, depth);
             }
             else
             {
@@ -844,15 +907,21 @@ namespace
         }
     }
 
+    template <typename T>
+    void addObject(Tree<OctreeNode>& tree, const T& object)
+    {
+        addObject(tree, tree.root(), object, 0);
+    }
+
     // from: https://github.com/rumpfc/CGG/blob/master/cgg07_Octrees/OctreeNode.cpp
-    void intersectNodeRecursive(const Ray& ray, ConstTreeIterator it, Intersection& nearestHit)
+    void intersectNodeRecursive(const Ray& ray, Tree<OctreeNode>::ConstIterator it, Intersection& nearestHit)
     {
         auto child = it.begin();
         const auto last = it.end();
         if (child != last)
         {
             // iterate on children nearer than our current intersection in the order they are hit by the ray
-            boost::container::static_vector<std::pair<ConstTreeIterator, float>, 8> childDists;
+            boost::container::static_vector<std::pair<Tree<OctreeNode>::ConstIterator, float>, 8> childDists;
             while (child != last)
             {
                 if (const auto [tmin, tmax] = intersectBox(ray, child->box);
@@ -878,11 +947,11 @@ namespace
         }
     }
 
-    inline auto intersect(const Ray& ray, const OctreeNode& tree) -> Intersection
+    inline auto intersect(const Ray& ray, const Tree<OctreeNode>& tree) -> Intersection
     {
         Intersection nearestHit{};
-        if (intersectBox(ray, tree.box).first != noHit)
-            intersectNodeRecursive(ray, ConstTreeIterator{&tree}, nearestHit);
+        if (intersectBox(ray, tree.root()->box).first != noHit)
+            intersectNodeRecursive(ray, tree.root(), nearestHit);
         return nearestHit;
     }
 
@@ -948,7 +1017,7 @@ namespace
     struct Scene
     {
         Camera camera;
-        OctreeNode tree;
+        Tree<OctreeNode> tree;
         std::deque<OctreeNode> nodePool;
         std::vector<Image> textures;
     };
@@ -1153,11 +1222,11 @@ namespace
         std::cout << "Loaded " << triangles.size() << " triangles (" << (triangles.size() * sizeof(Triangle)) / 1024
                   << "KiB)\n";
 
-        scene.tree = OctreeNode{box};
-        addObject({&scene.tree}, sphere1);
-        addObject({&scene.tree}, sphere2);
+        scene.tree.addChild({}, {box});
+        addObject(scene.tree, sphere1);
+        addObject(scene.tree, sphere2);
         for (const auto& t : triangles)
-            addObject({&scene.tree}, prepare(t));
+            addObject(scene.tree, prepare(t));
 
         return scene;
     }
@@ -1179,7 +1248,7 @@ namespace
     {
         std::size_t triangleCount = 0;
         std::size_t nodeCount = 0;
-        visitNodes(ConstTreeIterator{&scene.tree}, [&](ConstTreeIterator it) {
+        visitNodes(scene.tree.root(), [&](Tree<OctreeNode>::ConstIterator it) {
             nodeCount++;
             if (it.begin() == it.end())
                 triangleCount += it->triangles.size();
