@@ -1,3 +1,5 @@
+#include "../common/Stopwatch.hpp"
+
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #define STB_IMAGE_IMPLEMENTATION
 #define TINYOBJLOADER_IMPLEMENTATION
@@ -1114,18 +1116,22 @@ try
                      "submodule inside <gitrepo>/examples/raycast/Sponza\n";
         return 1;
     }
-    const auto startLoad = std::chrono::high_resolution_clock::now();
+    Stopwatch watch;
     const auto scene = sponzaScene(argv[1]);
-    const auto endLoad = std::chrono::high_resolution_clock::now();
-    std::cout << "Loading took " << std::chrono::duration<double>(endLoad - startLoad).count() << "s\n";
+    watch.printAndReset("Loading");
     printMemoryFootprint(scene);
+    watch.printAndReset("Visit  ");
 
-    const auto startRaycast = std::chrono::high_resolution_clock::now();
-    const auto image = raycast(scene, width, height);
-    const auto endRaycast = std::chrono::high_resolution_clock::now();
-    std::cout << "Raycast took " << std::chrono::duration<double>(endRaycast - startRaycast).count() << "s\n";
-
-    image.write("out.png");
+    double avg = 0;
+    constexpr auto repetitions = 10;
+    for (auto i = 0; i < repetitions; i++)
+    {
+        const auto image = raycast(scene, width, height);
+        avg += watch.printAndReset("Raycast");
+        if (i == repetitions - 1)
+            image.write("out.png");
+    }
+    std::cout << "Average " << avg / repetitions << " s\n";
 }
 catch (const std::exception& e)
 {
