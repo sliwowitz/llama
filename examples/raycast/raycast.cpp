@@ -370,7 +370,7 @@ namespace
 
     // from:
     // https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-box-intersection
-    inline auto intersectBox(const Ray& r, const AABB& box) -> float
+    inline auto intersectBox(const Ray& r, const AABB& box) -> std::pair<float, float>
     {
         const auto invdir = 1.0f / r.direction;
         const VectorF bounds[] = {box.lower, box.upper};
@@ -381,7 +381,7 @@ namespace
         const float tymin = (bounds[sign[1]][1] - r.origin[1]) * invdir[1];
         const float tymax = (bounds[1 - sign[1]][1] - r.origin[1]) * invdir[1];
         if ((tmin > tymax) || (tymin > tmax))
-            return noHit;
+            return {noHit, noHit};
         if (tymin > tmin)
             tmin = tymin;
         if (tymax < tmax)
@@ -390,13 +390,13 @@ namespace
         const float tzmin = (bounds[sign[2]][2] - r.origin[2]) * invdir[2];
         const float tzmax = (bounds[1 - sign[2]][2] - r.origin[2]) * invdir[2];
         if ((tmin > tzmax) || (tzmin > tmax))
-            return noHit;
+            return {noHit, noHit};
         if (tzmin > tmin)
             tmin = tzmin;
-        // if (tzmax < tmax)
-        //    tmax = tzmax;
+        if (tzmax < tmax)
+            tmax = tzmax;
 
-        return tmin;
+        return {tmin, tmax};
     }
 
     inline auto intersect(const Ray& ray, const Sphere& sphere) -> Intersection
@@ -773,8 +773,9 @@ namespace
             // iterate on children nearer than our current intersection in the order they are hit by the ray
             boost::container::static_vector<std::pair<float, int>, 8> childDists;
             for (int i = 0; i < 8; i++)
-                if (const auto dist = intersectBox(ray, children[i]->box); dist != noHit && dist < nearestHit.distance)
-                    childDists.emplace_back(i, dist);
+                if (const auto [tmin, tmax] = intersectBox(ray, children[i]->box);
+                    tmin != noHit && tmax > 0 && tmin < nearestHit.distance)
+                    childDists.emplace_back(i, tmin);
 
             for (const auto [childIndex, childDist] : childDists)
                 intersectNodeRecursive(ray, *children[childIndex], nearestHit);
@@ -796,7 +797,7 @@ namespace
     inline auto intersect(const Ray& ray, const OctreeNode& tree) -> Intersection
     {
         Intersection nearestHit{};
-        if (const auto hit = intersectBox(ray, tree.box))
+        if (intersectBox(ray, tree.box).first != noHit)
             intersectNodeRecursive(ray, tree, nearestHit);
         return nearestHit;
     }
