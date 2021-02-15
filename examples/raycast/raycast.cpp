@@ -33,11 +33,11 @@ namespace
         struct LinkedNode
         {
             T data;
-            std::unique_ptr<LinkedNode> nextSibling;
-            std::unique_ptr<LinkedNode> firstChild;
+            LinkedNode* nextSibling;
+            LinkedNode* firstChild;
         };
 
-        std::unique_ptr<LinkedNode> rootNode;
+        std::deque<LinkedNode> pool;
 
     public:
         struct ConstIterator
@@ -46,7 +46,7 @@ namespace
 
             auto begin() const -> ConstIterator
             {
-                return {node->firstChild.get()};
+                return {node->firstChild};
             }
 
             auto end() const -> ConstIterator
@@ -56,7 +56,7 @@ namespace
 
             auto operator++()
             {
-                node = node->nextSibling.get();
+                node = node->nextSibling;
             }
 
             auto operator->() const -> const T*
@@ -87,7 +87,7 @@ namespace
 
             auto begin() const -> Iterator
             {
-                return {node->firstChild.get()};
+                return {node->firstChild};
             }
 
             auto end() const -> Iterator
@@ -97,7 +97,7 @@ namespace
 
             auto operator++()
             {
-                node = node->nextSibling.get();
+                node = node->nextSibling;
             }
 
             auto operator->() -> T*
@@ -135,32 +135,29 @@ namespace
         auto addChild(Iterator pos, T data) -> Iterator
         {
             if (pos == Iterator{})
-            {
-                rootNode = std::make_unique<LinkedNode>(std::move(data));
-                return Iterator{rootNode.get()};
-            }
+                return Iterator{&pool.emplace_back(std::move(data))};
 
             assert(pos.node->firstChild == nullptr); // FIXME: this is a weird requirement
-            pos.node->firstChild = std::make_unique<LinkedNode>(std::move(data));
-            return {pos.node->firstChild.get()};
+            pos.node->firstChild = &pool.emplace_back(std::move(data));
+            return {pos.node->firstChild};
         }
 
         auto addSibling(Iterator pos, T data) -> Iterator
         {
-            assert(pos.node != rootNode.get());
+            assert(pos != root());
             assert(pos.node->nextSibling == nullptr); // FIXME: this is a weird requirement
-            pos.node->nextSibling = std::make_unique<LinkedNode>(std::move(data));
-            return {pos.node->nextSibling.get()};
+            pos.node->nextSibling = &pool.emplace_back(std::move(data));
+            return {pos.node->nextSibling};
         }
 
         auto root() -> Iterator
         {
-            return {rootNode.get()};
+            return {&pool.front()};
         }
 
         auto root() const -> ConstIterator
         {
-            return {rootNode.get()};
+            return {&pool.front()};
         }
     };
 
