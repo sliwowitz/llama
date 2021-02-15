@@ -771,7 +771,7 @@ namespace
             const auto& children = node.children();
 
             // iterate on children nearer than our current intersection in the order they are hit by the ray
-            boost::container::static_vector<std::pair<float, int>, 8> childDists;
+            boost::container::static_vector<std::pair<int, float>, 8> childDists;
             for (int i = 0; i < 8; i++)
                 if (const auto [tmin, tmax] = intersectBox(ray, children[i]->box);
                     tmin != noHit && tmax > 0 && tmin < nearestHit.distance)
