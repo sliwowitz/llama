@@ -669,7 +669,7 @@ namespace
             std::vector<PreparedTriangle> triangles;
             std::vector<Sphere> spheres;
         };
-        using Children = std::array<std::unique_ptr<OctreeNode>, 8>;
+        using Children = std::array<OctreeNode*, 8>;
         std::variant<Objects, Children> content;
 
         inline auto hasChildren() const -> bool
@@ -698,20 +698,20 @@ namespace
         }
 
         template <typename T>
-        void addObject(const T& object, int depth = 0)
+        void addObject(std::deque<OctreeNode>& pool, const T& object, int depth = 0)
         {
             if (hasChildren())
             {
                 for (auto& c : children())
                     if (overlaps(object, c->box))
-                        c->addObject(object, depth + 1);
+                        c->addObject(pool, object, depth + 1);
             }
             else
             {
                 if (shouldSplit(depth))
                 {
-                    split(depth);
-                    addObject(object, depth);
+                    split(pool, depth);
+                    addObject(pool, object, depth);
                 }
                 else
                 {
@@ -733,7 +733,7 @@ namespace
             return depth < maxDepth && objects.triangles.size() >= maxTrianglesPerNode;
         }
 
-        inline void split(int depth)
+        inline void split(std::deque<OctreeNode>& pool, int depth)
         {
             auto objects = std::move(std::get<Objects>(content));
             auto& children = content.emplace<Children>();
@@ -753,13 +753,13 @@ namespace
                                 points[y + 1][1],
                                 points[z + 1][2],
                             }};
-                        children[z * 4 + y * 2 + x] = std::make_unique<OctreeNode>(childBox);
+                        children[z * 4 + y * 2 + x] = &pool.emplace_back(OctreeNode{childBox});
                     }
 
             for (const auto& s : objects.spheres)
-                addObject(s, depth);
+                addObject(pool, s, depth);
             for (const auto& t : objects.triangles)
-                addObject(t, depth);
+                addObject(pool, t, depth);
         }
     };
 
@@ -864,6 +864,7 @@ namespace
     {
         Camera camera;
         OctreeNode tree;
+        std::deque<OctreeNode> nodePool;
         std::vector<Image> textures;
     };
 
@@ -1068,10 +1069,10 @@ namespace
                   << "KiB)\n";
 
         scene.tree = OctreeNode{box};
-        scene.tree.addObject(sphere1);
-        scene.tree.addObject(sphere2);
+        scene.tree.addObject(scene.nodePool, sphere1);
+        scene.tree.addObject(scene.nodePool, sphere2);
         for (const auto& t : triangles)
-            scene.tree.addObject(prepare(t));
+            scene.tree.addObject(scene.nodePool, prepare(t));
 
         return scene;
     }
