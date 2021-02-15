@@ -776,6 +776,7 @@ namespace
                 if (const auto [tmin, tmax] = intersectBox(ray, children[i]->box);
                     tmin != noHit && tmax > 0 && tmin < nearestHit.distance)
                     childDists.emplace_back(i, tmin);
+            std::sort(childDists.begin(), childDists.end(), [](auto a, auto b) { return a.second < b.second; });
 
             for (const auto [childIndex, childDist] : childDists)
                 intersectNodeRecursive(ray, *children[childIndex], nearestHit);
