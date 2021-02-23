@@ -33,8 +33,10 @@ namespace
         struct LinkedNode
         {
             T data;
-            LinkedNode* nextSibling;
-            LinkedNode* firstChild;
+            // LinkedNode* nextSibling;
+            // LinkedNode* firstChild;
+            uint32_t nextSibling = 0;
+            uint32_t firstChild = 0;
         };
 
         std::deque<LinkedNode> pool;
@@ -46,27 +48,27 @@ namespace
 
             auto begin() const -> ConstIterator
             {
-                return {node->firstChild};
+                return {tree, node().firstChild};
             }
 
             auto end() const -> ConstIterator
             {
-                return {};
+                return {tree, 0};
             }
 
             auto operator++()
             {
-                node = node->nextSibling;
+                index = node().nextSibling;
             }
 
             auto operator->() const -> const T*
             {
-                return &node->data;
+                return &node().data;
             }
 
             auto operator*() const -> const T&
             {
-                return node->data;
+                return node().data;
             }
 
             auto operator==(const ConstIterator&) const -> bool = default;
@@ -74,11 +76,17 @@ namespace
         private:
             friend class Tree;
 
-            ConstIterator(const LinkedNode* node) : node(node)
+            ConstIterator(const Tree* tree, uint32_t index) : tree(tree), index(index)
             {
             }
 
-            const LinkedNode* node = nullptr;
+            const auto& node() const
+            {
+                return tree->pool[index];
+            }
+
+            const Tree* tree = nullptr;
+            uint32_t index = 0;
         };
 
         struct Iterator
@@ -87,37 +95,37 @@ namespace
 
             auto begin() const -> Iterator
             {
-                return {node->firstChild};
+                return {tree, node().firstChild};
             }
 
             auto end() const -> Iterator
             {
-                return {};
+                return {tree, 0};
             }
 
             auto operator++()
             {
-                node = node->nextSibling;
+                index = node().nextSibling;
             }
 
             auto operator->() -> T*
             {
-                return &node->data;
+                return &node().data;
             }
 
             auto operator->() const -> const T*
             {
-                return &node->data;
+                return &node().data;
             }
 
             auto operator*() -> T&
             {
-                return node->data;
+                return node().data;
             }
 
             auto operator*() const -> const T&
             {
-                return node->data;
+                return node().data;
             }
 
             auto operator==(const Iterator&) const -> bool = default;
@@ -125,39 +133,58 @@ namespace
         private:
             friend class Tree;
 
-            Iterator(LinkedNode* node) : node(node)
+            Iterator(Tree* tree, uint32_t index) : tree(tree), index(index)
             {
             }
 
-            LinkedNode* node = nullptr;
+            auto& node()
+            {
+                return tree->pool[index];
+            }
+
+            const auto& node() const
+            {
+                return tree->pool[index];
+            }
+
+            Tree* tree = nullptr;
+            uint32_t index = 0;
         };
 
         auto addChild(Iterator pos, T data) -> Iterator
         {
+            const auto index = static_cast<uint32_t>(pool.size());
             if (pos == Iterator{})
-                return Iterator{&pool.emplace_back(std::move(data))};
+            {
+                assert(index == 0);
+                pool.emplace_back(std::move(data));
+                return {this, 0};
+            }
 
-            assert(pos.node->firstChild == nullptr); // FIXME: this is a weird requirement
-            pos.node->firstChild = &pool.emplace_back(std::move(data));
-            return {pos.node->firstChild};
+            assert(pos.node().firstChild == 0); // FIXME: this is a weird requirement
+            pos.node().firstChild = index;
+            pool.emplace_back(std::move(data));
+            return {this, index};
         }
 
         auto addSibling(Iterator pos, T data) -> Iterator
         {
             assert(pos != root());
-            assert(pos.node->nextSibling == nullptr); // FIXME: this is a weird requirement
-            pos.node->nextSibling = &pool.emplace_back(std::move(data));
-            return {pos.node->nextSibling};
+            assert(pos.node().nextSibling == 0); // FIXME: this is a weird requirement
+            const auto index = static_cast<uint32_t>(pool.size());
+            pos.node().nextSibling = index;
+            pool.emplace_back(std::move(data));
+            return {this, index};
         }
 
         auto root() -> Iterator
         {
-            return {&pool.front()};
+            return {this, 0};
         }
 
         auto root() const -> ConstIterator
         {
-            return {&pool.front()};
+            return {this, 0};
         }
     };
 
