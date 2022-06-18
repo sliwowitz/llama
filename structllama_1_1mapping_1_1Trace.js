@@ -1,17 +1,16 @@
 var structllama_1_1mapping_1_1Trace =
 [
-    [ "ArrayDomain", "structllama_1_1mapping_1_1Trace.html#ae61e46d69d4877f3055e29a531fb53fc", null ],
-    [ "DatumDomain", "structllama_1_1mapping_1_1Trace.html#a7e6764d1a661783589b6ec5f14cb1057", null ],
-    [ "Trace", "structllama_1_1mapping_1_1Trace.html#a620a59b31532666fa18b7c6d0c2b38d1", null ],
-    [ "Trace", "structllama_1_1mapping_1_1Trace.html#a905c419daebd74a348ba0be6d45c4db8", null ],
-    [ "Trace", "structllama_1_1mapping_1_1Trace.html#a6b0435b68d2741eb5101c14c31f9c14f", null ],
-    [ "Trace", "structllama_1_1mapping_1_1Trace.html#a9a386934616e82fcf34bb53c93c35372", null ],
-    [ "~Trace", "structllama_1_1mapping_1_1Trace.html#a8feb8f4eba7493c7f1841de134f3a044", null ],
-    [ "getBlobNrAndOffset", "structllama_1_1mapping_1_1Trace.html#a8119870933a998e894d5a9fb7bc2690a", null ],
-    [ "getBlobSize", "structllama_1_1mapping_1_1Trace.html#a91ad40203de91cffe5e23241bf4b63dc", null ],
-    [ "operator=", "structllama_1_1mapping_1_1Trace.html#ae93708151ca7e2742d1bd9576ab95464", null ],
-    [ "operator=", "structllama_1_1mapping_1_1Trace.html#a52eef7a20f2921e73c6e4d0726b8998f", null ],
-    [ "blobCount", "structllama_1_1mapping_1_1Trace.html#a5248b9cc8a6a9f569009d33d24cb2108", null ],
-    [ "datumHits", "structllama_1_1mapping_1_1Trace.html#ab48ce5ba844f9c2462ec43ad8ca8c7d3", null ],
-    [ "mapping", "structllama_1_1mapping_1_1Trace.html#a4de28c7220fbe298bd65a27d295fa5ca", null ]
+    [ "FieldHitsArray", "structllama_1_1mapping_1_1Trace.html#acb5b733df736b1ea00327f6a1a435278", null ],
+    [ "RecordDim", "structllama_1_1mapping_1_1Trace.html#a3b083e5692e059286b265f7971e37b70", null ],
+    [ "Trace", "structllama_1_1mapping_1_1Trace.html#a857166cd19b5580a1410b651d241ef2d", null ],
+    [ "Trace", "structllama_1_1mapping_1_1Trace.html#aeb342d1891f2a0a605adbe784cdef6e1", null ],
+    [ "Trace", "structllama_1_1mapping_1_1Trace.html#aee95d1315699a678f452bd88991e7b77", null ],
+    [ "blobSize", "structllama_1_1mapping_1_1Trace.html#afc8c1b7a7c5887aaefae0b0b87049d2b", null ],
+    [ "compute", "structllama_1_1mapping_1_1Trace.html#a8ee4c40dc3420283ef15ae0de916fc5b", null ],
+    [ "fieldHits", "structllama_1_1mapping_1_1Trace.html#adab4804163a7cf02eae23a235ee664e9", null ],
+    [ "fieldHits", "structllama_1_1mapping_1_1Trace.html#a6ed05dd1e25f7b8d4d1351e40d3c21e5", null ],
+    [ "isComputed", "structllama_1_1mapping_1_1Trace.html#a2d2fca0e436f91c5ad0344fba8eb183f", null ],
+    [ "printFieldHits", "structllama_1_1mapping_1_1Trace.html#a07b7a9ee294c49240495cc685d0149d0", null ],
+    [ "printFieldHits", "structllama_1_1mapping_1_1Trace.html#a611f3fa87c612b959e647723360319fd", null ],
+    [ "blobCount", "structllama_1_1mapping_1_1Trace.html#a6c94db7c244e79bcf3a8f81483d6bc9c", null ]
 ];

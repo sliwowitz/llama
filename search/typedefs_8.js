@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['mapping',['Mapping',['../structllama_1_1View.html#a6fda3f215fb07b475e691dbb18fabb48',1,'llama::View::Mapping()'],['../structllama_1_1VirtualView.html#ab8b386434df0aed417e974b69a7379b3',1,'llama::VirtualView::Mapping()']]],
-  ['mergedfunctors',['MergedFunctors',['../structllama_1_1mapping_1_1tree_1_1Mapping.html#a68d46521936f23489bbeff158476ed66',1,'llama::mapping::tree::Mapping']]],
-  ['movertdownfixed',['MoveRTDownFixed',['../namespacellama_1_1mapping_1_1tree_1_1functor.html#a46fd8bc008da6eba913067adc8259b33',1,'llama::mapping::tree::functor']]],
-  ['mp_5funwrap_5fsizes',['mp_unwrap_sizes',['../namespacellama_1_1internal.html#a7f5181ee5a37449e252d4db6199f566f',1,'llama::internal']]]
+  ['largestintegral_1113',['LargestIntegral',['../namespacellama_1_1mapping_1_1internal.html#a702eab9c841dbc5d1fa483dd875d243e',1,'llama::mapping::internal']]],
+  ['leafrecordcoords_1114',['LeafRecordCoords',['../namespacellama.html#ab0c1ac83b09aa8a960eca20d2aea3a98',1,'llama']]],
+  ['lessalignment_1115',['LessAlignment',['../namespacellama_1_1mapping_1_1internal.html#a761919af792a2052749e060dec4adafe',1,'llama::mapping::internal']]],
+  ['linearizearraydimsfunctor_1116',['LinearizeArrayDimsFunctor',['../structllama_1_1mapping_1_1AoS.html#a70a29b7e8daa8b58da7b4237b099ce48',1,'llama::mapping::AoS::LinearizeArrayDimsFunctor()'],['../structllama_1_1mapping_1_1AoSoA.html#ab32fce1dffdac3cddc3895784c3e53fb',1,'llama::mapping::AoSoA::LinearizeArrayDimsFunctor()'],['../structllama_1_1mapping_1_1SoA.html#a5f59c50938d2aaa41ebb3e16c7d666cd',1,'llama::mapping::SoA::LinearizeArrayDimsFunctor()']]],
+  ['list_1117',['List',['../structllama_1_1RecordCoord.html#a3d0e76f270b2cd29cb8c679457e80d69',1,'llama::RecordCoord::List()'],['../structllama_1_1RecordCoord_3_4.html#af136f6c5e5834f593c30a4b8370054c3',1,'llama::RecordCoord&lt;&gt;::List()']]]
 ];

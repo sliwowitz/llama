@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['basictree',['BasicTree',['../structllama_1_1mapping_1_1tree_1_1Mapping.html#a4d5d74e716309afc8fdde943d3b9bc96',1,'llama::mapping::tree::Mapping']]]
+  ['basictree_1081',['BasicTree',['../structllama_1_1mapping_1_1tree_1_1Mapping.html#a13c03ef6c616381ab538d7493dc01105',1,'llama::mapping::tree::Mapping']]],
+  ['boundrecordcoord_1082',['BoundRecordCoord',['../structllama_1_1VirtualRecord.html#a2cf2a8dc5a0b7c23fa886ffd71847d0f',1,'llama::VirtualRecord']]]
 ];

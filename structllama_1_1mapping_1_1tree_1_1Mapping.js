@@ -1,17 +1,18 @@
 var structllama_1_1mapping_1_1tree_1_1Mapping =
 [
-    [ "ArrayDomain", "structllama_1_1mapping_1_1tree_1_1Mapping.html#a1a0c147e8335c0ef4f1a848a53085610", null ],
-    [ "BasicTree", "structllama_1_1mapping_1_1tree_1_1Mapping.html#a4d5d74e716309afc8fdde943d3b9bc96", null ],
-    [ "DatumDomain", "structllama_1_1mapping_1_1tree_1_1Mapping.html#a326fa0eb579e56691bb8b73593128ab6", null ],
-    [ "MergedFunctors", "structllama_1_1mapping_1_1tree_1_1Mapping.html#a68d46521936f23489bbeff158476ed66", null ],
-    [ "ResultTree", "structllama_1_1mapping_1_1tree_1_1Mapping.html#ad7e4eaa29d697afaeb3df04de4f7fd38", null ],
-    [ "Mapping", "structllama_1_1mapping_1_1tree_1_1Mapping.html#a2cd1d88d98f8ace7bc1fdad463a98692", null ],
-    [ "Mapping", "structllama_1_1mapping_1_1tree_1_1Mapping.html#ae12bb301a2e65519e3a304d4c4caf629", null ],
-    [ "getBlobNrAndOffset", "structllama_1_1mapping_1_1tree_1_1Mapping.html#a34c33a06bb2f1ea3758d7fbba9813c8c", null ],
-    [ "getBlobSize", "structllama_1_1mapping_1_1tree_1_1Mapping.html#a81732b968ec4bafc967f4df55b79bc2f", null ],
-    [ "arrayDomainSize", "structllama_1_1mapping_1_1tree_1_1Mapping.html#a82a658b85763d76cad96e09cbbb49cfe", null ],
-    [ "basicTree", "structllama_1_1mapping_1_1tree_1_1Mapping.html#a2d3a31c9e196af9f7ece525154f62d3f", null ],
-    [ "blobCount", "structllama_1_1mapping_1_1tree_1_1Mapping.html#aea2382822be62ec4c1d6ff17ab8e634f", null ],
-    [ "mergedFunctors", "structllama_1_1mapping_1_1tree_1_1Mapping.html#a40dc7cdde5a0fe795ec9f62d37706c7c", null ],
-    [ "resultTree", "structllama_1_1mapping_1_1tree_1_1Mapping.html#aa8da555a791c7fa1146b26e2ebd8bc5e", null ]
+    [ "ArrayExtents", "structllama_1_1mapping_1_1tree_1_1Mapping.html#a18be9f1a4fc4f99d932eca8ba09c406d", null ],
+    [ "ArrayIndex", "structllama_1_1mapping_1_1tree_1_1Mapping.html#aaa2f0af194a2bddb45e11522f11b0221", null ],
+    [ "BasicTree", "structllama_1_1mapping_1_1tree_1_1Mapping.html#a13c03ef6c616381ab538d7493dc01105", null ],
+    [ "MergedFunctors", "structllama_1_1mapping_1_1tree_1_1Mapping.html#a497d204c1f51e5c9213fe50f4fe6199c", null ],
+    [ "RecordDim", "structllama_1_1mapping_1_1tree_1_1Mapping.html#a918b6b31180de12b1cc42bcb340411a5", null ],
+    [ "ResultTree", "structllama_1_1mapping_1_1tree_1_1Mapping.html#acb96520922aa3b98fd2ed8b14e7d8e04", null ],
+    [ "Mapping", "structllama_1_1mapping_1_1tree_1_1Mapping.html#ad6a24222f361e29632ad42e5d3fd1f20", null ],
+    [ "Mapping", "structllama_1_1mapping_1_1tree_1_1Mapping.html#a5a86485e3f5a72228c2831ff8a708125", null ],
+    [ "blobNrAndOffset", "structllama_1_1mapping_1_1tree_1_1Mapping.html#a23330da570f0c0ead06062b51bbc938c", null ],
+    [ "blobSize", "structllama_1_1mapping_1_1tree_1_1Mapping.html#aa1b1425f46265e63de759e2257355666", null ],
+    [ "extents", "structllama_1_1mapping_1_1tree_1_1Mapping.html#ad4134a52459174535c33f52bca737855", null ],
+    [ "basicTree", "structllama_1_1mapping_1_1tree_1_1Mapping.html#ab63f2b5381d208c6de3c0860c748988d", null ],
+    [ "blobCount", "structllama_1_1mapping_1_1tree_1_1Mapping.html#add630d751b504ff1e133ae1188d6016b", null ],
+    [ "mergedFunctors", "structllama_1_1mapping_1_1tree_1_1Mapping.html#a4361d3fef8c59d58c37bdeb5fb209cd8", null ],
+    [ "resultTree", "structllama_1_1mapping_1_1tree_1_1Mapping.html#a05de6e64a1ae1d70c6ee6dd7e8387636", null ]
 ];

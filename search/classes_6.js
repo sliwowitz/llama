@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['idem',['Idem',['../structllama_1_1mapping_1_1tree_1_1functor_1_1Idem.html',1,'llama::mapping::tree::functor']]]
+  ['heatmap_647',['Heatmap',['../structllama_1_1mapping_1_1Heatmap.html',1,'llama::mapping']]]
 ];
