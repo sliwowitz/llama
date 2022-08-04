@@ -63,11 +63,8 @@ var Core_8hpp =
     [ "offsetOfImplWorkaround", "Core_8hpp.html#a8420725970ab9da75999e4dfad4e8590", null ],
     [ "operator!=", "Core_8hpp.html#a4a8faed7400b66b8a3d13185ea2a26e4", null ],
     [ "operator==", "Core_8hpp.html#a5c7f2c72590f73698ff6f31ba44ec0a3", null ],
-    [ "recordCoordTags", "Core_8hpp.html#aa73dcab7bd83ce896605808b5a5c4020", null ],
     [ "roundUpToMultiple", "Core_8hpp.html#ab9c5c0a1ca0698a8871689b9924736ac", null ],
     [ "sizeOfImpl", "Core_8hpp.html#aeab53e4609fe07abfb6f5f2d532cd388", null ],
-    [ "structName", "Core_8hpp.html#aeb3d43be3a5b6ce8de6469edd28d4a02", null ],
-    [ "structName", "Core_8hpp.html#a5ff901e3012935d38350c0f68e044fe5", null ],
     [ "alignOf", "Core_8hpp.html#af54c80b077fb3d417466c83d0d005907", null ],
     [ "alignOf< Record< Fields... > >", "Core_8hpp.html#a945addc7fc78f444f37bb79d099cfd84", null ],
     [ "flatAlignOf", "Core_8hpp.html#a6f2067ffe5979128e7efaf1fd4c35810", null ],
@@ -88,8 +85,6 @@ var Core_8hpp =
     [ "isRecord", "Core_8hpp.html#a3b2aa8fd3e43e43b830bc4a71b180175", null ],
     [ "isRecord< Record< Fields... > >", "Core_8hpp.html#adee8dc812f8d14dbea092728c88a937d", null ],
     [ "offsetOf", "Core_8hpp.html#aae03df933faef61723569d4655563bbe", null ],
-    [ "offsetOfImpl", "Core_8hpp.html#aa2299e5867f7c90d4c67225474bd27a8", null ],
-    [ "offsetOfImpl< Align, TypeList, 0 >", "Core_8hpp.html#ae1f7c19ca39d418ef7d866f6d41e41ea", null ],
     [ "sizeOf", "Core_8hpp.html#a2404e09083dc2c685bc283cd4ead0edc", null ],
     [ "sizeOf< Record< Fields... >, Align, IncludeTailPadding >", "Core_8hpp.html#a585d55cd3a51152ec452bc1f2d49a3ec", null ]
 ];
