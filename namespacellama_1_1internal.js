@@ -1,6 +1,7 @@
 var namespacellama_1_1internal =
 [
     [ "Assign", "structllama_1_1internal_1_1Assign.html", "structllama_1_1internal_1_1Assign" ],
+    [ "BindMakeSizedSimd", "structllama_1_1internal_1_1BindMakeSizedSimd.html", "structllama_1_1internal_1_1BindMakeSizedSimd" ],
     [ "BoxedValue", "structllama_1_1internal_1_1BoxedValue.html", "structllama_1_1internal_1_1BoxedValue" ],
     [ "BoxedValue< Constant< V >, I >", "structllama_1_1internal_1_1BoxedValue_3_01Constant_3_01V_01_4_00_01I_01_4.html", "structllama_1_1internal_1_1BoxedValue_3_01Constant_3_01V_01_4_00_01I_01_4" ],
     [ "DivideAssign", "structllama_1_1internal_1_1DivideAssign.html", "structllama_1_1internal_1_1DivideAssign" ],
@@ -32,6 +33,8 @@ var namespacellama_1_1internal =
     [ "IsBoundedArray< T[N]>", "structllama_1_1internal_1_1IsBoundedArray_3_01T_0fN_0e_4.html", null ],
     [ "IsComputed", "structllama_1_1internal_1_1IsComputed.html", null ],
     [ "IsComputed< Mapping, RecordCoord, std::void_t< decltype(Mapping::isComputed(RecordCoord{}))> >", "structllama_1_1internal_1_1IsComputed_3_01Mapping_00_01RecordCoord_00_01std_1_1void__t_3_01declt31ec39d02aa75d5ea3308109fe018112.html", null ],
+    [ "IsConstant", "structllama_1_1internal_1_1IsConstant.html", null ],
+    [ "IsConstant< std::integral_constant< T, V > >", "structllama_1_1internal_1_1IsConstant_3_01std_1_1integral__constant_3_01T_00_01V_01_4_01_4.html", null ],
     [ "IsProxyReferenceImpl", "structllama_1_1internal_1_1IsProxyReferenceImpl.html", null ],
     [ "IsProxyReferenceImpl< R, std::void_t< typename R::value_type, decltype(static_cast< typename R::value_type >(std::declval< R & >())), decltype(std::declval< R & >()=std::declval< typename R::value_type >())> >", "structllama_1_1internal_1_1IsProxyReferenceImpl_3_01R_00_01std_1_1void__t_3_01typename_01R_1_1vaf29d5bd88afd76084d03518114f19340.html", null ],
     [ "LeafRecordCoordsImpl", "structllama_1_1internal_1_1LeafRecordCoordsImpl.html", null ],
@@ -46,11 +49,14 @@ var namespacellama_1_1internal =
     [ "MultiplyAssign", "structllama_1_1internal_1_1MultiplyAssign.html", "structllama_1_1internal_1_1MultiplyAssign" ],
     [ "PlusAssign", "structllama_1_1internal_1_1PlusAssign.html", "structllama_1_1internal_1_1PlusAssign" ],
     [ "ReferenceTo", "structllama_1_1internal_1_1ReferenceTo.html", "structllama_1_1internal_1_1ReferenceTo" ],
-    [ "ReferenceTo< T, std::enable_if_t< is_RecordRef< T > &&!is_One< T > > >", "structllama_1_1internal_1_1ReferenceTo_3_01T_00_01std_1_1enable__if__t_3_01is__RecordRef_3_01T_02d33164bb39d0262029d90bd66129e01.html", "structllama_1_1internal_1_1ReferenceTo_3_01T_00_01std_1_1enable__if__t_3_01is__RecordRef_3_01T_02d33164bb39d0262029d90bd66129e01" ],
     [ "ReferenceTo< T, std::enable_if_t< isProxyReference< T > > >", "structllama_1_1internal_1_1ReferenceTo_3_01T_00_01std_1_1enable__if__t_3_01isProxyReference_3_01T_01_4_01_4_01_4.html", "structllama_1_1internal_1_1ReferenceTo_3_01T_00_01std_1_1enable__if__t_3_01isProxyReference_3_01T_01_4_01_4_01_4" ],
+    [ "ReferenceTo< T, std::enable_if_t< isRecordRef< T > &&!isOne< T > > >", "structllama_1_1internal_1_1ReferenceTo_3_01T_00_01std_1_1enable__if__t_3_01isRecordRef_3_01T_01_8c16ab8a221dc30e1372285c3494e8f7.html", "structllama_1_1internal_1_1ReferenceTo_3_01T_00_01std_1_1enable__if__t_3_01isRecordRef_3_01T_01_8c16ab8a221dc30e1372285c3494e8f7" ],
     [ "ReplacePlaceholdersImpl", "structllama_1_1internal_1_1ReplacePlaceholdersImpl.html", "structllama_1_1internal_1_1ReplacePlaceholdersImpl" ],
     [ "ReplacePlaceholdersImpl< boost::mp11::mp_arg< I >, Args... >", "structllama_1_1internal_1_1ReplacePlaceholdersImpl_3_01boost_1_1mp11_1_1mp__arg_3_01I_01_4_00_01Args_8_8_8_01_4.html", "structllama_1_1internal_1_1ReplacePlaceholdersImpl_3_01boost_1_1mp11_1_1mp__arg_3_01I_01_4_00_01Args_8_8_8_01_4" ],
     [ "ReplacePlaceholdersImpl< E< Ts... >, Args... >", "structllama_1_1internal_1_1ReplacePlaceholdersImpl_3_01E_3_01Ts_8_8_8_01_4_00_01Args_8_8_8_01_4.html", "structllama_1_1internal_1_1ReplacePlaceholdersImpl_3_01E_3_01Ts_8_8_8_01_4_00_01Args_8_8_8_01_4" ],
+    [ "SimdizeNImpl", "structllama_1_1internal_1_1SimdizeNImpl.html", "structllama_1_1internal_1_1SimdizeNImpl" ],
+    [ "SimdizeNImpl< RecordDim, 1, MakeSizedSimd >", "structllama_1_1internal_1_1SimdizeNImpl_3_01RecordDim_00_011_00_01MakeSizedSimd_01_4.html", "structllama_1_1internal_1_1SimdizeNImpl_3_01RecordDim_00_011_00_01MakeSizedSimd_01_4" ],
+    [ "SizeEqualTo", "structllama_1_1internal_1_1SizeEqualTo.html", "structllama_1_1internal_1_1SizeEqualTo" ],
     [ "TransformLeavesWithCoordImpl", "structllama_1_1internal_1_1TransformLeavesWithCoordImpl.html", "structllama_1_1internal_1_1TransformLeavesWithCoordImpl" ],
     [ "TransformLeavesWithCoordImpl< RecordCoord< Is... >, Child[N], TypeFunctor >", "structllama_1_1internal_1_1TransformLeavesWithCoordImpl_3_01RecordCoord_3_01Is_8_8_8_01_4_00_01C1fa9eea95bd347b217962f0d40f323c8.html", "structllama_1_1internal_1_1TransformLeavesWithCoordImpl_3_01RecordCoord_3_01Is_8_8_8_01_4_00_01C1fa9eea95bd347b217962f0d40f323c8" ],
     [ "TransformLeavesWithCoordImpl< RecordCoord< Is... >, Record< Fields... >, TypeFunctor >", "structllama_1_1internal_1_1TransformLeavesWithCoordImpl_3_01RecordCoord_3_01Is_8_8_8_01_4_00_01R42adaa4e9e950291b6a81a9b9f4ba005.html", "structllama_1_1internal_1_1TransformLeavesWithCoordImpl_3_01RecordCoord_3_01Is_8_8_8_01_4_00_01R42adaa4e9e950291b6a81a9b9f4ba005" ],
@@ -58,6 +64,6 @@ var namespacellama_1_1internal =
     [ "TupleLeaf< I, T, true >", "structllama_1_1internal_1_1TupleLeaf_3_01I_00_01T_00_01true_01_4.html", "structllama_1_1internal_1_1TupleLeaf_3_01I_00_01T_00_01true_01_4" ],
     [ "ValueOf", "structllama_1_1internal_1_1ValueOf.html", null ],
     [ "ValueOf< T & >", "structllama_1_1internal_1_1ValueOf_3_01T_01_6_01_4.html", "structllama_1_1internal_1_1ValueOf_3_01T_01_6_01_4" ],
-    [ "ValueOf< T, std::enable_if_t< is_RecordRef< T > > >", "structllama_1_1internal_1_1ValueOf_3_01T_00_01std_1_1enable__if__t_3_01is__RecordRef_3_01T_01_4_01_4_01_4.html", "structllama_1_1internal_1_1ValueOf_3_01T_00_01std_1_1enable__if__t_3_01is__RecordRef_3_01T_01_4_01_4_01_4" ],
-    [ "ValueOf< T, std::enable_if_t< isProxyReference< T > > >", "structllama_1_1internal_1_1ValueOf_3_01T_00_01std_1_1enable__if__t_3_01isProxyReference_3_01T_01_4_01_4_01_4.html", "structllama_1_1internal_1_1ValueOf_3_01T_00_01std_1_1enable__if__t_3_01isProxyReference_3_01T_01_4_01_4_01_4" ]
+    [ "ValueOf< T, std::enable_if_t< isProxyReference< T > > >", "structllama_1_1internal_1_1ValueOf_3_01T_00_01std_1_1enable__if__t_3_01isProxyReference_3_01T_01_4_01_4_01_4.html", "structllama_1_1internal_1_1ValueOf_3_01T_00_01std_1_1enable__if__t_3_01isProxyReference_3_01T_01_4_01_4_01_4" ],
+    [ "ValueOf< T, std::enable_if_t< isRecordRef< T > > >", "structllama_1_1internal_1_1ValueOf_3_01T_00_01std_1_1enable__if__t_3_01isRecordRef_3_01T_01_4_01_4_01_4.html", "structllama_1_1internal_1_1ValueOf_3_01T_00_01std_1_1enable__if__t_3_01isRecordRef_3_01T_01_4_01_4_01_4" ]
 ];

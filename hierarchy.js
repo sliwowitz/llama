@@ -24,6 +24,7 @@ var hierarchy =
     [ "llama::mapping::BindBitPackedIntSoA< Bits, LinearizeArrayDimsFunctor, StoredIntegral >", "structllama_1_1mapping_1_1BindBitPackedIntSoA.html", null ],
     [ "llama::mapping::BindBytesplit< InnerMapping >", "structllama_1_1mapping_1_1BindBytesplit.html", null ],
     [ "llama::mapping::BindChangeType< InnerMapping, ReplacementMap >", "structllama_1_1mapping_1_1BindChangeType.html", null ],
+    [ "llama::internal::BindMakeSizedSimd< N, MakeSizedSimd >", "structllama_1_1internal_1_1BindMakeSizedSimd.html", null ],
     [ "llama::mapping::BindOne< AlignAndPad, FlattenRecordDim >", "structllama_1_1mapping_1_1BindOne.html", null ],
     [ "llama::mapping::BindSoA< SeparateBuffers, AlignSubArrays, LinearizeArrayDimsFunctor >", "structllama_1_1mapping_1_1BindSoA.html", null ],
     [ "llama::mapping::BindSplit< RecordCoordsForMapping1, MappingTemplate1, MappingTemplate2, SeparateBlobs >", "structllama_1_1mapping_1_1BindSplit.html", null ],
@@ -55,6 +56,7 @@ var hierarchy =
     [ "false_type", null, [
       [ "llama::internal::IsBoundedArray< T >", "structllama_1_1internal_1_1IsBoundedArray.html", null ],
       [ "llama::internal::IsComputed< Mapping, RecordCoord, typename >", "structllama_1_1internal_1_1IsComputed.html", null ],
+      [ "llama::internal::IsConstant< T >", "structllama_1_1internal_1_1IsConstant.html", null ],
       [ "llama::internal::IsProxyReferenceImpl< R, typename >", "structllama_1_1internal_1_1IsProxyReferenceImpl.html", null ]
     ] ],
     [ "llama::Field< Tag, Type >", "structllama_1_1Field.html", null ],
@@ -175,12 +177,17 @@ var hierarchy =
     [ "llama::RecordCoord<>", "structllama_1_1RecordCoord_3_4.html", null ],
     [ "llama::RecordRef< TView, TBoundRecordCoord, OwnView >", "structllama_1_1RecordRef.html", null ],
     [ "llama::internal::ReferenceTo< T, typename >", "structllama_1_1internal_1_1ReferenceTo.html", null ],
-    [ "llama::internal::ReferenceTo< T, std::enable_if_t< is_RecordRef< T > &&!is_One< T > > >", "structllama_1_1internal_1_1ReferenceTo_3_01T_00_01std_1_1enable__if__t_3_01is__RecordRef_3_01T_02d33164bb39d0262029d90bd66129e01.html", null ],
     [ "llama::internal::ReferenceTo< T, std::enable_if_t< isProxyReference< T > > >", "structllama_1_1internal_1_1ReferenceTo_3_01T_00_01std_1_1enable__if__t_3_01isProxyReference_3_01T_01_4_01_4_01_4.html", null ],
+    [ "llama::internal::ReferenceTo< T, std::enable_if_t< isRecordRef< T > &&!isOne< T > > >", "structllama_1_1internal_1_1ReferenceTo_3_01T_00_01std_1_1enable__if__t_3_01isRecordRef_3_01T_01_8c16ab8a221dc30e1372285c3494e8f7.html", null ],
     [ "llama::internal::ReplacePlaceholdersImpl< E, Args >", "structllama_1_1internal_1_1ReplacePlaceholdersImpl.html", null ],
     [ "llama::internal::ReplacePlaceholdersImpl< boost::mp11::mp_arg< I >, Args... >", "structllama_1_1internal_1_1ReplacePlaceholdersImpl_3_01boost_1_1mp11_1_1mp__arg_3_01I_01_4_00_01Args_8_8_8_01_4.html", null ],
     [ "llama::internal::ReplacePlaceholdersImpl< E< Ts... >, Args... >", "structllama_1_1internal_1_1ReplacePlaceholdersImpl_3_01E_3_01Ts_8_8_8_01_4_00_01Args_8_8_8_01_4.html", null ],
     [ "llama::bloballoc::SharedPtr", "structllama_1_1bloballoc_1_1SharedPtr.html", null ],
+    [ "llama::internal::SimdizeNImpl< RecordDim, N, MakeSizedSimd >", "structllama_1_1internal_1_1SimdizeNImpl.html", null ],
+    [ "llama::internal::SimdizeNImpl< RecordDim, 1, MakeSizedSimd >", "structllama_1_1internal_1_1SimdizeNImpl_3_01RecordDim_00_011_00_01MakeSizedSimd_01_4.html", null ],
+    [ "llama::SimdTraits< Simd, SFINAE >", "structllama_1_1SimdTraits.html", null ],
+    [ "llama::SimdTraits< T, std::enable_if_t< std::is_arithmetic_v< T > > >", "structllama_1_1SimdTraits_3_01T_00_01std_1_1enable__if__t_3_01std_1_1is__arithmetic__v_3_01T_01_4_01_4_01_4.html", null ],
+    [ "llama::internal::SizeEqualTo< S >", "structllama_1_1internal_1_1SizeEqualTo.html", null ],
     [ "llama::mapping::Split< TArrayExtents, TRecordDim, RecordCoordForMapping1, MappingTemplate1, MappingTemplate2, SeparateBlobs >", "structllama_1_1mapping_1_1Split.html", null ],
     [ "llama::bloballoc::Stack< BytesToReserve >", "structllama_1_1bloballoc_1_1Stack.html", null ],
     [ "TArrayExtents", null, [
@@ -201,6 +208,7 @@ var hierarchy =
     [ "llama::mapping::tree::TreeCoordElement< ChildIndex, ArrayIndexType >", "structllama_1_1mapping_1_1tree_1_1TreeCoordElement.html", null ],
     [ "true_type", null, [
       [ "llama::internal::IsBoundedArray< T[N]>", "structllama_1_1internal_1_1IsBoundedArray_3_01T_0fN_0e_4.html", null ],
+      [ "llama::internal::IsConstant< std::integral_constant< T, V > >", "structllama_1_1internal_1_1IsConstant_3_01std_1_1integral__constant_3_01T_00_01V_01_4_01_4.html", null ],
       [ "llama::internal::IsProxyReferenceImpl< R, std::void_t< typename R::value_type, decltype(static_cast< typename R::value_type >(std::declval< R & >())), decltype(std::declval< R & >()=std::declval< typename R::value_type >())> >", "structllama_1_1internal_1_1IsProxyReferenceImpl_3_01R_00_01std_1_1void__t_3_01typename_01R_1_1vaf29d5bd88afd76084d03518114f19340.html", null ]
     ] ],
     [ "llama::Tuple< Elements >", "structllama_1_1Tuple.html", null ],
@@ -225,8 +233,8 @@ var hierarchy =
     [ "llama::internal::ValueOf< T, typename >", "structllama_1_1internal_1_1ValueOf.html", null ],
     [ "llama::internal::ValueOf< Reference >", "structllama_1_1internal_1_1ValueOf.html", null ],
     [ "llama::internal::ValueOf< T & >", "structllama_1_1internal_1_1ValueOf_3_01T_01_6_01_4.html", null ],
-    [ "llama::internal::ValueOf< T, std::enable_if_t< is_RecordRef< T > > >", "structllama_1_1internal_1_1ValueOf_3_01T_00_01std_1_1enable__if__t_3_01is__RecordRef_3_01T_01_4_01_4_01_4.html", null ],
     [ "llama::internal::ValueOf< T, std::enable_if_t< isProxyReference< T > > >", "structllama_1_1internal_1_1ValueOf_3_01T_00_01std_1_1enable__if__t_3_01isProxyReference_3_01T_01_4_01_4_01_4.html", null ],
+    [ "llama::internal::ValueOf< T, std::enable_if_t< isRecordRef< T > > >", "structllama_1_1internal_1_1ValueOf_3_01T_00_01std_1_1enable__if__t_3_01isRecordRef_3_01T_01_4_01_4_01_4.html", null ],
     [ "llama::bloballoc::Vector", "structllama_1_1bloballoc_1_1Vector.html", null ],
     [ "llama::Vector< Mapping >", "structllama_1_1Vector.html", null ],
     [ "VHBits", null, [

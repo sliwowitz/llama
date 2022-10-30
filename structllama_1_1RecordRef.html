@@ -135,7 +135,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afe216e0488a15e06e895b276fecec4d3"><td class="memTemplParams" colspan="2">template&lt;typename OtherView , typename OtherBoundRecordCoord , bool OtherOwnView&gt; </td></tr>
 <tr class="memitem:afe216e0488a15e06e895b276fecec4d3"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1RecordRef.html#afe216e0488a15e06e895b276fecec4d3">RecordRef</a> (const <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a>&lt; OtherView, OtherBoundRecordCoord, OtherOwnView &gt; &amp;recordRef)</td></tr>
 <tr class="separator:afe216e0488a15e06e895b276fecec4d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea6fff77548d86c90d3b2815ef72f6c5"><td class="memTemplParams" colspan="2">template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&gt;&gt; </td></tr>
+<tr class="memitem:aea6fff77548d86c90d3b2815ef72f6c5"><td class="memTemplParams" colspan="2">template&lt;typename T , typename  = std::enable_if_t&lt;!isRecordRef&lt;T&gt;&gt;&gt; </td></tr>
 <tr class="memitem:aea6fff77548d86c90d3b2815ef72f6c5"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1RecordRef.html#aea6fff77548d86c90d3b2815ef72f6c5">RecordRef</a> (const T &amp;scalar)</td></tr>
 <tr class="memdesc:aea6fff77548d86c90d3b2815ef72f6c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> from a scalar. Only available for if the view is owned. Used by <a class="el" href="namespacellama.html#ace059168abe83f42c9493ad853abb746" title="A RecordRef that owns and holds a single value.">llama::One</a>.  <a href="structllama_1_1RecordRef.html#aea6fff77548d86c90d3b2815ef72f6c5">More...</a><br /></td></tr>
 <tr class="separator:aea6fff77548d86c90d3b2815ef72f6c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -202,7 +202,7 @@ Friends</h2></td></tr>
 <tr class="memitem:ad52b41ada501955c1808b973dfc1d153"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ad52b41ada501955c1808b973dfc1d153"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1RecordRef.html#ad52b41ada501955c1808b973dfc1d153">operator+</a> (const <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> &amp;vd, const T &amp;t)</td></tr>
 <tr class="separator:ad52b41ada501955c1808b973dfc1d153"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67adea4a6bb0440a9c3fe3287f897e95"><td class="memTemplParams" colspan="2">template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&gt;&gt; </td></tr>
+<tr class="memitem:a67adea4a6bb0440a9c3fe3287f897e95"><td class="memTemplParams" colspan="2">template&lt;typename T , typename  = std::enable_if_t&lt;!isRecordRef&lt;T&gt;&gt;&gt; </td></tr>
 <tr class="memitem:a67adea4a6bb0440a9c3fe3287f897e95"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1RecordRef.html#a67adea4a6bb0440a9c3fe3287f897e95">operator+</a> (const T &amp;t, const <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> &amp;vd)</td></tr>
 <tr class="separator:a67adea4a6bb0440a9c3fe3287f897e95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a461a173618f8a9f833ddf28a1620927d"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
@@ -211,7 +211,7 @@ Friends</h2></td></tr>
 <tr class="memitem:a2028f8fd54ce1aa2de386b5988440f6d"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a2028f8fd54ce1aa2de386b5988440f6d"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1RecordRef.html#a2028f8fd54ce1aa2de386b5988440f6d">operator*</a> (const <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> &amp;vd, const T &amp;t)</td></tr>
 <tr class="separator:a2028f8fd54ce1aa2de386b5988440f6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae19da406eef392c2cc923b2b1532458a"><td class="memTemplParams" colspan="2">template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&gt;&gt; </td></tr>
+<tr class="memitem:ae19da406eef392c2cc923b2b1532458a"><td class="memTemplParams" colspan="2">template&lt;typename T , typename  = std::enable_if_t&lt;!isRecordRef&lt;T&gt;&gt;&gt; </td></tr>
 <tr class="memitem:ae19da406eef392c2cc923b2b1532458a"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1RecordRef.html#ae19da406eef392c2cc923b2b1532458a">operator*</a> (const T &amp;t, const <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> &amp;vd)</td></tr>
 <tr class="separator:ae19da406eef392c2cc923b2b1532458a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae719daa136af26cb4684f377a1068b58"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
@@ -223,41 +223,47 @@ Friends</h2></td></tr>
 <tr class="memitem:ab23a922fe11baad4daf96828b861e954"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ab23a922fe11baad4daf96828b861e954"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1RecordRef.html#ab23a922fe11baad4daf96828b861e954">operator==</a> (const <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> &amp;vd, const T &amp;t) -&gt; bool</td></tr>
 <tr class="separator:ab23a922fe11baad4daf96828b861e954"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a230df489ece9b058c3aa28ecf6070858"><td class="memTemplParams" colspan="2">template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&gt;&gt; </td></tr>
+<tr class="memitem:a230df489ece9b058c3aa28ecf6070858"><td class="memTemplParams" colspan="2">template&lt;typename T , typename  = std::enable_if_t&lt;!isRecordRef&lt;T&gt;&gt;&gt; </td></tr>
 <tr class="memitem:a230df489ece9b058c3aa28ecf6070858"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1RecordRef.html#a230df489ece9b058c3aa28ecf6070858">operator==</a> (const T &amp;t, const <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> &amp;vd) -&gt; bool</td></tr>
 <tr class="separator:a230df489ece9b058c3aa28ecf6070858"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ce3df14aae118c00ac669cac09645db"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a3ce3df14aae118c00ac669cac09645db"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1RecordRef.html#a3ce3df14aae118c00ac669cac09645db">operator!=</a> (const <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> &amp;vd, const T &amp;t) -&gt; bool</td></tr>
 <tr class="separator:a3ce3df14aae118c00ac669cac09645db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29cafbc66f72dc1d0cdd50240dab09fd"><td class="memTemplParams" colspan="2">template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&gt;&gt; </td></tr>
+<tr class="memitem:a29cafbc66f72dc1d0cdd50240dab09fd"><td class="memTemplParams" colspan="2">template&lt;typename T , typename  = std::enable_if_t&lt;!isRecordRef&lt;T&gt;&gt;&gt; </td></tr>
 <tr class="memitem:a29cafbc66f72dc1d0cdd50240dab09fd"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1RecordRef.html#a29cafbc66f72dc1d0cdd50240dab09fd">operator!=</a> (const T &amp;t, const <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> &amp;vd) -&gt; bool</td></tr>
 <tr class="separator:a29cafbc66f72dc1d0cdd50240dab09fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a517bee54eb43b63ede727940f71cd9ae"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a517bee54eb43b63ede727940f71cd9ae"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1RecordRef.html#a517bee54eb43b63ede727940f71cd9ae">operator&lt;</a> (const <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> &amp;vd, const T &amp;t) -&gt; bool</td></tr>
 <tr class="separator:a517bee54eb43b63ede727940f71cd9ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35d17e80a4a27107b754078bf55f7106"><td class="memTemplParams" colspan="2">template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&gt;&gt; </td></tr>
+<tr class="memitem:a35d17e80a4a27107b754078bf55f7106"><td class="memTemplParams" colspan="2">template&lt;typename T , typename  = std::enable_if_t&lt;!isRecordRef&lt;T&gt;&gt;&gt; </td></tr>
 <tr class="memitem:a35d17e80a4a27107b754078bf55f7106"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1RecordRef.html#a35d17e80a4a27107b754078bf55f7106">operator&lt;</a> (const T &amp;t, const <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> &amp;vd) -&gt; bool</td></tr>
 <tr class="separator:a35d17e80a4a27107b754078bf55f7106"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a155794173eda55c96faccfa707e971e2"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a155794173eda55c96faccfa707e971e2"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1RecordRef.html#a155794173eda55c96faccfa707e971e2">operator&lt;=</a> (const <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> &amp;vd, const T &amp;t) -&gt; bool</td></tr>
 <tr class="separator:a155794173eda55c96faccfa707e971e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0ee680a5e3fb0b9e3388e89df41d7ce"><td class="memTemplParams" colspan="2">template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&gt;&gt; </td></tr>
+<tr class="memitem:af0ee680a5e3fb0b9e3388e89df41d7ce"><td class="memTemplParams" colspan="2">template&lt;typename T , typename  = std::enable_if_t&lt;!isRecordRef&lt;T&gt;&gt;&gt; </td></tr>
 <tr class="memitem:af0ee680a5e3fb0b9e3388e89df41d7ce"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1RecordRef.html#af0ee680a5e3fb0b9e3388e89df41d7ce">operator&lt;=</a> (const T &amp;t, const <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> &amp;vd) -&gt; bool</td></tr>
 <tr class="separator:af0ee680a5e3fb0b9e3388e89df41d7ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ae3ca824c39d05ae2d94d1ab655565b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a4ae3ca824c39d05ae2d94d1ab655565b"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1RecordRef.html#a4ae3ca824c39d05ae2d94d1ab655565b">operator&gt;</a> (const <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> &amp;vd, const T &amp;t) -&gt; bool</td></tr>
 <tr class="separator:a4ae3ca824c39d05ae2d94d1ab655565b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04302cfb043451c3932a1f787493ac1b"><td class="memTemplParams" colspan="2">template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&gt;&gt; </td></tr>
+<tr class="memitem:a04302cfb043451c3932a1f787493ac1b"><td class="memTemplParams" colspan="2">template&lt;typename T , typename  = std::enable_if_t&lt;!isRecordRef&lt;T&gt;&gt;&gt; </td></tr>
 <tr class="memitem:a04302cfb043451c3932a1f787493ac1b"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1RecordRef.html#a04302cfb043451c3932a1f787493ac1b">operator&gt;</a> (const T &amp;t, const <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> &amp;vd) -&gt; bool</td></tr>
 <tr class="separator:a04302cfb043451c3932a1f787493ac1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00162d3e10237d687c7130d695c6da4c"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a00162d3e10237d687c7130d695c6da4c"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1RecordRef.html#a00162d3e10237d687c7130d695c6da4c">operator&gt;=</a> (const <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> &amp;vd, const T &amp;t) -&gt; bool</td></tr>
 <tr class="separator:a00162d3e10237d687c7130d695c6da4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03d19131b5936cfe7e9e8ab2f80ddd69"><td class="memTemplParams" colspan="2">template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&gt;&gt; </td></tr>
+<tr class="memitem:a03d19131b5936cfe7e9e8ab2f80ddd69"><td class="memTemplParams" colspan="2">template&lt;typename T , typename  = std::enable_if_t&lt;!isRecordRef&lt;T&gt;&gt;&gt; </td></tr>
 <tr class="memitem:a03d19131b5936cfe7e9e8ab2f80ddd69"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1RecordRef.html#a03d19131b5936cfe7e9e8ab2f80ddd69">operator&gt;=</a> (const T &amp;t, const <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> &amp;vd) -&gt; bool</td></tr>
 <tr class="separator:a03d19131b5936cfe7e9e8ab2f80ddd69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2d91aa2202932f93e1bf2f014ca7437"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1RecordRef.html#ae2d91aa2202932f93e1bf2f014ca7437">swap</a> (std::conditional_t&lt; OwnView, <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> &amp;, <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> &gt; a, std::conditional_t&lt; OwnView, <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> &amp;, <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> &gt; b) noexcept</td></tr>
 <tr class="separator:ae2d91aa2202932f93e1bf2f014ca7437"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f5fd27cf5d2c87ec1112ebe45d3c590"><td class="memTemplParams" colspan="2">template&lt;typename T , typename Simd &gt; </td></tr>
+<tr class="memitem:a2f5fd27cf5d2c87ec1112ebe45d3c590"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1RecordRef.html#a2f5fd27cf5d2c87ec1112ebe45d3c590">loadSimd</a> (const T &amp;srcRef, <a class="el" href="namespacellama.html#ab12da747c068e8576dec5182d398d378">Simd</a> &amp;dstSimd)</td></tr>
+<tr class="separator:a2f5fd27cf5d2c87ec1112ebe45d3c590"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d14ff37e407416a6b4591ba56534950"><td class="memTemplParams" colspan="2">template&lt;typename Simd , typename T &gt; </td></tr>
+<tr class="memitem:a8d14ff37e407416a6b4591ba56534950"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1RecordRef.html#a8d14ff37e407416a6b4591ba56534950">storeSimd</a> (const <a class="el" href="namespacellama.html#ab12da747c068e8576dec5182d398d378">Simd</a> &amp;srcSimd, T &amp;&amp;dstRef)</td></tr>
+<tr class="separator:a8d14ff37e407416a6b4591ba56534950"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename TView, typename TBoundRecordCoord, bool OwnView&gt;<br />
@@ -282,7 +288,7 @@ template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div
 </div><div class="memdoc">
 <p>Subtree of the record dimension of <a class="el" href="structllama_1_1View.html">View</a> starting at BoundRecordCoord. If BoundRecordCoord is <code><a class="el" href="structllama_1_1RecordCoord.html">RecordCoord</a>&lt;&gt;</code> (default) AccessibleRecordDim is the same as <code>Mapping::RecordDim</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00333">333</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00357">357</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -302,7 +308,7 @@ template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div
 
 <p><a class="el" href="structllama_1_1Record.html" title="A type list of Fields which may be used to define a record dimension.">Record</a> coords into <a class="el" href="structllama_1_1View.html#a078855f1e6995af9bce14b4a13075cc9">View::RecordDim</a> which are already bound by this <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00322">322</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00346">346</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -322,7 +328,7 @@ template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div
 
 <p><a class="el" href="structllama_1_1View.html">View</a> this record reference points into. </p>
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00320">320</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00344">344</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -354,7 +360,7 @@ template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div
 
 <p>Creates an empty <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a>. Only available for if the view is owned. Used by <a class="el" href="namespacellama.html#ace059168abe83f42c9493ad853abb746" title="A RecordRef that owns and holds a single value.">llama::One</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00336">336</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00360">360</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -394,7 +400,7 @@ template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00345">345</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00369">369</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -510,7 +516,7 @@ template&lt;typename OtherView , typename OtherBoundRecordCoord , bool OtherOwnV
 </div><div class="memdoc">
 <p>Create a <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> from a different <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a>. Only available for if the view is owned. Used by <a class="el" href="namespacellama.html#ace059168abe83f42c9493ad853abb746" title="A RecordRef that owns and holds a single value.">llama::One</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00374">374</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00398">398</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -522,7 +528,7 @@ template&lt;typename OtherView , typename OtherBoundRecordCoord , bool OtherOwnV
 <div class="memtemplate">
 template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div>
 <div class="memtemplate">
-template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&gt;&gt; </div>
+template&lt;typename T , typename  = std::enable_if_t&lt;!isRecordRef&lt;T&gt;&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -544,7 +550,7 @@ template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&
 
 <p>Create a <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> from a scalar. Only available for if the view is owned. Used by <a class="el" href="namespacellama.html#ace059168abe83f42c9493ad853abb746" title="A RecordRef that owns and holds a single value.">llama::One</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00389">389</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00413">413</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -575,7 +581,7 @@ template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00365">365</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00389">389</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -604,7 +610,7 @@ template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00620">620</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00644">644</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -633,7 +639,7 @@ template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00625">625</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00649">649</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -662,7 +668,7 @@ template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00610">610</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00634">634</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -691,7 +697,7 @@ template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00615">615</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00639">639</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -723,7 +729,7 @@ template&lt;std::size_t I&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00631">631</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00655">655</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -755,7 +761,7 @@ template&lt;std::size_t I&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00637">637</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00661">661</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -785,7 +791,7 @@ template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00692">692</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00716">716</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -815,7 +821,7 @@ template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00697">697</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00721">721</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -847,7 +853,7 @@ template&lt;typename TupleLike &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00643">643</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00667">667</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -879,7 +885,7 @@ template&lt;typename TupleLike &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00656">656</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00680">680</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -912,7 +918,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00491">491</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00515">515</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -945,7 +951,7 @@ template&lt;std::size_t... Coord&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00421">421</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00445">445</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -979,7 +985,7 @@ template&lt;std::size_t... Coord&gt; </div>
 </div><div class="memdoc">
 <p>Access a record in the record dimension underneath the current record reference using a <a class="el" href="structllama_1_1RecordCoord.html">RecordCoord</a>. If the access resolves to a leaf, an l-value reference to a variable inside the <a class="el" href="structllama_1_1View.html">View</a> storage is returned, otherwise another <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00403">403</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00427">427</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1012,7 +1018,7 @@ template&lt;typename... Tags&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00451">451</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00475">475</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1046,7 +1052,7 @@ template&lt;typename... Tags&gt; </div>
 </div><div class="memdoc">
 <p>Access a record in the record dimension underneath the current record reference using a series of tags. If the access resolves to a leaf, an l-value reference to a variable inside the <a class="el" href="structllama_1_1View.html">View</a> storage is returned, otherwise another <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00441">441</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00465">465</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1079,7 +1085,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00479">479</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00503">503</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1112,7 +1118,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00467">467</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00491">491</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1145,7 +1151,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00473">473</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00497">497</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1178,7 +1184,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00485">485</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00509">509</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1209,7 +1215,7 @@ template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00354">354</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00378">378</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1242,7 +1248,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00460">460</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00484">484</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1302,11 +1308,54 @@ template&lt;typename TupleLike &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00703">703</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00727">727</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a2f5fd27cf5d2c87ec1112ebe45d3c590"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f5fd27cf5d2c87ec1112ebe45d3c590">&#9670;&nbsp;</a></span>loadSimd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div>
+<div class="memtemplate">
+template&lt;typename T , typename Simd &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void loadSimd </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>srcRef</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacellama.html#ab12da747c068e8576dec5182d398d378">Simd</a> &amp;&#160;</td>
+          <td class="paramname"><em>dstSimd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Loads SIMD vectors of data starting from the given record reference to dstSimd. Only field tags occurring in <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> are loaded. If Simd contains multiple fields of SIMD types, a SIMD vector will be fetched for each of the fields. The number of elements fetched per SIMD vector depends on the SIMD width of the vector. Simd is allowed to have different vector lengths per element. </p>
+
+<p class="definition">Definition at line <a class="el" href="Simd_8hpp_source.html#l00174">174</a> of file <a class="el" href="Simd_8hpp_source.html">Simd.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a3ce3df14aae118c00ac669cac09645db"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3ce3df14aae118c00ac669cac09645db">&#9670;&nbsp;</a></span>operator!= <span class="overload">[1/2]</span></h2>
 
@@ -1346,7 +1395,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00551">551</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00575">575</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1358,7 +1407,7 @@ template&lt;typename T &gt; </div>
 <div class="memtemplate">
 template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div>
 <div class="memtemplate">
-template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&gt;&gt; </div>
+template&lt;typename T , typename  = std::enable_if_t&lt;!isRecordRef&lt;T&gt;&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1389,7 +1438,7 @@ template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00557">557</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00581">581</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1431,7 +1480,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00533">533</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00557">557</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1473,7 +1522,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00515">515</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00539">539</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1485,7 +1534,7 @@ template&lt;typename T &gt; </div>
 <div class="memtemplate">
 template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div>
 <div class="memtemplate">
-template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&gt;&gt; </div>
+template&lt;typename T , typename  = std::enable_if_t&lt;!isRecordRef&lt;T&gt;&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1515,7 +1564,7 @@ template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00521">521</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00545">545</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1557,7 +1606,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00497">497</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00521">521</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1569,7 +1618,7 @@ template&lt;typename T &gt; </div>
 <div class="memtemplate">
 template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div>
 <div class="memtemplate">
-template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&gt;&gt; </div>
+template&lt;typename T , typename  = std::enable_if_t&lt;!isRecordRef&lt;T&gt;&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1599,7 +1648,7 @@ template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00503">503</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00527">527</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1641,7 +1690,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00509">509</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00533">533</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1683,7 +1732,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00527">527</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00551">551</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1726,7 +1775,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00563">563</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00587">587</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1738,7 +1787,7 @@ template&lt;typename T &gt; </div>
 <div class="memtemplate">
 template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div>
 <div class="memtemplate">
-template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&gt;&gt; </div>
+template&lt;typename T , typename  = std::enable_if_t&lt;!isRecordRef&lt;T&gt;&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1769,7 +1818,7 @@ template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00569">569</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00593">593</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1812,7 +1861,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00575">575</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00599">599</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1824,7 +1873,7 @@ template&lt;typename T &gt; </div>
 <div class="memtemplate">
 template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div>
 <div class="memtemplate">
-template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&gt;&gt; </div>
+template&lt;typename T , typename  = std::enable_if_t&lt;!isRecordRef&lt;T&gt;&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1855,7 +1904,7 @@ template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00581">581</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00605">605</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1898,7 +1947,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00539">539</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00563">563</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1910,7 +1959,7 @@ template&lt;typename T &gt; </div>
 <div class="memtemplate">
 template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div>
 <div class="memtemplate">
-template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&gt;&gt; </div>
+template&lt;typename T , typename  = std::enable_if_t&lt;!isRecordRef&lt;T&gt;&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1941,7 +1990,7 @@ template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00545">545</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00569">569</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1984,7 +2033,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00587">587</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00611">611</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -1996,7 +2045,7 @@ template&lt;typename T &gt; </div>
 <div class="memtemplate">
 template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div>
 <div class="memtemplate">
-template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&gt;&gt; </div>
+template&lt;typename T , typename  = std::enable_if_t&lt;!isRecordRef&lt;T&gt;&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -2027,7 +2076,7 @@ template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00593">593</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00617">617</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -2070,7 +2119,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00599">599</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00623">623</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -2082,7 +2131,7 @@ template&lt;typename T &gt; </div>
 <div class="memtemplate">
 template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div>
 <div class="memtemplate">
-template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&gt;&gt; </div>
+template&lt;typename T , typename  = std::enable_if_t&lt;!isRecordRef&lt;T&gt;&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -2113,7 +2162,50 @@ template&lt;typename T , typename  = std::enable_if_t&lt;!is_RecordRef&lt;T&gt;&
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00605">605</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00629">629</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a8d14ff37e407416a6b4591ba56534950"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d14ff37e407416a6b4591ba56534950">&#9670;&nbsp;</a></span>storeSimd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div>
+<div class="memtemplate">
+template&lt;typename Simd , typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void storeSimd </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespacellama.html#ab12da747c068e8576dec5182d398d378">Simd</a> &amp;&#160;</td>
+          <td class="paramname"><em>srcSimd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T &amp;&amp;&#160;</td>
+          <td class="paramname"><em>dstRef</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Stores SIMD vectors of element data from the given srcSimd into memory starting at the provided record reference. Only field tags occurring in <a class="el" href="structllama_1_1RecordRef.html">RecordRef</a> are stored. If Simd contains multiple fields of SIMD types, a SIMD vector will be stored for each of the fields. The number of elements stored per SIMD vector depends on the SIMD width of the vector. Simd is allowed to have different vector lengths per element. </p>
+
+<p class="definition">Definition at line <a class="el" href="Simd_8hpp_source.html#l00233">233</a> of file <a class="el" href="Simd_8hpp_source.html">Simd.hpp</a>.</p>
 
 </div>
 </div>
@@ -2153,7 +2245,7 @@ template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00709">709</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RecordRef_8hpp_source.html#l00733">733</a> of file <a class="el" href="RecordRef_8hpp_source.html">RecordRef.hpp</a>.</p>
 
 </div>
 </div>
@@ -2166,7 +2258,7 @@ template&lt;typename TView , typename TBoundRecordCoord , bool OwnView&gt; </div
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacellama.html">llama</a></li><li class="navelem"><a class="el" href="structllama_1_1RecordRef.html">RecordRef</a></li>
-    <li class="footer">Generated on Fri Aug 19 2022 23:09:42 for Low-Level Abstraction of Memory Access by
+    <li class="footer">Generated on Sun Oct 30 2022 14:51:09 for Low-Level Abstraction of Memory Access by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
