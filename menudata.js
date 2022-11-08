@@ -43,7 +43,8 @@ var menudata={children:[
 {text:"r",url:"namespacemembers_r.html#index_r"},
 {text:"s",url:"namespacemembers_s.html#index_s"},
 {text:"t",url:"namespacemembers_t.html#index_t"},
-{text:"v",url:"namespacemembers_v.html#index_v"}]},
+{text:"v",url:"namespacemembers_v.html#index_v"},
+{text:"w",url:"namespacemembers_w.html#index_w"}]},
 {text:"Functions",url:"namespacemembers_func.html",children:[
 {text:"a",url:"namespacemembers_func.html#index_a"},
 {text:"b",url:"namespacemembers_func.html#index_b"},
@@ -60,7 +61,8 @@ var menudata={children:[
 {text:"r",url:"namespacemembers_func.html#index_r"},
 {text:"s",url:"namespacemembers_func.html#index_s"},
 {text:"t",url:"namespacemembers_func.html#index_t"},
-{text:"v",url:"namespacemembers_func.html#index_v"}]},
+{text:"v",url:"namespacemembers_func.html#index_v"},
+{text:"w",url:"namespacemembers_func.html#index_w"}]},
 {text:"Variables",url:"namespacemembers_vars.html",children:[
 {text:"a",url:"namespacemembers_vars.html#index_a"},
 {text:"d",url:"namespacemembers_vars.html#index_d"},
@@ -130,6 +132,7 @@ var menudata={children:[
 {text:"s",url:"functions_func_s.html#index_s"},
 {text:"t",url:"functions_func_t.html#index_t"},
 {text:"v",url:"functions_func_v.html#index_v"},
+{text:"w",url:"functions_func_w.html#index_w"},
 {text:"~",url:"functions_func_~.html#index__7E"}]},
 {text:"Variables",url:"functions_vars.html",children:[
 {text:"a",url:"functions_vars.html#index_a"},
@@ -137,6 +140,7 @@ var menudata={children:[
 {text:"c",url:"functions_vars.html#index_c"},
 {text:"e",url:"functions_vars.html#index_e"},
 {text:"f",url:"functions_vars.html#index_f"},
+{text:"g",url:"functions_vars.html#index_g"},
 {text:"l",url:"functions_vars.html#index_l"},
 {text:"m",url:"functions_vars.html#index_m"},
 {text:"n",url:"functions_vars.html#index_n"},
@@ -164,7 +168,7 @@ var menudata={children:[
 {text:"t",url:"functions_type.html#index_t"},
 {text:"v",url:"functions_type.html#index_v"}]},
 {text:"Related Functions",url:"functions_rela.html",children:[
-{text:"l",url:"functions_rela.html#index_l"},
+{text:"i",url:"functions_rela.html#index_i"},
 {text:"o",url:"functions_rela.html#index_o"},
 {text:"r",url:"functions_rela.html#index_r"},
 {text:"s",url:"functions_rela.html#index_s"}]}]}]},

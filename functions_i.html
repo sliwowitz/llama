@@ -95,26 +95,34 @@ $(document).ready(function(){initNavTree('functions_i.html',''); initResizable()
 </li>
 <li>Inner
 : <a class="el" href="structllama_1_1mapping_1_1Bytesplit.html#ae9a0b3f519c15de176403f3eea6e072b">llama::mapping::Bytesplit&lt; TArrayExtents, TRecordDim, InnerMapping &gt;</a>
-, <a class="el" href="structllama_1_1mapping_1_1ChangeType.html#a5957375d77f5dd80d13e023700fe1fb9">llama::mapping::ChangeType&lt; TArrayExtents, TRecordDim, InnerMapping, ReplacementMap &gt;</a>
+, <a class="el" href="structllama_1_1mapping_1_1ChangeType.html#a19fa11eda6196e852c125b8ffea3a5ed">llama::mapping::ChangeType&lt; TArrayExtents, TRecordDim, InnerMapping, TReplacementMap &gt;</a>
+, <a class="el" href="structllama_1_1mapping_1_1Heatmap.html#af33773e38b72e7d43561b1dbffcd1052">llama::mapping::Heatmap&lt; Mapping, Granularity, TCountType &gt;</a>
 </li>
 <li>insert()
 : <a class="el" href="structllama_1_1Vector.html#a937ddab02e937975cd8b0e097250d337">llama::Vector&lt; Mapping &gt;</a>
 </li>
+<li>internal::loadSimdRecord
+: <a class="el" href="structllama_1_1RecordRef.html#a4db77e1b7709685c7eb45c7f6c86fb48">llama::RecordRef&lt; TView, TBoundRecordCoord, OwnView &gt;</a>
+</li>
+<li>internal::storeSimdRecord
+: <a class="el" href="structllama_1_1RecordRef.html#ab919c94e030e63d8d3220fe055280c5f">llama::RecordRef&lt; TView, TBoundRecordCoord, OwnView &gt;</a>
+</li>
 <li>isComputed()
-: <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatSoA.html#a1f5a774c3c58d3214004e1dd93b72125">llama::mapping::BitPackedFloatSoA&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, LinearizeArrayDimsFunctor, StoredIntegral &gt;</a>
-, <a class="el" href="structllama_1_1mapping_1_1BitPackedIntSoA.html#a0021a8ff8df96d7838ccbe7d06bac11d">llama::mapping::BitPackedIntSoA&lt; TArrayExtents, TRecordDim, Bits, LinearizeArrayDimsFunctor, StoredIntegral &gt;</a>
+: <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatSoA.html#a32e5639842185851662308806c3f3844">llama::mapping::BitPackedFloatSoA&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayDimsFunctor, TStoredIntegral &gt;</a>
+, <a class="el" href="structllama_1_1mapping_1_1BitPackedIntSoA.html#a9f070136c75c1fc6204e62cd84eb8402">llama::mapping::BitPackedIntSoA&lt; TArrayExtents, TRecordDim, Bits, TLinearizeArrayDimsFunctor, TStoredIntegral &gt;</a>
 , <a class="el" href="structllama_1_1mapping_1_1Bytesplit.html#a5115425b91f0b0607696c9594d115a63">llama::mapping::Bytesplit&lt; TArrayExtents, TRecordDim, InnerMapping &gt;</a>
-, <a class="el" href="structllama_1_1mapping_1_1ChangeType.html#aa169402baccbd7cd5aa29a0c96713d98">llama::mapping::ChangeType&lt; TArrayExtents, TRecordDim, InnerMapping, ReplacementMap &gt;</a>
+, <a class="el" href="structllama_1_1mapping_1_1ChangeType.html#a051ac6b65fcf972ce1e1e22c43e5186c">llama::mapping::ChangeType&lt; TArrayExtents, TRecordDim, InnerMapping, TReplacementMap &gt;</a>
+, <a class="el" href="structllama_1_1mapping_1_1Heatmap.html#ac0367a8b8a7b5edb75411364e8b1e7de">llama::mapping::Heatmap&lt; Mapping, Granularity, TCountType &gt;</a>
 , <a class="el" href="structllama_1_1mapping_1_1Null.html#a699bf73e9c926389b2c9211098bae0c2">llama::mapping::Null&lt; TArrayExtents, TRecordDim &gt;</a>
-, <a class="el" href="structllama_1_1mapping_1_1Split.html#a4c8cd3f30451788f9c77026f93fd8ce3">llama::mapping::Split&lt; TArrayExtents, TRecordDim, RecordCoordForMapping1, MappingTemplate1, MappingTemplate2, SeparateBlobs &gt;</a>
-, <a class="el" href="structllama_1_1mapping_1_1Trace.html#a2d2fca0e436f91c5ad0344fba8eb183f">llama::mapping::Trace&lt; Mapping, CountType, MyCodeHandlesProxyReferences &gt;</a>
+, <a class="el" href="structllama_1_1mapping_1_1Split.html#aa058374fcdd996f86c54dcb34ab51f5c">llama::mapping::Split&lt; TArrayExtents, TRecordDim, TRecordCoordForMapping1, MappingTemplate1, MappingTemplate2, SeparateBlobs &gt;</a>
+, <a class="el" href="structllama_1_1mapping_1_1Trace.html#a8429919d95bde84fb0ab737ee823816f">llama::mapping::Trace&lt; Mapping, TCountType, MyCodeHandlesProxyReferences &gt;</a>
 </li>
 <li>Iterator()
 : <a class="el" href="structllama_1_1Iterator.html#a87ca77106e3bf02e1ddf3124fd00a5de">llama::Iterator&lt; View &gt;</a>
 </li>
 <li>iterator
 : <a class="el" href="structllama_1_1Vector.html#a7cb2da4cdee69566d96d906796ac96ff">llama::Vector&lt; Mapping &gt;</a>
-, <a class="el" href="structllama_1_1View.html#a47384b6a68647023bcca2232d7887bb0">llama::View&lt; TMapping, BlobType &gt;</a>
+, <a class="el" href="structllama_1_1View.html#abe36abe814e4a701c181c5fd06b6b9b0">llama::View&lt; TMapping, TBlobType, TAccessor &gt;</a>
 </li>
 <li>iterator_category
 : <a class="el" href="structllama_1_1ArrayIndexIterator.html#ac149b9191555df8d9cd3c8b08b6f22ab">llama::ArrayIndexIterator&lt; ArrayExtents &gt;</a>
@@ -126,7 +134,7 @@ $(document).ready(function(){initNavTree('functions_i.html',''); initResizable()
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Oct 30 2022 14:51:09 for Low-Level Abstraction of Memory Access by
+    <li class="footer">Generated on Tue Nov 8 2022 23:54:03 for Low-Level Abstraction of Memory Access by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

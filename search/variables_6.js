@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['hassametags_1106',['hasSameTags',['../namespacellama.html#a39d280955e5b9deb36f6c8fa1124ca2b',1,'llama']]]
+  ['gnuplotscript_1150',['gnuplotScript',['../structllama_1_1mapping_1_1Heatmap.html#a99a17f227f0eda38cde672383f19b733',1,'llama::mapping::Heatmap']]],
+  ['granularity_1151',['granularity',['../structllama_1_1mapping_1_1Heatmap.html#a0ed006df2279a44a51949de4885f25e3',1,'llama::mapping::Heatmap']]]
 ];

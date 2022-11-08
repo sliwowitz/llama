@@ -253,6 +253,12 @@ Variables</h2></td></tr>
 <tr class="memitem:a9ca2b15cf29934313d827f7e8a972952"><td class="memTemplParams" colspan="2">template&lt;typename TArrayExtents , typename TRecordDim , template&lt; typename, typename &gt; typename InnerMapping, typename ReplacementMap &gt; </td></tr>
 <tr class="memitem:a9ca2b15cf29934313d827f7e8a972952"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1mapping.html#a9ca2b15cf29934313d827f7e8a972952">isChangeType&lt; ChangeType&lt; TArrayExtents, TRecordDim, InnerMapping, ReplacementMap &gt; &gt;</a> = true</td></tr>
 <tr class="separator:a9ca2b15cf29934313d827f7e8a972952"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d27fa50275ed7d312703a8d661bcb02"><td class="memTemplParams" colspan="2">template&lt;typename Mapping &gt; </td></tr>
+<tr class="memitem:a6d27fa50275ed7d312703a8d661bcb02"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1mapping.html#a6d27fa50275ed7d312703a8d661bcb02">isHeatmap</a> = false</td></tr>
+<tr class="separator:a6d27fa50275ed7d312703a8d661bcb02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6e9af2cfa31c4441b3eaf35b776c29e"><td class="memTemplParams" colspan="2">template&lt;typename Mapping , typename Mapping::ArrayExtents::value_type Granularity, typename CountType &gt; </td></tr>
+<tr class="memitem:af6e9af2cfa31c4441b3eaf35b776c29e"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1mapping.html#af6e9af2cfa31c4441b3eaf35b776c29e">isHeatmap&lt; Heatmap&lt; Mapping, Granularity, CountType &gt; &gt;</a> = true</td></tr>
+<tr class="separator:af6e9af2cfa31c4441b3eaf35b776c29e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af49f9cf9be4341952fbf347c07147f7b"><td class="memTemplParams" colspan="2">template&lt;typename Mapping &gt; </td></tr>
 <tr class="memitem:af49f9cf9be4341952fbf347c07147f7b"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1mapping.html#af49f9cf9be4341952fbf347c07147f7b">isNull</a> = false</td></tr>
 <tr class="separator:af49f9cf9be4341952fbf347c07147f7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -300,7 +306,7 @@ template&lt;typename ArrayExtents , typename RecordDim , typename LinearizeArray
 </div><div class="memdoc">
 <p><a class="el" href="structllama_1_1Array.html">Array</a> of struct mapping preserving the alignment of the field types by inserting padding. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="structllama_1_1mapping_1_1AoS.html">AoS</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AoS_8hpp_source.html#l00067">67</a> of file <a class="el" href="AoS_8hpp_source.html">AoS.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AoS_8hpp_source.html#l00068">68</a> of file <a class="el" href="AoS_8hpp_source.html">AoS.hpp</a>.</p>
 
 </div>
 </div>
@@ -319,7 +325,7 @@ template&lt;typename ArrayExtents , typename RecordDim &gt; </div>
 </div><div class="memdoc">
 <p><a class="el" href="structllama_1_1mapping_1_1One.html">One</a> mapping preserving the alignment of the field types by inserting padding. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="structllama_1_1mapping_1_1One.html">One</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="One_8hpp_source.html#l00061">61</a> of file <a class="el" href="One_8hpp_source.html">One.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="One_8hpp_source.html#l00060">60</a> of file <a class="el" href="One_8hpp_source.html">One.hpp</a>.</p>
 
 </div>
 </div>
@@ -338,7 +344,7 @@ template&lt;typename ArrayExtents , typename RecordDim , typename LinearizeArray
 </div><div class="memdoc">
 <p>Struct of array mapping storing the entire layout in a single blob. The starts of the sub arrays are aligned by inserting padding. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="structllama_1_1mapping_1_1SoA.html">SoA</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="SoA_8hpp_source.html#l00137">137</a> of file <a class="el" href="SoA_8hpp_source.html">SoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SoA_8hpp_source.html#l00139">139</a> of file <a class="el" href="SoA_8hpp_source.html">SoA.hpp</a>.</p>
 
 </div>
 </div>
@@ -358,7 +364,7 @@ template&lt;typename RecordDim &gt; </div>
 
 <p>Flattens and sorts the record dimension by decreasing alignment of its fields. </p>
 
-<p class="definition">Definition at line <a class="el" href="Common_8hpp_source.html#l00225">225</a> of file <a class="el" href="Common_8hpp_source.html">Common.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Common_8hpp_source.html#l00229">229</a> of file <a class="el" href="Common_8hpp_source.html">Common.hpp</a>.</p>
 
 </div>
 </div>
@@ -378,7 +384,7 @@ template&lt;typename RecordDim &gt; </div>
 
 <p>Flattens and sorts the record dimension by increasing alignment of its fields. </p>
 
-<p class="definition">Definition at line <a class="el" href="Common_8hpp_source.html#l00221">221</a> of file <a class="el" href="Common_8hpp_source.html">Common.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Common_8hpp_source.html#l00225">225</a> of file <a class="el" href="Common_8hpp_source.html">Common.hpp</a>.</p>
 
 </div>
 </div>
@@ -398,7 +404,7 @@ template&lt;typename RecordDim &gt; </div>
 
 <p>Flattens and sorts the record dimension by the alignment of its fields to minimize padding. </p>
 
-<p class="definition">Definition at line <a class="el" href="Common_8hpp_source.html#l00229">229</a> of file <a class="el" href="Common_8hpp_source.html">Common.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Common_8hpp_source.html#l00233">233</a> of file <a class="el" href="Common_8hpp_source.html">Common.hpp</a>.</p>
 
 </div>
 </div>
@@ -417,7 +423,7 @@ template&lt;typename ArrayExtents , typename RecordDim , typename LinearizeArray
 </div><div class="memdoc">
 <p><a class="el" href="structllama_1_1Array.html">Array</a> of struct mapping preserving the alignment of the field types by inserting padding and permuting the field order to minimize this padding. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="structllama_1_1mapping_1_1AoS.html">AoS</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AoS_8hpp_source.html#l00073">73</a> of file <a class="el" href="AoS_8hpp_source.html">AoS.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AoS_8hpp_source.html#l00074">74</a> of file <a class="el" href="AoS_8hpp_source.html">AoS.hpp</a>.</p>
 
 </div>
 </div>
@@ -436,7 +442,7 @@ template&lt;typename ArrayExtents , typename RecordDim &gt; </div>
 </div><div class="memdoc">
 <p><a class="el" href="structllama_1_1mapping_1_1One.html">One</a> mapping preserving the alignment of the field types by inserting padding and permuting the field order to minimize this padding. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="structllama_1_1mapping_1_1One.html">One</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="One_8hpp_source.html#l00067">67</a> of file <a class="el" href="One_8hpp_source.html">One.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="One_8hpp_source.html#l00066">66</a> of file <a class="el" href="One_8hpp_source.html">One.hpp</a>.</p>
 
 </div>
 </div>
@@ -455,7 +461,7 @@ template&lt;typename ArrayExtents , typename RecordDim , typename LinearizeArray
 </div><div class="memdoc">
 <p>Struct of array mapping storing each attribute of the record dimension in a separate blob. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="structllama_1_1mapping_1_1SoA.html">SoA</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="SoA_8hpp_source.html#l00147">147</a> of file <a class="el" href="SoA_8hpp_source.html">SoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SoA_8hpp_source.html#l00149">149</a> of file <a class="el" href="SoA_8hpp_source.html">SoA.hpp</a>.</p>
 
 </div>
 </div>
@@ -474,7 +480,7 @@ template&lt;typename ArrayExtents , typename RecordDim , typename LinearizeArray
 </div><div class="memdoc">
 <p><a class="el" href="structllama_1_1Array.html">Array</a> of struct mapping packing the field types tightly, violating the type's alignment requirements. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="structllama_1_1mapping_1_1AoS.html">AoS</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AoS_8hpp_source.html#l00078">78</a> of file <a class="el" href="AoS_8hpp_source.html">AoS.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AoS_8hpp_source.html#l00079">79</a> of file <a class="el" href="AoS_8hpp_source.html">AoS.hpp</a>.</p>
 
 </div>
 </div>
@@ -493,7 +499,7 @@ template&lt;typename ArrayExtents , typename RecordDim &gt; </div>
 </div><div class="memdoc">
 <p><a class="el" href="structllama_1_1mapping_1_1One.html">One</a> mapping packing the field types tightly, violating the types' alignment requirements. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="structllama_1_1mapping_1_1One.html">One</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="One_8hpp_source.html#l00072">72</a> of file <a class="el" href="One_8hpp_source.html">One.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="One_8hpp_source.html#l00071">71</a> of file <a class="el" href="One_8hpp_source.html">One.hpp</a>.</p>
 
 </div>
 </div>
@@ -512,7 +518,7 @@ template&lt;typename ArrayExtents , typename RecordDim , typename LinearizeArray
 </div><div class="memdoc">
 <p>Struct of array mapping storing the entire layout in a single blob. The sub arrays are tightly packed, violating the type's alignment requirements. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="structllama_1_1mapping_1_1SoA.html">SoA</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="SoA_8hpp_source.html#l00142">142</a> of file <a class="el" href="SoA_8hpp_source.html">SoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SoA_8hpp_source.html#l00144">144</a> of file <a class="el" href="SoA_8hpp_source.html">SoA.hpp</a>.</p>
 
 </div>
 </div>
@@ -600,7 +606,7 @@ template&lt;typename Mapping &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AoS_8hpp_source.html#l00090">90</a> of file <a class="el" href="AoS_8hpp_source.html">AoS.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AoS_8hpp_source.html#l00091">91</a> of file <a class="el" href="AoS_8hpp_source.html">AoS.hpp</a>.</p>
 
 </div>
 </div>
@@ -626,7 +632,7 @@ template&lt;typename ArrayExtents , typename RecordDim , bool AlignAndPad, typen
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AoS_8hpp_source.html#l00100">100</a> of file <a class="el" href="AoS_8hpp_source.html">AoS.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AoS_8hpp_source.html#l00101">101</a> of file <a class="el" href="AoS_8hpp_source.html">AoS.hpp</a>.</p>
 
 </div>
 </div>
@@ -652,7 +658,7 @@ template&lt;typename Mapping &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00088">88</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00089">89</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
 
 </div>
 </div>
@@ -678,7 +684,7 @@ template&lt;typename AD , typename RD , typename AD::value_type L&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00091">91</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00092">92</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
 
 </div>
 </div>
@@ -704,7 +710,7 @@ template&lt;typename Mapping &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BitPackedFloatSoA_8hpp_source.html#l00293">293</a> of file <a class="el" href="BitPackedFloatSoA_8hpp_source.html">BitPackedFloatSoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitPackedFloatSoA_8hpp_source.html#l00307">307</a> of file <a class="el" href="BitPackedFloatSoA_8hpp_source.html">BitPackedFloatSoA.hpp</a>.</p>
 
 </div>
 </div>
@@ -730,7 +736,7 @@ template&lt;typename... Ts&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BitPackedFloatSoA_8hpp_source.html#l00296">296</a> of file <a class="el" href="BitPackedFloatSoA_8hpp_source.html">BitPackedFloatSoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitPackedFloatSoA_8hpp_source.html#l00310">310</a> of file <a class="el" href="BitPackedFloatSoA_8hpp_source.html">BitPackedFloatSoA.hpp</a>.</p>
 
 </div>
 </div>
@@ -756,7 +762,7 @@ template&lt;typename Mapping &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BitPackedIntSoA_8hpp_source.html#l00273">273</a> of file <a class="el" href="BitPackedIntSoA_8hpp_source.html">BitPackedIntSoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitPackedIntSoA_8hpp_source.html#l00279">279</a> of file <a class="el" href="BitPackedIntSoA_8hpp_source.html">BitPackedIntSoA.hpp</a>.</p>
 
 </div>
 </div>
@@ -782,7 +788,7 @@ template&lt;typename... Ts&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BitPackedIntSoA_8hpp_source.html#l00276">276</a> of file <a class="el" href="BitPackedIntSoA_8hpp_source.html">BitPackedIntSoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitPackedIntSoA_8hpp_source.html#l00282">282</a> of file <a class="el" href="BitPackedIntSoA_8hpp_source.html">BitPackedIntSoA.hpp</a>.</p>
 
 </div>
 </div>
@@ -860,7 +866,7 @@ template&lt;typename Mapping &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ChangeType_8hpp_source.html#l00136">136</a> of file <a class="el" href="ChangeType_8hpp_source.html">ChangeType.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ChangeType_8hpp_source.html#l00135">135</a> of file <a class="el" href="ChangeType_8hpp_source.html">ChangeType.hpp</a>.</p>
 
 </div>
 </div>
@@ -886,7 +892,59 @@ template&lt;typename TArrayExtents , typename TRecordDim , template&lt; typename
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ChangeType_8hpp_source.html#l00144">144</a> of file <a class="el" href="ChangeType_8hpp_source.html">ChangeType.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ChangeType_8hpp_source.html#l00143">143</a> of file <a class="el" href="ChangeType_8hpp_source.html">ChangeType.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a6d27fa50275ed7d312703a8d661bcb02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d27fa50275ed7d312703a8d661bcb02">&#9670;&nbsp;</a></span>isHeatmap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Mapping &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool llama::mapping::isHeatmap = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00154">154</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
+
+</div>
+</div>
+<a id="af6e9af2cfa31c4441b3eaf35b776c29e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6e9af2cfa31c4441b3eaf35b776c29e">&#9670;&nbsp;</a></span>isHeatmap&lt; Heatmap&lt; Mapping, Granularity, CountType &gt; &gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Mapping , typename Mapping::ArrayExtents::value_type Granularity, typename CountType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool <a class="el" href="namespacellama_1_1mapping.html#a6d27fa50275ed7d312703a8d661bcb02">llama::mapping::isHeatmap</a>&lt; <a class="el" href="structllama_1_1mapping_1_1Heatmap.html">Heatmap</a>&lt; Mapping, Granularity, CountType &gt; &gt; = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00157">157</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
 
 </div>
 </div>
@@ -964,7 +1022,7 @@ template&lt;typename Mapping &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="One_8hpp_source.html#l00084">84</a> of file <a class="el" href="One_8hpp_source.html">One.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="One_8hpp_source.html#l00083">83</a> of file <a class="el" href="One_8hpp_source.html">One.hpp</a>.</p>
 
 </div>
 </div>
@@ -990,7 +1048,7 @@ template&lt;typename ArrayExtents , typename RecordDim , bool AlignAndPad, templ
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="One_8hpp_source.html#l00087">87</a> of file <a class="el" href="One_8hpp_source.html">One.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="One_8hpp_source.html#l00086">86</a> of file <a class="el" href="One_8hpp_source.html">One.hpp</a>.</p>
 
 </div>
 </div>
@@ -1016,7 +1074,7 @@ template&lt;typename Mapping &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SoA_8hpp_source.html#l00162">162</a> of file <a class="el" href="SoA_8hpp_source.html">SoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SoA_8hpp_source.html#l00164">164</a> of file <a class="el" href="SoA_8hpp_source.html">SoA.hpp</a>.</p>
 
 </div>
 </div>
@@ -1042,7 +1100,7 @@ template&lt;typename ArrayExtents , typename RecordDim , bool SeparateBuffers, b
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SoA_8hpp_source.html#l00171">171</a> of file <a class="el" href="SoA_8hpp_source.html">SoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SoA_8hpp_source.html#l00173">173</a> of file <a class="el" href="SoA_8hpp_source.html">SoA.hpp</a>.</p>
 
 </div>
 </div>
@@ -1068,7 +1126,7 @@ template&lt;typename Mapping &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Split_8hpp_source.html#l00225">225</a> of file <a class="el" href="Split_8hpp_source.html">Split.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Split_8hpp_source.html#l00226">226</a> of file <a class="el" href="Split_8hpp_source.html">Split.hpp</a>.</p>
 
 </div>
 </div>
@@ -1094,7 +1152,7 @@ template&lt;typename ArrayExtents , typename RecordDim , typename RecordCoordsFo
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Split_8hpp_source.html#l00242">242</a> of file <a class="el" href="Split_8hpp_source.html">Split.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Split_8hpp_source.html#l00243">243</a> of file <a class="el" href="Split_8hpp_source.html">Split.hpp</a>.</p>
 
 </div>
 </div>
@@ -1120,7 +1178,7 @@ template&lt;typename Mapping &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Trace_8hpp_source.html#l00272">272</a> of file <a class="el" href="Trace_8hpp_source.html">Trace.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Trace_8hpp_source.html#l00252">252</a> of file <a class="el" href="Trace_8hpp_source.html">Trace.hpp</a>.</p>
 
 </div>
 </div>
@@ -1146,7 +1204,7 @@ template&lt;typename Mapping , typename CountType , bool MyCodeHandlesProxyRefer
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Trace_8hpp_source.html#l00275">275</a> of file <a class="el" href="Trace_8hpp_source.html">Trace.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Trace_8hpp_source.html#l00255">255</a> of file <a class="el" href="Trace_8hpp_source.html">Trace.hpp</a>.</p>
 
 </div>
 </div>
@@ -1196,7 +1254,7 @@ template&lt;typename RecordDim , std::size_t VectorRegisterBits&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacellama.html">llama</a></li><li class="navelem"><a class="el" href="namespacellama_1_1mapping.html">mapping</a></li>
-    <li class="footer">Generated on Sun Oct 30 2022 14:51:09 for Low-Level Abstraction of Memory Access by
+    <li class="footer">Generated on Tue Nov 8 2022 23:54:02 for Low-Level Abstraction of Memory Access by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
