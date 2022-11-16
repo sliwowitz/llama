@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['_7erecordref_656',['~RecordRef',['../structllama_1_1RecordRef.html#aaa6addefc32ffeb87ab1149d7a58c166',1,'llama::RecordRef']]],
-  ['_7escopedupdate_657',['~ScopedUpdate',['../structllama_1_1ScopedUpdate.html#a029b104aea23cf590774d8dda65aa63e',1,'llama::ScopedUpdate::~ScopedUpdate()'],['../structllama_1_1ScopedUpdate_3_01Reference_00_01std_1_1enable__if__t_3_01std_1_1is__fundamental__e14f71eb64730a69a1b74dea5c5f8b59.html#a49d666f2cf7b4fa09c55b8b225a3c26e',1,'llama::ScopedUpdate&lt; Reference, std::enable_if_t&lt; std::is_fundamental_v&lt; typename internal::ValueOf&lt; Reference &gt;::type &gt; &gt; &gt;::~ScopedUpdate()']]],
-  ['_7etracereference_658',['~TraceReference',['../structllama_1_1mapping_1_1internal_1_1TraceReference.html#a3ab1efe86372996c40ba9b2cffc52082',1,'llama::mapping::internal::TraceReference']]],
-  ['_7evector_659',['~Vector',['../structllama_1_1Vector.html#aae0e4b5751d0f1743011f6f1372d3f50',1,'llama::Vector']]]
+  ['withaccessor_680',['withAccessor',['../namespacellama.html#a7ce30d8d3b31c0aae29c78915aa20221',1,'llama']]],
+  ['withmapping_681',['withMapping',['../namespacellama.html#ad72593353a457dae8a55d0fb5279144a',1,'llama']]],
+  ['wrapinnnodes_682',['WrapInNNodes',['../structllama_1_1mapping_1_1tree_1_1internal_1_1WrapInNNodes.html',1,'llama::mapping::tree::internal']]],
+  ['wrapinnnodes_3c_20leaf_2c_200_20_3e_683',['WrapInNNodes&lt; Leaf, 0 &gt;',['../structllama_1_1mapping_1_1tree_1_1internal_1_1WrapInNNodes_3_01Leaf_00_010_01_4.html',1,'llama::mapping::tree::internal']]],
+  ['writegnuplotdatafileascii_684',['writeGnuplotDataFileAscii',['../structllama_1_1mapping_1_1Heatmap.html#a7228b39457a0ff5b656f368e956ffa62',1,'llama::mapping::Heatmap']]],
+  ['writegnuplotdatafilebinary_685',['writeGnuplotDataFileBinary',['../structllama_1_1mapping_1_1Heatmap.html#a84b3989ab82a9fd9349090825bdede8a',1,'llama::mapping::Heatmap']]],
+  ['writes_686',['writes',['../structllama_1_1mapping_1_1AccessCounts.html#aaaef9ac789ae6c8d8203b93eeb9d9800',1,'llama::mapping::AccessCounts']]]
 ];
