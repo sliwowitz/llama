@@ -1,6 +1,5 @@
 var NAVTREEINDEX2 =
 {
-"structllama_1_1Array.html#a0727f971737ae7e3d6517d126c0e9d4a":[2,0,1,4,1],
 "structllama_1_1Array.html#a0774edd854887549deb6cd3b7c606af8":[2,0,1,4,0],
 "structllama_1_1Array.html#a17babdb41e8863ccd94806c23e501355":[2,0,1,4,18],
 "structllama_1_1Array.html#a18c4dca04c7d6ed3091def6653a8ae75":[2,0,1,4,14],
@@ -247,7 +246,8 @@ var NAVTREEINDEX2 =
 "structllama_1_1SimdTraits_3_01T_00_01std_1_1enable__if__t_3_01std_1_1is__arithmetic__v_3_01T_01_4_01_4_01_4.html#a67e2693738b7a12f3e262c534578afbe":[2,0,1,28,2],
 "structllama_1_1SimdTraits_3_01T_00_01std_1_1enable__if__t_3_01std_1_1is__arithmetic__v_3_01T_01_4_01_4_01_4.html#ab5a7f0f2dd7e52aa220aad5256a477c6":[2,0,1,28,1],
 "structllama_1_1SimdTraits_3_01T_00_01std_1_1enable__if__t_3_01std_1_1is__arithmetic__v_3_01T_01_4_01_4_01_4.html#accbc47bce8d7ceb1594f41c9f3d7648e":[2,0,1,28,0],
-"structllama_1_1Tuple.html":[2,0,1,29],
-"structllama_1_1Tuple_3_01TFirstElement_00_01RestElements_8_8_8_01_4.html":[2,0,1,30],
-"structllama_1_1Tuple_3_01TFirstElement_00_01RestElements_8_8_8_01_4.html#a20b9cc1ebc2d6a062b4ae53a15f9068d":[2,0,1,30,8]
+"structllama_1_1SubView.html":[2,0,1,29],
+"structllama_1_1SubView.html#a0e0c37b5281cf4f86f69377790f79f42":[2,0,1,29,14],
+"structllama_1_1SubView.html#a247053b7eff2707c3551da7c6756a9c3":[2,0,1,29,13],
+"structllama_1_1SubView.html#a31880888cee4cdd0109b6dff400d6c71":[2,0,1,29,0]
 };

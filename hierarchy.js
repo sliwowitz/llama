@@ -4,6 +4,7 @@ var hierarchy =
     [ "llama::mapping::AccessCounts< Count >", "structllama_1_1mapping_1_1AccessCounts.html", null ],
     [ "llama::bloballoc::AlignedAllocator< T, Alignment >", "structllama_1_1bloballoc_1_1AlignedAllocator.html", null ],
     [ "llama::Array< T, N >", "structllama_1_1Array.html", null ],
+    [ "llama::bloballoc::Array< BytesToReserve >", "structllama_1_1bloballoc_1_1Array.html", null ],
     [ "llama::Array< BlobType, Mapping::blobCount >", "structllama_1_1Array.html", null ],
     [ "llama::Array< std::size_t,((Sizes==dyn)+...+0)>", "structllama_1_1Array.html", [
       [ "llama::ArrayExtents< T, Sizes >", "structllama_1_1ArrayExtents.html", [
@@ -45,6 +46,7 @@ var hierarchy =
       [ "llama::mapping::BitPackedFloatSoA< TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayDimsFunctor, TStoredIntegral >", "structllama_1_1mapping_1_1BitPackedFloatSoA.html", null ]
     ] ],
     [ "llama::mapping::internal::ByteswapProjection< T >", "structllama_1_1mapping_1_1internal_1_1ByteswapProjection.html", null ],
+    [ "llama::accessor::ByValue", "structllama_1_1accessor_1_1ByValue.html", null ],
     [ "llama::mapping::tree::functor::internal::ChangeNodeChildsRuntimeFunctor", "structllama_1_1mapping_1_1tree_1_1functor_1_1internal_1_1ChangeNodeChildsRuntimeFunctor.html", null ],
     [ "llama::mapping::internal::ChangeTypeProjection< UserT, StoredT >", "structllama_1_1mapping_1_1internal_1_1ChangeTypeProjection.html", null ],
     [ "llama::accessor::Const", "structllama_1_1accessor_1_1Const.html", null ],
@@ -179,13 +181,15 @@ var hierarchy =
     [ "llama::ProxyRefOpMixin< Reference< RC, BlobArray >, GetType< TRecordDim, RC > >", "structllama_1_1ProxyRefOpMixin.html", [
       [ "llama::mapping::Bytesplit< TArrayExtents, TRecordDim, InnerMapping >::Reference< RC, BlobArray >", "structllama_1_1mapping_1_1Bytesplit_1_1Reference.html", null ]
     ] ],
+    [ "llama::ProxyRefOpMixin< Reference< Ref >, Ref::value_type >", "structllama_1_1ProxyRefOpMixin.html", [
+      [ "llama::accessor::Const::Reference< Ref >", "structllama_1_1accessor_1_1Const_1_1Reference.html", null ]
+    ] ],
     [ "llama::ProxyRefOpMixin< ScopedUpdate< Reference >, internal::ValueOf< Reference >::type >", "structllama_1_1ProxyRefOpMixin.html", [
       [ "llama::ScopedUpdate< Reference, std::enable_if_t< std::is_fundamental_v< typename internal::ValueOf< Reference >::type > > >", "structllama_1_1ScopedUpdate_3_01Reference_00_01std_1_1enable__if__t_3_01std_1_1is__fundamental__e14f71eb64730a69a1b74dea5c5f8b59.html", null ]
     ] ],
     [ "llama::ProxyRefOpMixin< TraceReference< Value, Ref, Count >, Value >", "structllama_1_1ProxyRefOpMixin.html", [
       [ "llama::mapping::internal::TraceReference< Value, Ref, Count >", "structllama_1_1mapping_1_1internal_1_1TraceReference.html", null ]
     ] ],
-    [ "llama::accessor::ReadOnlyByValue", "structllama_1_1accessor_1_1ReadOnlyByValue.html", null ],
     [ "llama::bloballoc::AlignedAllocator< T, Alignment >::rebind< T2 >", "structllama_1_1bloballoc_1_1AlignedAllocator_1_1rebind.html", null ],
     [ "llama::Record< Fields >", "structllama_1_1Record.html", null ],
     [ "llama::RecordCoord< Coords >", "structllama_1_1RecordCoord.html", null ],
@@ -205,7 +209,7 @@ var hierarchy =
     [ "llama::SimdTraits< T, std::enable_if_t< std::is_arithmetic_v< T > > >", "structllama_1_1SimdTraits_3_01T_00_01std_1_1enable__if__t_3_01std_1_1is__arithmetic__v_3_01T_01_4_01_4_01_4.html", null ],
     [ "llama::internal::SizeEqualTo< S >", "structllama_1_1internal_1_1SizeEqualTo.html", null ],
     [ "llama::mapping::Split< TArrayExtents, TRecordDim, TRecordCoordForMapping1, MappingTemplate1, MappingTemplate2, SeparateBlobs >", "structllama_1_1mapping_1_1Split.html", null ],
-    [ "llama::bloballoc::Stack< BytesToReserve >", "structllama_1_1bloballoc_1_1Stack.html", null ],
+    [ "llama::SubView< TStoredParentView >", "structllama_1_1SubView.html", null ],
     [ "TArrayExtents", null, [
       [ "llama::mapping::MappingBase< TArrayExtents, TRecordDim >", "structllama_1_1mapping_1_1MappingBase.html", [
         [ "llama::mapping::AoS< TArrayExtents, TRecordDim, AlignAndPad, TLinearizeArrayDimsFunctor, FlattenRecordDim >", "structllama_1_1mapping_1_1AoS.html", null ],
@@ -248,6 +252,7 @@ var hierarchy =
     ] ],
     [ "llama::mapping::internal::UnaryFunctionTraits< F >", "structllama_1_1mapping_1_1internal_1_1UnaryFunctionTraits.html", null ],
     [ "llama::mapping::internal::UnaryFunctionTraits< Ret(*)(Arg)>", "structllama_1_1mapping_1_1internal_1_1UnaryFunctionTraits_3_01Ret_07_5_08_07Arg_08_4.html", null ],
+    [ "llama::bloballoc::UniquePtr", "structllama_1_1bloballoc_1_1UniquePtr.html", null ],
     [ "llama::internal::ValueOf< T, typename >", "structllama_1_1internal_1_1ValueOf.html", null ],
     [ "llama::internal::ValueOf< Reference >", "structllama_1_1internal_1_1ValueOf.html", null ],
     [ "llama::internal::ValueOf< T & >", "structllama_1_1internal_1_1ValueOf_3_01T_01_6_01_4.html", null ],
@@ -265,7 +270,6 @@ var hierarchy =
       [ "llama::mapping::internal::BitPackedFloatRef< Float, StoredIntegralPointer, VHExp, VHMan, SizeType >", "structllama_1_1mapping_1_1internal_1_1BitPackedFloatRef.html", null ]
     ] ],
     [ "llama::View< TMapping, TBlobType, TAccessor >", "structllama_1_1View.html", null ],
-    [ "llama::VirtualView< TStoredParentView >", "structllama_1_1VirtualView.html", null ],
     [ "llama::mapping::tree::internal::WrapInNNodes< Leaf, Count >", "structllama_1_1mapping_1_1tree_1_1internal_1_1WrapInNNodes.html", null ],
     [ "llama::mapping::tree::internal::WrapInNNodes< Leaf, 0 >", "structllama_1_1mapping_1_1tree_1_1internal_1_1WrapInNNodes_3_01Leaf_00_010_01_4.html", null ]
 ];

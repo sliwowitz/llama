@@ -3,8 +3,9 @@ var dir_1edeeca147c2d4fb57fec1b01c02fb14 =
     [ "mapping", "dir_cc3d900ac5e5cf76cfc53f8f96d0c8dc.html", "dir_cc3d900ac5e5cf76cfc53f8f96d0c8dc" ],
     [ "Accessors.hpp", "Accessors_8hpp.html", [
       [ "Default", "structllama_1_1accessor_1_1Default.html", "structllama_1_1accessor_1_1Default" ],
-      [ "ReadOnlyByValue", "structllama_1_1accessor_1_1ReadOnlyByValue.html", "structllama_1_1accessor_1_1ReadOnlyByValue" ],
+      [ "ByValue", "structllama_1_1accessor_1_1ByValue.html", "structllama_1_1accessor_1_1ByValue" ],
       [ "Const", "structllama_1_1accessor_1_1Const.html", "structllama_1_1accessor_1_1Const" ],
+      [ "Reference", "structllama_1_1accessor_1_1Const_1_1Reference.html", "structllama_1_1accessor_1_1Const_1_1Reference" ],
       [ "Restrict", "structllama_1_1accessor_1_1Restrict.html", "structllama_1_1accessor_1_1Restrict" ]
     ] ],
     [ "Array.hpp", "Array_8hpp.html", "Array_8hpp" ],
@@ -14,7 +15,8 @@ var dir_1edeeca147c2d4fb57fec1b01c02fb14 =
       [ "ArrayIndexRange", "structllama_1_1ArrayIndexRange.html", "structllama_1_1ArrayIndexRange" ]
     ] ],
     [ "BlobAllocators.hpp", "BlobAllocators_8hpp.html", [
-      [ "Stack", "structllama_1_1bloballoc_1_1Stack.html", "structllama_1_1bloballoc_1_1Stack" ],
+      [ "Array", "structllama_1_1bloballoc_1_1Array.html", "structllama_1_1bloballoc_1_1Array" ],
+      [ "UniquePtr", "structllama_1_1bloballoc_1_1UniquePtr.html", "structllama_1_1bloballoc_1_1UniquePtr" ],
       [ "SharedPtr", "structllama_1_1bloballoc_1_1SharedPtr.html", "structllama_1_1bloballoc_1_1SharedPtr" ],
       [ "AlignedAllocator", "structllama_1_1bloballoc_1_1AlignedAllocator.html", "structllama_1_1bloballoc_1_1AlignedAllocator" ],
       [ "rebind", "structllama_1_1bloballoc_1_1AlignedAllocator_1_1rebind.html", "structllama_1_1bloballoc_1_1AlignedAllocator_1_1rebind" ],

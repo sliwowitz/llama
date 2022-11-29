@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Low-Level Abstraction of Memory Access: Member List</title>
+<title>Low-Level Abstraction of Memory Access: llama::accessor::ByValue Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('structllama_1_1bloballoc_1_1Stack.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('structllama_1_1accessor_1_1ByValue.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -82,20 +82,70 @@ $(document).ready(function(){initNavTree('structllama_1_1bloballoc_1_1Stack.html
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="structllama_1_1accessor_1_1ByValue-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">llama::bloballoc::Stack&lt; BytesToReserve &gt; Member List</div>  </div>
+<div class="title">llama::accessor::ByValue Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>This is the complete list of members for <a class="el" href="structllama_1_1bloballoc_1_1Stack.html">llama::bloballoc::Stack&lt; BytesToReserve &gt;</a>, including all inherited members.</p>
-<table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="structllama_1_1bloballoc_1_1Stack.html#a1cd9b08ee10451d464517c47c1172d9d">operator()</a>(std::integral_constant&lt; std::size_t, Alignment &gt;, std::size_t) const</td><td class="entry"><a class="el" href="structllama_1_1bloballoc_1_1Stack.html">llama::bloballoc::Stack&lt; BytesToReserve &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-</table></div><!-- contents -->
+<p>Allows only read access and returns values instead of references to memory.  
+ <a href="structllama_1_1accessor_1_1ByValue.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Accessors_8hpp_source.html">Accessors.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a0cb861c84429f058947e64cb305d3943"><td class="memTemplParams" colspan="2">template&lt;typename Reference &gt; </td></tr>
+<tr class="memitem:a0cb861c84429f058947e64cb305d3943"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1accessor_1_1ByValue.html#a0cb861c84429f058947e64cb305d3943">operator()</a> (Reference &amp;&amp;r) const</td></tr>
+<tr class="separator:a0cb861c84429f058947e64cb305d3943"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Allows only read access and returns values instead of references to memory. </p>
+
+<p class="definition">Definition at line <a class="el" href="Accessors_8hpp_source.html#l00022">22</a> of file <a class="el" href="Accessors_8hpp_source.html">Accessors.hpp</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0cb861c84429f058947e64cb305d3943"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cb861c84429f058947e64cb305d3943">&#9670;&nbsp;</a></span>operator()()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Reference &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto llama::accessor::ByValue::operator() </td>
+          <td>(</td>
+          <td class="paramtype">Reference &amp;&amp;&#160;</td>
+          <td class="paramname"><em>r</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Accessors_8hpp_source.html#l00025">25</a> of file <a class="el" href="Accessors_8hpp_source.html">Accessors.hpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>/home/runner/work/llama/llama/include/llama/<a class="el" href="Accessors_8hpp_source.html">Accessors.hpp</a></li>
+</ul>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Nov 16 2022 23:48:57 for Low-Level Abstraction of Memory Access by
+    <li class="navelem"><a class="el" href="namespacellama.html">llama</a></li><li class="navelem"><a class="el" href="namespacellama_1_1accessor.html">accessor</a></li><li class="navelem"><a class="el" href="structllama_1_1accessor_1_1ByValue.html">ByValue</a></li>
+    <li class="footer">Generated on Tue Nov 29 2022 16:44:42 for Low-Level Abstraction of Memory Access by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

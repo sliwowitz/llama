@@ -1,5 +1,15 @@
 var NAVTREEINDEX5 =
 {
+"structllama_1_1mapping_1_1internal_1_1MakeReplacerProj.html#a911123d1781bf546d550e7a0aaf38b27":[2,0,1,3,0,9,1],
+"structllama_1_1mapping_1_1internal_1_1MakeUnsigned.html":[2,0,1,3,0,10],
+"structllama_1_1mapping_1_1internal_1_1MakeUnsigned_3_01T_00_01std_1_1enable__if__t_3_01std_1_1is__enum__v_3_01T_01_4_01_4_01_4.html":[2,0,1,3,0,12],
+"structllama_1_1mapping_1_1internal_1_1MakeUnsigned_3_01bool_01_4.html":[2,0,1,3,0,11],
+"structllama_1_1mapping_1_1internal_1_1MakeUnsigned_3_01bool_01_4.html#a4016fe4d4250f23415f00682e5a23d29":[2,0,1,3,0,11,0],
+"structllama_1_1mapping_1_1internal_1_1NullReference.html":[2,0,1,3,0,13],
+"structllama_1_1mapping_1_1internal_1_1NullReference.html#a99a9f1b8d254b905ab6f1a352057269d":[2,0,1,3,0,13,0],
+"structllama_1_1mapping_1_1internal_1_1NullReference.html#ab7175083a8875287bb278fc746bf8fb2":[2,0,1,3,0,13,1],
+"structllama_1_1mapping_1_1internal_1_1NullReference.html#aec59109e33b5a655f8a782fea81cde82":[2,0,1,3,0,13,2],
+"structllama_1_1mapping_1_1internal_1_1PartionedRecordDim.html":[2,0,1,3,0,14],
 "structllama_1_1mapping_1_1internal_1_1PartionedRecordDim.html#a486051aac95e0cf8f9ad00fca4ea1273":[2,0,1,3,0,14,0],
 "structllama_1_1mapping_1_1internal_1_1PartitionFoldOpImpl.html":[2,0,1,3,0,15],
 "structllama_1_1mapping_1_1internal_1_1PartitionFoldOpImpl.html#a798a2670d572e44a72ea01cf5fb0698a":[2,0,1,3,0,15,5],

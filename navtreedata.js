@@ -59,10 +59,10 @@ var NAVTREEINDEX =
 [
 ".html",
 "RecordRef_8hpp.html#aacc8837b94b46c9989ce0e7fe8c172ac",
-"structllama_1_1Array.html#a0727f971737ae7e3d6517d126c0e9d4a",
-"structllama_1_1Tuple_3_01TFirstElement_00_01RestElements_8_8_8_01_4.html#a326d166eb2415c0a6b4671a7a1331c3b",
-"structllama_1_1internal_1_1TransformLeavesWithCoordImpl_3_01RecordCoord_3_01Is_8_8_8_01_4_00_01C1fa9eea95bd347b217962f0d40f323c8.html#a9cc8ef5254e9cf2f921bc5465c849f12",
-"structllama_1_1mapping_1_1internal_1_1PartionedRecordDim.html#a486051aac95e0cf8f9ad00fca4ea1273"
+"structllama_1_1Array.html#a0774edd854887549deb6cd3b7c606af8",
+"structllama_1_1SubView.html#a3c73491a68a1201927b6ccdfbf4c82a8",
+"structllama_1_1internal_1_1SimdizeNImpl_3_01RecordDim_00_011_00_01MakeSizedSimd_01_4.html#aad8e679ca5aac1ab6f4e53fdafd4832c",
+"structllama_1_1mapping_1_1internal_1_1MakeReplacerProj.html#a911123d1781bf546d550e7a0aaf38b27"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
