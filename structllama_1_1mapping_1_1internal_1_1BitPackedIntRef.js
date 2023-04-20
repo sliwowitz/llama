@@ -1,7 +1,9 @@
 var structllama_1_1mapping_1_1internal_1_1BitPackedIntRef =
 [
-    [ "value_type", "structllama_1_1mapping_1_1internal_1_1BitPackedIntRef.html#a5ac5a212dc02081e69bc2ab734b52926", null ],
-    [ "BitPackedIntRef", "structllama_1_1mapping_1_1internal_1_1BitPackedIntRef.html#a3f4d4be20a75eb29a69764f328875596", null ],
-    [ "operator Integral", "structllama_1_1mapping_1_1internal_1_1BitPackedIntRef.html#a7907b5899b614492a1d8a1a961f214f1", null ],
-    [ "operator=", "structllama_1_1mapping_1_1internal_1_1BitPackedIntRef.html#ad1d812460ad6faaf87e2e725583e079e", null ]
+    [ "value_type", "structllama_1_1mapping_1_1internal_1_1BitPackedIntRef.html#a178084eb4cbc2817aedbfd9764df8e8c", null ],
+    [ "BitPackedIntRef", "structllama_1_1mapping_1_1internal_1_1BitPackedIntRef.html#ab00538c99dc662116cf7921fd36ef978", null ],
+    [ "BitPackedIntRef", "structllama_1_1mapping_1_1internal_1_1BitPackedIntRef.html#a2a16221ed7616f4ef76f908ca5ddb658", null ],
+    [ "operator Integral", "structllama_1_1mapping_1_1internal_1_1BitPackedIntRef.html#adf3e2089299b70d1eee2387263a14c7a", null ],
+    [ "operator=", "structllama_1_1mapping_1_1internal_1_1BitPackedIntRef.html#ac5ca46ded1c950a100e4eb31956d23c7", null ],
+    [ "operator=", "structllama_1_1mapping_1_1internal_1_1BitPackedIntRef.html#a7b0e4335cde52c10ffdee5d1e2c9b025", null ]
 ];
