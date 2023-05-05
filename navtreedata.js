@@ -60,8 +60,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"",
-"RecordRef_8hpp.html",
+"Accessors_8hpp.html",
+"RecordRef_8hpp.html#a066dd05be57445a48d062423d35f13d5",
 "namespacellama.html#a156385d5598b772070206225a5093266",
 "namespacellama_1_1mapping.html#aeead2d9c8929b8c0aff18aad054a0710a4492081ca02b059f9e8af4ddaf0f7292",
 "structllama_1_1ProxyRefOpMixin.html#a79956552e378d2dbb181c1e925b2278c",
