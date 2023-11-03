@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Low-Level Abstraction of Memory Access: llama::mapping::AoSoA&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayDimsFunctor, FlattenRecordDim &gt; Struct Template Reference</title>
+<title>Low-Level Abstraction of Memory Access: llama::mapping::AoSoA&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayIndexFunctor, PermuteFields &gt; Struct Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -88,63 +88,59 @@ $(document).ready(function(){initNavTree('structllama_1_1mapping_1_1AoSoA.html',
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="structllama_1_1mapping_1_1AoSoA-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">llama::mapping::AoSoA&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayDimsFunctor, FlattenRecordDim &gt; Struct Template Reference</div>  </div>
+<div class="title">llama::mapping::AoSoA&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayIndexFunctor, PermuteFields &gt; Struct Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for llama::mapping::AoSoA&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayDimsFunctor, FlattenRecordDim &gt;:</div>
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for llama::mapping::AoSoA&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayIndexFunctor, PermuteFields &gt;:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="structllama_1_1mapping_1_1AoSoA__inherit__graph.png" border="0" usemap="#allama_1_1mapping_1_1AoSoA_3_01TArrayExtents_00_01TRecordDim_00_01Lanes_00_01TLinearizeArrayDimsFunctor_00_01FlattenRecordDim_01_4_inherit__map" alt="Inheritance graph"/></div>
-<map name="allama_1_1mapping_1_1AoSoA_3_01TArrayExtents_00_01TRecordDim_00_01Lanes_00_01TLinearizeArrayDimsFunctor_00_01FlattenRecordDim_01_4_inherit__map" id="allama_1_1mapping_1_1AoSoA_3_01TArrayExtents_00_01TRecordDim_00_01Lanes_00_01TLinearizeArrayDimsFunctor_00_01FlattenRecordDim_01_4_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,169,265,240"/>
-<area shape="rect" href="structllama_1_1mapping_1_1MappingBase.html" title=" " alt="" coords="20,80,251,121"/>
-<area shape="rect" title=" " alt="" coords="79,5,192,32"/>
+<div class="center"><img src="structllama_1_1mapping_1_1AoSoA__inherit__graph.png" border="0" usemap="#allama_1_1mapping_1_1AoSoA_3_01TArrayExtents_00_01TRecordDim_00_01Lanes_00_01TLinearizeArrayIndexFunctor_00_01PermuteFields_01_4_inherit__map" alt="Inheritance graph"/></div>
+<map name="allama_1_1mapping_1_1AoSoA_3_01TArrayExtents_00_01TRecordDim_00_01Lanes_00_01TLinearizeArrayIndexFunctor_00_01PermuteFields_01_4_inherit__map" id="allama_1_1mapping_1_1AoSoA_3_01TArrayExtents_00_01TRecordDim_00_01Lanes_00_01TLinearizeArrayIndexFunctor_00_01PermuteFields_01_4_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,169,268,240"/>
+<area shape="rect" href="structllama_1_1mapping_1_1MappingBase.html" title=" " alt="" coords="21,80,252,121"/>
+<area shape="rect" title=" " alt="" coords="80,5,193,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for llama::mapping::AoSoA&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayDimsFunctor, FlattenRecordDim &gt;:</div>
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for llama::mapping::AoSoA&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayIndexFunctor, PermuteFields &gt;:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="structllama_1_1mapping_1_1AoSoA__coll__graph.png" border="0" usemap="#allama_1_1mapping_1_1AoSoA_3_01TArrayExtents_00_01TRecordDim_00_01Lanes_00_01TLinearizeArrayDimsFunctor_00_01FlattenRecordDim_01_4_coll__map" alt="Collaboration graph"/></div>
-<map name="allama_1_1mapping_1_1AoSoA_3_01TArrayExtents_00_01TRecordDim_00_01Lanes_00_01TLinearizeArrayDimsFunctor_00_01FlattenRecordDim_01_4_coll__map" id="allama_1_1mapping_1_1AoSoA_3_01TArrayExtents_00_01TRecordDim_00_01Lanes_00_01TLinearizeArrayDimsFunctor_00_01FlattenRecordDim_01_4_coll__map">
-<area shape="rect" title=" " alt="" coords="5,169,265,240"/>
-<area shape="rect" href="structllama_1_1mapping_1_1MappingBase.html" title=" " alt="" coords="20,80,251,121"/>
-<area shape="rect" title=" " alt="" coords="79,5,192,32"/>
+<div class="center"><img src="structllama_1_1mapping_1_1AoSoA__coll__graph.png" border="0" usemap="#allama_1_1mapping_1_1AoSoA_3_01TArrayExtents_00_01TRecordDim_00_01Lanes_00_01TLinearizeArrayIndexFunctor_00_01PermuteFields_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="allama_1_1mapping_1_1AoSoA_3_01TArrayExtents_00_01TRecordDim_00_01Lanes_00_01TLinearizeArrayIndexFunctor_00_01PermuteFields_01_4_coll__map" id="allama_1_1mapping_1_1AoSoA_3_01TArrayExtents_00_01TRecordDim_00_01Lanes_00_01TLinearizeArrayIndexFunctor_00_01PermuteFields_01_4_coll__map">
+<area shape="rect" title=" " alt="" coords="5,169,268,240"/>
+<area shape="rect" href="structllama_1_1mapping_1_1MappingBase.html" title=" " alt="" coords="21,80,252,121"/>
+<area shape="rect" title=" " alt="" coords="80,5,193,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:ab32fce1dffdac3cddc3895784c3e53fb"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1AoSoA.html#ab32fce1dffdac3cddc3895784c3e53fb">LinearizeArrayDimsFunctor</a> = TLinearizeArrayDimsFunctor</td></tr>
-<tr class="separator:ab32fce1dffdac3cddc3895784c3e53fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab08a1085d8f66f74c260bd81a8129c5a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1AoSoA.html#ab08a1085d8f66f74c260bd81a8129c5a">Flattener</a> = FlattenRecordDim&lt; TRecordDim &gt;</td></tr>
-<tr class="separator:ab08a1085d8f66f74c260bd81a8129c5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad601750ae27c86b60baa77e52690e977"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1AoSoA.html#ad601750ae27c86b60baa77e52690e977">LinearizeArrayIndexFunctor</a> = TLinearizeArrayIndexFunctor</td></tr>
+<tr class="separator:ad601750ae27c86b60baa77e52690e977"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee75fbec055b57575a7012e0acf5a471"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1AoSoA.html#aee75fbec055b57575a7012e0acf5a471">Permuter</a> = PermuteFields&lt; <a class="el" href="namespacellama.html#a1fddf1f638927edfb8da8e3c78da4e1c">FlatRecordDim</a>&lt; TRecordDim &gt; &gt;</td></tr>
+<tr class="separator:aee75fbec055b57575a7012e0acf5a471"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_types_structllama_1_1mapping_1_1MappingBase"><td colspan="2" onclick="javascript:toggleInherit('pub_types_structllama_1_1mapping_1_1MappingBase')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="structllama_1_1mapping_1_1MappingBase.html">llama::mapping::MappingBase&lt; TArrayExtents, TRecordDim &gt;</a></td></tr>
 <tr class="memitem:ab0dff4b5449fbc61e63ef6c8ae427c70 inherit pub_types_structllama_1_1mapping_1_1MappingBase"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1MappingBase.html#ab0dff4b5449fbc61e63ef6c8ae427c70">ArrayExtents</a> = TArrayExtents</td></tr>
 <tr class="separator:ab0dff4b5449fbc61e63ef6c8ae427c70 inherit pub_types_structllama_1_1mapping_1_1MappingBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e8dbadc1023c973d1d8a10a773e4786 inherit pub_types_structllama_1_1mapping_1_1MappingBase"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1MappingBase.html#a9e8dbadc1023c973d1d8a10a773e4786">ArrayIndex</a> = typename <a class="el" href="structllama_1_1ArrayExtents.html#abce5defd13fa5853289a5b1f744eb243">ArrayExtents::Index</a></td></tr>
-<tr class="separator:a9e8dbadc1023c973d1d8a10a773e4786 inherit pub_types_structllama_1_1mapping_1_1MappingBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a230ce8319dfa063ac4692dcd4034c462 inherit pub_types_structllama_1_1mapping_1_1MappingBase"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1MappingBase.html#a230ce8319dfa063ac4692dcd4034c462">RecordDim</a> = TRecordDim</td></tr>
 <tr class="separator:a230ce8319dfa063ac4692dcd4034c462 inherit pub_types_structllama_1_1mapping_1_1MappingBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ce2266ed39400609731093894761df9 inherit pub_types_structllama_1_1mapping_1_1MappingBase"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1MappingBase.html#a5ce2266ed39400609731093894761df9">size_type</a> = typename <a class="el" href="structllama_1_1ArrayExtents.html#a26ddad4db80efe93143b86c766b9a69f">ArrayExtents::value_type</a></td></tr>
-<tr class="separator:a5ce2266ed39400609731093894761df9 inherit pub_types_structllama_1_1mapping_1_1MappingBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5669fcd87dba38c26fd47e3493505f33"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1AoSoA.html#a5669fcd87dba38c26fd47e3493505f33">AoSoA</a> ()=default</td></tr>
-<tr class="separator:a5669fcd87dba38c26fd47e3493505f33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d64ef02cfc3b1b2c696d89e40e6eb20"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1AoSoA.html#a5d64ef02cfc3b1b2c696d89e40e6eb20">AoSoA</a> (TArrayExtents <a class="el" href="structllama_1_1mapping_1_1MappingBase.html#ae552d836a8b07ae87ee2ab6280646051">extents</a>, TRecordDim={})</td></tr>
-<tr class="separator:a5d64ef02cfc3b1b2c696d89e40e6eb20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1cabaec5c9014a02c3463d66b03bc9d7"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1AoSoA.html#a1cabaec5c9014a02c3463d66b03bc9d7">blobSize</a> (size_type) const -&gt; size_type</td></tr>
-<tr class="separator:a1cabaec5c9014a02c3463d66b03bc9d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae68f04b9db570c5f003cbe0c5f3dde40"><td class="memTemplParams" colspan="2">template&lt;std::size_t... RecordCoords&gt; </td></tr>
-<tr class="memitem:ae68f04b9db570c5f003cbe0c5f3dde40"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1AoSoA.html#ae68f04b9db570c5f003cbe0c5f3dde40">blobNrAndOffset</a> (typename <a class="el" href="structllama_1_1mapping_1_1MappingBase.html#a9e8dbadc1023c973d1d8a10a773e4786">Base::ArrayIndex</a> ai, <a class="el" href="structllama_1_1RecordCoord.html">RecordCoord</a>&lt; RecordCoords... &gt;={}) const -&gt; <a class="el" href="structllama_1_1NrAndOffset.html">NrAndOffset</a>&lt; size_type &gt;</td></tr>
-<tr class="separator:ae68f04b9db570c5f003cbe0c5f3dde40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a212360d96e304d602ea507f9312f33c1"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1AoSoA.html#a212360d96e304d602ea507f9312f33c1">AoSoA</a> ()=default</td></tr>
+<tr class="separator:a212360d96e304d602ea507f9312f33c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97a59d566716720cf304f52c7cfcd0fd"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1AoSoA.html#a97a59d566716720cf304f52c7cfcd0fd">AoSoA</a> (TArrayExtents <a class="el" href="structllama_1_1mapping_1_1MappingBase.html#ae552d836a8b07ae87ee2ab6280646051">extents</a>, TRecordDim={})</td></tr>
+<tr class="separator:a97a59d566716720cf304f52c7cfcd0fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68998fecc259af70ca1daf6bcde1e098"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1AoSoA.html#a68998fecc259af70ca1daf6bcde1e098">blobSize</a> (size_type) const -&gt; size_type</td></tr>
+<tr class="separator:a68998fecc259af70ca1daf6bcde1e098"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6c7173b3931df99b3c59e34f7dccaab"><td class="memTemplParams" colspan="2">template&lt;std::size_t... RecordCoords&gt; </td></tr>
+<tr class="memitem:ab6c7173b3931df99b3c59e34f7dccaab"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1AoSoA.html#ab6c7173b3931df99b3c59e34f7dccaab">blobNrAndOffset</a> (typename <a class="el" href="structllama_1_1mapping_1_1MappingBase.html#a9e8dbadc1023c973d1d8a10a773e4786">Base::ArrayIndex</a> ai, <a class="el" href="structllama_1_1RecordCoord.html">RecordCoord</a>&lt; RecordCoords... &gt;={}) const -&gt; <a class="el" href="structllama_1_1NrAndOffset.html">NrAndOffset</a>&lt; size_type &gt;</td></tr>
+<tr class="separator:ab6c7173b3931df99b3c59e34f7dccaab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_structllama_1_1mapping_1_1MappingBase"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_structllama_1_1mapping_1_1MappingBase')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="structllama_1_1mapping_1_1MappingBase.html">llama::mapping::MappingBase&lt; TArrayExtents, TRecordDim &gt;</a></td></tr>
 <tr class="memitem:a3ca09f04e20b05688fa3ca89c5224fde inherit pub_methods_structllama_1_1mapping_1_1MappingBase"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1MappingBase.html#a3ca09f04e20b05688fa3ca89c5224fde">MappingBase</a> ()=default</td></tr>
 <tr class="separator:a3ca09f04e20b05688fa3ca89c5224fde inherit pub_methods_structllama_1_1mapping_1_1MappingBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -155,75 +151,83 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a7a6d5641a8c0a4902b42c75256d898a5"><td class="memItemLeft" align="right" valign="top">static constexpr TArrayExtents::value_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1AoSoA.html#a7a6d5641a8c0a4902b42c75256d898a5">lanes</a> = Lanes</td></tr>
-<tr class="separator:a7a6d5641a8c0a4902b42c75256d898a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0776e656f4a3cec8830a6671bf6bb2be"><td class="memItemLeft" align="right" valign="top">static constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1AoSoA.html#a0776e656f4a3cec8830a6671bf6bb2be">blobCount</a> = 1</td></tr>
-<tr class="separator:a0776e656f4a3cec8830a6671bf6bb2be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25e8b7f91620ec5b3e8d39dad5f049df"><td class="memItemLeft" align="right" valign="top">static constexpr TArrayExtents::value_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1AoSoA.html#a25e8b7f91620ec5b3e8d39dad5f049df">lanes</a> = Lanes</td></tr>
+<tr class="separator:a25e8b7f91620ec5b3e8d39dad5f049df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff67399fcc926b322759a33ef5122e21"><td class="memItemLeft" align="right" valign="top">static constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1AoSoA.html#aff67399fcc926b322759a33ef5122e21">blobCount</a> = 1</td></tr>
+<tr class="separator:aff67399fcc926b322759a33ef5122e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_types_structllama_1_1mapping_1_1MappingBase"><td colspan="2" onclick="javascript:toggleInherit('pro_types_structllama_1_1mapping_1_1MappingBase')"><img src="closed.png" alt="-"/>&#160;Protected Types inherited from <a class="el" href="structllama_1_1mapping_1_1MappingBase.html">llama::mapping::MappingBase&lt; TArrayExtents, TRecordDim &gt;</a></td></tr>
+<tr class="memitem:a9e8dbadc1023c973d1d8a10a773e4786 inherit pro_types_structllama_1_1mapping_1_1MappingBase"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1MappingBase.html#a9e8dbadc1023c973d1d8a10a773e4786">ArrayIndex</a> = typename <a class="el" href="structllama_1_1ArrayExtents.html#abce5defd13fa5853289a5b1f744eb243">ArrayExtents::Index</a></td></tr>
+<tr class="separator:a9e8dbadc1023c973d1d8a10a773e4786 inherit pro_types_structllama_1_1mapping_1_1MappingBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ce2266ed39400609731093894761df9 inherit pro_types_structllama_1_1mapping_1_1MappingBase"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1MappingBase.html#a5ce2266ed39400609731093894761df9">size_type</a> = typename <a class="el" href="structllama_1_1ArrayExtents.html#a26ddad4db80efe93143b86c766b9a69f">ArrayExtents::value_type</a></td></tr>
+<tr class="separator:a5ce2266ed39400609731093894761df9 inherit pro_types_structllama_1_1mapping_1_1MappingBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;typename TArrayExtents, typename TRecordDim, typename TArrayExtents::value_type Lanes, typename TLinearizeArrayDimsFunctor = LinearizeArrayDimsCpp, template&lt; typename &gt; typename FlattenRecordDim = FlattenRecordDimInOrder&gt;<br />
-struct llama::mapping::AoSoA&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayDimsFunctor, FlattenRecordDim &gt;</h3>
+<div class="textblock"><h3>template&lt;typename TArrayExtents, typename TRecordDim, typename TArrayExtents::value_type Lanes, typename TLinearizeArrayIndexFunctor = LinearizeArrayIndexRight, template&lt; typename &gt; typename PermuteFields = PermuteFieldsInOrder&gt;<br />
+struct llama::mapping::AoSoA&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayIndexFunctor, PermuteFields &gt;</h3>
 
 <p><a class="el" href="structllama_1_1Array.html">Array</a> of struct of arrays mapping. Used to create a <a class="el" href="structllama_1_1View.html">View</a> via <a class="el" href="namespacellama.html#a8e5d70e7cec0c305424ed3890c4cedc6">allocView</a>. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Lanes</td><td>The size of the inner arrays of this array of struct of arrays. </td></tr>
-    <tr><td class="paramname">FlattenRecordDim</td><td>Defines how the record dimension's fields should be flattened. See <a class="el" href="structllama_1_1mapping_1_1FlattenRecordDimInOrder.html">FlattenRecordDimInOrder</a>, <a class="el" href="namespacellama_1_1mapping.html#a2426632bf12fc075d5508b09a1feed4e">FlattenRecordDimIncreasingAlignment</a>, <a class="el" href="namespacellama_1_1mapping.html#a100e4e327b6795d55012446cc37c50ed">FlattenRecordDimDecreasingAlignment</a> and <a class="el" href="namespacellama_1_1mapping.html#a65287f3ded6e419e868b0e2819777206">FlattenRecordDimMinimizePadding</a>. </td></tr>
+    <tr><td class="paramname">PermuteFields</td><td>Defines how the record dimension's fields should be permuted. See <a class="el" href="structllama_1_1mapping_1_1PermuteFieldsInOrder.html">PermuteFieldsInOrder</a>, <a class="el" href="namespacellama_1_1mapping.html#a85115db479ff4a7394fae89c70ff4305">PermuteFieldsIncreasingAlignment</a>, <a class="el" href="namespacellama_1_1mapping.html#a2e0ea39ca46af98002f4fefa52cc6ba8">PermuteFieldsDecreasingAlignment</a> and <a class="el" href="namespacellama_1_1mapping.html#a27d3128c60274c2018beeb76e99d6aff">PermuteFieldsMinimizePadding</a>. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00038">38</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00040">40</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="ab08a1085d8f66f74c260bd81a8129c5a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab08a1085d8f66f74c260bd81a8129c5a">&#9670;&nbsp;</a></span>Flattener</h2>
+<a id="ad601750ae27c86b60baa77e52690e977"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad601750ae27c86b60baa77e52690e977">&#9670;&nbsp;</a></span>LinearizeArrayIndexFunctor</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename TArrayExtents , typename TRecordDim , typename TArrayExtents::value_type Lanes, typename TLinearizeArrayDimsFunctor  = LinearizeArrayDimsCpp, template&lt; typename &gt; typename FlattenRecordDim = FlattenRecordDimInOrder&gt; </div>
+template&lt;typename TArrayExtents , typename TRecordDim , typename TArrayExtents::value_type Lanes, typename TLinearizeArrayIndexFunctor  = LinearizeArrayIndexRight, template&lt; typename &gt; typename PermuteFields = PermuteFieldsInOrder&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="structllama_1_1mapping_1_1AoSoA.html">llama::mapping::AoSoA</a>&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayDimsFunctor, FlattenRecordDim &gt;::<a class="el" href="structllama_1_1mapping_1_1AoSoA.html#ab08a1085d8f66f74c260bd81a8129c5a">Flattener</a> =  FlattenRecordDim&lt;TRecordDim&gt;</td>
+          <td class="memname">using <a class="el" href="structllama_1_1mapping_1_1AoSoA.html">llama::mapping::AoSoA</a>&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayIndexFunctor, PermuteFields &gt;::<a class="el" href="structllama_1_1mapping_1_1AoSoA.html#ad601750ae27c86b60baa77e52690e977">LinearizeArrayIndexFunctor</a> =  TLinearizeArrayIndexFunctor</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00047">47</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00048">48</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ab32fce1dffdac3cddc3895784c3e53fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab32fce1dffdac3cddc3895784c3e53fb">&#9670;&nbsp;</a></span>LinearizeArrayDimsFunctor</h2>
+<a id="aee75fbec055b57575a7012e0acf5a471"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee75fbec055b57575a7012e0acf5a471">&#9670;&nbsp;</a></span>Permuter</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename TArrayExtents , typename TRecordDim , typename TArrayExtents::value_type Lanes, typename TLinearizeArrayDimsFunctor  = LinearizeArrayDimsCpp, template&lt; typename &gt; typename FlattenRecordDim = FlattenRecordDimInOrder&gt; </div>
+template&lt;typename TArrayExtents , typename TRecordDim , typename TArrayExtents::value_type Lanes, typename TLinearizeArrayIndexFunctor  = LinearizeArrayIndexRight, template&lt; typename &gt; typename PermuteFields = PermuteFieldsInOrder&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="structllama_1_1mapping_1_1AoSoA.html">llama::mapping::AoSoA</a>&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayDimsFunctor, FlattenRecordDim &gt;::<a class="el" href="structllama_1_1mapping_1_1AoSoA.html#ab32fce1dffdac3cddc3895784c3e53fb">LinearizeArrayDimsFunctor</a> =  TLinearizeArrayDimsFunctor</td>
+          <td class="memname">using <a class="el" href="structllama_1_1mapping_1_1AoSoA.html">llama::mapping::AoSoA</a>&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayIndexFunctor, PermuteFields &gt;::<a class="el" href="structllama_1_1mapping_1_1AoSoA.html#aee75fbec055b57575a7012e0acf5a471">Permuter</a> =  PermuteFields&lt;<a class="el" href="namespacellama.html#a1fddf1f638927edfb8da8e3c78da4e1c">FlatRecordDim</a>&lt;TRecordDim&gt; &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00046">46</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00049">49</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a5669fcd87dba38c26fd47e3493505f33"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5669fcd87dba38c26fd47e3493505f33">&#9670;&nbsp;</a></span>AoSoA() <span class="overload">[1/2]</span></h2>
+<a id="a212360d96e304d602ea507f9312f33c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a212360d96e304d602ea507f9312f33c1">&#9670;&nbsp;</a></span>AoSoA() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename TArrayExtents , typename TRecordDim , typename TArrayExtents::value_type Lanes, typename TLinearizeArrayDimsFunctor  = LinearizeArrayDimsCpp, template&lt; typename &gt; typename FlattenRecordDim = FlattenRecordDimInOrder&gt; </div>
+template&lt;typename TArrayExtents , typename TRecordDim , typename TArrayExtents::value_type Lanes, typename TLinearizeArrayIndexFunctor  = LinearizeArrayIndexRight, template&lt; typename &gt; typename PermuteFields = PermuteFieldsInOrder&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="structllama_1_1mapping_1_1AoSoA.html">llama::mapping::AoSoA</a>&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayDimsFunctor, FlattenRecordDim &gt;::<a class="el" href="structllama_1_1mapping_1_1AoSoA.html">AoSoA</a> </td>
+          <td class="memname">constexpr <a class="el" href="structllama_1_1mapping_1_1AoSoA.html">llama::mapping::AoSoA</a>&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayIndexFunctor, PermuteFields &gt;::<a class="el" href="structllama_1_1mapping_1_1AoSoA.html">AoSoA</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -238,19 +242,19 @@ template&lt;typename TArrayExtents , typename TRecordDim , typename TArrayExtent
 
 </div>
 </div>
-<a id="a5d64ef02cfc3b1b2c696d89e40e6eb20"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d64ef02cfc3b1b2c696d89e40e6eb20">&#9670;&nbsp;</a></span>AoSoA() <span class="overload">[2/2]</span></h2>
+<a id="a97a59d566716720cf304f52c7cfcd0fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97a59d566716720cf304f52c7cfcd0fd">&#9670;&nbsp;</a></span>AoSoA() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename TArrayExtents , typename TRecordDim , typename TArrayExtents::value_type Lanes, typename TLinearizeArrayDimsFunctor  = LinearizeArrayDimsCpp, template&lt; typename &gt; typename FlattenRecordDim = FlattenRecordDimInOrder&gt; </div>
+template&lt;typename TArrayExtents , typename TRecordDim , typename TArrayExtents::value_type Lanes, typename TLinearizeArrayIndexFunctor  = LinearizeArrayIndexRight, template&lt; typename &gt; typename PermuteFields = PermuteFieldsInOrder&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="structllama_1_1mapping_1_1AoSoA.html">llama::mapping::AoSoA</a>&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayDimsFunctor, FlattenRecordDim &gt;::<a class="el" href="structllama_1_1mapping_1_1AoSoA.html">AoSoA</a> </td>
+          <td class="memname">constexpr <a class="el" href="structllama_1_1mapping_1_1AoSoA.html">llama::mapping::AoSoA</a>&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayIndexFunctor, PermuteFields &gt;::<a class="el" href="structllama_1_1mapping_1_1AoSoA.html">AoSoA</a> </td>
           <td>(</td>
           <td class="paramtype">TArrayExtents&#160;</td>
           <td class="paramname"><em>extents</em>, </td>
@@ -274,18 +278,18 @@ template&lt;typename TArrayExtents , typename TRecordDim , typename TArrayExtent
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00055">55</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00057">57</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ae68f04b9db570c5f003cbe0c5f3dde40"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae68f04b9db570c5f003cbe0c5f3dde40">&#9670;&nbsp;</a></span>blobNrAndOffset()</h2>
+<a id="ab6c7173b3931df99b3c59e34f7dccaab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6c7173b3931df99b3c59e34f7dccaab">&#9670;&nbsp;</a></span>blobNrAndOffset()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename TArrayExtents , typename TRecordDim , typename TArrayExtents::value_type Lanes, typename TLinearizeArrayDimsFunctor  = LinearizeArrayDimsCpp, template&lt; typename &gt; typename FlattenRecordDim = FlattenRecordDimInOrder&gt; </div>
+template&lt;typename TArrayExtents , typename TRecordDim , typename TArrayExtents::value_type Lanes, typename TLinearizeArrayIndexFunctor  = LinearizeArrayIndexRight, template&lt; typename &gt; typename PermuteFields = PermuteFieldsInOrder&gt; </div>
 <div class="memtemplate">
 template&lt;std::size_t... RecordCoords&gt; </div>
 <table class="mlabels">
@@ -293,7 +297,7 @@ template&lt;std::size_t... RecordCoords&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="structllama_1_1mapping_1_1AoSoA.html">llama::mapping::AoSoA</a>&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayDimsFunctor, FlattenRecordDim &gt;::blobNrAndOffset </td>
+          <td class="memname">constexpr auto <a class="el" href="structllama_1_1mapping_1_1AoSoA.html">llama::mapping::AoSoA</a>&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayIndexFunctor, PermuteFields &gt;::blobNrAndOffset </td>
           <td>(</td>
           <td class="paramtype">typename <a class="el" href="structllama_1_1mapping_1_1MappingBase.html#a9e8dbadc1023c973d1d8a10a773e4786">Base::ArrayIndex</a>&#160;</td>
           <td class="paramname"><em>ai</em>, </td>
@@ -318,23 +322,23 @@ template&lt;std::size_t... RecordCoords&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00067">67</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00069">69</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a1cabaec5c9014a02c3463d66b03bc9d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1cabaec5c9014a02c3463d66b03bc9d7">&#9670;&nbsp;</a></span>blobSize()</h2>
+<a id="a68998fecc259af70ca1daf6bcde1e098"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68998fecc259af70ca1daf6bcde1e098">&#9670;&nbsp;</a></span>blobSize()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename TArrayExtents , typename TRecordDim , typename TArrayExtents::value_type Lanes, typename TLinearizeArrayDimsFunctor  = LinearizeArrayDimsCpp, template&lt; typename &gt; typename FlattenRecordDim = FlattenRecordDimInOrder&gt; </div>
+template&lt;typename TArrayExtents , typename TRecordDim , typename TArrayExtents::value_type Lanes, typename TLinearizeArrayIndexFunctor  = LinearizeArrayIndexRight, template&lt; typename &gt; typename PermuteFields = PermuteFieldsInOrder&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="structllama_1_1mapping_1_1AoSoA.html">llama::mapping::AoSoA</a>&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayDimsFunctor, FlattenRecordDim &gt;::blobSize </td>
+          <td class="memname">constexpr auto <a class="el" href="structllama_1_1mapping_1_1AoSoA.html">llama::mapping::AoSoA</a>&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayIndexFunctor, PermuteFields &gt;::blobSize </td>
           <td>(</td>
           <td class="paramtype">size_type&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -349,24 +353,24 @@ template&lt;typename TArrayExtents , typename TRecordDim , typename TArrayExtent
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00060">60</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00062">62</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a0776e656f4a3cec8830a6671bf6bb2be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0776e656f4a3cec8830a6671bf6bb2be">&#9670;&nbsp;</a></span>blobCount</h2>
+<a id="aff67399fcc926b322759a33ef5122e21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff67399fcc926b322759a33ef5122e21">&#9670;&nbsp;</a></span>blobCount</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename TArrayExtents , typename TRecordDim , typename TArrayExtents::value_type Lanes, typename TLinearizeArrayDimsFunctor  = LinearizeArrayDimsCpp, template&lt; typename &gt; typename FlattenRecordDim = FlattenRecordDimInOrder&gt; </div>
+template&lt;typename TArrayExtents , typename TRecordDim , typename TArrayExtents::value_type Lanes, typename TLinearizeArrayIndexFunctor  = LinearizeArrayIndexRight, template&lt; typename &gt; typename PermuteFields = PermuteFieldsInOrder&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr std::size_t <a class="el" href="structllama_1_1mapping_1_1AoSoA.html">llama::mapping::AoSoA</a>&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayDimsFunctor, FlattenRecordDim &gt;::blobCount = 1</td>
+          <td class="memname">constexpr std::size_t <a class="el" href="structllama_1_1mapping_1_1AoSoA.html">llama::mapping::AoSoA</a>&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayIndexFunctor, PermuteFields &gt;::blobCount = 1</td>
         </tr>
       </table>
   </td>
@@ -376,23 +380,23 @@ template&lt;typename TArrayExtents , typename TRecordDim , typename TArrayExtent
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00048">48</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00050">50</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a7a6d5641a8c0a4902b42c75256d898a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a6d5641a8c0a4902b42c75256d898a5">&#9670;&nbsp;</a></span>lanes</h2>
+<a id="a25e8b7f91620ec5b3e8d39dad5f049df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25e8b7f91620ec5b3e8d39dad5f049df">&#9670;&nbsp;</a></span>lanes</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename TArrayExtents , typename TRecordDim , typename TArrayExtents::value_type Lanes, typename TLinearizeArrayDimsFunctor  = LinearizeArrayDimsCpp, template&lt; typename &gt; typename FlattenRecordDim = FlattenRecordDimInOrder&gt; </div>
+template&lt;typename TArrayExtents , typename TRecordDim , typename TArrayExtents::value_type Lanes, typename TLinearizeArrayIndexFunctor  = LinearizeArrayIndexRight, template&lt; typename &gt; typename PermuteFields = PermuteFieldsInOrder&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr TArrayExtents::value_type <a class="el" href="structllama_1_1mapping_1_1AoSoA.html">llama::mapping::AoSoA</a>&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayDimsFunctor, FlattenRecordDim &gt;::lanes = Lanes</td>
+          <td class="memname">constexpr TArrayExtents::value_type <a class="el" href="structllama_1_1mapping_1_1AoSoA.html">llama::mapping::AoSoA</a>&lt; TArrayExtents, TRecordDim, Lanes, TLinearizeArrayIndexFunctor, PermuteFields &gt;::lanes = Lanes</td>
         </tr>
       </table>
   </td>
@@ -402,7 +406,7 @@ template&lt;typename TArrayExtents , typename TRecordDim , typename TArrayExtent
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00045">45</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00047">47</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
 
 </div>
 </div>
@@ -415,7 +419,7 @@ template&lt;typename TArrayExtents , typename TRecordDim , typename TArrayExtent
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacellama.html">llama</a></li><li class="navelem"><a class="el" href="namespacellama_1_1mapping.html">mapping</a></li><li class="navelem"><a class="el" href="structllama_1_1mapping_1_1AoSoA.html">AoSoA</a></li>
-    <li class="footer">Generated on Fri May 12 2023 02:58:34 for Low-Level Abstraction of Memory Access by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Nov 3 2023 16:38:43 for Low-Level Abstraction of Memory Access by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

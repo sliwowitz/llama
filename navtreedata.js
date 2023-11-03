@@ -61,13 +61,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Accessors_8hpp.html",
-"RecordRef_8hpp.html#a066dd05be57445a48d062423d35f13d5",
-"namespacellama.html#a0d0fda5486eb5976f940a638f0cdd9d4",
-"namespacellama_1_1mapping.html#ae20fac87225a87f15d01c14b334c0746",
-"structllama_1_1ProxyRefOpMixin.html#a6e149fa3d0657b524413f1dfddad9288",
-"structllama_1_1bloballoc_1_1UniquePtr.html",
-"structllama_1_1mapping_1_1FieldAccessCount.html#a0774f3c44d838d70fd9282d5e96fe373",
-"structllama_1_1mapping_1_1tree_1_1functor_1_1internal_1_1ChangeNodeChildsRuntimeFunctor.html#a7f3c95fa9bb2bb5cf45f3a2724bd935d"
+"RecordRef_8hpp.html#a0f8572ce32d64cda19cb705d78247bed",
+"namespacellama.html#a0af0304a902bcb5c5c90377ad751033a",
+"namespacellama_1_1mapping.html#abf047d4798871c30b501074a70374086a4492081ca02b059f9e8af4ddaf0f7292",
+"structllama_1_1ProxyRefOpMixin.html#a1df0708f468d3bde426e868788da05ba",
+"structllama_1_1accessor_1_1Locked.html#aeee88009c22da968858523bfe8316558",
+"structllama_1_1mapping_1_1BitPackedIntAoS.html",
+"structllama_1_1mapping_1_1tree_1_1Mapping.html#a4361d3fef8c59d58c37bdeb5fb209cd8"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

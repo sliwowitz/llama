@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Low-Level Abstraction of Memory Access: llama::mapping::BitPackedFloatAoS&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayDimsFunctor, FlattenRecordDim, TStoredIntegral &gt; Struct Template Reference</title>
+<title>Low-Level Abstraction of Memory Access: llama::mapping::BitPackedFloatAoS&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayIndexFunctor, PermuteFields, TStoredIntegral &gt; Struct Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,19 +89,19 @@ $(document).ready(function(){initNavTree('structllama_1_1mapping_1_1BitPackedFlo
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="structllama_1_1mapping_1_1BitPackedFloatAoS-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">llama::mapping::BitPackedFloatAoS&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayDimsFunctor, FlattenRecordDim, TStoredIntegral &gt; Struct Template Reference</div>  </div>
+<div class="title">llama::mapping::BitPackedFloatAoS&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayIndexFunctor, PermuteFields, TStoredIntegral &gt; Struct Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for llama::mapping::BitPackedFloatAoS&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayDimsFunctor, FlattenRecordDim, TStoredIntegral &gt;:</div>
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for llama::mapping::BitPackedFloatAoS&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayIndexFunctor, PermuteFields, TStoredIntegral &gt;:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="structllama_1_1mapping_1_1BitPackedFloatAoS__inherit__graph.png" border="0" usemap="#allama_1_1mapping_1_1BitPackedFloatAoS_3_01TArrayExtents_00_01TRecordDim_00_01ExponentBits_00_01MantissaBits_00_01TLinearizeArrayDimsFunctor_00_01FlattenRecordDim_00_01TStoredIntegral_01_4_inherit__map" alt="Inheritance graph"/></div>
-<map name="allama_1_1mapping_1_1BitPackedFloatAoS_3_01TArrayExtents_00_01TRecordDim_00_01ExponentBits_00_01MantissaBits_00_01TLinearizeArrayDimsFunctor_00_01FlattenRecordDim_00_01TStoredIntegral_01_4_inherit__map" id="allama_1_1mapping_1_1BitPackedFloatAoS_3_01TArrayExtents_00_01TRecordDim_00_01ExponentBits_00_01MantissaBits_00_01TLinearizeArrayDimsFunctor_00_01FlattenRecordDim_00_01TStoredIntegral_01_4_inherit__map">
-<area shape="rect" title=" " alt="" coords="445,57,764,142"/>
+<div class="center"><img src="structllama_1_1mapping_1_1BitPackedFloatAoS__inherit__graph.png" border="0" usemap="#allama_1_1mapping_1_1BitPackedFloatAoS_3_01TArrayExtents_00_01TRecordDim_00_01ExponentBits_00_01MantissaBits_00_01TLinearizeArrayIndexFunctor_00_01PermuteFields_00_01TStoredIntegral_01_4_inherit__map" alt="Inheritance graph"/></div>
+<map name="allama_1_1mapping_1_1BitPackedFloatAoS_3_01TArrayExtents_00_01TRecordDim_00_01ExponentBits_00_01MantissaBits_00_01TLinearizeArrayIndexFunctor_00_01PermuteFields_00_01TStoredIntegral_01_4_inherit__map" id="allama_1_1mapping_1_1BitPackedFloatAoS_3_01TArrayExtents_00_01TRecordDim_00_01ExponentBits_00_01MantissaBits_00_01TLinearizeArrayIndexFunctor_00_01PermuteFields_00_01TStoredIntegral_01_4_inherit__map">
+<area shape="rect" title=" " alt="" coords="445,57,740,142"/>
 <area shape="rect" href="structllama_1_1mapping_1_1MappingBase.html" title=" " alt="" coords="167,5,397,47"/>
 <area shape="rect" title=" " alt="" coords="5,13,119,39"/>
 <area shape="rect" href="structllama_1_1internal_1_1BoxedValue.html" title=" " alt="" coords="181,71,383,127"/>
@@ -109,13 +109,13 @@ $(document).ready(function(){initNavTree('structllama_1_1mapping_1_1BitPackedFlo
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for llama::mapping::BitPackedFloatAoS&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayDimsFunctor, FlattenRecordDim, TStoredIntegral &gt;:</div>
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for llama::mapping::BitPackedFloatAoS&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayIndexFunctor, PermuteFields, TStoredIntegral &gt;:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="structllama_1_1mapping_1_1BitPackedFloatAoS__coll__graph.png" border="0" usemap="#allama_1_1mapping_1_1BitPackedFloatAoS_3_01TArrayExtents_00_01TRecordDim_00_01ExponentBits_00_01MantissaBits_00_01TLinearizeArrayDimsFunctor_00_01FlattenRecordDim_00_01TStoredIntegral_01_4_coll__map" alt="Collaboration graph"/></div>
-<map name="allama_1_1mapping_1_1BitPackedFloatAoS_3_01TArrayExtents_00_01TRecordDim_00_01ExponentBits_00_01MantissaBits_00_01TLinearizeArrayDimsFunctor_00_01FlattenRecordDim_00_01TStoredIntegral_01_4_coll__map" id="allama_1_1mapping_1_1BitPackedFloatAoS_3_01TArrayExtents_00_01TRecordDim_00_01ExponentBits_00_01MantissaBits_00_01TLinearizeArrayDimsFunctor_00_01FlattenRecordDim_00_01TStoredIntegral_01_4_coll__map">
-<area shape="rect" title=" " alt="" coords="445,57,764,142"/>
+<div class="center"><img src="structllama_1_1mapping_1_1BitPackedFloatAoS__coll__graph.png" border="0" usemap="#allama_1_1mapping_1_1BitPackedFloatAoS_3_01TArrayExtents_00_01TRecordDim_00_01ExponentBits_00_01MantissaBits_00_01TLinearizeArrayIndexFunctor_00_01PermuteFields_00_01TStoredIntegral_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="allama_1_1mapping_1_1BitPackedFloatAoS_3_01TArrayExtents_00_01TRecordDim_00_01ExponentBits_00_01MantissaBits_00_01TLinearizeArrayIndexFunctor_00_01PermuteFields_00_01TStoredIntegral_01_4_coll__map" id="allama_1_1mapping_1_1BitPackedFloatAoS_3_01TArrayExtents_00_01TRecordDim_00_01ExponentBits_00_01MantissaBits_00_01TLinearizeArrayIndexFunctor_00_01PermuteFields_00_01TStoredIntegral_01_4_coll__map">
+<area shape="rect" title=" " alt="" coords="445,57,740,142"/>
 <area shape="rect" href="structllama_1_1mapping_1_1MappingBase.html" title=" " alt="" coords="167,5,397,47"/>
 <area shape="rect" title=" " alt="" coords="5,13,119,39"/>
 <area shape="rect" href="structllama_1_1internal_1_1BoxedValue.html" title=" " alt="" coords="181,71,383,127"/>
@@ -125,35 +125,31 @@ $(document).ready(function(){initNavTree('structllama_1_1mapping_1_1BitPackedFlo
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a95135832cca4cac12f39f480ef939652"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a95135832cca4cac12f39f480ef939652">LinearizeArrayDimsFunctor</a> = TLinearizeArrayDimsFunctor</td></tr>
-<tr class="separator:a95135832cca4cac12f39f480ef939652"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a417711d5e8bec53c99aa824f45c2153f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a417711d5e8bec53c99aa824f45c2153f">StoredIntegral</a> = TStoredIntegral</td></tr>
-<tr class="separator:a417711d5e8bec53c99aa824f45c2153f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37ba8a62aba6a0ca1ec327187fa911f6"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a37ba8a62aba6a0ca1ec327187fa911f6">Flattener</a> = FlattenRecordDim&lt; TRecordDim &gt;</td></tr>
-<tr class="separator:a37ba8a62aba6a0ca1ec327187fa911f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e5278acd858c456284f0d22b2a60b06"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a8e5278acd858c456284f0d22b2a60b06">LinearizeArrayIndexFunctor</a> = TLinearizeArrayIndexFunctor</td></tr>
+<tr class="separator:a8e5278acd858c456284f0d22b2a60b06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75ee95fefffa55a10634b41e8622dea7"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a75ee95fefffa55a10634b41e8622dea7">StoredIntegral</a> = TStoredIntegral</td></tr>
+<tr class="separator:a75ee95fefffa55a10634b41e8622dea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f9154f2a08ef35ca6b6b04575db985f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a0f9154f2a08ef35ca6b6b04575db985f">Permuter</a> = PermuteFields&lt; <a class="el" href="namespacellama.html#a1fddf1f638927edfb8da8e3c78da4e1c">FlatRecordDim</a>&lt; TRecordDim &gt; &gt;</td></tr>
+<tr class="separator:a0f9154f2a08ef35ca6b6b04575db985f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_types_structllama_1_1mapping_1_1MappingBase"><td colspan="2" onclick="javascript:toggleInherit('pub_types_structllama_1_1mapping_1_1MappingBase')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="structllama_1_1mapping_1_1MappingBase.html">llama::mapping::MappingBase&lt; TArrayExtents, TRecordDim &gt;</a></td></tr>
 <tr class="memitem:ab0dff4b5449fbc61e63ef6c8ae427c70 inherit pub_types_structllama_1_1mapping_1_1MappingBase"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1MappingBase.html#ab0dff4b5449fbc61e63ef6c8ae427c70">ArrayExtents</a> = TArrayExtents</td></tr>
 <tr class="separator:ab0dff4b5449fbc61e63ef6c8ae427c70 inherit pub_types_structllama_1_1mapping_1_1MappingBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e8dbadc1023c973d1d8a10a773e4786 inherit pub_types_structllama_1_1mapping_1_1MappingBase"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1MappingBase.html#a9e8dbadc1023c973d1d8a10a773e4786">ArrayIndex</a> = typename <a class="el" href="structllama_1_1ArrayExtents.html#abce5defd13fa5853289a5b1f744eb243">ArrayExtents::Index</a></td></tr>
-<tr class="separator:a9e8dbadc1023c973d1d8a10a773e4786 inherit pub_types_structllama_1_1mapping_1_1MappingBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a230ce8319dfa063ac4692dcd4034c462 inherit pub_types_structllama_1_1mapping_1_1MappingBase"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1MappingBase.html#a230ce8319dfa063ac4692dcd4034c462">RecordDim</a> = TRecordDim</td></tr>
 <tr class="separator:a230ce8319dfa063ac4692dcd4034c462 inherit pub_types_structllama_1_1mapping_1_1MappingBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ce2266ed39400609731093894761df9 inherit pub_types_structllama_1_1mapping_1_1MappingBase"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1MappingBase.html#a5ce2266ed39400609731093894761df9">size_type</a> = typename <a class="el" href="structllama_1_1ArrayExtents.html#a26ddad4db80efe93143b86c766b9a69f">ArrayExtents::value_type</a></td></tr>
-<tr class="separator:a5ce2266ed39400609731093894761df9 inherit pub_types_structllama_1_1mapping_1_1MappingBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae35d93c34ad45f0eecc4669d37ba5003"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#ae35d93c34ad45f0eecc4669d37ba5003">exponentBits</a> () const -&gt; size_type</td></tr>
-<tr class="separator:ae35d93c34ad45f0eecc4669d37ba5003"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57b15bca3982ee9e45cb7fa63626f0e7"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a57b15bca3982ee9e45cb7fa63626f0e7">mantissaBits</a> () const -&gt; size_type</td></tr>
-<tr class="separator:a57b15bca3982ee9e45cb7fa63626f0e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b441949543ff99133c6e01062d872dc"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a1b441949543ff99133c6e01062d872dc">BitPackedFloatAoS</a> (TArrayExtents <a class="el" href="structllama_1_1mapping_1_1MappingBase.html#ae552d836a8b07ae87ee2ab6280646051">extents</a>={}, ExponentBits <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#ae35d93c34ad45f0eecc4669d37ba5003">exponentBits</a>={}, MantissaBits <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a57b15bca3982ee9e45cb7fa63626f0e7">mantissaBits</a>={}, TRecordDim={})</td></tr>
-<tr class="separator:a1b441949543ff99133c6e01062d872dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45fe3ba10193914ac14fefb17948a307"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a45fe3ba10193914ac14fefb17948a307">blobSize</a> (size_type) const -&gt; size_type</td></tr>
-<tr class="separator:a45fe3ba10193914ac14fefb17948a307"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87cc089bee69b06436cb51e88c570aae"><td class="memTemplParams" colspan="2">template&lt;std::size_t... RecordCoords, typename Blobs &gt; </td></tr>
-<tr class="memitem:a87cc089bee69b06436cb51e88c570aae"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a87cc089bee69b06436cb51e88c570aae">compute</a> (typename <a class="el" href="structllama_1_1mapping_1_1MappingBase.html#a9e8dbadc1023c973d1d8a10a773e4786">Base::ArrayIndex</a> ai, <a class="el" href="structllama_1_1RecordCoord.html">RecordCoord</a>&lt; RecordCoords... &gt;, <a class="el" href="namespacellama_1_1mapping.html#a79bb2d70c1866c3090d5810dd0c92cb3">Blobs</a> &amp;blobs) const</td></tr>
-<tr class="separator:a87cc089bee69b06436cb51e88c570aae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac070950434a6bc2db0cf14ff52d61e06"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#ac070950434a6bc2db0cf14ff52d61e06">exponentBits</a> () const -&gt; size_type</td></tr>
+<tr class="separator:ac070950434a6bc2db0cf14ff52d61e06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ad0ddb793ff96207a435ff67cadc415"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a6ad0ddb793ff96207a435ff67cadc415">mantissaBits</a> () const -&gt; size_type</td></tr>
+<tr class="separator:a6ad0ddb793ff96207a435ff67cadc415"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3feaf3d1436d3b4f06003f5177f725a6"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a3feaf3d1436d3b4f06003f5177f725a6">BitPackedFloatAoS</a> (TArrayExtents <a class="el" href="structllama_1_1mapping_1_1MappingBase.html#ae552d836a8b07ae87ee2ab6280646051">extents</a>={}, ExponentBits <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#ac070950434a6bc2db0cf14ff52d61e06">exponentBits</a>={}, MantissaBits <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a6ad0ddb793ff96207a435ff67cadc415">mantissaBits</a>={}, TRecordDim={})</td></tr>
+<tr class="separator:a3feaf3d1436d3b4f06003f5177f725a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8cd2d5bc9e963379d1870db32e6467c"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#af8cd2d5bc9e963379d1870db32e6467c">blobSize</a> (size_type) const -&gt; size_type</td></tr>
+<tr class="separator:af8cd2d5bc9e963379d1870db32e6467c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98bf6eccea8e898be9e6459910113a13"><td class="memTemplParams" colspan="2">template&lt;std::size_t... RecordCoords, typename Blobs &gt; </td></tr>
+<tr class="memitem:a98bf6eccea8e898be9e6459910113a13"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a98bf6eccea8e898be9e6459910113a13">compute</a> (typename <a class="el" href="structllama_1_1mapping_1_1MappingBase.html#a9e8dbadc1023c973d1d8a10a773e4786">Base::ArrayIndex</a> ai, <a class="el" href="structllama_1_1RecordCoord.html">RecordCoord</a>&lt; RecordCoords... &gt;, <a class="el" href="namespacellama_1_1mapping.html#a79bb2d70c1866c3090d5810dd0c92cb3">Blobs</a> &amp;blobs) const</td></tr>
+<tr class="separator:a98bf6eccea8e898be9e6459910113a13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_structllama_1_1mapping_1_1MappingBase"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_structllama_1_1mapping_1_1MappingBase')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="structllama_1_1mapping_1_1MappingBase.html">llama::mapping::MappingBase&lt; TArrayExtents, TRecordDim &gt;</a></td></tr>
 <tr class="memitem:a3ca09f04e20b05688fa3ca89c5224fde inherit pub_methods_structllama_1_1mapping_1_1MappingBase"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1MappingBase.html#a3ca09f04e20b05688fa3ca89c5224fde">MappingBase</a> ()=default</td></tr>
 <tr class="separator:a3ca09f04e20b05688fa3ca89c5224fde inherit pub_methods_structllama_1_1mapping_1_1MappingBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -178,90 +174,98 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ad870fa5edf6c5f4f85a53769212970db"><td class="memTemplParams" colspan="2">template&lt;std::size_t... RecordCoords&gt; </td></tr>
-<tr class="memitem:ad870fa5edf6c5f4f85a53769212970db"><td class="memTemplItemLeft" align="right" valign="top">static constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#ad870fa5edf6c5f4f85a53769212970db">isComputed</a> (<a class="el" href="structllama_1_1RecordCoord.html">RecordCoord</a>&lt; RecordCoords... &gt;)</td></tr>
-<tr class="separator:ad870fa5edf6c5f4f85a53769212970db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84c762119deabae1c988a44538c6e69a"><td class="memTemplParams" colspan="2">template&lt;std::size_t... RecordCoords&gt; </td></tr>
+<tr class="memitem:a84c762119deabae1c988a44538c6e69a"><td class="memTemplItemLeft" align="right" valign="top">static constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a84c762119deabae1c988a44538c6e69a">isComputed</a> (<a class="el" href="structllama_1_1RecordCoord.html">RecordCoord</a>&lt; RecordCoords... &gt;)</td></tr>
+<tr class="separator:a84c762119deabae1c988a44538c6e69a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a34d8eda3b8d1cf9bf31ad89f6552d628"><td class="memItemLeft" align="right" valign="top">static constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a34d8eda3b8d1cf9bf31ad89f6552d628">blobCount</a> = 1</td></tr>
-<tr class="separator:a34d8eda3b8d1cf9bf31ad89f6552d628"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0378dbfaa7420ba1d97e081ee104dca3"><td class="memItemLeft" align="right" valign="top">static constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a0378dbfaa7420ba1d97e081ee104dca3">blobCount</a> = 1</td></tr>
+<tr class="separator:a0378dbfaa7420ba1d97e081ee104dca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_types_structllama_1_1mapping_1_1MappingBase"><td colspan="2" onclick="javascript:toggleInherit('pro_types_structllama_1_1mapping_1_1MappingBase')"><img src="closed.png" alt="-"/>&#160;Protected Types inherited from <a class="el" href="structllama_1_1mapping_1_1MappingBase.html">llama::mapping::MappingBase&lt; TArrayExtents, TRecordDim &gt;</a></td></tr>
+<tr class="memitem:a9e8dbadc1023c973d1d8a10a773e4786 inherit pro_types_structllama_1_1mapping_1_1MappingBase"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1MappingBase.html#a9e8dbadc1023c973d1d8a10a773e4786">ArrayIndex</a> = typename <a class="el" href="structllama_1_1ArrayExtents.html#abce5defd13fa5853289a5b1f744eb243">ArrayExtents::Index</a></td></tr>
+<tr class="separator:a9e8dbadc1023c973d1d8a10a773e4786 inherit pro_types_structllama_1_1mapping_1_1MappingBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ce2266ed39400609731093894761df9 inherit pro_types_structllama_1_1mapping_1_1MappingBase"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1MappingBase.html#a5ce2266ed39400609731093894761df9">size_type</a> = typename <a class="el" href="structllama_1_1ArrayExtents.html#a26ddad4db80efe93143b86c766b9a69f">ArrayExtents::value_type</a></td></tr>
+<tr class="separator:a5ce2266ed39400609731093894761df9 inherit pro_types_structllama_1_1mapping_1_1MappingBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;typename TArrayExtents, typename TRecordDim, typename ExponentBits = typename TArrayExtents::value_type, typename MantissaBits = ExponentBits, typename TLinearizeArrayDimsFunctor = LinearizeArrayDimsCpp, template&lt; typename &gt; typename FlattenRecordDim = FlattenRecordDimInOrder, typename TStoredIntegral = internal::StoredIntegralFor&lt;TRecordDim&gt;&gt;<br />
-struct llama::mapping::BitPackedFloatAoS&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayDimsFunctor, FlattenRecordDim, TStoredIntegral &gt;</h3>
+<div class="textblock"><h3>template&lt;typename TArrayExtents, typename TRecordDim, typename ExponentBits = typename TArrayExtents::value_type, typename MantissaBits = ExponentBits, typename TLinearizeArrayIndexFunctor = LinearizeArrayIndexRight, template&lt; typename &gt; typename PermuteFields = PermuteFieldsInOrder, typename TStoredIntegral = internal::StoredIntegralFor&lt;TRecordDim&gt;&gt;<br />
+struct llama::mapping::BitPackedFloatAoS&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayIndexFunctor, PermuteFields, TStoredIntegral &gt;</h3>
 
 
-<p class="definition">Definition at line <a class="el" href="BitPackedFloat_8hpp_source.html#l00320">320</a> of file <a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitPackedFloat_8hpp_source.html#l00325">325</a> of file <a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="a37ba8a62aba6a0ca1ec327187fa911f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a37ba8a62aba6a0ca1ec327187fa911f6">&#9670;&nbsp;</a></span>Flattener</h2>
+<a id="a8e5278acd858c456284f0d22b2a60b06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e5278acd858c456284f0d22b2a60b06">&#9670;&nbsp;</a></span>LinearizeArrayIndexFunctor</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits  = typename TArrayExtents::value_type, typename MantissaBits  = ExponentBits, typename TLinearizeArrayDimsFunctor  = LinearizeArrayDimsCpp, template&lt; typename &gt; typename FlattenRecordDim = FlattenRecordDimInOrder, typename TStoredIntegral  = internal::StoredIntegralFor&lt;TRecordDim&gt;&gt; </div>
+template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits  = typename TArrayExtents::value_type, typename MantissaBits  = ExponentBits, typename TLinearizeArrayIndexFunctor  = LinearizeArrayIndexRight, template&lt; typename &gt; typename PermuteFields = PermuteFieldsInOrder, typename TStoredIntegral  = internal::StoredIntegralFor&lt;TRecordDim&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">llama::mapping::BitPackedFloatAoS</a>&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayDimsFunctor, FlattenRecordDim, TStoredIntegral &gt;::<a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a37ba8a62aba6a0ca1ec327187fa911f6">Flattener</a> =  FlattenRecordDim&lt;TRecordDim&gt;</td>
+          <td class="memname">using <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">llama::mapping::BitPackedFloatAoS</a>&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayIndexFunctor, PermuteFields, TStoredIntegral &gt;::<a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a8e5278acd858c456284f0d22b2a60b06">LinearizeArrayIndexFunctor</a> =  TLinearizeArrayIndexFunctor</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BitPackedFloat_8hpp_source.html#l00335">335</a> of file <a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitPackedFloat_8hpp_source.html#l00337">337</a> of file <a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a95135832cca4cac12f39f480ef939652"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95135832cca4cac12f39f480ef939652">&#9670;&nbsp;</a></span>LinearizeArrayDimsFunctor</h2>
+<a id="a0f9154f2a08ef35ca6b6b04575db985f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f9154f2a08ef35ca6b6b04575db985f">&#9670;&nbsp;</a></span>Permuter</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits  = typename TArrayExtents::value_type, typename MantissaBits  = ExponentBits, typename TLinearizeArrayDimsFunctor  = LinearizeArrayDimsCpp, template&lt; typename &gt; typename FlattenRecordDim = FlattenRecordDimInOrder, typename TStoredIntegral  = internal::StoredIntegralFor&lt;TRecordDim&gt;&gt; </div>
+template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits  = typename TArrayExtents::value_type, typename MantissaBits  = ExponentBits, typename TLinearizeArrayIndexFunctor  = LinearizeArrayIndexRight, template&lt; typename &gt; typename PermuteFields = PermuteFieldsInOrder, typename TStoredIntegral  = internal::StoredIntegralFor&lt;TRecordDim&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">llama::mapping::BitPackedFloatAoS</a>&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayDimsFunctor, FlattenRecordDim, TStoredIntegral &gt;::<a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a95135832cca4cac12f39f480ef939652">LinearizeArrayDimsFunctor</a> =  TLinearizeArrayDimsFunctor</td>
+          <td class="memname">using <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">llama::mapping::BitPackedFloatAoS</a>&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayIndexFunctor, PermuteFields, TStoredIntegral &gt;::<a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a0f9154f2a08ef35ca6b6b04575db985f">Permuter</a> =  PermuteFields&lt;<a class="el" href="namespacellama.html#a1fddf1f638927edfb8da8e3c78da4e1c">FlatRecordDim</a>&lt;TRecordDim&gt; &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BitPackedFloat_8hpp_source.html#l00332">332</a> of file <a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitPackedFloat_8hpp_source.html#l00340">340</a> of file <a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a417711d5e8bec53c99aa824f45c2153f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a417711d5e8bec53c99aa824f45c2153f">&#9670;&nbsp;</a></span>StoredIntegral</h2>
+<a id="a75ee95fefffa55a10634b41e8622dea7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75ee95fefffa55a10634b41e8622dea7">&#9670;&nbsp;</a></span>StoredIntegral</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits  = typename TArrayExtents::value_type, typename MantissaBits  = ExponentBits, typename TLinearizeArrayDimsFunctor  = LinearizeArrayDimsCpp, template&lt; typename &gt; typename FlattenRecordDim = FlattenRecordDimInOrder, typename TStoredIntegral  = internal::StoredIntegralFor&lt;TRecordDim&gt;&gt; </div>
+template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits  = typename TArrayExtents::value_type, typename MantissaBits  = ExponentBits, typename TLinearizeArrayIndexFunctor  = LinearizeArrayIndexRight, template&lt; typename &gt; typename PermuteFields = PermuteFieldsInOrder, typename TStoredIntegral  = internal::StoredIntegralFor&lt;TRecordDim&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">llama::mapping::BitPackedFloatAoS</a>&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayDimsFunctor, FlattenRecordDim, TStoredIntegral &gt;::<a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a417711d5e8bec53c99aa824f45c2153f">StoredIntegral</a> =  TStoredIntegral</td>
+          <td class="memname">using <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">llama::mapping::BitPackedFloatAoS</a>&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayIndexFunctor, PermuteFields, TStoredIntegral &gt;::<a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a75ee95fefffa55a10634b41e8622dea7">StoredIntegral</a> =  TStoredIntegral</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BitPackedFloat_8hpp_source.html#l00333">333</a> of file <a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitPackedFloat_8hpp_source.html#l00338">338</a> of file <a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a1b441949543ff99133c6e01062d872dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b441949543ff99133c6e01062d872dc">&#9670;&nbsp;</a></span>BitPackedFloatAoS()</h2>
+<a id="a3feaf3d1436d3b4f06003f5177f725a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3feaf3d1436d3b4f06003f5177f725a6">&#9670;&nbsp;</a></span>BitPackedFloatAoS()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits  = typename TArrayExtents::value_type, typename MantissaBits  = ExponentBits, typename TLinearizeArrayDimsFunctor  = LinearizeArrayDimsCpp, template&lt; typename &gt; typename FlattenRecordDim = FlattenRecordDimInOrder, typename TStoredIntegral  = internal::StoredIntegralFor&lt;TRecordDim&gt;&gt; </div>
+template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits  = typename TArrayExtents::value_type, typename MantissaBits  = ExponentBits, typename TLinearizeArrayIndexFunctor  = LinearizeArrayIndexRight, template&lt; typename &gt; typename PermuteFields = PermuteFieldsInOrder, typename TStoredIntegral  = internal::StoredIntegralFor&lt;TRecordDim&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">llama::mapping::BitPackedFloatAoS</a>&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayDimsFunctor, FlattenRecordDim, TStoredIntegral &gt;::<a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">BitPackedFloatAoS</a> </td>
+          <td class="memname">constexpr <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">llama::mapping::BitPackedFloatAoS</a>&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayIndexFunctor, PermuteFields, TStoredIntegral &gt;::<a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">BitPackedFloatAoS</a> </td>
           <td>(</td>
           <td class="paramtype">TArrayExtents&#160;</td>
           <td class="paramname"><em>extents</em> = <code>{}</code>, </td>
@@ -297,24 +301,24 @@ template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BitPackedFloat_8hpp_source.html#l00351">351</a> of file <a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitPackedFloat_8hpp_source.html#l00356">356</a> of file <a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a45fe3ba10193914ac14fefb17948a307"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a45fe3ba10193914ac14fefb17948a307">&#9670;&nbsp;</a></span>blobSize()</h2>
+<a id="af8cd2d5bc9e963379d1870db32e6467c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8cd2d5bc9e963379d1870db32e6467c">&#9670;&nbsp;</a></span>blobSize()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits  = typename TArrayExtents::value_type, typename MantissaBits  = ExponentBits, typename TLinearizeArrayDimsFunctor  = LinearizeArrayDimsCpp, template&lt; typename &gt; typename FlattenRecordDim = FlattenRecordDimInOrder, typename TStoredIntegral  = internal::StoredIntegralFor&lt;TRecordDim&gt;&gt; </div>
+template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits  = typename TArrayExtents::value_type, typename MantissaBits  = ExponentBits, typename TLinearizeArrayIndexFunctor  = LinearizeArrayIndexRight, template&lt; typename &gt; typename PermuteFields = PermuteFieldsInOrder, typename TStoredIntegral  = internal::StoredIntegralFor&lt;TRecordDim&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">llama::mapping::BitPackedFloatAoS</a>&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayDimsFunctor, FlattenRecordDim, TStoredIntegral &gt;::blobSize </td>
+          <td class="memname">constexpr auto <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">llama::mapping::BitPackedFloatAoS</a>&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayIndexFunctor, PermuteFields, TStoredIntegral &gt;::blobSize </td>
           <td>(</td>
           <td class="paramtype">size_type&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -329,17 +333,17 @@ template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BitPackedFloat_8hpp_source.html#l00364">364</a> of file <a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitPackedFloat_8hpp_source.html#l00369">369</a> of file <a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a87cc089bee69b06436cb51e88c570aae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a87cc089bee69b06436cb51e88c570aae">&#9670;&nbsp;</a></span>compute()</h2>
+<a id="a98bf6eccea8e898be9e6459910113a13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98bf6eccea8e898be9e6459910113a13">&#9670;&nbsp;</a></span>compute()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits  = typename TArrayExtents::value_type, typename MantissaBits  = ExponentBits, typename TLinearizeArrayDimsFunctor  = LinearizeArrayDimsCpp, template&lt; typename &gt; typename FlattenRecordDim = FlattenRecordDimInOrder, typename TStoredIntegral  = internal::StoredIntegralFor&lt;TRecordDim&gt;&gt; </div>
+template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits  = typename TArrayExtents::value_type, typename MantissaBits  = ExponentBits, typename TLinearizeArrayIndexFunctor  = LinearizeArrayIndexRight, template&lt; typename &gt; typename PermuteFields = PermuteFieldsInOrder, typename TStoredIntegral  = internal::StoredIntegralFor&lt;TRecordDim&gt;&gt; </div>
 <div class="memtemplate">
 template&lt;std::size_t... RecordCoords, typename Blobs &gt; </div>
 <table class="mlabels">
@@ -347,7 +351,7 @@ template&lt;std::size_t... RecordCoords, typename Blobs &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">llama::mapping::BitPackedFloatAoS</a>&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayDimsFunctor, FlattenRecordDim, TStoredIntegral &gt;::compute </td>
+          <td class="memname">constexpr auto <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">llama::mapping::BitPackedFloatAoS</a>&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayIndexFunctor, PermuteFields, TStoredIntegral &gt;::compute </td>
           <td>(</td>
           <td class="paramtype">typename <a class="el" href="structllama_1_1mapping_1_1MappingBase.html#a9e8dbadc1023c973d1d8a10a773e4786">Base::ArrayIndex</a>&#160;</td>
           <td class="paramname"><em>ai</em>, </td>
@@ -377,23 +381,23 @@ template&lt;std::size_t... RecordCoords, typename Blobs &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BitPackedFloat_8hpp_source.html#l00380">380</a> of file <a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitPackedFloat_8hpp_source.html#l00385">385</a> of file <a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ae35d93c34ad45f0eecc4669d37ba5003"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae35d93c34ad45f0eecc4669d37ba5003">&#9670;&nbsp;</a></span>exponentBits()</h2>
+<a id="ac070950434a6bc2db0cf14ff52d61e06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac070950434a6bc2db0cf14ff52d61e06">&#9670;&nbsp;</a></span>exponentBits()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits  = typename TArrayExtents::value_type, typename MantissaBits  = ExponentBits, typename TLinearizeArrayDimsFunctor  = LinearizeArrayDimsCpp, template&lt; typename &gt; typename FlattenRecordDim = FlattenRecordDimInOrder, typename TStoredIntegral  = internal::StoredIntegralFor&lt;TRecordDim&gt;&gt; </div>
+template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits  = typename TArrayExtents::value_type, typename MantissaBits  = ExponentBits, typename TLinearizeArrayIndexFunctor  = LinearizeArrayIndexRight, template&lt; typename &gt; typename PermuteFields = PermuteFieldsInOrder, typename TStoredIntegral  = internal::StoredIntegralFor&lt;TRecordDim&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">llama::mapping::BitPackedFloatAoS</a>&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayDimsFunctor, FlattenRecordDim, TStoredIntegral &gt;::exponentBits </td>
+          <td class="memname">constexpr auto <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">llama::mapping::BitPackedFloatAoS</a>&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayIndexFunctor, PermuteFields, TStoredIntegral &gt;::exponentBits </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const -&gt; size_type
@@ -407,17 +411,17 @@ template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BitPackedFloat_8hpp_source.html#l00339">339</a> of file <a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitPackedFloat_8hpp_source.html#l00344">344</a> of file <a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ad870fa5edf6c5f4f85a53769212970db"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad870fa5edf6c5f4f85a53769212970db">&#9670;&nbsp;</a></span>isComputed()</h2>
+<a id="a84c762119deabae1c988a44538c6e69a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84c762119deabae1c988a44538c6e69a">&#9670;&nbsp;</a></span>isComputed()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits  = typename TArrayExtents::value_type, typename MantissaBits  = ExponentBits, typename TLinearizeArrayDimsFunctor  = LinearizeArrayDimsCpp, template&lt; typename &gt; typename FlattenRecordDim = FlattenRecordDimInOrder, typename TStoredIntegral  = internal::StoredIntegralFor&lt;TRecordDim&gt;&gt; </div>
+template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits  = typename TArrayExtents::value_type, typename MantissaBits  = ExponentBits, typename TLinearizeArrayIndexFunctor  = LinearizeArrayIndexRight, template&lt; typename &gt; typename PermuteFields = PermuteFieldsInOrder, typename TStoredIntegral  = internal::StoredIntegralFor&lt;TRecordDim&gt;&gt; </div>
 <div class="memtemplate">
 template&lt;std::size_t... RecordCoords&gt; </div>
 <table class="mlabels">
@@ -425,7 +429,7 @@ template&lt;std::size_t... RecordCoords&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static constexpr auto <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">llama::mapping::BitPackedFloatAoS</a>&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayDimsFunctor, FlattenRecordDim, TStoredIntegral &gt;::isComputed </td>
+          <td class="memname">static constexpr auto <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">llama::mapping::BitPackedFloatAoS</a>&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayIndexFunctor, PermuteFields, TStoredIntegral &gt;::isComputed </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structllama_1_1RecordCoord.html">RecordCoord</a>&lt; RecordCoords... &gt;&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -439,23 +443,23 @@ template&lt;std::size_t... RecordCoords&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BitPackedFloat_8hpp_source.html#l00374">374</a> of file <a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitPackedFloat_8hpp_source.html#l00379">379</a> of file <a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a57b15bca3982ee9e45cb7fa63626f0e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a57b15bca3982ee9e45cb7fa63626f0e7">&#9670;&nbsp;</a></span>mantissaBits()</h2>
+<a id="a6ad0ddb793ff96207a435ff67cadc415"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ad0ddb793ff96207a435ff67cadc415">&#9670;&nbsp;</a></span>mantissaBits()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits  = typename TArrayExtents::value_type, typename MantissaBits  = ExponentBits, typename TLinearizeArrayDimsFunctor  = LinearizeArrayDimsCpp, template&lt; typename &gt; typename FlattenRecordDim = FlattenRecordDimInOrder, typename TStoredIntegral  = internal::StoredIntegralFor&lt;TRecordDim&gt;&gt; </div>
+template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits  = typename TArrayExtents::value_type, typename MantissaBits  = ExponentBits, typename TLinearizeArrayIndexFunctor  = LinearizeArrayIndexRight, template&lt; typename &gt; typename PermuteFields = PermuteFieldsInOrder, typename TStoredIntegral  = internal::StoredIntegralFor&lt;TRecordDim&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">llama::mapping::BitPackedFloatAoS</a>&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayDimsFunctor, FlattenRecordDim, TStoredIntegral &gt;::mantissaBits </td>
+          <td class="memname">constexpr auto <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">llama::mapping::BitPackedFloatAoS</a>&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayIndexFunctor, PermuteFields, TStoredIntegral &gt;::mantissaBits </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const -&gt; size_type
@@ -469,24 +473,24 @@ template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BitPackedFloat_8hpp_source.html#l00345">345</a> of file <a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitPackedFloat_8hpp_source.html#l00350">350</a> of file <a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a34d8eda3b8d1cf9bf31ad89f6552d628"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34d8eda3b8d1cf9bf31ad89f6552d628">&#9670;&nbsp;</a></span>blobCount</h2>
+<a id="a0378dbfaa7420ba1d97e081ee104dca3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0378dbfaa7420ba1d97e081ee104dca3">&#9670;&nbsp;</a></span>blobCount</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits  = typename TArrayExtents::value_type, typename MantissaBits  = ExponentBits, typename TLinearizeArrayDimsFunctor  = LinearizeArrayDimsCpp, template&lt; typename &gt; typename FlattenRecordDim = FlattenRecordDimInOrder, typename TStoredIntegral  = internal::StoredIntegralFor&lt;TRecordDim&gt;&gt; </div>
+template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits  = typename TArrayExtents::value_type, typename MantissaBits  = ExponentBits, typename TLinearizeArrayIndexFunctor  = LinearizeArrayIndexRight, template&lt; typename &gt; typename PermuteFields = PermuteFieldsInOrder, typename TStoredIntegral  = internal::StoredIntegralFor&lt;TRecordDim&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr std::size_t <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">llama::mapping::BitPackedFloatAoS</a>&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayDimsFunctor, FlattenRecordDim, TStoredIntegral &gt;::blobCount = 1</td>
+          <td class="memname">constexpr std::size_t <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">llama::mapping::BitPackedFloatAoS</a>&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayIndexFunctor, PermuteFields, TStoredIntegral &gt;::blobCount = 1</td>
         </tr>
       </table>
   </td>
@@ -496,7 +500,7 @@ template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="BitPackedFloat_8hpp_source.html#l00336">336</a> of file <a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitPackedFloat_8hpp_source.html#l00341">341</a> of file <a class="el" href="BitPackedFloat_8hpp_source.html">BitPackedFloat.hpp</a>.</p>
 
 </div>
 </div>
@@ -509,7 +513,7 @@ template&lt;typename TArrayExtents , typename TRecordDim , typename ExponentBits
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacellama.html">llama</a></li><li class="navelem"><a class="el" href="namespacellama_1_1mapping.html">mapping</a></li><li class="navelem"><a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html">BitPackedFloatAoS</a></li>
-    <li class="footer">Generated on Fri May 12 2023 02:58:34 for Low-Level Abstraction of Memory Access by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Nov 3 2023 16:38:43 for Low-Level Abstraction of Memory Access by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

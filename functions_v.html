@@ -99,6 +99,7 @@ $(document).ready(function(){initNavTree('functions_v.html',''); initResizable()
 </li>
 <li>value_type
 : <a class="el" href="structllama_1_1accessor_1_1Const_1_1Reference.html#a9aff77012565388f68c699781429be7a">llama::accessor::Const::Reference&lt; Ref &gt;</a>
+, <a class="el" href="structllama_1_1accessor_1_1Locked_1_1Reference.html#a7b74b5f2d25f6b3837db0c6716e62405">llama::accessor::Locked&lt; Mutex &gt;::Reference&lt; Ref, Value &gt;</a>
 , <a class="el" href="structllama_1_1Array.html#a0774edd854887549deb6cd3b7c606af8">llama::Array&lt; T, N &gt;</a>
 , <a class="el" href="structllama_1_1Array_3_01T_00_010_01_4.html#a1efa9138d873ccd7ea49c2d60b8f1bde">llama::Array&lt; T, 0 &gt;</a>
 , <a class="el" href="structllama_1_1ArrayExtents.html#a26ddad4db80efe93143b86c766b9a69f">llama::ArrayExtents&lt; T, Sizes &gt;</a>
@@ -125,9 +126,9 @@ $(document).ready(function(){initNavTree('functions_v.html',''); initResizable()
 : <a class="el" href="structllama_1_1Vector.html#aec188ca107a1acab83c6e80f2e23ecc4">llama::Vector&lt; Mapping &gt;</a>
 </li>
 <li>VHBits
-: <a class="el" href="structllama_1_1mapping_1_1BitPackedIntAoS.html#ab0aeaf5af88b95206397aa4e2328b4dc">llama::mapping::BitPackedIntAoS&lt; TArrayExtents, TRecordDim, Bits, SignBit, TLinearizeArrayDimsFunctor, FlattenRecordDim, TStoredIntegral &gt;</a>
-, <a class="el" href="structllama_1_1mapping_1_1BitPackedIntSoA.html#a4ebfbdd7bfea21f2ce0194b09c36460f">llama::mapping::BitPackedIntSoA&lt; TArrayExtents, TRecordDim, Bits, SignBit, TLinearizeArrayDimsFunctor, TStoredIntegral &gt;</a>
-, <a class="el" href="structllama_1_1mapping_1_1internal_1_1BitPackedIntCommon.html#a28b2424410ea306ae7c8790bbdb9532f">llama::mapping::internal::BitPackedIntCommon&lt; TArrayExtents, TRecordDim, Bits, SignBit, TLinearizeArrayDimsFunctor, TStoredIntegral &gt;</a>
+: <a class="el" href="structllama_1_1mapping_1_1BitPackedIntAoS.html#a9e4008194e30cbdf45f0908861c6524c">llama::mapping::BitPackedIntAoS&lt; TArrayExtents, TRecordDim, Bits, SignBit, TLinearizeArrayIndexFunctor, PermuteFields, TStoredIntegral &gt;</a>
+, <a class="el" href="structllama_1_1mapping_1_1BitPackedIntSoA.html#a7de3f59fbe4900973609d003707039a2">llama::mapping::BitPackedIntSoA&lt; TArrayExtents, TRecordDim, Bits, SignBit, TLinearizeArrayIndexFunctor, TStoredIntegral &gt;</a>
+, <a class="el" href="structllama_1_1mapping_1_1internal_1_1BitPackedIntCommon.html#ad35666ded6cb3e27ae5ed4e8fcb88a8e">llama::mapping::internal::BitPackedIntCommon&lt; TArrayExtents, TRecordDim, Bits, SignBit, TLinearizeArrayIndexFunctor, TStoredIntegral &gt;</a>
 </li>
 <li>view
 : <a class="el" href="structllama_1_1Iterator.html#a6d5bad87b068fd6786c1c8828bb3367f">llama::Iterator&lt; View &gt;</a>
@@ -145,7 +146,7 @@ $(document).ready(function(){initNavTree('functions_v.html',''); initResizable()
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri May 12 2023 02:58:34 for Low-Level Abstraction of Memory Access by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Nov 3 2023 16:38:44 for Low-Level Abstraction of Memory Access by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

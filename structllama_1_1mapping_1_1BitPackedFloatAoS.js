@@ -1,13 +1,13 @@
 var structllama_1_1mapping_1_1BitPackedFloatAoS =
 [
-    [ "Flattener", "structllama_1_1mapping_1_1BitPackedFloatAoS.html#a37ba8a62aba6a0ca1ec327187fa911f6", null ],
-    [ "LinearizeArrayDimsFunctor", "structllama_1_1mapping_1_1BitPackedFloatAoS.html#a95135832cca4cac12f39f480ef939652", null ],
-    [ "StoredIntegral", "structllama_1_1mapping_1_1BitPackedFloatAoS.html#a417711d5e8bec53c99aa824f45c2153f", null ],
-    [ "BitPackedFloatAoS", "structllama_1_1mapping_1_1BitPackedFloatAoS.html#a1b441949543ff99133c6e01062d872dc", null ],
-    [ "blobSize", "structllama_1_1mapping_1_1BitPackedFloatAoS.html#a45fe3ba10193914ac14fefb17948a307", null ],
-    [ "compute", "structllama_1_1mapping_1_1BitPackedFloatAoS.html#a87cc089bee69b06436cb51e88c570aae", null ],
-    [ "exponentBits", "structllama_1_1mapping_1_1BitPackedFloatAoS.html#ae35d93c34ad45f0eecc4669d37ba5003", null ],
-    [ "isComputed", "structllama_1_1mapping_1_1BitPackedFloatAoS.html#ad870fa5edf6c5f4f85a53769212970db", null ],
-    [ "mantissaBits", "structllama_1_1mapping_1_1BitPackedFloatAoS.html#a57b15bca3982ee9e45cb7fa63626f0e7", null ],
-    [ "blobCount", "structllama_1_1mapping_1_1BitPackedFloatAoS.html#a34d8eda3b8d1cf9bf31ad89f6552d628", null ]
+    [ "LinearizeArrayIndexFunctor", "structllama_1_1mapping_1_1BitPackedFloatAoS.html#a8e5278acd858c456284f0d22b2a60b06", null ],
+    [ "Permuter", "structllama_1_1mapping_1_1BitPackedFloatAoS.html#a0f9154f2a08ef35ca6b6b04575db985f", null ],
+    [ "StoredIntegral", "structllama_1_1mapping_1_1BitPackedFloatAoS.html#a75ee95fefffa55a10634b41e8622dea7", null ],
+    [ "BitPackedFloatAoS", "structllama_1_1mapping_1_1BitPackedFloatAoS.html#a3feaf3d1436d3b4f06003f5177f725a6", null ],
+    [ "blobSize", "structllama_1_1mapping_1_1BitPackedFloatAoS.html#af8cd2d5bc9e963379d1870db32e6467c", null ],
+    [ "compute", "structllama_1_1mapping_1_1BitPackedFloatAoS.html#a98bf6eccea8e898be9e6459910113a13", null ],
+    [ "exponentBits", "structllama_1_1mapping_1_1BitPackedFloatAoS.html#ac070950434a6bc2db0cf14ff52d61e06", null ],
+    [ "isComputed", "structllama_1_1mapping_1_1BitPackedFloatAoS.html#a84c762119deabae1c988a44538c6e69a", null ],
+    [ "mantissaBits", "structllama_1_1mapping_1_1BitPackedFloatAoS.html#a6ad0ddb793ff96207a435ff67cadc415", null ],
+    [ "blobCount", "structllama_1_1mapping_1_1BitPackedFloatAoS.html#a0378dbfaa7420ba1d97e081ee104dca3", null ]
 ];

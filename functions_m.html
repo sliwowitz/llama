@@ -85,29 +85,36 @@ $(document).ready(function(){initNavTree('functions_m.html',''); initResizable()
 <div class="textblock">Here is a list of all class members with links to the classes they belong to:</div>
 
 <h3><a id="index_m"></a>- m -</h3><ul>
+<li>m
+: <a class="el" href="structllama_1_1accessor_1_1Locked.html#ab0471036fb296a91ba9bbd6911deb4f7">llama::accessor::Locked&lt; Mutex &gt;</a>
+, <a class="el" href="structllama_1_1accessor_1_1Locked_1_1Reference.html#aba460a4caf4c07c6012141671152f0b7">llama::accessor::Locked&lt; Mutex &gt;::Reference&lt; Ref, Value &gt;</a>
+</li>
 <li>mantissa
 : <a class="el" href="structllama_1_1mapping_1_1internal_1_1FloatBitTraits_3_01double_01_4.html#af14b3a3ab1d4f7227486148aa7eca763">llama::mapping::internal::FloatBitTraits&lt; double &gt;</a>
 , <a class="el" href="structllama_1_1mapping_1_1internal_1_1FloatBitTraits_3_01float_01_4.html#a6dbfc13467fc2696ae7d2ab85974f4bd">llama::mapping::internal::FloatBitTraits&lt; float &gt;</a>
 </li>
 <li>mantissaBits()
-: <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a57b15bca3982ee9e45cb7fa63626f0e7">llama::mapping::BitPackedFloatAoS&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayDimsFunctor, FlattenRecordDim, TStoredIntegral &gt;</a>
-, <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatSoA.html#a5ef0c5b54db6058d1d511c3707366db1">llama::mapping::BitPackedFloatSoA&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayDimsFunctor, TStoredIntegral &gt;</a>
+: <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatAoS.html#a6ad0ddb793ff96207a435ff67cadc415">llama::mapping::BitPackedFloatAoS&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayIndexFunctor, PermuteFields, TStoredIntegral &gt;</a>
+, <a class="el" href="structllama_1_1mapping_1_1BitPackedFloatSoA.html#aaa98b71746fe3183dd7eb27a65274c55">llama::mapping::BitPackedFloatSoA&lt; TArrayExtents, TRecordDim, ExponentBits, MantissaBits, TLinearizeArrayIndexFunctor, TStoredIntegral &gt;</a>
 </li>
 <li>Mapping()
 : <a class="el" href="structllama_1_1mapping_1_1tree_1_1Mapping.html#ad6a24222f361e29632ad42e5d3fd1f20">llama::mapping::tree::Mapping&lt; TArrayExtents, TRecordDim, TreeOperationList &gt;</a>
 , <a class="el" href="structllama_1_1SubView.html#ad0592b1c97fc1410f4f8993dba03aed1">llama::SubView&lt; TStoredParentView &gt;</a>
 </li>
 <li>mapping()
-: <a class="el" href="structllama_1_1View.html#a02995d9561c50196f5efae24031c0af6">llama::View&lt; TMapping, TBlobType, TAccessor &gt;</a>
+: <a class="el" href="structllama_1_1SubView.html#a23a0bbbee3851f97f653f5f7ee908c39">llama::SubView&lt; TStoredParentView &gt;</a>
 </li>
 <li>Mapping
 : <a class="el" href="structllama_1_1View.html#ab78c51e95a88b07395d0311107f31ba3">llama::View&lt; TMapping, TBlobType, TAccessor &gt;</a>
 </li>
-<li>mapping1
-: <a class="el" href="structllama_1_1mapping_1_1Split.html#a1e9692ef08e3ee8e907ceeb6dbf8d6b6">llama::mapping::Split&lt; TArrayExtents, TRecordDim, TSelectorForMapping1, MappingTemplate1, MappingTemplate2, SeparateBlobs &gt;</a>
+<li>mapping()
+: <a class="el" href="structllama_1_1View.html#a02995d9561c50196f5efae24031c0af6">llama::View&lt; TMapping, TBlobType, TAccessor &gt;</a>
 </li>
 <li>Mapping1
 : <a class="el" href="structllama_1_1mapping_1_1Split.html#ac70c11ba46bc16d8dc004e07bd916431">llama::mapping::Split&lt; TArrayExtents, TRecordDim, TSelectorForMapping1, MappingTemplate1, MappingTemplate2, SeparateBlobs &gt;</a>
+</li>
+<li>mapping1
+: <a class="el" href="structllama_1_1mapping_1_1Split.html#a1e9692ef08e3ee8e907ceeb6dbf8d6b6">llama::mapping::Split&lt; TArrayExtents, TRecordDim, TSelectorForMapping1, MappingTemplate1, MappingTemplate2, SeparateBlobs &gt;</a>
 </li>
 <li>mapping2
 : <a class="el" href="structllama_1_1mapping_1_1Split.html#a2cbca78d3a9e6e58910e4edfa30f3d60">llama::mapping::Split&lt; TArrayExtents, TRecordDim, TSelectorForMapping1, MappingTemplate1, MappingTemplate2, SeparateBlobs &gt;</a>
@@ -121,11 +128,11 @@ $(document).ready(function(){initNavTree('functions_m.html',''); initResizable()
 <li>memLocsComputed
 : <a class="el" href="structllama_1_1mapping_1_1AccessCounts.html#a7cb54709b1b75556d89b0d62391f9475">llama::mapping::AccessCounts&lt; CountType &gt;</a>
 </li>
-<li>MergedFunctors
-: <a class="el" href="structllama_1_1mapping_1_1tree_1_1Mapping.html#a497d204c1f51e5c9213fe50f4fe6199c">llama::mapping::tree::Mapping&lt; TArrayExtents, TRecordDim, TreeOperationList &gt;</a>
-</li>
 <li>mergedFunctors
 : <a class="el" href="structllama_1_1mapping_1_1tree_1_1Mapping.html#a4361d3fef8c59d58c37bdeb5fb209cd8">llama::mapping::tree::Mapping&lt; TArrayExtents, TRecordDim, TreeOperationList &gt;</a>
+</li>
+<li>MergedFunctors
+: <a class="el" href="structllama_1_1mapping_1_1tree_1_1Mapping.html#a497d204c1f51e5c9213fe50f4fe6199c">llama::mapping::tree::Mapping&lt; TArrayExtents, TRecordDim, TreeOperationList &gt;</a>
 </li>
 <li>MergeFunctors()
 : <a class="el" href="structllama_1_1mapping_1_1tree_1_1internal_1_1MergeFunctors_3_01Tree_00_01Tuple_3_01Operations_8_8_8_01_4_01_4.html#ab99604ea7d89b69746842fc591b37d16">llama::mapping::tree::internal::MergeFunctors&lt; Tree, Tuple&lt; Operations... &gt; &gt;</a>
@@ -140,7 +147,7 @@ $(document).ready(function(){initNavTree('functions_m.html',''); initResizable()
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri May 12 2023 02:58:34 for Low-Level Abstraction of Memory Access by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Nov 3 2023 16:38:44 for Low-Level Abstraction of Memory Access by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

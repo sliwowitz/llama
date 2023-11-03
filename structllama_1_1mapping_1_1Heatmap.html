@@ -125,6 +125,10 @@ Public Types</h2></td></tr>
 <tr class="separator:af33773e38b72e7d43561b1dbffcd1052"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6a30d2930a1dbdb549142ab6a5218de"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1Heatmap.html#af6a30d2930a1dbdb549142ab6a5218de">CountType</a> = TCountType</td></tr>
 <tr class="separator:af6a30d2930a1dbdb549142ab6a5218de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3774cd62e0abf2840b71ac2244e05a2b"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1Heatmap.html#a3774cd62e0abf2840b71ac2244e05a2b">ArrayExtents</a> = typename Mapping::ArrayExtents</td></tr>
+<tr class="separator:a3774cd62e0abf2840b71ac2244e05a2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d2237094bf40b8d773f701ccea03338"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1Heatmap.html#a2d2237094bf40b8d773f701ccea03338">RecordDim</a> = typename Mapping::RecordDim</td></tr>
+<tr class="separator:a2d2237094bf40b8d773f701ccea03338"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -137,9 +141,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac2c647634026cb6ea41aa8f9a4b06062"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83e17842d5dc74dcffeccdf1c74d9a56"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1Heatmap.html#a83e17842d5dc74dcffeccdf1c74d9a56">blobSize</a> (size_type blobIndex) const -&gt; size_type</td></tr>
 <tr class="separator:a83e17842d5dc74dcffeccdf1c74d9a56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a801b2fc29f6a7d8a5da7fcce594227f0"><td class="memTemplParams" colspan="2">template&lt;std::size_t... RecordCoords, typename Blobs &gt; </td></tr>
-<tr class="memitem:a801b2fc29f6a7d8a5da7fcce594227f0"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1Heatmap.html#a801b2fc29f6a7d8a5da7fcce594227f0">compute</a> (typename Mapping::ArrayIndex ai, <a class="el" href="structllama_1_1RecordCoord.html">RecordCoord</a>&lt; RecordCoords... &gt; rc, <a class="el" href="namespacellama_1_1mapping.html#a79bb2d70c1866c3090d5810dd0c92cb3">Blobs</a> &amp;blobs) const -&gt; decltype(auto)</td></tr>
-<tr class="separator:a801b2fc29f6a7d8a5da7fcce594227f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61de2bd56eb559805fbc861a7d6c99a7"><td class="memTemplParams" colspan="2">template&lt;std::size_t... RecordCoords, typename Blobs &gt; </td></tr>
+<tr class="memitem:a61de2bd56eb559805fbc861a7d6c99a7"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1Heatmap.html#a61de2bd56eb559805fbc861a7d6c99a7">compute</a> (ArrayIndex ai, <a class="el" href="structllama_1_1RecordCoord.html">RecordCoord</a>&lt; RecordCoords... &gt; rc, <a class="el" href="namespacellama_1_1mapping.html#a79bb2d70c1866c3090d5810dd0c92cb3">Blobs</a> &amp;blobs) const -&gt; decltype(auto)</td></tr>
+<tr class="separator:a61de2bd56eb559805fbc861a7d6c99a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad850ca6b2aa4a7c5bca927c89a94fdb4"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1Heatmap.html#ad850ca6b2aa4a7c5bca927c89a94fdb4">blockHitsSize</a> (size_type forBlobI) const -&gt; size_type</td></tr>
 <tr class="separator:ad850ca6b2aa4a7c5bca927c89a94fdb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a901d18016a883947241884a733bfdd5a"><td class="memTemplParams" colspan="2">template&lt;typename Blobs &gt; </td></tr>
@@ -184,8 +188,26 @@ struct llama::mapping::Heatmap&lt; Mapping, Granularity, TCountType &gt;</h3>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00029">29</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00031">31</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a3774cd62e0abf2840b71ac2244e05a2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3774cd62e0abf2840b71ac2244e05a2b">&#9670;&nbsp;</a></span>ArrayExtents</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Mapping , typename Mapping::ArrayExtents::value_type Granularity = 1, typename TCountType  = std::size_t&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="structllama_1_1mapping_1_1Heatmap.html">llama::mapping::Heatmap</a>&lt; Mapping, Granularity, TCountType &gt;::<a class="el" href="structllama_1_1mapping_1_1Heatmap.html#a3774cd62e0abf2840b71ac2244e05a2b">ArrayExtents</a> =  typename Mapping::ArrayExtents</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00043">43</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
+
+</div>
+</div>
 <a id="af6a30d2930a1dbdb549142ab6a5218de"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af6a30d2930a1dbdb549142ab6a5218de">&#9670;&nbsp;</a></span>CountType</h2>
 
@@ -200,7 +222,7 @@ template&lt;typename Mapping , typename Mapping::ArrayExtents::value_type Granul
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00039">39</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00042">42</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
 
 </div>
 </div>
@@ -218,7 +240,25 @@ template&lt;typename Mapping , typename Mapping::ArrayExtents::value_type Granul
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00037">37</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00040">40</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a2d2237094bf40b8d773f701ccea03338"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d2237094bf40b8d773f701ccea03338">&#9670;&nbsp;</a></span>RecordDim</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Mapping , typename Mapping::ArrayExtents::value_type Granularity = 1, typename TCountType  = std::size_t&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="structllama_1_1mapping_1_1Heatmap.html">llama::mapping::Heatmap</a>&lt; Mapping, Granularity, TCountType &gt;::<a class="el" href="structllama_1_1mapping_1_1Heatmap.html#a2d2237094bf40b8d773f701ccea03338">RecordDim</a> =  typename Mapping::RecordDim</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00044">44</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
 
 </div>
 </div>
@@ -276,7 +316,7 @@ template&lt;typename Mapping , typename Mapping::ArrayExtents::value_type Granul
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00050">50</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00052">52</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
 
 </div>
 </div>
@@ -308,7 +348,7 @@ template&lt;typename... Args&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00055">55</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00057">57</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
 
 </div>
 </div>
@@ -340,7 +380,7 @@ template&lt;typename Mapping , typename Mapping::ArrayExtents::value_type Granul
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00070">70</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00072">72</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
 
 </div>
 </div>
@@ -418,8 +458,8 @@ template&lt;typename Mapping , typename Mapping::ArrayExtents::value_type Granul
 
 </div>
 </div>
-<a id="a801b2fc29f6a7d8a5da7fcce594227f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a801b2fc29f6a7d8a5da7fcce594227f0">&#9670;&nbsp;</a></span>compute()</h2>
+<a id="a61de2bd56eb559805fbc861a7d6c99a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61de2bd56eb559805fbc861a7d6c99a7">&#9670;&nbsp;</a></span>compute()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -434,7 +474,7 @@ template&lt;std::size_t... RecordCoords, typename Blobs &gt; </div>
         <tr>
           <td class="memname">auto <a class="el" href="structllama_1_1mapping_1_1Heatmap.html">llama::mapping::Heatmap</a>&lt; Mapping, Granularity, TCountType &gt;::compute </td>
           <td>(</td>
-          <td class="paramtype">typename Mapping::ArrayIndex&#160;</td>
+          <td class="paramtype">ArrayIndex&#160;</td>
           <td class="paramname"><em>ai</em>, </td>
         </tr>
         <tr>
@@ -463,7 +503,7 @@ template&lt;std::size_t... RecordCoords, typename Blobs &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00084">84</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00086">86</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
 
 </div>
 </div>
@@ -495,7 +535,7 @@ template&lt;std::size_t... RecordCoords&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00078">78</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00080">80</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
 
 </div>
 </div>
@@ -637,7 +677,7 @@ template&lt;typename Mapping , typename Mapping::ArrayExtents::value_type Granul
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00045">45</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00047">47</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
 
 </div>
 </div>
@@ -750,7 +790,7 @@ template&lt;typename Mapping , typename Mapping::ArrayExtents::value_type Granul
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00038">38</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00041">41</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
 
 </div>
 </div>
@@ -763,7 +803,7 @@ template&lt;typename Mapping , typename Mapping::ArrayExtents::value_type Granul
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacellama.html">llama</a></li><li class="navelem"><a class="el" href="namespacellama_1_1mapping.html">mapping</a></li><li class="navelem"><a class="el" href="structllama_1_1mapping_1_1Heatmap.html">Heatmap</a></li>
-    <li class="footer">Generated on Fri May 12 2023 02:58:34 for Low-Level Abstraction of Memory Access by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Nov 3 2023 16:38:43 for Low-Level Abstraction of Memory Access by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

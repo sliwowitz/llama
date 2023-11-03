@@ -141,9 +141,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a759681052237a95eb60e3d6ca9670116"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b75778b8a59a22963e3df576a7b1d39"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1FieldAccessCount.html#a8b75778b8a59a22963e3df576a7b1d39">blobSize</a> (size_type blobIndex) const -&gt; size_type</td></tr>
 <tr class="separator:a8b75778b8a59a22963e3df576a7b1d39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8555d33c80eff899dd7e16795248299"><td class="memTemplParams" colspan="2">template&lt;std::size_t... RecordCoords, typename Blobs &gt; </td></tr>
-<tr class="memitem:ad8555d33c80eff899dd7e16795248299"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1FieldAccessCount.html#ad8555d33c80eff899dd7e16795248299">compute</a> (typename Mapping::ArrayIndex ai, <a class="el" href="structllama_1_1RecordCoord.html">RecordCoord</a>&lt; RecordCoords... &gt; rc, <a class="el" href="namespacellama_1_1mapping.html#a79bb2d70c1866c3090d5810dd0c92cb3">Blobs</a> &amp;blobs) const -&gt; decltype(auto)</td></tr>
-<tr class="separator:ad8555d33c80eff899dd7e16795248299"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33c2ed2be790fac4d3ef7eff7ddf6510"><td class="memTemplParams" colspan="2">template&lt;std::size_t... RecordCoords, typename Blobs &gt; </td></tr>
+<tr class="memitem:a33c2ed2be790fac4d3ef7eff7ddf6510"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1FieldAccessCount.html#a33c2ed2be790fac4d3ef7eff7ddf6510">compute</a> (typename Mapping::ArrayExtents::Index ai, <a class="el" href="structllama_1_1RecordCoord.html">RecordCoord</a>&lt; RecordCoords... &gt; rc, <a class="el" href="namespacellama_1_1mapping.html#a79bb2d70c1866c3090d5810dd0c92cb3">Blobs</a> &amp;blobs) const -&gt; decltype(auto)</td></tr>
+<tr class="separator:a33c2ed2be790fac4d3ef7eff7ddf6510"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a823fcc9d717e66eda247c184c2f2e8"><td class="memTemplParams" colspan="2">template&lt;typename Blobs &gt; </td></tr>
 <tr class="memitem:a6a823fcc9d717e66eda247c184c2f2e8"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structllama_1_1mapping_1_1FieldAccessCount.html#a6a823fcc9d717e66eda247c184c2f2e8">fieldHits</a> (const <a class="el" href="namespacellama_1_1mapping.html#a79bb2d70c1866c3090d5810dd0c92cb3">Blobs</a> &amp;blobs) const -&gt; const <a class="el" href="structllama_1_1mapping_1_1FieldAccessCount_1_1FieldHitsArray.html">FieldHitsArray</a> &amp;</td></tr>
 <tr class="separator:a6a823fcc9d717e66eda247c184c2f2e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -182,7 +182,7 @@ struct llama::mapping::FieldAccessCount&lt; Mapping, TCountType, MyCodeHandlesPr
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00083">83</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00085">85</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="abf11fd7084ed576acc6e0cfa3bff8de7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abf11fd7084ed576acc6e0cfa3bff8de7">&#9670;&nbsp;</a></span>CountType</h2>
@@ -198,7 +198,7 @@ template&lt;typename Mapping , typename TCountType  = std::size_t, bool MyCodeHa
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00090">90</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00092">92</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
 
 </div>
 </div>
@@ -216,7 +216,7 @@ template&lt;typename Mapping , typename TCountType  = std::size_t, bool MyCodeHa
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00089">89</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00091">91</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
 
 </div>
 </div>
@@ -274,7 +274,7 @@ template&lt;typename Mapping , typename TCountType  = std::size_t, bool MyCodeHa
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00148">148</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00150">150</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
 
 </div>
 </div>
@@ -306,7 +306,7 @@ template&lt;typename... Args&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00153">153</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00155">155</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
 
 </div>
 </div>
@@ -338,12 +338,12 @@ template&lt;typename Mapping , typename TCountType  = std::size_t, bool MyCodeHa
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00159">159</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00161">161</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ad8555d33c80eff899dd7e16795248299"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad8555d33c80eff899dd7e16795248299">&#9670;&nbsp;</a></span>compute()</h2>
+<a id="a33c2ed2be790fac4d3ef7eff7ddf6510"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33c2ed2be790fac4d3ef7eff7ddf6510">&#9670;&nbsp;</a></span>compute()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -358,7 +358,7 @@ template&lt;std::size_t... RecordCoords, typename Blobs &gt; </div>
         <tr>
           <td class="memname">auto <a class="el" href="structllama_1_1mapping_1_1FieldAccessCount.html">llama::mapping::FieldAccessCount</a>&lt; Mapping, TCountType, MyCodeHandlesProxyReferences &gt;::compute </td>
           <td>(</td>
-          <td class="paramtype">typename Mapping::ArrayIndex&#160;</td>
+          <td class="paramtype">typename Mapping::ArrayExtents::Index&#160;</td>
           <td class="paramname"><em>ai</em>, </td>
         </tr>
         <tr>
@@ -387,7 +387,7 @@ template&lt;std::size_t... RecordCoords, typename Blobs &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00173">173</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00175">175</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
 
 </div>
 </div>
@@ -420,7 +420,7 @@ template&lt;typename Blobs &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00208">208</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00210">210</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
 
 </div>
 </div>
@@ -453,7 +453,7 @@ template&lt;typename Blobs &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00201">201</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00203">203</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
 
 </div>
 </div>
@@ -485,7 +485,7 @@ template&lt;std::size_t... RecordCoords&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00167">167</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00169">169</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
 
 </div>
 </div>
@@ -517,7 +517,7 @@ template&lt;typename Blobs &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00214">214</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00216">216</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
 
 </div>
 </div>
@@ -547,7 +547,7 @@ template&lt;typename Mapping , typename TCountType  = std::size_t, bool MyCodeHa
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00219">219</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00221">221</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
 
 </div>
 </div>
@@ -574,7 +574,7 @@ template&lt;typename Mapping , typename TCountType  = std::size_t, bool MyCodeHa
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00143">143</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00145">145</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
 
 </div>
 </div>
@@ -600,7 +600,7 @@ template&lt;typename Mapping , typename TCountType  = std::size_t, bool MyCodeHa
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00091">91</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FieldAccessCount_8hpp_source.html#l00093">93</a> of file <a class="el" href="FieldAccessCount_8hpp_source.html">FieldAccessCount.hpp</a>.</p>
 
 </div>
 </div>
@@ -613,7 +613,7 @@ template&lt;typename Mapping , typename TCountType  = std::size_t, bool MyCodeHa
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacellama.html">llama</a></li><li class="navelem"><a class="el" href="namespacellama_1_1mapping.html">mapping</a></li><li class="navelem"><a class="el" href="structllama_1_1mapping_1_1FieldAccessCount.html">FieldAccessCount</a></li>
-    <li class="footer">Generated on Fri May 12 2023 02:58:34 for Low-Level Abstraction of Memory Access by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Nov 3 2023 16:38:43 for Low-Level Abstraction of Memory Access by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
