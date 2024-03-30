@@ -231,8 +231,6 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a359ae38d758d2af3b2e5610fcc32c110"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#a359ae38d758d2af3b2e5610fcc32c110">memcopyFunc</a> = void *(*)(void *, const void *, std::size_t)</td></tr>
-<tr class="separator:a359ae38d758d2af3b2e5610fcc32c110"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81e3783dd94e3a1b003f955aaacf49d6"><td class="memTemplParams" colspan="2">template&lt;typename FromList , template&lt; auto... &gt; class ToList&gt; </td></tr>
 <tr class="memitem:a81e3783dd94e3a1b003f955aaacf49d6"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#a81e3783dd94e3a1b003f955aaacf49d6">mp_unwrap_values_into</a> = typename <a class="el" href="structllama_1_1internal_1_1mp__unwrap__values__into__impl.html">mp_unwrap_values_into_impl</a>&lt; FromList, ToList &gt;::type</td></tr>
 <tr class="separator:a81e3783dd94e3a1b003f955aaacf49d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -248,8 +246,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aafa8c3b0fd47fb8140b6b9aec0b61cb0"><td class="memTemplParams" colspan="2">template&lt;typename RecordDim &gt; </td></tr>
 <tr class="memitem:aafa8c3b0fd47fb8140b6b9aec0b61cb0"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#aafa8c3b0fd47fb8140b6b9aec0b61cb0">assertTrivialCopyable</a> ()</td></tr>
 <tr class="separator:aafa8c3b0fd47fb8140b6b9aec0b61cb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a81e9975bf6750cae8fa41b8b94f58c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#a0a81e9975bf6750cae8fa41b8b94f58c">parallelMemcpy</a> (std::byte *dst, const std::byte *src, std::size_t size, std::size_t threadId=0, std::size_t threadCount=1, <a class="el" href="namespacellama_1_1internal.html#a359ae38d758d2af3b2e5610fcc32c110">memcopyFunc</a> singleThreadMemcpy=std::memcpy)</td></tr>
-<tr class="separator:a0a81e9975bf6750cae8fa41b8b94f58c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40d6481f77184bd16b5efc5d4e927d00"><td class="memTemplParams" colspan="2">template&lt;typename MemcpyFunc  = decltype(memcpy)&gt; </td></tr>
+<tr class="memitem:a40d6481f77184bd16b5efc5d4e927d00"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#a40d6481f77184bd16b5efc5d4e927d00">parallelMemcpy</a> (std::byte *dst, const std::byte *src, std::size_t size, std::size_t threadId=0, std::size_t threadCount=1, MemcpyFunc singleThreadMemcpy=<a class="el" href="namespacellama_1_1internal.html#ae7d043343c1a60a7ceb75ba7c06e4c18">memcpy</a>)</td></tr>
+<tr class="separator:a40d6481f77184bd16b5efc5d4e927d00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2413ee7f2d6487f7e306148cf2b46ac4"><td class="memTemplParams" colspan="2">template&lt;typename TypeList &gt; </td></tr>
 <tr class="memitem:a2413ee7f2d6487f7e306148cf2b46ac4"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#a2413ee7f2d6487f7e306148cf2b46ac4">flatAlignOfImpl</a> ()</td></tr>
 <tr class="separator:a2413ee7f2d6487f7e306148cf2b46ac4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -271,9 +270,9 @@ Functions</h2></td></tr>
 <tr class="memitem:acfbbb27c8356e64d8f7282336c3b60a1"><td class="memTemplParams" colspan="2">template&lt;typename... FieldsA, typename FieldB , typename... FieldsB, auto Pos = FindFieldByTag&lt;Record&lt;FieldsA...&gt;, GetFieldTag&lt;FieldB&gt;&gt;::value&gt; </td></tr>
 <tr class="memitem:acfbbb27c8356e64d8f7282336c3b60a1"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#acfbbb27c8356e64d8f7282336c3b60a1">mergeRecordDimsImpl</a> (mp_identity&lt; <a class="el" href="structllama_1_1Record.html">Record</a>&lt; FieldsA... &gt;&gt;, mp_identity&lt; <a class="el" href="structllama_1_1Record.html">Record</a>&lt; FieldB, FieldsB... &gt;&gt;)</td></tr>
 <tr class="separator:acfbbb27c8356e64d8f7282336c3b60a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acde58af143505d1ef6a1d7e34d181e5f"><td class="memTemplParams" colspan="2">template&lt;template&lt; typename... &gt; typename L, typename... T, typename F &gt; </td></tr>
-<tr class="memitem:acde58af143505d1ef6a1d7e34d181e5f"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#acde58af143505d1ef6a1d7e34d181e5f">mpForEachInlined</a> (L&lt; T... &gt;, F &amp;&amp;f)</td></tr>
-<tr class="separator:acde58af143505d1ef6a1d7e34d181e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0b88a3001aff014252906b03cc27baa"><td class="memTemplParams" colspan="2">template&lt;template&lt; typename... &gt; typename L, typename... T, typename F &gt; </td></tr>
+<tr class="memitem:ad0b88a3001aff014252906b03cc27baa"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#ad0b88a3001aff014252906b03cc27baa">mp_for_each_inline_impl</a> (L&lt; T... &gt;, F &amp;&amp;f)</td></tr>
+<tr class="separator:ad0b88a3001aff014252906b03cc27baa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02e115f3c9d3acdccd07526d475ed358"><td class="memTemplParams" colspan="2">template&lt;std::size_t... Coords1, std::size_t... Coords2&gt; </td></tr>
 <tr class="memitem:a02e115f3c9d3acdccd07526d475ed358"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#a02e115f3c9d3acdccd07526d475ed358">recordCoordCommonPrefixIsBiggerImpl</a> (<a class="el" href="structllama_1_1RecordCoord.html">RecordCoord</a>&lt; Coords1... &gt;, <a class="el" href="structllama_1_1RecordCoord.html">RecordCoord</a>&lt; Coords2... &gt;) -&gt; bool</td></tr>
 <tr class="separator:a02e115f3c9d3acdccd07526d475ed358"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -331,15 +330,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a0f1653ed919838d951dd7753b22cac7e"><td class="memTemplParams" colspan="2">template&lt;typename T , typename Tuple , std::size_t... Is&gt; </td></tr>
 <tr class="memitem:a0f1653ed919838d951dd7753b22cac7e"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#a0f1653ed919838d951dd7753b22cac7e">makeFromTuple</a> (<a class="el" href="structllama_1_1Tuple.html">Tuple</a> &amp;&amp;src, std::index_sequence&lt; Is... &gt;)</td></tr>
 <tr class="separator:a0f1653ed919838d951dd7753b22cac7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6cc3ab81fd3ee9d9fa0579a062e14dcb"><td class="memTemplParams" colspan="2">template&lt;typename T , typename Simd , typename RecordCoord &gt; </td></tr>
-<tr class="memitem:a6cc3ab81fd3ee9d9fa0579a062e14dcb"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#a6cc3ab81fd3ee9d9fa0579a062e14dcb">loadSimdRecord</a> (const T &amp;srcRef, <a class="el" href="namespacellama.html#adf42387a56b588d4a261b9ab869e33ee">Simd</a> &amp;dstSimd, <a class="el" href="structllama_1_1RecordCoord.html">RecordCoord</a> rc)</td></tr>
-<tr class="separator:a6cc3ab81fd3ee9d9fa0579a062e14dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39d130ecf8dc32be0c10f142df6a0d42"><td class="memTemplParams" colspan="2">template&lt;typename Simd , typename T , typename RecordCoord &gt; </td></tr>
-<tr class="memitem:a39d130ecf8dc32be0c10f142df6a0d42"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#a39d130ecf8dc32be0c10f142df6a0d42">storeSimdRecord</a> (const <a class="el" href="namespacellama.html#adf42387a56b588d4a261b9ab869e33ee">Simd</a> &amp;srcSimd, T &amp;&amp;dstRef, <a class="el" href="structllama_1_1RecordCoord.html">RecordCoord</a> rc)</td></tr>
-<tr class="separator:a39d130ecf8dc32be0c10f142df6a0d42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a383757e5ef0435ab24cc8570e355912f"><td class="memTemplParams" colspan="2">template&lt;typename Simd , typename TFwd , typename RecordCoord &gt; </td></tr>
-<tr class="memitem:a383757e5ef0435ab24cc8570e355912f"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#a383757e5ef0435ab24cc8570e355912f">storeSimdRecord</a> (const <a class="el" href="namespacellama.html#adf42387a56b588d4a261b9ab869e33ee">Simd</a> &amp;srcSimd, TFwd &amp;&amp;dstRef, <a class="el" href="structllama_1_1RecordCoord.html">RecordCoord</a> rc)</td></tr>
-<tr class="separator:a383757e5ef0435ab24cc8570e355912f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04e27d810e06e8e7f378238ff2981d91"><td class="memTemplParams" colspan="2">template&lt;typename T , typename Simd , typename SrcRC , typename DstRC &gt; </td></tr>
+<tr class="memitem:a04e27d810e06e8e7f378238ff2981d91"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#a04e27d810e06e8e7f378238ff2981d91">loadSimdFromField</a> (const T &amp;srcRef, <a class="el" href="namespacellama.html#adf42387a56b588d4a261b9ab869e33ee">Simd</a> &amp;dstSimd, SrcRC srcRC, DstRC dstRC)</td></tr>
+<tr class="separator:a04e27d810e06e8e7f378238ff2981d91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a636be5a3f3d91fcd9ce625263f5a8f2e"><td class="memTemplParams" colspan="2">template&lt;typename Simd , typename TFwd , typename SrcRC , typename DstRC &gt; </td></tr>
+<tr class="memitem:a636be5a3f3d91fcd9ce625263f5a8f2e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#a636be5a3f3d91fcd9ce625263f5a8f2e">storeSimdToField</a> (const <a class="el" href="namespacellama.html#adf42387a56b588d4a261b9ab869e33ee">Simd</a> &amp;srcSimd, TFwd &amp;&amp;dstRef, SrcRC srcRC, DstRC dstRC)</td></tr>
+<tr class="separator:a636be5a3f3d91fcd9ce625263f5a8f2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22e2af564cf52bab9f8d55c97aacd872"><td class="memTemplParams" colspan="2">template&lt;typename In , typename Out &gt; </td></tr>
 <tr class="memitem:a22e2af564cf52bab9f8d55c97aacd872"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#a22e2af564cf52bab9f8d55c97aacd872">constexprCopy</a> (In f, In l, Out d) -&gt; Out</td></tr>
 <tr class="separator:a22e2af564cf52bab9f8d55c97aacd872"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -386,8 +382,12 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:ae7d043343c1a60a7ceb75ba7c06e4c18"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#ae7d043343c1a60a7ceb75ba7c06e4c18">memcpy</a> = [](void* dst, const void* src, std::size_t size) { std::memcpy(dst, src, size); }</td></tr>
+<tr class="separator:ae7d043343c1a60a7ceb75ba7c06e4c18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c6df394c66fe2b06db0c0ad6a5e7b12"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#a1c6df394c66fe2b06db0c0ad6a5e7b12">copyBlobWithMemcpy</a></td></tr>
+<tr class="separator:a1c6df394c66fe2b06db0c0ad6a5e7b12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6be5f6ab0482c0b8d8276f41c70667c2"><td class="memTemplParams" colspan="2">template&lt;typename Mapping &gt; </td></tr>
-<tr class="memitem:a6be5f6ab0482c0b8d8276f41c70667c2"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#a6be5f6ab0482c0b8d8276f41c70667c2">aosoaLanes</a> = 0</td></tr>
+<tr class="memitem:a6be5f6ab0482c0b8d8276f41c70667c2"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#a6be5f6ab0482c0b8d8276f41c70667c2">aosoaLanes</a> = 1</td></tr>
 <tr class="separator:a6be5f6ab0482c0b8d8276f41c70667c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1dc0436b8f0598e4fe3e707051be5b5f"><td class="memTemplParams" colspan="2">template&lt;std::size_t I, typename RecordDim &gt; </td></tr>
 <tr class="memitem:a1dc0436b8f0598e4fe3e707051be5b5f"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#a1dc0436b8f0598e4fe3e707051be5b5f">flatFieldCountBefore</a> = 0</td></tr>
@@ -416,6 +416,9 @@ Variables</h2></td></tr>
 <tr class="memitem:a4522640644ac2790e930a57ea0ec85c9"><td class="memTemplParams" colspan="2">template&lt;typename T , template&lt; typename... &gt; typename Tuple, typename... Args&gt; </td></tr>
 <tr class="memitem:a4522640644ac2790e930a57ea0ec85c9"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#a4522640644ac2790e930a57ea0ec85c9">isDirectListInitializableFromTuple&lt; T, Tuple&lt; Args... &gt; &gt;</a> = <a class="el" href="namespacellama_1_1internal.html#ab894af475936b236e92c32b9ddde4003">isDirectListInitializable</a>&lt;T, Args...&gt;</td></tr>
 <tr class="separator:a4522640644ac2790e930a57ea0ec85c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab915382f731a636c0b92fa24124aee7c"><td class="memTemplParams" colspan="2">template&lt;typename AoSMapping , typename ElementType , std::size_t Lanes&gt; </td></tr>
+<tr class="memitem:ab915382f731a636c0b92fa24124aee7c"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#ab915382f731a636c0b92fa24124aee7c">aosStridedIndices</a></td></tr>
+<tr class="separator:ab915382f731a636c0b92fa24124aee7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52be59da116649206cd1d61b613ee680"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a52be59da116649206cd1d61b613ee680"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1internal.html#a52be59da116649206cd1d61b613ee680">typeNameStorage</a> = <a class="el" href="namespacellama_1_1internal.html#a64b252f2299cce03f8814269a0c25ca2">typeNameAsArray</a>&lt;T&gt;()</td></tr>
 <tr class="separator:a52be59da116649206cd1d61b613ee680"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -445,22 +448,6 @@ template&lt;typename Allocator , typename RecordDim &gt; </div>
 
 </div>
 </div>
-<a id="a359ae38d758d2af3b2e5610fcc32c110"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a359ae38d758d2af3b2e5610fcc32c110">&#9670;&nbsp;</a></span>memcopyFunc</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="namespacellama_1_1internal.html#a359ae38d758d2af3b2e5610fcc32c110">llama::internal::memcopyFunc</a> = typedef void* (*) (void*, const void*, std::size_t)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Copy_8hpp_source.html#l00029">29</a> of file <a class="el" href="Copy_8hpp_source.html">Copy.hpp</a>.</p>
-
-</div>
-</div>
 <a id="a81e3783dd94e3a1b003f955aaacf49d6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a81e3783dd94e3a1b003f955aaacf49d6">&#9670;&nbsp;</a></span>mp_unwrap_values_into</h2>
 
@@ -475,7 +462,7 @@ template&lt;typename FromList , template&lt; auto... &gt; class ToList&gt; </div
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Meta_8hpp_source.html#l00035">35</a> of file <a class="el" href="Meta_8hpp_source.html">Meta.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Meta_8hpp_source.html#l00036">36</a> of file <a class="el" href="Meta_8hpp_source.html">Meta.hpp</a>.</p>
 
 </div>
 </div>
@@ -1267,7 +1254,7 @@ template&lt;typename TypeList &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Core_8hpp_source.html#l00538">538</a> of file <a class="el" href="Core_8hpp_source.html">Core.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Core_8hpp_source.html#l00537">537</a> of file <a class="el" href="Core_8hpp_source.html">Core.hpp</a>.</p>
 
 </div>
 </div>
@@ -1297,7 +1284,7 @@ template&lt;class T , class U &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="View_8hpp_source.html#l00618">618</a> of file <a class="el" href="View_8hpp_source.html">View.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="View_8hpp_source.html#l00613">613</a> of file <a class="el" href="View_8hpp_source.html">View.hpp</a>.</p>
 
 </div>
 </div>
@@ -1325,7 +1312,7 @@ template&lt;class T , class U &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StructName_8hpp_source.html#l00286">286</a> of file <a class="el" href="StructName_8hpp_source.html">StructName.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StructName_8hpp_source.html#l00285">285</a> of file <a class="el" href="StructName_8hpp_source.html">StructName.hpp</a>.</p>
 
 </div>
 </div>
@@ -1354,23 +1341,23 @@ template&lt;class T , class U &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StructName_8hpp_source.html#l00207">207</a> of file <a class="el" href="StructName_8hpp_source.html">StructName.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StructName_8hpp_source.html#l00206">206</a> of file <a class="el" href="StructName_8hpp_source.html">StructName.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a6cc3ab81fd3ee9d9fa0579a062e14dcb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6cc3ab81fd3ee9d9fa0579a062e14dcb">&#9670;&nbsp;</a></span>loadSimdRecord()</h2>
+<a id="a04e27d810e06e8e7f378238ff2981d91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04e27d810e06e8e7f378238ff2981d91">&#9670;&nbsp;</a></span>loadSimdFromField()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , typename Simd , typename RecordCoord &gt; </div>
+template&lt;typename T , typename Simd , typename SrcRC , typename DstRC &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void llama::internal::loadSimdRecord </td>
+          <td class="memname">void llama::internal::loadSimdFromField </td>
           <td>(</td>
           <td class="paramtype">const T &amp;&#160;</td>
           <td class="paramname"><em>srcRef</em>, </td>
@@ -1384,8 +1371,14 @@ template&lt;typename T , typename Simd , typename RecordCoord &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structllama_1_1RecordCoord.html">RecordCoord</a>&#160;</td>
-          <td class="paramname"><em>rc</em>&#160;</td>
+          <td class="paramtype">SrcRC&#160;</td>
+          <td class="paramname"><em>srcRC</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DstRC&#160;</td>
+          <td class="paramname"><em>dstRC</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1400,7 +1393,7 @@ template&lt;typename T , typename Simd , typename RecordCoord &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Simd_8hpp_source.html#l00179">179</a> of file <a class="el" href="Simd_8hpp_source.html">Simd.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Simd_8hpp_source.html#l00209">209</a> of file <a class="el" href="Simd_8hpp_source.html">Simd.hpp</a>.</p>
 
 </div>
 </div>
@@ -1563,7 +1556,7 @@ template&lt;typename Blobs , typename TransformBlobFunc , std::size_t... Is&gt; 
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="View_8hpp_source.html#l00639">639</a> of file <a class="el" href="View_8hpp_source.html">View.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="View_8hpp_source.html#l00634">634</a> of file <a class="el" href="View_8hpp_source.html">View.hpp</a>.</p>
 
 </div>
 </div>
@@ -1695,8 +1688,8 @@ template&lt;typename... FieldsA, typename FieldB , typename... FieldsB, auto Pos
 
 </div>
 </div>
-<a id="acde58af143505d1ef6a1d7e34d181e5f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acde58af143505d1ef6a1d7e34d181e5f">&#9670;&nbsp;</a></span>mpForEachInlined()</h2>
+<a id="ad0b88a3001aff014252906b03cc27baa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0b88a3001aff014252906b03cc27baa">&#9670;&nbsp;</a></span>mp_for_each_inline_impl()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1707,7 +1700,7 @@ template&lt;template&lt; typename... &gt; typename L, typename... T, typename F 
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr void llama::internal::mpForEachInlined </td>
+          <td class="memname">constexpr void llama::internal::mp_for_each_inline_impl </td>
           <td>(</td>
           <td class="paramtype">L&lt; T... &gt;&#160;</td>
           <td class="paramname">, </td>
@@ -1731,7 +1724,7 @@ template&lt;template&lt; typename... &gt; typename L, typename... T, typename F 
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Meta_8hpp_source.html#l00019">19</a> of file <a class="el" href="Meta_8hpp_source.html">Meta.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Meta_8hpp_source.html#l00020">20</a> of file <a class="el" href="Meta_8hpp_source.html">Meta.hpp</a>.</p>
 
 </div>
 </div>
@@ -1764,14 +1757,13 @@ template&lt;typename TypeList , std::size_t I, bool Align&gt; </div>
 
 </div>
 </div>
-<a id="a0a81e9975bf6750cae8fa41b8b94f58c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a81e9975bf6750cae8fa41b8b94f58c">&#9670;&nbsp;</a></span>parallelMemcpy()</h2>
+<a id="a40d6481f77184bd16b5efc5d4e927d00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40d6481f77184bd16b5efc5d4e927d00">&#9670;&nbsp;</a></span>parallelMemcpy()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
+<div class="memtemplate">
+template&lt;typename MemcpyFunc  = decltype(memcpy)&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void llama::internal::parallelMemcpy </td>
@@ -1806,8 +1798,8 @@ template&lt;typename TypeList , std::size_t I, bool Align&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacellama_1_1internal.html#a359ae38d758d2af3b2e5610fcc32c110">memcopyFunc</a>&#160;</td>
-          <td class="paramname"><em>singleThreadMemcpy</em> = <code>std::memcpy</code>&#160;</td>
+          <td class="paramtype">MemcpyFunc&#160;</td>
+          <td class="paramname"><em>singleThreadMemcpy</em> = <code><a class="el" href="namespacellama_1_1internal.html#ae7d043343c1a60a7ceb75ba7c06e4c18">memcpy</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1815,14 +1807,9 @@ template&lt;typename TypeList , std::size_t I, bool Align&gt; </div>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Copy_8hpp_source.html#l00031">31</a> of file <a class="el" href="Copy_8hpp_source.html">Copy.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Copy_8hpp_source.html#l00035">35</a> of file <a class="el" href="Copy_8hpp_source.html">Copy.hpp</a>.</p>
 
 </div>
 </div>
@@ -2128,67 +2115,23 @@ template&lt;typename TypeList , bool Align, bool IncludeTailPadding&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Core_8hpp_source.html#l00587">587</a> of file <a class="el" href="Core_8hpp_source.html">Core.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Core_8hpp_source.html#l00586">586</a> of file <a class="el" href="Core_8hpp_source.html">Core.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a39d130ecf8dc32be0c10f142df6a0d42"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a39d130ecf8dc32be0c10f142df6a0d42">&#9670;&nbsp;</a></span>storeSimdRecord() <span class="overload">[1/2]</span></h2>
+<a id="a636be5a3f3d91fcd9ce625263f5a8f2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a636be5a3f3d91fcd9ce625263f5a8f2e">&#9670;&nbsp;</a></span>storeSimdToField()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Simd , typename T , typename RecordCoord &gt; </div>
+template&lt;typename Simd , typename TFwd , typename SrcRC , typename DstRC &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void llama::internal::storeSimdRecord </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacellama.html#adf42387a56b588d4a261b9ab869e33ee">Simd</a> &amp;&#160;</td>
-          <td class="paramname"><em>srcSimd</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">T &amp;&amp;&#160;</td>
-          <td class="paramname"><em>dstRef</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structllama_1_1RecordCoord.html">RecordCoord</a>&#160;</td>
-          <td class="paramname"><em>rc</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a383757e5ef0435ab24cc8570e355912f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a383757e5ef0435ab24cc8570e355912f">&#9670;&nbsp;</a></span>storeSimdRecord() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Simd , typename TFwd , typename RecordCoord &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void llama::internal::storeSimdRecord </td>
+          <td class="memname">void llama::internal::storeSimdToField </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="namespacellama.html#adf42387a56b588d4a261b9ab869e33ee">Simd</a> &amp;&#160;</td>
           <td class="paramname"><em>srcSimd</em>, </td>
@@ -2202,8 +2145,14 @@ template&lt;typename Simd , typename TFwd , typename RecordCoord &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structllama_1_1RecordCoord.html">RecordCoord</a>&#160;</td>
-          <td class="paramname"><em>rc</em>&#160;</td>
+          <td class="paramtype">SrcRC&#160;</td>
+          <td class="paramname"><em>srcRC</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DstRC&#160;</td>
+          <td class="paramname"><em>dstRC</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -2218,7 +2167,7 @@ template&lt;typename Simd , typename TFwd , typename RecordCoord &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Simd_8hpp_source.html#l00230">230</a> of file <a class="el" href="Simd_8hpp_source.html">Simd.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Simd_8hpp_source.html#l00255">255</a> of file <a class="el" href="Simd_8hpp_source.html">Simd.hpp</a>.</p>
 
 </div>
 </div>
@@ -2414,7 +2363,7 @@ template&lt;typename Mapping &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr std::size_t llama::internal::aosoaLanes = 0</td>
+          <td class="memname">constexpr std::size_t llama::internal::aosoaLanes = 1</td>
         </tr>
       </table>
   </td>
@@ -2424,7 +2373,78 @@ template&lt;typename Mapping &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Copy_8hpp_source.html#l00117">117</a> of file <a class="el" href="Copy_8hpp_source.html">Copy.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Copy_8hpp_source.html#l00156">156</a> of file <a class="el" href="Copy_8hpp_source.html">Copy.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab915382f731a636c0b92fa24124aee7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab915382f731a636c0b92fa24124aee7c">&#9670;&nbsp;</a></span>aosStridedIndices</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename AoSMapping , typename ElementType , std::size_t Lanes&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto llama::internal::aosStridedIndices</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= []()</div>
+<div class="line">        {</div>
+<div class="line">            <span class="keyword">auto</span> stride = <a class="code" href="namespacellama.html#ac8f48517b46c35c1a511273f08d2abb3">flatSizeOf</a>&lt;</div>
+<div class="line">                              <span class="keyword">typename</span> <a class="code" href="namespacellama.html#a1fddf1f638927edfb8da8e3c78da4e1c">AoSMapping::Permuter::FlatRecordDim</a>,</div>
+<div class="line">                              AoSMapping::fieldAlignment == <a class="code" href="namespacellama_1_1mapping.html#aeead2d9c8929b8c0aff18aad054a0710ad12fbc9a2ba3b0b91a4190959b4c966b">llama::mapping::FieldAlignment::Align</a>&gt;</div>
+<div class="line">                / <span class="keyword">sizeof</span>(ElementType);</div>
+<div class="line">            std::array&lt;int, Lanes&gt; indices{};</div>
+<div class="line">            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; static_cast&lt;int&gt;(Lanes); i++)</div>
+<div class="line">                indices[i] = i * stride;</div>
+<div class="line">            <span class="keywordflow">return</span> indices;</div>
+<div class="line">        }()</div>
+<div class="ttc" id="anamespacellama_1_1mapping_html_aeead2d9c8929b8c0aff18aad054a0710ad12fbc9a2ba3b0b91a4190959b4c966b"><div class="ttname"><a href="namespacellama_1_1mapping.html#aeead2d9c8929b8c0aff18aad054a0710ad12fbc9a2ba3b0b91a4190959b4c966b">llama::mapping::FieldAlignment::Align</a></div><div class="ttdeci">@ Align</div></div>
+<div class="ttc" id="anamespacellama_html_a1fddf1f638927edfb8da8e3c78da4e1c"><div class="ttname"><a href="namespacellama.html#a1fddf1f638927edfb8da8e3c78da4e1c">llama::FlatRecordDim</a></div><div class="ttdeci">typename internal::FlattenRecordDimImpl&lt; RecordDim &gt;::type FlatRecordDim</div><div class="ttdoc">Returns a flat type list containing all leaf field types of the given record dimension.</div><div class="ttdef"><b>Definition:</b> <a href="Core_8hpp_source.html#l00481">Core.hpp:481</a></div></div>
+<div class="ttc" id="anamespacellama_html_ac8f48517b46c35c1a511273f08d2abb3"><div class="ttname"><a href="namespacellama.html#ac8f48517b46c35c1a511273f08d2abb3">llama::flatSizeOf</a></div><div class="ttdeci">constexpr std::size_t flatSizeOf</div><div class="ttdoc">The size of a type list if its elements would be in a normal struct.</div><div class="ttdef"><b>Definition:</b> <a href="Core_8hpp_source.html#l00618">Core.hpp:618</a></div></div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="Simd_8hpp_source.html#l00196">196</a> of file <a class="el" href="Simd_8hpp_source.html">Simd.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a1c6df394c66fe2b06db0c0ad6a5e7b12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c6df394c66fe2b06db0c0ad6a5e7b12">&#9670;&nbsp;</a></span>copyBlobWithMemcpy</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto llama::internal::copyBlobWithMemcpy</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= [](<span class="keyword">const</span> <span class="keyword">auto</span>&amp; src, <span class="keyword">auto</span>&amp; dst, std::size_t size)</div>
+<div class="line">        {</div>
+<div class="line">            static_assert(std::is_trivially_copyable_v&lt;std::remove_reference_t&lt;decltype(*&amp;src[0])&gt;&gt;);</div>
+<div class="line">            static_assert(std::is_trivially_copyable_v&lt;std::remove_reference_t&lt;decltype(*&amp;dst[0])&gt;&gt;);</div>
+<div class="line">            <a class="code" href="namespacellama_1_1internal.html#ae7d043343c1a60a7ceb75ba7c06e4c18">std::memcpy</a>(&amp;dst[0], &amp;src[0], size);</div>
+<div class="line">        }</div>
+<div class="ttc" id="anamespacellama_1_1internal_html_ae7d043343c1a60a7ceb75ba7c06e4c18"><div class="ttname"><a href="namespacellama_1_1internal.html#ae7d043343c1a60a7ceb75ba7c06e4c18">llama::internal::memcpy</a></div><div class="ttdeci">constexpr auto memcpy</div><div class="ttdef"><b>Definition:</b> <a href="Copy_8hpp_source.html#l00031">Copy.hpp:32</a></div></div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="Copy_8hpp_source.html#l00083">83</a> of file <a class="el" href="Copy_8hpp_source.html">Copy.hpp</a>.</p>
 
 </div>
 </div>
@@ -2476,7 +2496,7 @@ template&lt;std::size_t I, typename RecordDim &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Core_8hpp_source.html#l00501">501</a> of file <a class="el" href="Core_8hpp_source.html">Core.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Core_8hpp_source.html#l00500">500</a> of file <a class="el" href="Core_8hpp_source.html">Core.hpp</a>.</p>
 
 </div>
 </div>
@@ -2502,7 +2522,7 @@ template&lt;typename... Children&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Core_8hpp_source.html#l00504">504</a> of file <a class="el" href="Core_8hpp_source.html">Core.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Core_8hpp_source.html#l00503">503</a> of file <a class="el" href="Core_8hpp_source.html">Core.hpp</a>.</p>
 
 </div>
 </div>
@@ -2529,11 +2549,11 @@ template&lt;std::size_t I, typename... Children&gt; </div>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="namespacellama_1_1internal.html#a1dc0436b8f0598e4fe3e707051be5b5f">flatFieldCountBefore</a>&lt;I - 1, Record&lt;Children...&gt;&gt;</div>
 <div class="line">            + <a class="code" href="namespacellama.html#aa6c960189f5edc242be631e2e8757914">flatFieldCount</a>&lt;<a class="code" href="namespacellama.html#a75dfd56127d13358c2991a57340657dc">GetFieldType</a>&lt;mp_at_c&lt;Record&lt;Children...&gt;, I - 1&gt;&gt;&gt;</div>
-<div class="ttc" id="anamespacellama_1_1internal_html_a1dc0436b8f0598e4fe3e707051be5b5f"><div class="ttname"><a href="namespacellama_1_1internal.html#a1dc0436b8f0598e4fe3e707051be5b5f">llama::internal::flatFieldCountBefore</a></div><div class="ttdeci">constexpr std::size_t flatFieldCountBefore</div><div class="ttdef"><b>Definition:</b> <a href="Core_8hpp_source.html#l00501">Core.hpp:501</a></div></div>
-<div class="ttc" id="anamespacellama_html_a75dfd56127d13358c2991a57340657dc"><div class="ttname"><a href="namespacellama.html#a75dfd56127d13358c2991a57340657dc">llama::GetFieldType</a></div><div class="ttdeci">mp_second&lt; Field &gt; GetFieldType</div><div class="ttdoc">Get the type from a Field.</div><div class="ttdef"><b>Definition:</b> <a href="Core_8hpp_source.html#l00192">Core.hpp:192</a></div></div>
-<div class="ttc" id="anamespacellama_html_aa6c960189f5edc242be631e2e8757914"><div class="ttname"><a href="namespacellama.html#aa6c960189f5edc242be631e2e8757914">llama::flatFieldCount</a></div><div class="ttdeci">constexpr std::size_t flatFieldCount</div><div class="ttdoc">The total number of fields in the recursively expanded record dimension.</div><div class="ttdef"><b>Definition:</b> <a href="Core_8hpp_source.html#l00487">Core.hpp:487</a></div></div>
+<div class="ttc" id="anamespacellama_1_1internal_html_a1dc0436b8f0598e4fe3e707051be5b5f"><div class="ttname"><a href="namespacellama_1_1internal.html#a1dc0436b8f0598e4fe3e707051be5b5f">llama::internal::flatFieldCountBefore</a></div><div class="ttdeci">constexpr std::size_t flatFieldCountBefore</div><div class="ttdef"><b>Definition:</b> <a href="Core_8hpp_source.html#l00500">Core.hpp:500</a></div></div>
+<div class="ttc" id="anamespacellama_html_a75dfd56127d13358c2991a57340657dc"><div class="ttname"><a href="namespacellama.html#a75dfd56127d13358c2991a57340657dc">llama::GetFieldType</a></div><div class="ttdeci">mp_second&lt; Field &gt; GetFieldType</div><div class="ttdoc">Get the type from a Field.</div><div class="ttdef"><b>Definition:</b> <a href="Core_8hpp_source.html#l00191">Core.hpp:191</a></div></div>
+<div class="ttc" id="anamespacellama_html_aa6c960189f5edc242be631e2e8757914"><div class="ttname"><a href="namespacellama.html#aa6c960189f5edc242be631e2e8757914">llama::flatFieldCount</a></div><div class="ttdeci">constexpr std::size_t flatFieldCount</div><div class="ttdoc">The total number of fields in the recursively expanded record dimension.</div><div class="ttdef"><b>Definition:</b> <a href="Core_8hpp_source.html#l00486">Core.hpp:486</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="Core_8hpp_source.html#l00509">509</a> of file <a class="el" href="Core_8hpp_source.html">Core.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Core_8hpp_source.html#l00508">508</a> of file <a class="el" href="Core_8hpp_source.html">Core.hpp</a>.</p>
 
 </div>
 </div>
@@ -2667,6 +2687,30 @@ template&lt;typename T , typename  = void&gt; </div>
 
 </div>
 </div>
+<a id="ae7d043343c1a60a7ceb75ba7c06e4c18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7d043343c1a60a7ceb75ba7c06e4c18">&#9670;&nbsp;</a></span>memcpy</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto llama::internal::memcpy = [](void* dst, const void* src, std::size_t size) { std::memcpy(dst, src, size); }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Copy_8hpp_source.html#l00031">31</a> of file <a class="el" href="Copy_8hpp_source.html">Copy.hpp</a>.</p>
+
+</div>
+</div>
 <a id="aadb89628e7b37c78df955928a1934c00"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aadb89628e7b37c78df955928a1934c00">&#9670;&nbsp;</a></span>recordCoordTagsStorage</h2>
 
@@ -2689,7 +2733,7 @@ template&lt;typename RecordDim , std::size_t... Coords&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StructName_8hpp_source.html#l00298">298</a> of file <a class="el" href="StructName_8hpp_source.html">StructName.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StructName_8hpp_source.html#l00297">297</a> of file <a class="el" href="StructName_8hpp_source.html">StructName.hpp</a>.</p>
 
 </div>
 </div>
@@ -2715,7 +2759,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StructName_8hpp_source.html#l00221">221</a> of file <a class="el" href="StructName_8hpp_source.html">StructName.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StructName_8hpp_source.html#l00220">220</a> of file <a class="el" href="StructName_8hpp_source.html">StructName.hpp</a>.</p>
 
 </div>
 </div>
@@ -2741,7 +2785,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StructName_8hpp_source.html#l00194">194</a> of file <a class="el" href="StructName_8hpp_source.html">StructName.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StructName_8hpp_source.html#l00193">193</a> of file <a class="el" href="StructName_8hpp_source.html">StructName.hpp</a>.</p>
 
 </div>
 </div>
@@ -2751,7 +2795,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacellama.html">llama</a></li><li class="navelem"><a class="el" href="namespacellama_1_1internal.html">internal</a></li>
-    <li class="footer">Generated on Fri Nov 3 2023 16:38:43 for Low-Level Abstraction of Memory Access by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sat Mar 30 2024 22:32:42 for Low-Level Abstraction of Memory Access by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

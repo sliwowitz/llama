@@ -9,6 +9,7 @@ var annotated_dup =
         [ "ByValue", "structllama_1_1accessor_1_1ByValue.html", "structllama_1_1accessor_1_1ByValue" ],
         [ "Const", "structllama_1_1accessor_1_1Const.html", "structllama_1_1accessor_1_1Const" ],
         [ "Restrict", "structllama_1_1accessor_1_1Restrict.html", "structllama_1_1accessor_1_1Restrict" ],
+        [ "Atomic", "structllama_1_1accessor_1_1Atomic.html", "structllama_1_1accessor_1_1Atomic" ],
         [ "Locked", "structllama_1_1accessor_1_1Locked.html", "structllama_1_1accessor_1_1Locked" ],
         [ "Stacked", "structllama_1_1accessor_1_1Stacked.html", null ],
         [ "Stacked< FirstAccessor, MoreAccessors... >", "structllama_1_1accessor_1_1Stacked_3_01FirstAccessor_00_01MoreAccessors_8_8_8_01_4.html", "structllama_1_1accessor_1_1Stacked_3_01FirstAccessor_00_01MoreAccessors_8_8_8_01_4" ]
@@ -18,7 +19,8 @@ var annotated_dup =
         [ "UniquePtr", "structllama_1_1bloballoc_1_1UniquePtr.html", "structllama_1_1bloballoc_1_1UniquePtr" ],
         [ "SharedPtr", "structllama_1_1bloballoc_1_1SharedPtr.html", "structllama_1_1bloballoc_1_1SharedPtr" ],
         [ "AlignedAllocator", "structllama_1_1bloballoc_1_1AlignedAllocator.html", "structllama_1_1bloballoc_1_1AlignedAllocator" ],
-        [ "Vector", "structllama_1_1bloballoc_1_1Vector.html", "structllama_1_1bloballoc_1_1Vector" ]
+        [ "Vector", "structllama_1_1bloballoc_1_1Vector.html", "structllama_1_1bloballoc_1_1Vector" ],
+        [ "AlpakaBuf", "structllama_1_1bloballoc_1_1AlpakaBuf.html", "structllama_1_1bloballoc_1_1AlpakaBuf" ]
       ] ],
       [ "internal", "namespacellama_1_1internal.html", [
         [ "IndexTypeFromArgs", "structllama_1_1internal_1_1IndexTypeFromArgs.html", "structllama_1_1internal_1_1IndexTypeFromArgs" ],
@@ -112,30 +114,6 @@ var annotated_dup =
           [ "ReplaceTagListsByCoords< RecordDim, RecordCoord< RCs... > >", "structllama_1_1mapping_1_1internal_1_1ReplaceTagListsByCoords_3_01RecordDim_00_01RecordCoord_3_01RCs_8_8_8_01_4_01_4.html", "structllama_1_1mapping_1_1internal_1_1ReplaceTagListsByCoords_3_01RecordDim_00_01RecordCoord_3_01RCs_8_8_8_01_4_01_4" ],
           [ "ReplaceTagListsByCoords< RecordDim, mp_list< Args... > >", "structllama_1_1mapping_1_1internal_1_1ReplaceTagListsByCoords_3_01RecordDim_00_01mp__list_3_01Args_8_8_8_01_4_01_4.html", "structllama_1_1mapping_1_1internal_1_1ReplaceTagListsByCoords_3_01RecordDim_00_01mp__list_3_01Args_8_8_8_01_4_01_4" ]
         ] ],
-        [ "tree", "namespacellama_1_1mapping_1_1tree.html", [
-          [ "functor", "namespacellama_1_1mapping_1_1tree_1_1functor.html", [
-            [ "internal", "namespacellama_1_1mapping_1_1tree_1_1functor_1_1internal.html", [
-              [ "ChangeNodeChildsRuntimeFunctor", "structllama_1_1mapping_1_1tree_1_1functor_1_1internal_1_1ChangeNodeChildsRuntimeFunctor.html", "structllama_1_1mapping_1_1tree_1_1functor_1_1internal_1_1ChangeNodeChildsRuntimeFunctor" ]
-            ] ],
-            [ "Idem", "structllama_1_1mapping_1_1tree_1_1functor_1_1Idem.html", "structllama_1_1mapping_1_1tree_1_1functor_1_1Idem" ],
-            [ "LeafOnlyRT", "structllama_1_1mapping_1_1tree_1_1functor_1_1LeafOnlyRT.html", "structllama_1_1mapping_1_1tree_1_1functor_1_1LeafOnlyRT" ],
-            [ "MoveRTDown", "structllama_1_1mapping_1_1tree_1_1functor_1_1MoveRTDown.html", "structllama_1_1mapping_1_1tree_1_1functor_1_1MoveRTDown" ]
-          ] ],
-          [ "internal", "namespacellama_1_1mapping_1_1tree_1_1internal.html", [
-            [ "MergeFunctors", "structllama_1_1mapping_1_1tree_1_1internal_1_1MergeFunctors.html", null ],
-            [ "MergeFunctors< Tree, Tuple< Operations... > >", "structllama_1_1mapping_1_1tree_1_1internal_1_1MergeFunctors_3_01Tree_00_01Tuple_3_01Operations_8_8_8_01_4_01_4.html", "structllama_1_1mapping_1_1tree_1_1internal_1_1MergeFunctors_3_01Tree_00_01Tuple_3_01Operations_8_8_8_01_4_01_4" ],
-            [ "MergeFunctors< Tree, Tuple<> >", "structllama_1_1mapping_1_1tree_1_1internal_1_1MergeFunctors_3_01Tree_00_01Tuple_3_4_01_4.html", "structllama_1_1mapping_1_1tree_1_1internal_1_1MergeFunctors_3_01Tree_00_01Tuple_3_4_01_4" ],
-            [ "CreateTreeElement", "structllama_1_1mapping_1_1tree_1_1internal_1_1CreateTreeElement.html", "structllama_1_1mapping_1_1tree_1_1internal_1_1CreateTreeElement" ],
-            [ "CreateTreeElement< Tag, Record< Fields... >, CountType >", "structllama_1_1mapping_1_1tree_1_1internal_1_1CreateTreeElement_3_01Tag_00_01Record_3_01Fields_8_8_8_01_4_00_01CountType_01_4.html", "structllama_1_1mapping_1_1tree_1_1internal_1_1CreateTreeElement_3_01Tag_00_01Record_3_01Fields_8_8_8_01_4_00_01CountType_01_4" ],
-            [ "CreateTreeElement< Tag, ChildType[Count], CountType >", "structllama_1_1mapping_1_1tree_1_1internal_1_1CreateTreeElement_3_01Tag_00_01ChildType_0fCount_0e_00_01CountType_01_4.html", "structllama_1_1mapping_1_1tree_1_1internal_1_1CreateTreeElement_3_01Tag_00_01ChildType_0fCount_0e_00_01CountType_01_4" ],
-            [ "WrapInNNodes", "structllama_1_1mapping_1_1tree_1_1internal_1_1WrapInNNodes.html", "structllama_1_1mapping_1_1tree_1_1internal_1_1WrapInNNodes" ],
-            [ "WrapInNNodes< Leaf, 0 >", "structllama_1_1mapping_1_1tree_1_1internal_1_1WrapInNNodes_3_01Leaf_00_010_01_4.html", "structllama_1_1mapping_1_1tree_1_1internal_1_1WrapInNNodes_3_01Leaf_00_010_01_4" ]
-          ] ],
-          [ "Mapping", "structllama_1_1mapping_1_1tree_1_1Mapping.html", "structllama_1_1mapping_1_1tree_1_1Mapping" ],
-          [ "Leaf", "structllama_1_1mapping_1_1tree_1_1Leaf.html", "structllama_1_1mapping_1_1tree_1_1Leaf" ],
-          [ "Node", "structllama_1_1mapping_1_1tree_1_1Node.html", "structllama_1_1mapping_1_1tree_1_1Node" ],
-          [ "TreeCoordElement", "structllama_1_1mapping_1_1tree_1_1TreeCoordElement.html", "structllama_1_1mapping_1_1tree_1_1TreeCoordElement" ]
-        ] ],
         [ "AoS", "structllama_1_1mapping_1_1AoS.html", "structllama_1_1mapping_1_1AoS" ],
         [ "BindAoS", "structllama_1_1mapping_1_1BindAoS.html", "structllama_1_1mapping_1_1BindAoS" ],
         [ "AoSoA", "structllama_1_1mapping_1_1AoSoA.html", "structllama_1_1mapping_1_1AoSoA" ],
@@ -183,9 +161,10 @@ var annotated_dup =
       [ "ArrayIndexRange", "structllama_1_1ArrayIndexRange.html", "structllama_1_1ArrayIndexRange" ],
       [ "Copy", "structllama_1_1Copy.html", "structllama_1_1Copy" ],
       [ "Copy< Mapping, Mapping >", "structllama_1_1Copy_3_01Mapping_00_01Mapping_01_4.html", "structllama_1_1Copy_3_01Mapping_00_01Mapping_01_4" ],
-      [ "Copy< mapping::AoSoA< ArrayExtents, RecordDim, LanesSrc, LinearizeArrayIndex >, mapping::AoSoA< ArrayExtents, RecordDim, LanesDst, LinearizeArrayIndex >, std::enable_if_t< LanesSrc !=LanesDst > >", "structllama_1_1Copy_3_01mapping_1_1AoSoA_3_01ArrayExtents_00_01RecordDim_00_01LanesSrc_00_01Linede3e5682a9dc09abfd7b06c89ebc698c.html", "structllama_1_1Copy_3_01mapping_1_1AoSoA_3_01ArrayExtents_00_01RecordDim_00_01LanesSrc_00_01Linede3e5682a9dc09abfd7b06c89ebc698c" ],
-      [ "Copy< mapping::AoSoA< ArrayExtents, RecordDim, LanesSrc, LinearizeArrayIndex >, mapping::SoA< ArrayExtents, RecordDim, DstBlobs, DstSubArrayAlignment, LinearizeArrayIndex > >", "structllama_1_1Copy_3_01mapping_1_1AoSoA_3_01ArrayExtents_00_01RecordDim_00_01LanesSrc_00_01Linef0109a8195bbe3afa08ee6f83035476a.html", "structllama_1_1Copy_3_01mapping_1_1AoSoA_3_01ArrayExtents_00_01RecordDim_00_01LanesSrc_00_01Linef0109a8195bbe3afa08ee6f83035476a" ],
-      [ "Copy< mapping::SoA< ArrayExtents, RecordDim, SrcBlobs, SrcSubArrayAlignment, LinearizeArrayIndex >, mapping::AoSoA< ArrayExtents, RecordDim, LanesDst, LinearizeArrayIndex > >", "structllama_1_1Copy_3_01mapping_1_1SoA_3_01ArrayExtents_00_01RecordDim_00_01SrcBlobs_00_01SrcSubd9d62dac27c6e27f37828162a1f53aa3.html", "structllama_1_1Copy_3_01mapping_1_1SoA_3_01ArrayExtents_00_01RecordDim_00_01SrcBlobs_00_01SrcSubd9d62dac27c6e27f37828162a1f53aa3" ],
+      [ "Copy< mapping::AoSoA< ArrayExtents, RecordDim, LanesSrc, AlignSrc, LinearizeArrayIndex, PermuteFields >, mapping::AoSoA< ArrayExtents, RecordDim, LanesDst, AlignDst, LinearizeArrayIndex, PermuteFields >, std::enable_if_t< LanesSrc !=LanesDst > >", "structllama_1_1Copy_3_01mapping_1_1AoSoA_3_01ArrayExtents_00_01RecordDim_00_01LanesSrc_00_01Alig1ead0624d41206bf19b261e50248c1b7.html", "structllama_1_1Copy_3_01mapping_1_1AoSoA_3_01ArrayExtents_00_01RecordDim_00_01LanesSrc_00_01Alig1ead0624d41206bf19b261e50248c1b7" ],
+      [ "Copy< mapping::AoSoA< ArrayExtents, RecordDim, LanesSrc, AlignSrc, LinearizeArrayIndex, PermuteFields >, mapping::SoA< ArrayExtents, RecordDim, DstBlobs, DstSubArrayAlignment, LinearizeArrayIndex, PermuteFields > >", "structllama_1_1Copy_3_01mapping_1_1AoSoA_3_01ArrayExtents_00_01RecordDim_00_01LanesSrc_00_01Alig4bb4101c04ed9279847838623873bbbf.html", "structllama_1_1Copy_3_01mapping_1_1AoSoA_3_01ArrayExtents_00_01RecordDim_00_01LanesSrc_00_01Alig4bb4101c04ed9279847838623873bbbf" ],
+      [ "Copy< mapping::SoA< ArrayExtents, RecordDim, SrcBlobs, SrcSubArrayAlignment, LinearizeArrayIndex, PermuteFields >, mapping::AoSoA< ArrayExtents, RecordDim, LanesDst, AlignDst, LinearizeArrayIndex, PermuteFields > >", "structllama_1_1Copy_3_01mapping_1_1SoA_3_01ArrayExtents_00_01RecordDim_00_01SrcBlobs_00_01SrcSub9770d34b14dc1e0da729ea63e513047d.html", "structllama_1_1Copy_3_01mapping_1_1SoA_3_01ArrayExtents_00_01RecordDim_00_01SrcBlobs_00_01SrcSub9770d34b14dc1e0da729ea63e513047d" ],
+      [ "Copy< mapping::SoA< ArrayExtents, RecordDim, SrcBlobs, SrcSubArrayAlignment, LinearizeArrayIndex, PermuteFields >, mapping::SoA< ArrayExtents, RecordDim, DstBlobs, DstSubArrayAlignment, LinearizeArrayIndex, PermuteFields >, std::enable_if_t< SrcBlobs !=DstBlobs||SrcSubArrayAlignment !=DstSubArrayAlignment > >", "structllama_1_1Copy_3_01mapping_1_1SoA_3_01ArrayExtents_00_01RecordDim_00_01SrcBlobs_00_01SrcSubb9263f80fc3284e42fedd51b14aadf82.html", "structllama_1_1Copy_3_01mapping_1_1SoA_3_01ArrayExtents_00_01RecordDim_00_01SrcBlobs_00_01SrcSubb9263f80fc3284e42fedd51b14aadf82" ],
       [ "NoName", "structllama_1_1NoName.html", null ],
       [ "Field", "structllama_1_1Field.html", null ],
       [ "Record", "structllama_1_1Record.html", null ],

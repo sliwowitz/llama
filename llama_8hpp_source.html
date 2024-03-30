@@ -87,7 +87,7 @@ $(document).ready(function(){initNavTree('llama_8hpp_source.html',''); initResiz
 </div><!--header-->
 <div class="contents">
 <a href="llama_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// Copyright 2018 Alexander Matthes, Bernhard Manfred Gruber</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// SPDX-License-Identifier: LGPL-3.0-or-later</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// SPDX-License-Identifier: MPL-2.0</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
@@ -95,7 +95,7 @@ $(document).ready(function(){initNavTree('llama_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// NOLINTNEXTLINE(modernize-macro-to-enum)</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="llama_8hpp.html#a8e2c37e852e6877edf8e3e9d9e2de8f3">   26</a></span>&#160;<span class="preprocessor">#define LLAMA_VERSION_MAJOR 0</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// NOLINTNEXTLINE(modernize-macro-to-enum)</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="llama_8hpp.html#ad0bc6386ccc31c0274eb0337c1c8192b">   28</a></span>&#160;<span class="preprocessor">#define LLAMA_VERSION_MINOR 5</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="llama_8hpp.html#ad0bc6386ccc31c0274eb0337c1c8192b">   28</a></span>&#160;<span class="preprocessor">#define LLAMA_VERSION_MINOR 6</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">// NOLINTNEXTLINE(modernize-macro-to-enum)</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="llama_8hpp.html#a9cc4298783dc19b00d12972c3ef45ba7">   30</a></span>&#160;<span class="preprocessor">#define LLAMA_VERSION_PATCH 0</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
@@ -143,19 +143,18 @@ $(document).ready(function(){initNavTree('llama_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Projection_8hpp.html">mapping/Projection.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="SoA_8hpp.html">mapping/SoA.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Split_8hpp.html">mapping/Split.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Mapping_8hpp.html">mapping/tree/Mapping.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#if defined(__NVCC__)</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#    ifdef __NVCC_DIAG_PRAGMA_SUPPORT__</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#        pragma nv_diag_default 940</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#    else</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#        pragma diag_default 940</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#    endif</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#ifdef __NVCOMPILER</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#    pragma push</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#    pragma diag_default 941</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#if defined(__NVCC__)</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#    ifdef __NVCC_DIAG_PRAGMA_SUPPORT__</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#        pragma nv_diag_default 940</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#    else</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#        pragma diag_default 940</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#    endif</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#ifdef __NVCOMPILER</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#    pragma push</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#    pragma diag_default 941</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aAoS_8hpp_html"><div class="ttname"><a href="AoS_8hpp.html">AoS.hpp</a></div></div>
 <div class="ttc" id="aAoSoA_8hpp_html"><div class="ttname"><a href="AoSoA_8hpp.html">AoSoA.hpp</a></div></div>
 <div class="ttc" id="aArrayExtents_8hpp_html"><div class="ttname"><a href="ArrayExtents_8hpp.html">ArrayExtents.hpp</a></div></div>
@@ -171,7 +170,6 @@ $(document).ready(function(){initNavTree('llama_8hpp_source.html',''); initResiz
 <div class="ttc" id="aDumpMapping_8hpp_html"><div class="ttname"><a href="DumpMapping_8hpp.html">DumpMapping.hpp</a></div></div>
 <div class="ttc" id="aFieldAccessCount_8hpp_html"><div class="ttname"><a href="FieldAccessCount_8hpp.html">FieldAccessCount.hpp</a></div></div>
 <div class="ttc" id="aHeatmap_8hpp_html"><div class="ttname"><a href="Heatmap_8hpp.html">Heatmap.hpp</a></div></div>
-<div class="ttc" id="aMapping_8hpp_html"><div class="ttname"><a href="Mapping_8hpp.html">Mapping.hpp</a></div></div>
 <div class="ttc" id="aMeta_8hpp_html"><div class="ttname"><a href="Meta_8hpp.html">Meta.hpp</a></div></div>
 <div class="ttc" id="aNull_8hpp_html"><div class="ttname"><a href="Null_8hpp.html">Null.hpp</a></div></div>
 <div class="ttc" id="aOne_8hpp_html"><div class="ttname"><a href="One_8hpp.html">One.hpp</a></div></div>
@@ -193,7 +191,7 @@ $(document).ready(function(){initNavTree('llama_8hpp_source.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_1edeeca147c2d4fb57fec1b01c02fb14.html">llama</a></li><li class="navelem"><a class="el" href="llama_8hpp.html">llama.hpp</a></li>
-    <li class="footer">Generated on Fri Nov 3 2023 16:38:43 for Low-Level Abstraction of Memory Access by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sat Mar 30 2024 22:32:42 for Low-Level Abstraction of Memory Access by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

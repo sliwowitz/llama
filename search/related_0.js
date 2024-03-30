@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['loadsimdrecord_1567',['loadSimdRecord',['../structllama_1_1RecordRef.html#a4db77e1b7709685c7eb45c7f6c86fb48',1,'llama::RecordRef']]],
-  ['storesimdrecord_1568',['storeSimdRecord',['../structllama_1_1RecordRef.html#ab919c94e030e63d8d3220fe055280c5f',1,'llama::RecordRef']]]
+  ['loadsimdfromfield_1456',['loadSimdFromField',['../structllama_1_1RecordRef.html#a0e8bde38ca36c8106134cf25642b1d8e',1,'llama::RecordRef']]],
+  ['storesimdtofield_1457',['storeSimdToField',['../structllama_1_1RecordRef.html#a80d47be2e885bda85475212cdcf41986',1,'llama::RecordRef']]]
 ];

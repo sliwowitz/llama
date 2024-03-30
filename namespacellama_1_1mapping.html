@@ -98,8 +98,6 @@ $(document).ready(function(){initNavTree('namespacellama_1_1mapping.html',''); i
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacellama_1_1mapping_1_1internal"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacellama_1_1mapping_1_1internal.html">internal</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespacellama_1_1mapping_1_1tree"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacellama_1_1mapping_1_1tree.html">tree</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -284,9 +282,9 @@ Variables</h2></td></tr>
 <tr class="memitem:a5f9ae52631dd878c1ae2c2e73f353580"><td class="memTemplParams" colspan="2">template&lt;typename Mapping &gt; </td></tr>
 <tr class="memitem:a5f9ae52631dd878c1ae2c2e73f353580"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1mapping.html#a5f9ae52631dd878c1ae2c2e73f353580">isAoSoA</a> = false</td></tr>
 <tr class="separator:a5f9ae52631dd878c1ae2c2e73f353580"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb57c4acd88bf544ff5f78588fa6d13e"><td class="memTemplParams" colspan="2">template&lt;typename AD , typename RD , typename AD::value_type L&gt; </td></tr>
-<tr class="memitem:acb57c4acd88bf544ff5f78588fa6d13e"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1mapping.html#acb57c4acd88bf544ff5f78588fa6d13e">isAoSoA&lt; AoSoA&lt; AD, RD, L &gt; &gt;</a> = true</td></tr>
-<tr class="separator:acb57c4acd88bf544ff5f78588fa6d13e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab330c6fb0b99ccce36cb79e6cdfc3958"><td class="memTemplParams" colspan="2">template&lt;typename AD , typename RD , typename AD::value_type L, FieldAlignment A, typename Lin , template&lt; typename &gt; typename Perm&gt; </td></tr>
+<tr class="memitem:ab330c6fb0b99ccce36cb79e6cdfc3958"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1mapping.html#ab330c6fb0b99ccce36cb79e6cdfc3958">isAoSoA&lt; AoSoA&lt; AD, RD, L, A, Lin, Perm &gt; &gt;</a> = true</td></tr>
+<tr class="separator:ab330c6fb0b99ccce36cb79e6cdfc3958"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9c9d24fc8ce05a939c4bdb3ca8ae133"><td class="memTemplParams" colspan="2">template&lt;typename Mapping &gt; </td></tr>
 <tr class="memitem:af9c9d24fc8ce05a939c4bdb3ca8ae133"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama_1_1mapping.html#af9c9d24fc8ce05a939c4bdb3ca8ae133">isBitPackedFloatSoA</a> = false</td></tr>
 <tr class="separator:af9c9d24fc8ce05a939c4bdb3ca8ae133"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -432,7 +430,7 @@ template&lt;typename ArrayExtents , typename RecordDim , typename LinearizeArray
 </div><div class="memdoc">
 <p>Struct of array mapping storing the entire layout in a single blob. The starts of the sub arrays are aligned by inserting padding. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="structllama_1_1mapping_1_1SoA.html">SoA</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="SoA_8hpp_source.html#l00193">193</a> of file <a class="el" href="SoA_8hpp_source.html">SoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SoA_8hpp_source.html#l00202">202</a> of file <a class="el" href="SoA_8hpp_source.html">SoA.hpp</a>.</p>
 
 </div>
 </div>
@@ -521,7 +519,7 @@ template&lt;typename ArrayExtents , typename RecordDim , typename LinearizeArray
 </div><div class="memdoc">
 <p>Struct of array mapping storing each attribute of the record dimension in a separate blob. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="structllama_1_1mapping_1_1SoA.html">SoA</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="SoA_8hpp_source.html#l00207">207</a> of file <a class="el" href="SoA_8hpp_source.html">SoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SoA_8hpp_source.html#l00216">216</a> of file <a class="el" href="SoA_8hpp_source.html">SoA.hpp</a>.</p>
 
 </div>
 </div>
@@ -578,7 +576,7 @@ template&lt;typename ArrayExtents , typename RecordDim , typename LinearizeArray
 </div><div class="memdoc">
 <p>Struct of array mapping storing the entire layout in a single blob. The sub arrays are tightly packed, violating the type's alignment requirements. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="structllama_1_1mapping_1_1SoA.html">SoA</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="SoA_8hpp_source.html#l00200">200</a> of file <a class="el" href="SoA_8hpp_source.html">SoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SoA_8hpp_source.html#l00209">209</a> of file <a class="el" href="SoA_8hpp_source.html">SoA.hpp</a>.</p>
 
 </div>
 </div>
@@ -911,23 +909,23 @@ template&lt;typename Mapping &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00100">100</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00125">125</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
 
 </div>
 </div>
-<a id="acb57c4acd88bf544ff5f78588fa6d13e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb57c4acd88bf544ff5f78588fa6d13e">&#9670;&nbsp;</a></span>isAoSoA&lt; AoSoA&lt; AD, RD, L &gt; &gt;</h2>
+<a id="ab330c6fb0b99ccce36cb79e6cdfc3958"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab330c6fb0b99ccce36cb79e6cdfc3958">&#9670;&nbsp;</a></span>isAoSoA&lt; AoSoA&lt; AD, RD, L, A, Lin, Perm &gt; &gt;</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename AD , typename RD , typename AD::value_type L&gt; </div>
+template&lt;typename AD , typename RD , typename AD::value_type L, FieldAlignment A, typename Lin , template&lt; typename &gt; typename Perm&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr bool <a class="el" href="namespacellama_1_1mapping.html#a5f9ae52631dd878c1ae2c2e73f353580">llama::mapping::isAoSoA</a>&lt; <a class="el" href="structllama_1_1mapping_1_1AoSoA.html">AoSoA</a>&lt; AD, RD, L &gt; &gt; = true</td>
+          <td class="memname">constexpr bool <a class="el" href="namespacellama_1_1mapping.html#a5f9ae52631dd878c1ae2c2e73f353580">llama::mapping::isAoSoA</a>&lt; <a class="el" href="structllama_1_1mapping_1_1AoSoA.html">AoSoA</a>&lt; AD, RD, L, A, Lin, Perm &gt; &gt; = true</td>
         </tr>
       </table>
   </td>
@@ -937,7 +935,7 @@ template&lt;typename AD , typename RD , typename AD::value_type L&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00104">104</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00136">136</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
 
 </div>
 </div>
@@ -1379,7 +1377,7 @@ template&lt;typename Mapping &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00228">228</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00230">230</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
 
 </div>
 </div>
@@ -1405,7 +1403,7 @@ template&lt;typename Mapping , typename Mapping::ArrayExtents::value_type Granul
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00232">232</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Heatmap_8hpp_source.html#l00234">234</a> of file <a class="el" href="Heatmap_8hpp_source.html">Heatmap.hpp</a>.</p>
 
 </div>
 </div>
@@ -1639,7 +1637,7 @@ template&lt;typename Mapping &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SoA_8hpp_source.html#l00225">225</a> of file <a class="el" href="SoA_8hpp_source.html">SoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SoA_8hpp_source.html#l00234">234</a> of file <a class="el" href="SoA_8hpp_source.html">SoA.hpp</a>.</p>
 
 </div>
 </div>
@@ -1665,7 +1663,7 @@ template&lt;typename ArrayExtents , typename RecordDim , Blobs Blobs, SubArrayAl
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SoA_8hpp_source.html#l00234">234</a> of file <a class="el" href="SoA_8hpp_source.html">SoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SoA_8hpp_source.html#l00243">243</a> of file <a class="el" href="SoA_8hpp_source.html">SoA.hpp</a>.</p>
 
 </div>
 </div>
@@ -1742,21 +1740,9 @@ template&lt;typename RecordDim , std::size_t VectorRegisterBits&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= []() constexpr</div>
-<div class="line">    {</div>
-<div class="line">        <span class="keyword">auto</span> max = std::numeric_limits&lt;std::size_t&gt;::max();</div>
-<div class="line">        forEachLeafCoord&lt;RecordDim&gt;(</div>
-<div class="line">            [&amp;](<span class="keyword">auto</span> rc)</div>
-<div class="line">            {</div>
-<div class="line">                <span class="keyword">using</span> AttributeType = <a class="code" href="namespacellama.html#acdfb627d325de5ab6c18cdc842cd7350">GetType</a>&lt;RecordDim, decltype(rc)&gt;;</div>
-<div class="line">                max = std::min(max, VectorRegisterBits / (<span class="keyword">sizeof</span>(AttributeType) * CHAR_BIT));</div>
-<div class="line">            });</div>
-<div class="line">        <span class="keywordflow">return</span> max;</div>
-<div class="line">    }()</div>
-<div class="ttc" id="anamespacellama_html_acdfb627d325de5ab6c18cdc842cd7350"><div class="ttname"><a href="namespacellama.html#acdfb627d325de5ab6c18cdc842cd7350">llama::GetType</a></div><div class="ttdeci">typename internal::GetTypeImpl&lt; RecordDim, RecordCoordOrTags... &gt;::type GetType</div><div class="ttdef"><b>Definition:</b> <a href="Core_8hpp_source.html#l00388">Core.hpp:388</a></div></div>
-</div><!-- fragment --><p>The maximum number of vector lanes that can be used to fetch each leaf type in the record dimension into a vector register of the given size in bits. </p>
+<p>The maximum number of vector lanes that can be used to fetch each leaf type in the record dimension into a vector register of the given size in bits. </p>
 
-<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00016">16</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AoSoA_8hpp_source.html#l00017">17</a> of file <a class="el" href="AoSoA_8hpp_source.html">AoSoA.hpp</a>.</p>
 
 </div>
 </div>
@@ -1766,7 +1752,7 @@ template&lt;typename RecordDim , std::size_t VectorRegisterBits&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacellama.html">llama</a></li><li class="navelem"><a class="el" href="namespacellama_1_1mapping.html">mapping</a></li>
-    <li class="footer">Generated on Fri Nov 3 2023 16:38:43 for Low-Level Abstraction of Memory Access by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sat Mar 30 2024 22:32:42 for Low-Level Abstraction of Memory Access by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
